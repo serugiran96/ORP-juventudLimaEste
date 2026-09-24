@@ -18,7 +18,7 @@ Analizar la información disponible sobre las juventudes para identificar **nece
   - Lurigancho-Chosica (en fuentes oficiales suele figurar como "Lurigancho")
   - San Juan de Lurigancho
   - Santa Anita
-- **Población — jóvenes:** personas de **15 a 35 años**. Cuando una fuente use otro rango de edad, se registrará y se indicará al presentar sus resultados.
+- **Población — jóvenes:** personas de **15 a 30 años**. Cuando una fuente use otro rango de edad, se registrará y se indicará al presentar sus resultados.
 
 ## Preguntas de análisis
 
@@ -96,7 +96,7 @@ Cada fuente usada debe documentarse con, al menos:
 
 ## Metodología general
 
-1. **Aplicar el alcance** (ver [Alcance](#alcance)): usar los siete distritos y el rango de 15 a 35 años como referencia en todas las capas, y registrar cuando una fuente use otro territorio u otro rango de edad.
+1. **Aplicar el alcance** (ver [Alcance](#alcance)): usar los siete distritos y el rango de 15 a 30 años como referencia en todas las capas, y registrar cuando una fuente use otro territorio u otro rango de edad.
 2. **Inventariar las fuentes** de cada capa y completar su registro.
 3. **Recolectar la información** de cada capa. Por ahora, sin scraping; más adelante se evaluará dónde es viable y adecuado.
 4. **Limpiar y estandarizar** los datos: categorías temáticas comunes entre capas, distritos, fechas y rangos de edad.
@@ -109,7 +109,7 @@ Cada fuente usada debe documentarse con, al menos:
 - **Desagregación territorial:** es posible que muchos indicadores solo estén disponibles a nivel nacional o departamental, y no por distrito ni para Lima Este.
 - **Representatividad:** no se debe afirmar que los datos representan a toda la juventud de Lima Este cuando la fuente no lo permita.
 - **Fechas distintas:** las fuentes pueden haberse levantado en años diferentes. Los datos antiguos no necesariamente reflejan la situación actual.
-- **Definiciones distintas de juventud:** el proyecto usa 15 a 35 años, pero la definición oficial en Perú (Ley N.º 27802) es de 15 a 29 años. Es probable que los indicadores oficiales, como los de Dato Joven, no cubran el tramo de 30 a 35 años. Además, los estudios sobre la "Generación Z" la definen por año de nacimiento. Estos datos no siempre son comparables directamente.
+- **Definiciones distintas de juventud:** el proyecto usa 15 a 30 años, pero la definición oficial en Perú (Ley N.º 27802) es de 15 a 29 años. Es probable que los indicadores oficiales, como los de Dato Joven, no incluyan a quienes tienen 30 años; en ese caso se usará el rango de 15 a 29 como aproximación y se indicará así. Además, los estudios sobre la "Generación Z" la definen por año de nacimiento. Estos datos no siempre son comparables directamente.
 - **Oferta no es demanda:** la existencia de actividades en la Capa 3 no indica interés ni participación.
 - **Visibilidad digital:** la Capa 3 solo recoge lo que se publica en internet. Las organizaciones o actividades sin presencia digital quedarán subrepresentadas, y no todas las municipalidades publican con el mismo detalle.
 - **Datos de participación escasos:** es probable que haya pocas cifras de inscripción o asistencia, y que no sean comparables entre fuentes.
