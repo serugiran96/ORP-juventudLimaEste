@@ -262,11 +262,119 @@ def voluntariado(pob):
     guardar(res, "capa1_voluntariado_resumen_distritos")
 
 
+# --- registros sensibles ---------------------------------------------------------------
+
+UMBRAL_CELDA = 10  # decisión del equipo: ocultar conteos menores de 10
+PERIODO_PROMEDIO = range(2022, 2026)  # años completos en los cuatro registros
+
+REGISTROS = {
+    # nombre: (archivo, columna de año, columna de conteo, desagregaciones, denominador)
+    "maternidad_adolescente": ("cnv_madres_15_19_distritos_lima.csv", "anio", "Total nacidos vivos",
+                               ["rango_edad"], "mujeres_15_19"),
+    "violencia_atendida_cem": ("cem_casos_edad_sexo_distritos_lima.csv", "anio", "Total de Casos",
+                               ["grupo_edad_victima", "sexo_victima"], "jovenes_15_29"),
+    "violencia_cem_por_tipo": ("cem_casos_tipo_violencia_distritos_lima.csv", "anio", "Total de Casos",
+                               ["tipo_violencia"], None),
+    "discapacidad_certificados": ("discapacidad_certificados_distritos_lima.csv", "anio_emision", "Total Casos",
+                                  ["grupo_edad", "sexo"], "jovenes_15_29"),
+    "discapacidad_conadis": ("conadis_inscritos_distritos_lima.csv", "anio_inscripcion",
+                             "Total jóvenes registrados", ["rango_edad", "sexo"], "jovenes_15_29"),
+}
+PARCIALES = {"maternidad_adolescente": {2026: "enero–junio"}, "discapacidad_conadis": {2026: "año en curso"}}
+
+
+def ocultar(df, valor, grupos=None):
+    """Oculta conteos < UMBRAL_CELDA. Si se pasan `grupos`, aplica ocultación complementaria:
+    en cada grupo cuyo total se publica, si queda exactamente una celda oculta, oculta también la
+    siguiente más pequeña para que no pueda deducirse restando del total."""
+    df = df.copy()
+    df["oculto"] = df[valor] < UMBRAL_CELDA
+    if grupos:
+        for _, sub in df.groupby(grupos):
+            if sub["oculto"].sum() == 1 and (~sub["oculto"]).sum() >= 1:
+                df.loc[sub[~sub["oculto"]][valor].idxmin(), "oculto"] = True
+    df[valor] = df[valor].where(~df["oculto"])
+    return df
+
+
+def sensibles(pob):
+    print("Registros sensibles (con ocultación de celdas < 10)")
+    dist = distritos()
+    pj = pd.read_csv(PROCESADOS / "capa1_poblacion_joven_distritos.csv", dtype={"ubigeo": str})
+    p26 = pj[pj["anio"] == 2026]
+    denominadores = {
+        "mujeres_15_19": p26[(p26.sexo == "mujer") & (p26.grupo_edad == "15 a 19")].set_index("ubigeo")["poblacion"],
+        "jovenes_15_29": p26.groupby("ubigeo")["poblacion"].sum(),
+    }
+    por_anio, desagregado, resumen = [], [], []
+    for registro, (archivo, col_anio, col_n, variables, denom) in REGISTROS.items():
+        d = pd.read_csv(RAW / archivo, dtype={"ubigeo": str})
+        d = d.rename(columns={col_anio: "anio", col_n: "casos"})
+        d["anio"] = d["anio"].astype(int)
+
+        # 1) Totales por distrito y año (43 distritos) y agregado de Lima Este.
+        if registro != "violencia_cem_por_tipo":
+            t = d.groupby(["ubigeo", "anio"])["casos"].sum().reset_index().merge(dist, on="ubigeo")
+            t["nivel_geografico"] = "distrito"
+            le = t[t.lima_este].groupby("anio")["casos"].sum().reset_index()
+            le["ubigeo"], le["distrito"], le["lima_este"], le["nivel_geografico"] = "", "Lima Este (7 distritos)", \
+                False, "lima_este_agregado"
+            t = pd.concat([t, le], ignore_index=True)
+            # Ocultación complementaria entre los 7 distritos y su agregado, año por año.
+            t["grupo"] = t["anio"].astype(str) + "_" + (t.lima_este | (t.nivel_geografico == "lima_este_agregado")).astype(str)
+            t = ocultar(t, "casos", ["grupo"]).drop(columns="grupo")
+            t["registro"] = registro
+            t["periodo_parcial"] = t["anio"].map(PARCIALES.get(registro, {})).fillna("")
+            por_anio.append(t)
+
+        # 2) Desagregaciones por distrito, periodo 2022-2025 sumado.
+        dp = d[d["anio"].isin(PERIODO_PROMEDIO)]
+        dp_le = dp[dp["ubigeo"].isin(LIMA_ESTE)].assign(ubigeo="LIMA_ESTE")
+        for v in variables:
+            g = pd.concat([dp, dp_le]).groupby(["ubigeo", v])["casos"].sum().reset_index() \
+                .rename(columns={v: "categoria"})
+            g["variable"] = v
+            total = pd.concat([dp, dp_le]).groupby("ubigeo")["casos"].sum()
+            g = ocultar(g, "casos", ["ubigeo"])
+            g = g.merge(pd.concat([dist, pd.DataFrame([{"ubigeo": "LIMA_ESTE", "distrito": "Lima Este (7 distritos)",
+                                                         "lima_este": False}])]), on="ubigeo")
+            g["pct_del_distrito"] = 100 * g["casos"] / g["ubigeo"].map(total)
+            g["registro"], g["periodo"] = registro, "2022–2025"
+            desagregado.append(g)
+
+        # 3) Promedio anual 2022-2025 y tasa con población 2026 (ver D5).
+        if denom:
+            s = dp.groupby("ubigeo")["casos"].sum().rename("casos_2022_2025").reset_index().merge(dist, on="ubigeo")
+            s["promedio_anual"] = s["casos_2022_2025"] / len(PERIODO_PROMEDIO)
+            s["denominador"] = denom
+            s["poblacion_2026"] = s["ubigeo"].map(denominadores[denom])
+            factor = 1000 if denom == "mujeres_15_19" else 10000
+            s["tasa"] = factor * s["promedio_anual"] / s["poblacion_2026"]
+            s["tasa_por"] = "1 000 mujeres de 15–19" if factor == 1000 else "10 000 jóvenes de 15–29"
+            oculto = s["casos_2022_2025"] < UMBRAL_CELDA
+            s.loc[oculto, ["casos_2022_2025", "promedio_anual", "tasa"]] = float("nan")
+            s["oculto"] = oculto
+            s["mediana_lima_metropolitana"] = s["tasa"].median()
+            s["registro"] = registro
+            resumen.append(s)
+
+    cols_a = ["registro", "nivel_geografico", "ubigeo", "distrito", "lima_este", "anio", "casos", "oculto",
+              "periodo_parcial"]
+    guardar(pd.concat(por_anio, ignore_index=True)[cols_a], "capa1_registros_distrito_anio")
+    cols_d = ["registro", "periodo", "ubigeo", "distrito", "lima_este", "variable", "categoria", "casos",
+              "oculto", "pct_del_distrito"]
+    guardar(pd.concat(desagregado, ignore_index=True)[cols_d], "capa1_registros_distrito_desagregado")
+    cols_r = ["registro", "ubigeo", "distrito", "lima_este", "casos_2022_2025", "promedio_anual", "denominador",
+              "poblacion_2026", "tasa", "tasa_por", "mediana_lima_metropolitana", "oculto"]
+    guardar(pd.concat(resumen, ignore_index=True)[cols_r], "capa1_registros_resumen")
+
+
 def main():
     pob = poblacion()
     encuestas()
     renoj(pob)
     voluntariado(pob)
+    sensibles(pob)
 
 
 if __name__ == "__main__":

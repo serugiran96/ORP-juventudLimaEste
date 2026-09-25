@@ -7,8 +7,9 @@ Uso (desde la carpeta del proyecto):
 Salida: data/raw/dato_joven/*.csv y data/raw/dato_joven/_metadatos.json
 (la carpeta data/ no se sube al repositorio).
 
-Los registros sensibles (CNV, CEM, discapacidad) no están incluidos todavía: su
-extracción depende de una decisión sobre la ocultación de celdas pequeñas.
+Los registros sensibles (CNV, CEM, discapacidad) se extraen como conteos agregados. Las
+celdas con menos de 10 casos se ocultan en el procesamiento (scripts/procesar_capa1.py),
+antes de cualquier análisis. El registro de VIH/SIDA no se extrae.
 """
 
 import argparse
@@ -28,6 +29,10 @@ CLAVE_DEMOGRAFIA = "ebddf39c-9fde-4695-9385-4ff363a3ffcf"
 CLAVE_CONSOLIDADO = "e53bf32b-4313-45fa-966b-33172bd8d50f"
 CLAVE_RENOJ = "a8e15d92-0bea-4689-8269-cbf2f1161419"
 CLAVE_VOLUNTARIADO = "b6d288e4-c6a4-4890-a3e7-90f63632e731"
+CLAVE_CNV = "34f5cda5-f596-470e-95c9-ae9b804f0d66"
+CLAVE_CEM = "6eb19ff9-5532-4053-abb6-3b1d70de93e9"
+CLAVE_DISCAPACIDAD = "629afc58-e810-4e22-8720-24679d411334"
+CLAVE_CONADIS = "9a0ad43e-4936-4414-bd81-7bdee6a4646a"
 
 PROVINCIA_LIMA = "1501"  # Lima Metropolitana: 43 distritos de la provincia de Lima
 UBIGEO_NACIONAL = "000000"  # fila con el total del país en las tablas de población
@@ -35,8 +40,12 @@ REGIONES_ENCUESTA = ["LIMA METROPOLITANA", "NACIONAL"]
 
 
 def _sin_prefijo(filas):
-    """Quita el prefijo 't.' de los nombres de columna que agrega el cliente."""
-    return pd.DataFrame([{k.removeprefix("t."): v for k, v in f.items()} for f in filas])
+    """Quita el prefijo 't.' de los nombres de columna que agrega el cliente.
+
+    Descarta las columnas auxiliares de formato (por ejemplo 'M1') que algunas medidas devuelven.
+    """
+    return pd.DataFrame([{k.removeprefix("t."): v for k, v in f.items()
+                          if k.startswith("t.") or "(" in k} for f in filas])
 
 
 class Extractor:
@@ -190,8 +199,33 @@ class Extractor:
                      "Sin campos sensibles ni de texto libre.")
 
 
+    def sensibles(self):
+        """Registros administrativos sensibles con distrito: solo conteos agregados."""
+        print("Registros sensibles (conteos agregados)")
+        ubigeos = list(self.distritos_lima()["ubigeo"])
+        filtro = {"ubigeo": ubigeos}
+        nota = "Conteos agregados. Ocultar celdas < 10 antes de cualquier uso (procesar_capa1.py)."
+        consultas = [
+            # nombre, clave, tabla, columnas, medida
+            ("cnv_madres_15_19_distritos_lima", CLAVE_CNV, "CNV", ["ubigeo", "anio", "rango_edad"],
+             "Total nacidos vivos"),
+            ("cem_casos_edad_sexo_distritos_lima", CLAVE_CEM, "CEM",
+             ["ubigeo", "anio", "grupo_edad_victima", "sexo_victima"], "Total de Casos"),
+            ("cem_casos_tipo_violencia_distritos_lima", CLAVE_CEM, "CEM", ["ubigeo", "anio", "tipo_violencia"],
+             "Total de Casos"),
+            ("discapacidad_certificados_distritos_lima", CLAVE_DISCAPACIDAD, "discapacidad",
+             ["ubigeo", "anio_emision", "grupo_edad", "sexo"], "Total Casos"),
+            ("conadis_inscritos_distritos_lima", CLAVE_CONADIS, "RNPCD",
+             ["ubigeo", "anio_inscripcion", "rango_edad", "sexo"], "Total jóvenes registrados"),
+        ]
+        for nombre, clave, tabla, columnas, medida in consultas:
+            df = _sin_prefijo(self.reporte(clave).consultar(tabla, columnas=columnas, medidas=[medida],
+                                                              filtros=filtro))
+            self.guardar(df, nombre, clave, [tabla], {"ubigeo": "43 distritos de Lima Metropolitana"}, nota)
+
+
 def main():
-    conjuntos = ["poblacion", "encuestas", "consolidado", "renoj", "voluntariado"]
+    conjuntos = ["poblacion", "encuestas", "consolidado", "renoj", "voluntariado", "sensibles"]
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("conjuntos", nargs="+", choices=conjuntos + ["todo"])
     args = p.parse_args()
