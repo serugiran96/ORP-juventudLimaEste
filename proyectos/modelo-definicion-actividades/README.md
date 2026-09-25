@@ -2,7 +2,7 @@
 
 Proyecto de análisis de datos sobre las juventudes de Lima Este.
 
-> Estado: Capas 1, 2 y 3 con diagnóstico (notebooks 01, 02 y 03). Integración pendiente.
+> Estado: análisis completo. Capas 1, 2 y 3 (notebooks 01–03) e integración (notebook 04). **Lectura principal: [`resultados/informe_final.md`](resultados/informe_final.md).**
 
 ## Objetivo
 
@@ -121,7 +121,8 @@ Cada fuente usada debe documentarse con, al menos:
 |---|---|
 | `data/raw/` | Datos tal como se obtienen de la fuente, sin modificar. |
 | `data/processed/` | Datos limpios o anonimizados, listos para el análisis. Diccionario en `data/README.md`. |
-| `fuentes/` | Catálogo de fuentes, exploración de Dato Joven, catálogo de tableros y metodología de la Capa 1. |
+| `fuentes/` | Catálogo de fuentes, exploración de Dato Joven, registro de oferta de la Capa 3 y metodología de cada capa y del cruce. |
+| `resultados/` | Producto final: informe, hallazgos integrados, patrones y propuestas con trazabilidad. |
 | `notebooks/` | Notebooks de exploración y análisis (Jupyter). |
 | `scripts/` | Código reutilizable: recolección, limpieza y utilidades. |
 
@@ -169,6 +170,18 @@ El registro `fuentes/capa3_registro_oferta.csv` se codificó a mano a partir de 
 solo recolectan y seleccionan notas. Las notas publicadas cambian con el tiempo, así que una nueva recolección
 puede dar resultados distintos. La metodología está en `fuentes/metodologia_capa3.md`.
 
+
+## Integración de las tres capas
+
+```bash
+jupyter nbconvert --to notebook --execute --inplace notebooks/04_integracion.ipynb
+```
+
+El cruce parte de tres tablas escritas a partir de los notebooks 01–03: `resultados/hallazgos_integrados.csv`
+(49 hallazgos con su referencia técnica), `resultados/patrones.csv` y `resultados/propuestas.csv`. El notebook 04
+verifica que todas las referencias existan y resume el contexto por distrito. El informe
+`resultados/informe_final.md` se genera a partir de esas tablas con `python scripts/integracion_informe.py`. Las reglas y los niveles de evidencia están en
+`fuentes/metodologia_integracion.md`.
 ## Datos y privacidad
 
 - Los archivos de `data/` **no se suben al repositorio**; se guardan solo en local (ver `.gitignore`). Solo se versionan el código, los notebooks y la documentación.
