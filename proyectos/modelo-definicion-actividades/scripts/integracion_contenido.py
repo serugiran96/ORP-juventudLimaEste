@@ -571,12 +571,13 @@ FICHAS = [
                    "Que el apoyo para postular a becas convoque por sí mismo.",
                    "Que un horario nocturno o de domingo permita participar a quienes trabajan."],
         componentes=[
-            ("Preparación gratuita para el examen de admisión", "respaldado",
+            ("Preparación gratuita para el examen de admisión", "respaldado en dos o más dimensiones",
              "Necesidad (brecha de acceso) y convocatoria (participación con cifras y una demanda observada) "
              "documentadas; interés no medido."),
-            ("Apoyo para postular a becas", "respaldado parcialmente",
-             "Demanda observada por una beca concreta, que no se generaliza (C3-D9)."),
-            ("Orientación vocacional", "sin evidencia suficiente",
+            ("Apoyo para postular a becas", "respaldado en dos o más dimensiones",
+             "Necesidad económica documentada y demanda observada por una beca concreta, que no se generaliza "
+             "(C3-D9)."),
+            ("Orientación vocacional", "sin evidencia",
              "Solo una feria con estudiantes y vecinos, sin segmento compatible."),
         ],
         validacion="Inscritos frente a cupos y lista de espera; proporción que no se preparaba en otra academia; "
@@ -632,10 +633,10 @@ FICHAS = [
         hipotesis=["Que quienes buscan trabajo acudan a una preparación además de las ferias y bolsas existentes.",
                    "Que la conexión con vacantes concretas aumente la asistencia."],
         componentes=[
-            ("Preparación para buscar empleo (CV, entrevista, bolsas en línea)", "respaldado parcialmente",
+            ("Preparación para buscar empleo (CV, entrevista, bolsas en línea)", "respaldado en dos o más dimensiones",
              "Necesidad y segmento documentados; convocatoria con cifras pequeñas; interés no medido."),
-            ("Conexión con vacantes", "complementario", "Ya existe como ferias, bolsas y centros de empleo."),
-            ("Prioridad a mujeres que no estudian ni trabajan", "retirado",
+            ("Conexión con vacantes", "complementario (ya existe)", "Ya existe como ferias, bolsas y centros de empleo."),
+            ("Prioridad a mujeres que no estudian ni trabajan", "descartado",
              "La mayoría se dedica al hogar y no busca trabajo; ver F-15."),
         ],
         validacion="Inscritos frente a cupos; proporción que busca trabajo; asistencia; postulaciones y contrataciones "
@@ -669,7 +670,7 @@ FICHAS = [
                            evidencias="E-056")],
         hipotesis=["Que jóvenes con empleo informal asistan a una actividad sobre derechos laborales o formalización.",
                    "Que un formato breve, de noche o en domingo, sea compatible con su jornada."],
-        componentes=[("Información sobre derechos laborales y formalización", "necesidad documentada",
+        componentes=[("Información sobre derechos laborales y formalización", "respaldado en una dimensión",
                       "Interés y convocatoria sin evidencia.")],
         validacion="Inscritos; proporción con empleo informal; asistencia; consultas o trámites iniciados después.",
         donde="Sin criterio de demanda por distrito.",
@@ -707,7 +708,7 @@ FICHAS = [
             ("Promover el emprendimiento en general", "descartado",
              "La informalidad no demuestra necesidad de emprender y la aspiración solo se midió en 2019–2020 fuera de "
              "Lima Este."),
-            ("Apoyo a quienes ya trabajan por cuenta propia", "segmento documentado",
+            ("Apoyo a quienes ya trabajan por cuenta propia", "respaldado en una dimensión",
              "Necesidad, interés y convocatoria por medir."),
             ("Ventas por internet", "sin evidencia", "Pocos usan internet para vender; no se sabe si quieren hacerlo."),
         ],
@@ -755,7 +756,7 @@ FICHAS = [
                    "Que un horario diurno de domingo y espacios seguros permitan participar a más mujeres (su menor "
                    "práctica en Lima Metropolitana no prueba demanda insatisfecha)."],
         componentes=[
-            ("Deporte organizado mixto", "práctica relacionada", "Convocatoria con un solo dato comparable."),
+            ("Deporte organizado mixto", "respaldado en dos o más dimensiones", "Práctica relacionada (P1) y un solo dato de convocatoria comparable (C3); sin necesidad medida."),
             ("Opción para mujeres en horario y espacio seguros", "hipótesis de diseño",
              "Se apoya en barreras medidas (inseguridad nocturna) y en la brecha de práctica de Lima Metropolitana."),
         ],
@@ -813,7 +814,7 @@ FICHAS = [
                    "Que la cultura urbana (freestyle, breaking) tenga público en Lima Este (no se midió).",
                    "Que participar como artistas u organizadores aumente la convocatoria."],
         componentes=[
-            ("Festival o escenario local gratuito", "práctica de la misma actividad",
+            ("Festival o escenario local gratuito", "respaldado en una dimensión",
              "Festivales locales medidos en Lima Este; convocatoria juvenil sin cifras."),
             ("Programación de cultura urbana", "sin evidencia", "La encuesta no pregunta por géneros."),
             ("Jóvenes como artistas u organizadores", "sin evidencia",
@@ -854,7 +855,7 @@ FICHAS = [
                    "Que haya interés en conversar después de la función (cineforo).",
                    "Que haya interés en producir video."],
         componentes=[
-            ("Proyección gratuita", "práctica relacionada", "Alcance amplio; convocatoria juvenil sin evidencia."),
+            ("Proyección gratuita", "respaldado en una dimensión", "Alcance amplio; convocatoria juvenil sin evidencia."),
             ("Conversación después de la función (cineforo)", "sin evidencia", "Validar por separado."),
             ("Taller de producción de video", "sin evidencia", "Ver video ({E-166}) no indica interés en producirlo."),
         ],
@@ -891,9 +892,9 @@ FICHAS = [
                            evidencias="E-142; E-140; E-141")],
         hipotesis=["Que jóvenes asistan a actividades juveniles en ferias o bibliotecas.",
                    "Que una mejor difusión aumente la asistencia (la falta de información es un motivo declarado)."],
-        componentes=[("Actividades juveniles en ferias del libro y bibliotecas", "práctica de la misma actividad",
+        componentes=[("Actividades juveniles en ferias del libro y bibliotecas", "respaldado en una dimensión",
                       "Convocatoria juvenil sin cifras."),
-                     ("Club de lectura", "práctica relacionada", "Sin evidencia de convocatoria.")],
+                     ("Club de lectura", "respaldado en una dimensión", "Sin evidencia de convocatoria.")],
         validacion="Asistentes y su edad; repetición; canal por el que se enteraron.",
         donde="Criterio operativo: distritos con ferias del libro y bibliotecas (Ate, La Molina, Lurigancho-Chosica, "
               "SJL).",
@@ -923,7 +924,7 @@ FICHAS = [
         afirmaciones=[dict(texto="Uno de cada cuatro jóvenes visitó un monumento histórico en el año ({E-150}).",
                            evidencias="E-150")],
         hipotesis=["Que rutas de patrimonio organizadas convoquen a jóvenes de 18–29."],
-        componentes=[("Rutas o visitas guiadas", "práctica de la misma actividad", "Convocatoria juvenil sin cifras "
+        componentes=[("Rutas o visitas guiadas", "respaldado en una dimensión", "Convocatoria juvenil sin cifras "
                                                                                   "comparables.")],
         validacion="Inscritos y su edad; asistencia; repetición.",
         donde="Criterio operativo: distritos con sitios arqueológicos (Lurigancho-Chosica, Ate, SJL).",
@@ -951,9 +952,9 @@ FICHAS = [
         hipotesis=["Que jugadores habituales acudan a un evento presencial.",
                    "Que un formato diseñado para mujeres aumente su participación.",
                    "Que haya interés en componentes formativos (streaming, diseño)."],
-        componentes=[("Encuentro o torneo presencial", "práctica relacionada", "Segmento identificable; convocatoria "
+        componentes=[("Encuentro o torneo presencial", "respaldado en una dimensión", "Segmento identificable; convocatoria "
                                                                                "sin evidencia."),
-                     ("Inclusión de mujeres", "hipótesis", ""),
+                     ("Inclusión de mujeres", "hipótesis de diseño", "Solo {E-161} de las mujeres juega en línea."),
                      ("Habilidades digitales asociadas", "sin evidencia", "")],
         validacion="Inscritos frente a cupos; asistencia; proporción de mujeres.",
         donde="Criterio operativo: un solo piloto pequeño en un espacio con conectividad.",
@@ -980,7 +981,7 @@ FICHAS = [
         afirmaciones=[dict(texto="Una hackathon municipal en SJL reunió {C3-100} inscripciones de mayores de 18.",
                            evidencias="", c3="C3-100")],
         hipotesis=["Que un reto colaborativo convoque a jóvenes de Lima Este (el único dato mezcla edades)."],
-        componentes=[("Reto colaborativo o hackathon", "respaldado parcialmente",
+        componentes=[("Reto colaborativo o hackathon", "solo señales débiles",
                       "Una señal de convocatoria con segmento parcialmente compatible."),
                      ("Talleres generales de habilidades digitales", "descartado",
                       "Sin necesidad, interés ni convocatoria documentados.")],
@@ -1017,9 +1018,9 @@ FICHAS = [
                                  "Lima Este; su magnitud en Lima Este no se conoce.", evidencias="E-200; E-203")],
         hipotesis=["Que mujeres jóvenes asistan voluntariamente a un espacio de bienestar.",
                    "Que funcione mejor como componente de otra actividad y como ruta de derivación."],
-        componentes=[("Espacio de bienestar propio", "necesidad documentada (Lima Metropolitana)",
+        componentes=[("Espacio de bienestar propio", "respaldado en una dimensión",
                       "Interés y convocatoria sin evidencia."),
-                     ("Ruta de derivación a servicios", "condición de diseño", "Para cualquier actividad.")],
+                     ("Ruta de derivación a servicios", "condición transversal", "Para cualquier actividad.")],
         validacion="Inscritas y asistencia; comparación entre formato propio y componente; derivaciones realizadas.",
         donde="Criterio operativo: donde haya servicios a los cuales derivar.",
         cambio="El interés pasa de 'bajo' a P0 (lo citado no era interés); el alcance en Lima Este es desconocido.",
@@ -1047,7 +1048,7 @@ FICHAS = [
         afirmaciones=[dict(texto="Las necesidades registradas se concentran en adolescentes; la maternidad adolescente "
                                  "registrada bajó a menos de la mitad desde 2019.", evidencias="E-207; E-208; E-205")],
         hipotesis=[],
-        componentes=[("Educación sexual integral como actividad de convocatoria", "retirado",
+        componentes=[("Educación sexual integral como actividad de convocatoria", "descartado",
                       "Sin evidencia de interés ni de convocatoria voluntaria; corresponde a colegios y salud."),
                      ("Protocolo de protección, consentimiento y derivación", "condición transversal",
                       "Para toda actividad con menores de 18.")],
@@ -1082,7 +1083,9 @@ FICHAS = [
                                  "Este.", evidencias="", c3="C3-011; C3-020")],
         hipotesis=["Que un formato corto con resultado visible atraiga a jóvenes que trabajan y a hombres (no hay "
                    "datos)."],
-        componentes=[("Jornadas cortas de voluntariado", "práctica relacionada", "Convocatoria con cifras pequeñas.")],
+        componentes=[("Jornadas cortas de voluntariado", "respaldado en dos o más dimensiones",
+                      "Práctica relacionada (proxy referencial) y participación con cifras pequeñas; la necesidad es un "
+                      "objetivo institucional.")],
         validacion="Inscritos y perfil (estudia o trabaja, sexo); asistencia; repetición.",
         donde="Criterio operativo: distritos con baja densidad de organizaciones acreditadas.",
         cambio="La 'necesidad' se reclasifica como objetivo institucional; la práctica de la ENUT se lee como proxy "
@@ -1123,7 +1126,7 @@ FICHAS = [
         afirmaciones=[dict(texto="Es un segmento identificable ({E-070:personas}) que ni la oferta publicada ni la "
                                  "primera integración cubrían.", evidencias="E-070")],
         hipotesis=[],
-        componentes=[("Actividad para este grupo", "no se propone",
+        componentes=[("Actividad para este grupo", "sin evidencia",
                       "No hay evidencia sobre sus intereses ni disponibilidad: requiere consulta directa.")],
         validacion="Consulta directa (entrevistas o grupos focales en hogares o espacios comunitarios) antes de diseñar "
                    "cualquier actividad.",
@@ -1175,3 +1178,11 @@ CAMBIOS = [
          cambio="Derechos laborales, lectura y ferias del libro, rutas de patrimonio y un segmento que requiere "
                 "consulta directa (mujeres dedicadas al hogar)."),
 ]
+
+
+# Regla: una dimensión está respaldada si la necesidad está documentada (no "sin evidencia" ni "objetivo
+# institucional"), si el interés es P1 o más, o si la convocatoria es C3 o C4. C2 y los registros de autoselección
+# son "señales débiles".
+ESTADOS_COMPONENTE = ["respaldado en dos o más dimensiones", "respaldado en una dimensión", "solo señales débiles",
+                      "hipótesis de diseño", "sin evidencia", "descartado", "condición transversal",
+                      "complementario (ya existe)"]

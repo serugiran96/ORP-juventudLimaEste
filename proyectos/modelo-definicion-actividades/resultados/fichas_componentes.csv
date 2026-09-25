@@ -1,33 +1,33 @@
 ficha,componente,estado,nota
-F-01,Preparación gratuita para el examen de admisión,respaldado,Necesidad (brecha de acceso) y convocatoria (participación con cifras y una demanda observada) documentadas; interés no medido.
-F-01,Apoyo para postular a becas,respaldado parcialmente,"Demanda observada por una beca concreta, que no se generaliza (C3-D9)."
-F-01,Orientación vocacional,sin evidencia suficiente,"Solo una feria con estudiantes y vecinos, sin segmento compatible."
-F-02,"Preparación para buscar empleo (CV, entrevista, bolsas en línea)",respaldado parcialmente,Necesidad y segmento documentados; convocatoria con cifras pequeñas; interés no medido.
-F-02,Conexión con vacantes,complementario,"Ya existe como ferias, bolsas y centros de empleo."
-F-02,Prioridad a mujeres que no estudian ni trabajan,retirado,La mayoría se dedica al hogar y no busca trabajo; ver F-15.
-F-03,Información sobre derechos laborales y formalización,necesidad documentada,Interés y convocatoria sin evidencia.
+F-01,Preparación gratuita para el examen de admisión,respaldado en dos o más dimensiones,Necesidad (brecha de acceso) y convocatoria (participación con cifras y una demanda observada) documentadas; interés no medido.
+F-01,Apoyo para postular a becas,respaldado en dos o más dimensiones,"Necesidad económica documentada y demanda observada por una beca concreta, que no se generaliza (C3-D9)."
+F-01,Orientación vocacional,sin evidencia,"Solo una feria con estudiantes y vecinos, sin segmento compatible."
+F-02,"Preparación para buscar empleo (CV, entrevista, bolsas en línea)",respaldado en dos o más dimensiones,Necesidad y segmento documentados; convocatoria con cifras pequeñas; interés no medido.
+F-02,Conexión con vacantes,complementario (ya existe),"Ya existe como ferias, bolsas y centros de empleo."
+F-02,Prioridad a mujeres que no estudian ni trabajan,descartado,La mayoría se dedica al hogar y no busca trabajo; ver F-15.
+F-03,Información sobre derechos laborales y formalización,respaldado en una dimensión,Interés y convocatoria sin evidencia.
 F-04,Promover el emprendimiento en general,descartado,La informalidad no demuestra necesidad de emprender y la aspiración solo se midió en 2019–2020 fuera de Lima Este.
-F-04,Apoyo a quienes ya trabajan por cuenta propia,segmento documentado,"Necesidad, interés y convocatoria por medir."
+F-04,Apoyo a quienes ya trabajan por cuenta propia,respaldado en una dimensión,"Necesidad, interés y convocatoria por medir."
 F-04,Ventas por internet,sin evidencia,Pocos usan internet para vender; no se sabe si quieren hacerlo.
-F-05,Deporte organizado mixto,práctica relacionada,Convocatoria con un solo dato comparable.
+F-05,Deporte organizado mixto,respaldado en dos o más dimensiones,Práctica relacionada (P1) y un solo dato de convocatoria comparable (C3); sin necesidad medida.
 F-05,Opción para mujeres en horario y espacio seguros,hipótesis de diseño,Se apoya en barreras medidas (inseguridad nocturna) y en la brecha de práctica de Lima Metropolitana.
-F-06,Festival o escenario local gratuito,práctica de la misma actividad,Festivales locales medidos en Lima Este; convocatoria juvenil sin cifras.
+F-06,Festival o escenario local gratuito,respaldado en una dimensión,Festivales locales medidos en Lima Este; convocatoria juvenil sin cifras.
 F-06,Programación de cultura urbana,sin evidencia,La encuesta no pregunta por géneros.
 F-06,Jóvenes como artistas u organizadores,sin evidencia,Hay 20 organizaciones juveniles acreditadas de cultura y arte como posibles aliadas.
-F-07,Proyección gratuita,práctica relacionada,Alcance amplio; convocatoria juvenil sin evidencia.
+F-07,Proyección gratuita,respaldado en una dimensión,Alcance amplio; convocatoria juvenil sin evidencia.
 F-07,Conversación después de la función (cineforo),sin evidencia,Validar por separado.
 F-07,Taller de producción de video,sin evidencia,"Ver video (92,8 %) no indica interés en producirlo."
-F-08,Actividades juveniles en ferias del libro y bibliotecas,práctica de la misma actividad,Convocatoria juvenil sin cifras.
-F-08,Club de lectura,práctica relacionada,Sin evidencia de convocatoria.
-F-09,Rutas o visitas guiadas,práctica de la misma actividad,Convocatoria juvenil sin cifras comparables.
-F-10,Encuentro o torneo presencial,práctica relacionada,Segmento identificable; convocatoria sin evidencia.
-F-10,Inclusión de mujeres,hipótesis,
+F-08,Actividades juveniles en ferias del libro y bibliotecas,respaldado en una dimensión,Convocatoria juvenil sin cifras.
+F-08,Club de lectura,respaldado en una dimensión,Sin evidencia de convocatoria.
+F-09,Rutas o visitas guiadas,respaldado en una dimensión,Convocatoria juvenil sin cifras comparables.
+F-10,Encuentro o torneo presencial,respaldado en una dimensión,Segmento identificable; convocatoria sin evidencia.
+F-10,Inclusión de mujeres,hipótesis de diseño,"Solo 18,9 % de las mujeres juega en línea."
 F-10,Habilidades digitales asociadas,sin evidencia,
-F-11,Reto colaborativo o hackathon,respaldado parcialmente,Una señal de convocatoria con segmento parcialmente compatible.
+F-11,Reto colaborativo o hackathon,solo señales débiles,Una señal de convocatoria con segmento parcialmente compatible.
 F-11,Talleres generales de habilidades digitales,descartado,"Sin necesidad, interés ni convocatoria documentados."
-F-12,Espacio de bienestar propio,necesidad documentada (Lima Metropolitana),Interés y convocatoria sin evidencia.
-F-12,Ruta de derivación a servicios,condición de diseño,Para cualquier actividad.
-F-13,Educación sexual integral como actividad de convocatoria,retirado,Sin evidencia de interés ni de convocatoria voluntaria; corresponde a colegios y salud.
+F-12,Espacio de bienestar propio,respaldado en una dimensión,Interés y convocatoria sin evidencia.
+F-12,Ruta de derivación a servicios,condición transversal,Para cualquier actividad.
+F-13,Educación sexual integral como actividad de convocatoria,descartado,Sin evidencia de interés ni de convocatoria voluntaria; corresponde a colegios y salud.
 F-13,"Protocolo de protección, consentimiento y derivación",condición transversal,Para toda actividad con menores de 18.
-F-14,Jornadas cortas de voluntariado,práctica relacionada,Convocatoria con cifras pequeñas.
-F-15,Actividad para este grupo,no se propone,No hay evidencia sobre sus intereses ni disponibilidad: requiere consulta directa.
+F-14,Jornadas cortas de voluntariado,respaldado en dos o más dimensiones,Práctica relacionada (proxy referencial) y participación con cifras pequeñas; la necesidad es un objetivo institucional.
+F-15,Actividad para este grupo,sin evidencia,No hay evidencia sobre sus intereses ni disponibilidad: requiere consulta directa.

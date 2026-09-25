@@ -337,6 +337,8 @@ def construir():
         for k, (paso, (codigo, texto)) in enumerate(zip(PASOS, pasos), start=1):
             cadena.append({"ficha": fid, "orden": k, "paso": paso, "codigo": codigo, "texto": texto})
         for nombre, estado, nota in f["componentes"]:
+            if estado not in C.ESTADOS_COMPONENTE:
+                raise ValueError(f"{fid}: estado de componente no permitido '{estado}'")
             comp.append({"ficha": fid, "componente": nombre, "estado": estado, "nota": rd.texto(nota, fid)})
         filas_f.append({
             "id": fid, "linea": f["linea"], "actividad": f["actividad"], "tipo_ficha": f["tipo"],
