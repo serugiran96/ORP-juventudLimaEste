@@ -53,6 +53,8 @@ cerca de 1,5 GB.
 |---|---|---|
 | `data/raw/enaho/modulo03_{año}/` | ENAHO 2022–2025, Módulo 03 (educación e internet), con cuestionarios y diccionarios | `capa2_educacion_internet_enaho.py descargar` |
 | `data/raw/enapres/{año}_cap800A/` | ENAPRES 2022–2025, capítulo 800A (cultura), CSV con cuestionarios y diccionarios | `capa2_cultura_enapres.py descargar` |
+| `data/raw/enaho/modulo02_{año}/` | ENAHO 2022–2025, Módulo 02 (miembros del hogar): parentesco, estado civil y edades de todos los miembros | `integracion_enaho_segmentos.py descargar` |
+| `data/raw/enapres/{año}_cap600/`, `2025_cap400/` | ENAPRES 2022–2025, capítulo de seguridad ciudadana (600; 400 en 2025), CSV con cuestionario y diccionario | `integracion_seguridad_enapres.py descargar` |
 | `data/raw/enut/2024/` | ENUT 2024, módulos 200 (personas), 600 (diario de uso del tiempo) y 700–900 (satisfacción) | `capa2_uso_tiempo_enut.py descargar` |
 | `data/raw/ipsos/` | PDF públicos de Ipsos (infografías 2017–2022 y el reporte global de 2024) | Descarga manual |
 | `data/raw/senaju/` | Informe *Jóvenes en Agenda* (2025), revisado y descartado | Descarga manual |
@@ -203,3 +205,26 @@ Material de revisión para codificar a mano el registro de oferta. No son datos 
 | `senal_demanda` | Qué indica demanda y **a qué oferta concreta se refiere** (solo si `evidencia` = `demanda observada`); no es evidencia de interés general |
 | `fuente_url`, `fuente_tipo`, `verificacion`, `fecha_consulta` | Enlace(s) separados por ` \| `, tipo de fuente, si se leyó el texto completo o solo el resumen del buscador, y fecha de consulta |
 | `notas` | Aclaraciones |
+
+## `data/processed/` — estimaciones de la integración (segunda versión)
+
+Las usan `scripts/integracion_evidencias.py` y `scripts/integracion_construir.py`. Todas las estimaciones de Lima
+Este son de dominio no planificado, con `valor`, `ee`, `cv`, `n_muestral` y `precision` (confiable ≤ 15 %,
+referencial 15–25 %, no publicable > 25 %). Cuando existen, `personas_encuesta` y `personas_encuesta_ee` son el
+total de personas que estima la propia encuesta (promedio anual si se agrupan años).
+
+| Archivo | Script | Contenido |
+|---|---|---|
+| `integracion_enaho_segmentos.csv` | `integracion_enaho_segmentos.py` | Situación de estudio y trabajo, búsqueda de empleo, informalidad, trabajo independiente, población compatible con la preparación preuniversitaria (con motivos), composición de quienes no estudian ni trabajan, caracterización de las mujeres dedicadas al hogar (`hogar_*` frente a `resto_*`) y desplazamiento para estudiar. Columna `universo`: denominador de cada porcentaje; `equivalente_dato_joven`: sí / no / no aplica. |
+| `integracion_enaho_validacion.csv` | ídem | Réplica de las cuatro categorías de "Actividades que realizan los jóvenes" frente a Dato Joven (Lima Metropolitana, 2022–2025, total y por sexo). |
+| `integracion_bases_enaho.csv`, `integracion_bases_enapres.csv`, `integracion_bases_enut.csv` | scripts de integración | Población joven expandida por cada encuesta (Lima Este y Lima Metropolitana), con su error estándar. |
+| `integracion_seguridad_enapres.csv` | `integracion_seguridad_enapres.py` | Inseguridad nocturna (2022–2025) y actividades evitadas por temor a la delincuencia (2022–2024), por año (Lima Metropolitana) y agrupado. Solo proporciones. |
+| `integracion_seguridad_enapres_validacion.csv` | ídem | Réplica frente a Dato Joven. |
+| `integracion_tiempo_enut.csv` | `integracion_tiempo_enut.py` | Disponibilidad (≥ 2 horas seguidas sin obligaciones) por bloque horario, horas no comprometidas por día, horas de trabajo doméstico y cuidado y participación semanal en algunas prácticas. `grupo` distingue a las mujeres que no trabajaron ni estudiaron en la semana del diario. |
+| `integracion_cultura_edad_enapres.csv` | `integracion_cultura_edad_enapres.py` | Participación cultural por grupo de edad (Lima Este y Lima Metropolitana, 2022–2025), mismas familias que la Capa 2. |
+| `integracion_cultura_totales_enapres.csv` | ídem | Personas de 15–29 que realizan cada práctica cultural según la encuesta. |
+
+Las tablas de resultados (`resultados/evidencias.csv`, `fichas_*.csv`, etc.) se describen en
+`fuentes/metodologia_integracion.md`. Las fichas citan actividades del registro de la Capa 3 por su `id`: si el
+registro se reconstruye, hay que revisar esas referencias (`fichas_convocatoria.csv` guarda también el nombre de
+cada actividad para poder comprobarlo).

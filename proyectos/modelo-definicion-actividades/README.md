@@ -2,7 +2,7 @@
 
 Proyecto de análisis de datos sobre las juventudes de Lima Este.
 
-> Estado: análisis completo. Capas 1, 2 y 3 (notebooks 01–03) e integración (notebook 04). **Lectura principal: [`resultados/informe_final.md`](resultados/informe_final.md).**
+> Estado: análisis completo. Capas 1, 2 y 3 (notebooks 01–03) e integración, **segunda versión** (notebook 04), reconstruida tras la [auditoría metodológica](fuentes/auditoria_integracion.md). **Lectura principal: [`resultados/informe_final.md`](resultados/informe_final.md).**
 
 ## Objetivo
 
@@ -122,7 +122,7 @@ Cada fuente usada debe documentarse con, al menos:
 | `data/raw/` | Datos tal como se obtienen de la fuente, sin modificar. |
 | `data/processed/` | Datos limpios o anonimizados, listos para el análisis. Diccionario en `data/README.md`. |
 | `fuentes/` | Catálogo de fuentes, exploración de Dato Joven, registro de oferta de la Capa 3 y metodología de cada capa y del cruce. |
-| `resultados/` | Producto final: informe, hallazgos integrados, patrones y propuestas con trazabilidad. |
+| `resultados/` | Producto final: informe, registro de evidencias, hallazgos, patrones, segmentos y fichas de actividades con trazabilidad. |
 | `notebooks/` | Notebooks de exploración y análisis (Jupyter). |
 | `scripts/` | Código reutilizable: recolección, limpieza y utilidades. |
 
@@ -174,15 +174,27 @@ puede dar resultados distintos. La metodología está en `fuentes/metodologia_ca
 ## Integración de las tres capas
 
 ```bash
+python scripts/integracion_enaho_segmentos.py descargar && python scripts/integracion_enaho_segmentos.py calcular
+python scripts/integracion_seguridad_enapres.py descargar && python scripts/integracion_seguridad_enapres.py calcular
+python scripts/integracion_tiempo_enut.py
+python scripts/integracion_cultura_edad_enapres.py
+python scripts/integracion_construir.py      # evidencias, hallazgos, patrones, segmentos y fichas
+python scripts/integracion_informe.py        # resultados/informe_final.md
+python scripts/integracion_pagina.py         # resultados/informe_final.html
 jupyter nbconvert --to notebook --execute --inplace notebooks/04_integracion.ipynb
 ```
 
-El cruce parte de tres tablas escritas a partir de los notebooks 01–03: `resultados/hallazgos_integrados.csv`
-(49 hallazgos con su referencia técnica), `resultados/patrones.csv` y `resultados/propuestas.csv`. El notebook 04
-verifica que todas las referencias existan y resume el contexto por distrito. El informe
-`resultados/informe_final.md` se genera a partir de esas tablas con `python scripts/integracion_informe.py`, y su versión web
-(`resultados/informe_final.html`) con `python scripts/integracion_pagina.py`. Las reglas y los niveles de evidencia están en
-`fuentes/metodologia_integracion.md`.
+La segunda versión del cruce (25/09/2026) reemplaza los niveles alto/medio/bajo y las 11 propuestas por:
+
+- `resultados/evidencias.csv`: 203 datos atómicos leídos de los datos procesados;
+- `hallazgos_integrados.csv` y `patrones.csv`, cuyas cifras se generan desde esas evidencias;
+- `segmentos.csv`: tamaño de cada segmento en porcentaje y en personas, con dos bases de población;
+- `fichas_actividad.csv` y `fichas_cadena.csv`: 15 fichas por actividad y segmento, con la cadena necesidad →
+  población → interés → alcance → oferta → convocatoria → barreras → vacíos → afirmaciones → hipótesis, sin
+  puntaje ni orden por evidencia.
+
+Los cambios frente a la primera versión están en `resultados/cambios_primera_version.csv`. Las reglas, las
+categorías y las validaciones están en `fuentes/metodologia_integracion.md`. El notebook 04 verifica la trazabilidad.
 ## Datos y privacidad
 
 - Los archivos de `data/` **no se suben al repositorio**; se guardan solo en local (ver `.gitignore`). Solo se versionan el código, los notebooks y la documentación.

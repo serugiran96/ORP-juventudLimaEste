@@ -38,6 +38,8 @@ Cada página se consultó una vez, el 23/09/2026, solo para leer su descripción
 | C2-05 | 2 | ENUT 2024 — Encuesta Nacional de Uso del Tiempo (INEI) | 2024 | 12+ (se usan 15–29) | Nacional; Lima Metropolitana; Lima Este (estimación propia) | **Procesada** |
 | C2-06 | 2 | ENAPRES, capítulo 800A: patrimonio, servicios y bienes culturales (INEI) | 2022–2025 | 14+ (se usan 15–29) | Nacional; Lima Metropolitana; Lima Este (estimación propia) | **Procesada** |
 | C2-07 | 2 | ENAHO, Módulo 03: educación e internet (INEI) | 2022–2025 | 15–29 | Nacional; Lima Metropolitana; Lima Este (estimación propia) | **Procesada** |
+| C2-08 | 2 / integración | ENAHO, Módulos 02, 03 y 05 combinados: situación de estudio y trabajo, hogar (INEI) | 2022–2025 | 15–29 | Lima Metropolitana; Lima Este (estimación propia) | **Procesada** (segunda integración) |
+| C2-09 | 2 / integración | ENAPRES, capítulo de seguridad ciudadana (600; 400 en 2025) (INEI) | 2022–2025 | 14+ (se usan 15–29) | Lima Metropolitana; Lima Este (estimación propia) | **Procesada** (segunda integración) |
 | C3-01 | 3 | Notas de prensa de las siete municipalidades en gob.pe | 2024–2026 | Vecinos; se registra la edad de cada actividad | Los siete distritos | **Procesada** |
 | C3-02 | 3 | munichosica.pe (Municipalidad de Lurigancho-Chosica) | 2024–2026 | Ídem | Lurigancho-Chosica | **Procesada** |
 | C3-03 | 3 | SERPAR — clubes metropolitanos de Lima Este | 2024–2026 | Ídem | SJL y Ate | **Procesada** |
@@ -243,6 +245,40 @@ La columna "edad de esa cohorte en 2026" es un cálculo aproximado. Muestra que 
 | Método de extracción | `scripts/capa2_educacion_internet_enaho.py`. Validado con Dato Joven (uso de internet ±0,2; asistencia universitaria ±1 punto). |
 | Limitaciones | No pregunta por cursos o talleres no formales ni por intereses de aprendizaje. |
 
+### C2-08 — ENAHO, Módulos 02, 03 y 05 combinados: segmentos de Lima Este
+
+| Campo | Valor |
+|---|---|
+| Capa | 2 / integración — representativa |
+| Institución | INEI |
+| URL | https://proyectos.inei.gob.pe/microdatos/ (ENAHO 2022–2025, Módulos 02, 03 y 05) |
+| Año / fecha | 2022–2025 (agrupados para Lima Este) |
+| Población / edad | 15–29 (algunos segmentos 15–24 o 16–19) |
+| Cobertura geográfica | Lima Metropolitana y Lima Este (dominio no planificado, ~2 700 jóvenes de Lima Este en 2022–2025) |
+| Aporte al proyecto | Situación de estudio y trabajo; búsqueda de empleo; inactivos que quieren trabajar; actividad principal de quienes no estudian ni trabajan; trabajo independiente; informalidad (2022–2023); población compatible con la preparación preuniversitaria; composición del hogar de las mujeres dedicadas al hogar; desplazamiento para estudiar. |
+| Tipo de información | Encuesta oficial (microdatos). El Módulo 02 se descargó el 25/09/2026; los Módulos 03 y 05 ya estaban en el proyecto. |
+| Método de extracción | `scripts/integracion_enaho_segmentos.py`. Validado con Dato Joven: "estudia y trabaja" y "solo estudia" equivalentes (±0,2); "no estudia ni trabaja" y "solo trabaja" no equivalentes (hasta 2 puntos) — ver I2-D3 en `metodologia_integracion.md`. |
+| Limitaciones | Dominio no planificado; los motivos para no estudiar solo se preguntan hasta los 24 años; la informalidad no se publica desde 2024. |
+
+### C2-09 — ENAPRES, capítulo de seguridad ciudadana
+
+| Campo | Valor |
+|---|---|
+| Capa | 2 / integración — representativa |
+| Institución | INEI |
+| URL | https://proyectos.inei.gob.pe/microdatos/ (ENAPRES: módulos 1731, 1819, 1860 y 2074, formato CSV) |
+| Año / fecha | 2022–2025 |
+| Población / edad | 14+ (15+ en 2025), área urbana. Se usan 15–29. |
+| Cobertura geográfica | Lima Metropolitana y Lima Este (dominio no planificado, ~1 450 jóvenes de Lima Este con dato de inseguridad nocturna en 2022–2025) |
+| Aporte al proyecto | Inseguridad al caminar solo de noche por el barrio; haber dejado o evitado salir de noche, llegar tarde a casa u otras actividades por temor a la delincuencia. |
+| Tipo de información | Encuesta oficial (microdatos). Descargada el 25/09/2026 (la consulta del portal daba error de servidor; la descarga directa funcionó). |
+| Método de extracción | `scripts/integracion_seguridad_enapres.py`. Validado con Dato Joven: 15 de 15 comparaciones dentro de ±1 punto. |
+| Limitaciones | La estructura del capítulo cambia entre años; la lista de actividades evitadas cambió en 2025 (se excluye); los factores no expanden a totales coherentes (solo proporciones). |
+
+La ENUT 2024 (C2-05) se reutilizó en la integración para medir **disponibilidad horaria** y **cuidado**
+(`scripts/integracion_tiempo_enut.py`), y la ENAPRES 800A (C2-06) para la **participación cultural por edad**
+(`scripts/integracion_cultura_edad_enapres.py`).
+
 ### Fuentes revisadas y descartadas en la Capa 2
 
 - **Ipsos, Reporte de Generaciones 2024:** encuesta global sobre el conocimiento de los términos generacionales; no trata intereses juveniles.
@@ -352,7 +388,7 @@ Pendientes:
 
 - [x] Fuente de las estimaciones de población: REUNIS y proyecciones del INEI. Sus series por edad son inestables entre años (ver `metodologia_capa1.md`).
 - [ ] Confirmar si el distrito del CNV, del CEM y de las personas voluntarias es el de residencia o el del establecimiento.
-- [ ] Revisar los manuales en PDF de los indicadores: definiciones, metodología y umbral de CV.
+- [ ] Revisar los manuales en PDF de los indicadores: definiciones, metodología y umbral de CV. **Verificado el 25/09/2026: los enlaces de SharePoint ahora exigen iniciar sesión; no se accedió.** Impide confirmar la definición de "NINI" de Dato Joven (I2-D3).
 - [ ] Confirmar las condiciones de uso de los datos con el Observatorio, o solicitarlos formalmente.
 - [ ] Decidir el umbral para ocultar celdas pequeñas en los registros sensibles (propuesta: menos de 10 casos).
 - [ ] Buscar documentos sobre Lima o Lima Este en Biblio Joven; en el listado revisado no aparecen.
@@ -365,6 +401,8 @@ Pendientes:
 - [ ] Buscar evidencia representativa y reciente sobre **aspiraciones laborales y emprendimiento** (solo hay datos de Ipsos 2019–2020).
 - [ ] Lista de ciudades de C2-03 y fecha de campo de C2-01: no disponibles en las fuentes públicas.
 - [ ] Las encuestas miden prácticas, no intereses declarados en actividades concretas: evaluar una consulta propia a jóvenes de Lima Este.
+- [x] Inseguridad y disponibilidad horaria de Lima Este: agregadas en la segunda integración (C2-09 y ENUT).
+- [ ] Salud mental en Lima Este con microdatos de la ENDES: verificar si la muestra alcanza.
 
 ### Capa 3
 

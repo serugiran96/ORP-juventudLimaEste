@@ -1,9 +1,13 @@
 # Auditoría metodológica de la integración de las tres capas
 
 - **Fecha:** 25/09/2026.
-- **Estado:** diagnóstico para revisión del equipo.
-- **Qué no se modificó:** `propuestas.csv`, `hallazgos_integrados.csv`, `patrones.csv`, el informe final y el
-  observatorio siguen sin cambios. La reconstrucción empezará después de la revisión del equipo.
+- **Estado:** diagnóstico revisado por el equipo y **aplicado** en la segunda versión de la integración
+  (`fuentes/metodologia_integracion.md`, 25/09/2026). Este documento conserva el diagnóstico tal como se entregó:
+  las cifras marcadas "(prelim.)" usaban una definición provisional de "estudia" (sin las vacaciones entre ciclos)
+  y fueron reemplazadas por las estimaciones validadas de `scripts/integracion_enaho_segmentos.py` (por ejemplo,
+  "no estudia ni trabaja" pasa de 20,4 % a 17,6 %).
+- **Qué no se modificó en el diagnóstico:** `propuestas.csv`, `hallazgos_integrados.csv`, `patrones.csv`, el
+  informe final y el observatorio.
 - **Qué se revisó:**
   - las metodologías de las Capas 1, 2 y 3 y de la integración;
   - los 49 hallazgos, los 12 patrones y las 11 propuestas;
