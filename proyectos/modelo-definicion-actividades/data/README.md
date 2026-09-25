@@ -47,6 +47,18 @@ Los genera `scripts/empleo_enaho.py descargar`: son los archivos `enaho_{año}_m
 Empleo e Ingresos, ENAHO anual 2022–2025) descargados del portal de microdatos del INEI. En total ocupan
 cerca de 1,5 GB.
 
+## `data/raw/` — otras fuentes (Capa 2)
+
+| Carpeta | Contenido | Script |
+|---|---|---|
+| `data/raw/enaho/modulo03_{año}/` | ENAHO 2022–2025, Módulo 03 (educación e internet), con cuestionarios y diccionarios | `capa2_educacion_internet_enaho.py descargar` |
+| `data/raw/enapres/{año}_cap800A/` | ENAPRES 2022–2025, capítulo 800A (cultura), CSV con cuestionarios y diccionarios | `capa2_cultura_enapres.py descargar` |
+| `data/raw/enut/2024/` | ENUT 2024, módulos 200 (personas), 600 (diario de uso del tiempo) y 700–900 (satisfacción) | `capa2_uso_tiempo_enut.py descargar` |
+| `data/raw/ipsos/` | PDF públicos de Ipsos (infografías 2017–2022 y el reporte global de 2024) | Descarga manual |
+| `data/raw/senaju/` | Informe *Jóvenes en Agenda* (2025), revisado y descartado | Descarga manual |
+
+Las cifras de Ipsos transcritas a mano están en `fuentes/capa2_estudios_ipsos.csv`, que sí se versiona.
+
 ## `data/processed/` — datos de la Capa 1
 
 Los genera `scripts/procesar_capa1.py`, salvo `capa1_resumen_lima_metropolitana.csv`, que lo genera el
@@ -127,3 +139,27 @@ Joven.
 ### `control_consolidado_vs_tableros.csv`
 Valores que difieren entre el tablero consolidado y los tableros individuales. Vacío en la última
 extracción: los 399 valores comunes coinciden.
+
+## `data/processed/` — datos de la Capa 2
+
+Estimaciones propias con microdatos del INEI. Todas tienen estas columnas comunes:
+
+| Columna | Descripción |
+|---|---|
+| `periodo` | Año, o `2022-2025` si se agruparon las olas |
+| `nivel_geografico` | `lima_este` (dominio no planificado), `lima_metropolitana` o `nacional` |
+| `grupo_edad`, `sexo` | Grupo de edad (`15-29`, `15-19`, `20-24`, `25-29`, `30+`, `14+`) y sexo (`total`, `hombre`, `mujer`) |
+| `familia`, `categoria` (o `item`) | Tipo de indicador y categoría |
+| `valor`, `ee`, `cv` | Estimación (en %, salvo horas), error estándar y coeficiente de variación |
+| `n_muestral` | Casos en la muestra del denominador |
+| `precision` | `confiable` (CV ≤ 15), `referencial` (15–25) o `no_publicable` (CV > 25) |
+| `valor_publicable` | `valor` si es publicable; vacío si no |
+
+- **`capa2_uso_tiempo_enut.csv`** (ENUT 2024): `familia` = `participacion_semanal` (%), `horas_semanales_promedio`,
+  `horas_semanales_entre_participantes` (horas), y la satisfacción con el tiempo libre (%).
+- **`capa2_cultura_enapres.csv`** (ENAPRES 2022–2025): `familia` = `asistencia`, `patrimonio`, `bienes_culturales`
+  (`categoria` = "Sí"), `forma_de_entrada` y `motivo_no_asistencia` (una fila por categoría); `item` es el servicio
+  o bien cultural.
+- **`capa2_educacion_internet_enaho.csv`** (ENAHO 2022–2025): `familia` = `internet`, `proposito_internet`
+  (% de usuarios), `educacion`, `nivel_asistencia` y `motivo_no_asistencia`.
+- **`capa2_educacion_internet_enaho_validacion.csv`**: comparación con Dato Joven.

@@ -2,7 +2,7 @@
 
 Proyecto de análisis de datos sobre las juventudes de Lima Este.
 
-> Estado: Capa 1 en construcción (extracción y diagnóstico con Dato Joven). Capas 2 y 3 pendientes.
+> Estado: Capas 1 y 2 con diagnóstico (notebooks 01 y 02). Capa 3 e integración pendientes.
 
 ## Objetivo
 
@@ -139,6 +139,18 @@ jupyter nbconvert --to notebook --execute --inplace notebooks/01_capa1_diagnosti
 ```
 
 Las decisiones metodológicas están en `fuentes/metodologia_capa1.md`.
+
+## Cómo reproducir la Capa 2
+
+```bash
+python scripts/capa2_uso_tiempo_enut.py descargar && python scripts/capa2_uso_tiempo_enut.py calcular
+python scripts/capa2_cultura_enapres.py descargar && python scripts/capa2_cultura_enapres.py calcular
+python scripts/capa2_educacion_internet_enaho.py descargar && python scripts/capa2_educacion_internet_enaho.py calcular
+jupyter nbconvert --to notebook --execute --inplace notebooks/02_capa2_intereses.ipynb
+```
+
+`capa2_educacion_internet_enaho.py calcular` valida contra Dato Joven, así que requiere haber ejecutado antes
+`procesar_capa1.py`. La metodología está en `fuentes/metodologia_capa2.md`.
 
 ## Datos y privacidad
 

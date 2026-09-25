@@ -3,7 +3,7 @@
 Registro formal de las fuentes del proyecto, organizado por capa de análisis (ver `README.md`). Este catálogo se completa **antes** de la extracción de datos: aquí no hay datos extraídos, solo la descripción de cada fuente.
 
 - **Fecha de elaboración:** 23/09/2026.
-- **Última actualización:** 24/09/2026. Se actualizaron las fichas C1-01 y C1-02 con los resultados de la exploración técnica de Dato Joven.
+- **Última actualización:** 25/09/2026. Se agregaron las fuentes representativas de la Capa 2 (C2-05 a C2-07) y se actualizaron las fichas de Ipsos. Antes (24/09/2026) se actualizaron C1-01 y C1-02 con la exploración técnica de Dato Joven.
 - **Alcance del proyecto:** jóvenes de 15 a 30 años en siete distritos de Lima Este: Ate, Chaclacayo, El Agustino, La Molina, Lurigancho-Chosica, San Juan de Lurigancho y Santa Anita.
 
 ## Cómo se construyó
@@ -31,10 +31,13 @@ Cada página se consultó una vez, el 23/09/2026, solo para leer su descripción
 | C1-01 | 1 | Dato Joven — Observatorio Nacional de Juventud | 2019–2026 | 15–29 años (según módulo) | Distrito (población, RENOJ, voluntariado) | **Explorada técnicamente** |
 | C1-02 | 1 | Indicadores de Juventud — Observatorio Nacional de Juventud | 2019–2026 (varía por indicador) | 15–29 años (según indicador) | Lima Metropolitana (encuestas); distrito (algunos registros) | **Explorada técnicamente** |
 | C1-03 | 1 | Biblio Joven — Observatorio Nacional de Juventud | 2019–2026 | Según documento | Nacional (según documento) | Consultada |
-| C2-01 | 2 | Ipsos — Generación Z | 2017 | 15 a 21 años | Lima Metropolitana | Consultada |
+| C2-01 | 2 | Ipsos — Generación Z | 2017 | 15 a 21 años | Lima Metropolitana | Consultada (el PDF no trae cifras) |
 | C2-02 | 2 | Ipsos — Gen Z: Perfil del adolescente y joven del Perú urbano 2019 | 2019 | 13 a 20 años | Perú urbano | Consultada |
 | C2-03 | 2 | Ipsos — Perfil del adolescente y joven en el Perú Urbano 2020 | 2020 | 13 a 20 años | 11 ciudades del Perú urbano | Consultada |
-| C2-04 | 2 | Ipsos — Generaciones en el Perú 2022 | 2021–2022 | Gen Z: nacidos 1997–2009 | No indica | Consultada |
+| C2-04 | 2 | Ipsos — Generaciones en el Perú 2022 | 2021–2022 | Gen Z: nacidos 1997–2009 | Perú urbano (según la infografía) | Consultada |
+| C2-05 | 2 | ENUT 2024 — Encuesta Nacional de Uso del Tiempo (INEI) | 2024 | 12+ (se usan 15–29) | Nacional; Lima Metropolitana; Lima Este (estimación propia) | **Procesada** |
+| C2-06 | 2 | ENAPRES, capítulo 800A: patrimonio, servicios y bienes culturales (INEI) | 2022–2025 | 14+ (se usan 15–29) | Nacional; Lima Metropolitana; Lima Este (estimación propia) | **Procesada** |
+| C2-07 | 2 | ENAHO, Módulo 03: educación e internet (INEI) | 2022–2025 | 15–29 | Nacional; Lima Metropolitana; Lima Este (estimación propia) | **Procesada** |
 | C3-01 | 3 | Ate — Talleres Vacaciones Útiles 2026 | 2026 | Por verificar | Ate | Por verificar |
 | C3-02 | 3 | Chaclacayo | — | — | Chaclacayo | **Por identificar** |
 | C3-03 | 3 | El Agustino — Muni Becas 2025 | 2025 | Jóvenes (título) | El Agustino | Por verificar |
@@ -119,6 +122,8 @@ Variables de interés: entretenimiento, cultura, deporte, tecnología, internet 
 
 **Los estudios de esta capa difieren en año, población y cobertura.** Los más antiguos sirven para identificar dimensiones e hipótesis, **no para describir a la juventud de Lima Este en 2026**.
 
+Desde el 25/09/2026, la evidencia principal de esta capa son tres encuestas representativas del INEI (C2-05 a C2-07), procesadas por el proyecto con sus microdatos. Lima Este se estima como dominio no planificado, con umbrales de CV. Los estudios de Ipsos (C2-01 a C2-04) se usan solo para identificar dimensiones. Detalles en `metodologia_capa2.md`.
+
 ### Comparación entre estudios
 
 | ID | Estudio | Trabajo de campo | Edad estudiada | Edad de esa cohorte en 2026 | Cobertura | Muestra |
@@ -190,13 +195,64 @@ La columna "edad de esa cohorte en 2026" es un cálculo aproximado. Muestra que 
 | URL | https://www.ipsos.com/es-pe/generaciones-en-el-peru-2022 |
 | Año / fecha | Publicado el 26/01/2023. Datos de "diferentes fuentes de estudios multiclientes realizados entre el 2021 y 2022". |
 | Población / edad | Compara generaciones. La Generación Z son "peruanos nacidos entre 1997 y 2009", "centrándose entre los entrevistados de 18 a 25 años". |
-| Cobertura geográfica | No indica. |
+| Cobertura geográfica | La página no lo indica; la infografía se titula "Generaciones en el Perú urbano". |
 | Metodología | Combina varios estudios. No indica la muestra ni el detalle metodológico. |
 | Aporte al proyecto | Familia, trabajo, bancarización, ahorro, endeudamiento, entretenimiento y compras. Es el estudio más reciente de la lista. |
 | Tipo de información | Estudio de mercado (síntesis de varias encuestas). |
 | Formato | PDF de descarga libre (293 KB). |
 | Posible método de extracción | Descarga manual del PDF y registro manual. |
 | Limitaciones | Cobertura y muestra desconocidas. La definición por año de nacimiento no coincide con el rango de 15 a 30 años. Está orientado al consumo y no cubre temas como cultura, deporte o participación. |
+
+### C2-05 — ENUT 2024: Encuesta Nacional de Uso del Tiempo
+
+| Campo | Valor |
+|---|---|
+| Capa | 2 — representativa |
+| Institución | INEI |
+| URL | https://proyectos.inei.gob.pe/microdatos/ (ENUT 2024, módulos 1850, 1854 y 1855) |
+| Año / fecha | 2024 |
+| Población / edad | 12 años o más. Se usan 15–29 (y 30+ como contraste). |
+| Cobertura geográfica | Nacional. El proyecto estima Lima Metropolitana y Lima Este (dominio no planificado, ~230 jóvenes en la muestra). |
+| Aporte al proyecto | Diario de 144 franjas de 10 minutos por día: horas y participación en estudio, trabajo, deporte, aficiones, eventos, uso de dispositivos, lectura, voluntariado, etc. Satisfacción con el tiempo libre. |
+| Tipo de información | Encuesta oficial (microdatos). |
+| Método de extracción | `scripts/capa2_uso_tiempo_enut.py` (descarga de microdatos y cálculo propio). Validado con las horas de estudio publicadas por el INEI (±0,6 h). |
+| Limitaciones | Un solo año. La base no trae el estrato de diseño (se aproxima). Mide actividades realizadas, no preferencias. |
+
+### C2-06 — ENAPRES, capítulo 800A: patrimonio, servicios y bienes culturales
+
+| Campo | Valor |
+|---|---|
+| Capa | 2 — representativa |
+| Institución | INEI (módulo diseñado con el Ministerio de Cultura) |
+| URL | https://proyectos.inei.gob.pe/microdatos/ (ENAPRES 2022–2025, capítulo 800A) |
+| Año / fecha | 2022–2025 (anual) |
+| Población / edad | 14 años o más, una persona por hogar. Se usan 15–29 (y 30+ como contraste). |
+| Cobertura geográfica | Nacional y Lima Metropolitana por año; Lima Metropolitana y Lima Este agrupando 2022–2025 (~180 jóvenes de Lima Este por año). |
+| Aporte al proyecto | Asistencia a 11 servicios culturales (teatro, danza, circo, conciertos, cine, exposiciones, ferias, bibliotecas, festivales), visitas al patrimonio, 16 bienes culturales (incluye videojuegos y consumo digital), forma de entrada y **motivo de no asistencia**. |
+| Tipo de información | Encuesta oficial (microdatos). |
+| Método de extracción | `scripts/capa2_cultura_enapres.py`. Validado: teatro 14+ nacional 2024 = 8,6 %, igual al Ministerio de Cultura. |
+| Limitaciones | La base de 2024–2025 no trae el estrato (se aproxima). Lima Este requiere agrupar años. |
+
+### C2-07 — ENAHO, Módulo 03: educación e internet
+
+| Campo | Valor |
+|---|---|
+| Capa | 2 — representativa |
+| Institución | INEI |
+| URL | https://proyectos.inei.gob.pe/microdatos/ (ENAHO 2022–2025, Módulo 03) |
+| Año / fecha | 2022–2025 (anual) |
+| Población / edad | 15–29 |
+| Cobertura geográfica | Nacional, Lima Metropolitana y Lima Este (~700 jóvenes de Lima Este por año) |
+| Aporte al proyecto | Propósitos de uso de internet (entretenimiento, educación y capacitación, comunicación, compras, ventas), asistencia educativa y nivel, y motivo principal para no estudiar. |
+| Tipo de información | Encuesta oficial (microdatos). |
+| Método de extracción | `scripts/capa2_educacion_internet_enaho.py`. Validado con Dato Joven (uso de internet ±0,2; asistencia universitaria ±1 punto). |
+| Limitaciones | No pregunta por cursos o talleres no formales ni por intereses de aprendizaje. |
+
+### Fuentes revisadas y descartadas en la Capa 2
+
+- **Ipsos, Reporte de Generaciones 2024:** encuesta global sobre el conocimiento de los términos generacionales; no trata intereses juveniles.
+- **SENAJU, *Jóvenes en Agenda* (informe final, 2025):** concurso de investigaciones hechas por jóvenes; no es una consulta sobre intereses.
+- **C2-01 (Ipsos, Generación Z 2017):** el PDF público es solo la portada de la revista; no aporta cifras.
 
 ---
 
@@ -455,13 +511,13 @@ La siguiente tabla muestra qué fuentes tratan cada tema, según lo que describe
 
 | Tema | Capa 1 | Capa 2 | Capa 3 |
 |---|---|---|---|
-| Educación y capacitación | C1-02, C1-03 | Por verificar | C3-03, C3-04, C3-11 |
+| Educación y capacitación | C1-02, C1-03 | C2-07 (asistencia, motivos para no estudiar, uso educativo de internet); C2-03 | C3-03, C3-04, C3-11 |
 | Empleo | C1-02, C1-03 | C2-01, C2-03, C2-04 | — |
-| Emprendimiento | C1-03 | Por verificar | — |
-| Tecnología y competencias digitales | C1-02, C1-03 | C2-01, C2-02 | C3-04, C3-06 |
-| Cultura y arte | C1-02 (trabajadores del sector cultural, solo por departamento) | Por verificar | C3-04, C3-07, C3-08, C3-10 |
-| Deporte | C1-02 (atletas del IPD, sin distrito) | Por verificar | C3-05, C3-07, C3-10 |
-| Entretenimiento y uso del tiempo | C1-03 | C2-02, C2-03, C2-04 | — |
+| Emprendimiento | C1-03 | C2-02, C2-03 (solo Ipsos, 2019–2020) | — |
+| Tecnología y competencias digitales | C1-02, C1-03 | C2-05, C2-06, C2-07; C2-02, C2-04 | C3-04, C3-06 |
+| Cultura y arte | C1-02 (trabajadores del sector cultural, solo por departamento) | C2-06 (asistencia y consumo cultural); C2-05 | C3-04, C3-07, C3-08, C3-10 |
+| Deporte | C1-02 (atletas del IPD, sin distrito) | C2-05 (práctica semanal); C2-02 | C3-05, C3-07, C3-10 |
+| Entretenimiento y uso del tiempo | C1-03 | C2-05, C2-06; C2-02, C2-03, C2-04 | — |
 | Consumo y finanzas | — | C2-01, C2-04 | — |
 | Salud | C1-02, C1-03 | — | — |
 | Seguridad, violencia y discriminación | C1-02, C1-03 | — | — |
@@ -494,12 +550,12 @@ Pendientes:
 
 ### Capa 2
 
-- [ ] **No hay fuentes posteriores a 2022.** Buscar estudios recientes sobre intereses y hábitos de jóvenes, por ejemplo los documentos de 2024–2026 de Biblio Joven u otras fuentes confiables.
-- [ ] **El tramo de 21 a 30 años casi no está cubierto:** dos estudios llegan solo hasta los 20 años y el de 2022 se centra en los 18 a 25.
-- [ ] Revisar los PDF para confirmar qué variables contienen. En particular, falta confirmar cultura, deporte, emprendimiento, aspiraciones y educación y capacitación.
-- [ ] Averiguar la cobertura geográfica y la muestra de C2-04, y la lista de ciudades de C2-03.
-- [ ] Averiguar la fecha del trabajo de campo de C2-01.
-- [ ] Verificar si algún estudio presenta resultados por separado para Lima.
+- [x] Fuentes posteriores a 2022: se agregaron la ENUT 2024, la ENAPRES 2022–2025 y la ENAHO 2022–2025 (C2-05 a C2-07), que cubren a jóvenes de 15 a 29 años.
+- [x] PDF de Ipsos revisados: las cifras están en `capa2_estudios_ipsos.csv`. Cubren diversión, medios, aspiraciones y emprendimiento; no cubren cultura ni deporte en detalle.
+- [x] Resultados para Lima: ningún estudio de Ipsos los separa; las encuestas del INEI se procesaron para Lima Metropolitana y Lima Este.
+- [ ] Buscar evidencia representativa y reciente sobre **aspiraciones laborales y emprendimiento** (solo hay datos de Ipsos 2019–2020).
+- [ ] Lista de ciudades de C2-03 y fecha de campo de C2-01: no disponibles en las fuentes públicas.
+- [ ] Las encuestas miden prácticas, no intereses declarados en actividades concretas: evaluar una consulta propia a jóvenes de Lima Este.
 
 ### Capa 3
 
