@@ -43,6 +43,7 @@ def ficha(pid):
 | **Para quién** | {p.segmento} |
 | **Nivel de evidencia** | Necesidad: **{p.nivel_necesidad}** · Interés o práctica: **{p.nivel_interes}** · Convocatoria: **{p.nivel_convocatoria}** |
 | **Por qué** | {p.sustento} |
+| **Barreras relevantes** | {p.barreras} {("(" + p.hallazgos_barreras + ")") if p.hallazgos_barreras else ""} |
 | **Qué sabemos de su convocatoria** | {p.convocatoria} |
 | **Qué sigue siendo hipótesis** | {p.hipotesis} |
 | **Cómo validarla** | {p.validacion} |

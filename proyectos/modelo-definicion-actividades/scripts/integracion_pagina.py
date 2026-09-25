@@ -63,7 +63,8 @@ def lista_h(celda):
 
 def ficha(pid):
     p = prop.loc[pid]
-    campos = [("Para quién", p.segmento), ("Por qué", p.sustento), ("Qué sabemos de su convocatoria", p.convocatoria),
+    campos = [("Para quién", p.segmento), ("Por qué", p.sustento), ("Barreras relevantes", p.barreras),
+              ("Qué sabemos de su convocatoria", p.convocatoria),
               ("Qué sigue siendo hipótesis", p.hipotesis), ("Cómo validarla", p.validacion),
               ("Dónde podría pilotearse", p.donde), ("Cautelas", p.cautelas)]
     dl = "".join(f'<div class="kv{" hyp" if k.startswith("Qué sigue") else ""}"><dt>{e(k)}</dt><dd>{e(v)}</dd></div>' for k, v in campos)

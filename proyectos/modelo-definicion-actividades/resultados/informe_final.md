@@ -152,6 +152,7 @@ Ciclos gratuitos o becados de preparación para el examen de admisión, sesiones
 | **Para quién** | 16–19 años (5.º de secundaria y egresados recientes) de hogares con restricciones económicas |
 | **Nivel de evidencia** | Necesidad: **alto** · Interés o práctica: **medio** · Convocatoria: **medio** |
 | **Por qué** | En Lima Este, 28 % de quienes no estudian lo atribuye a problemas económicos y solo 2 % a falta de interés. La oferta existente reúne cifras concretas: 180 alumnos en la academia gratuita de Chosica, 100 becarios en El Agustino, 300 asistentes a una feria vocacional. |
+| **Barreras relevantes** | El costo: entre quienes no estudian en Lima Este, 28 % menciona problemas económicos y 31 % está trabajando. Algunas academias municipales son pagadas (S/ 150 al mes en Santa Anita). (H2-12; H3-04) |
 | **Qué sabemos de su convocatoria** | Hay participación declarada con cifras en actividades similares para el mismo segmento en Lima Este. La única demanda observada es por una beca concreta (80 postulantes para 10 becas en Santa Anita), que muestra atracción por la gratuidad de esa oportunidad, no interés general. |
 | **Qué sigue siendo hipótesis** | Que una oferta adicional atraiga a jóvenes que hoy no acceden a ninguna preparación (y no desplace a las academias municipales); qué componente convoca más (preparación, orientación o apoyo para becas). |
 | **Cómo validarla** | Inscritos frente a cupos y lista de espera; asistencia sostenida (4.ª semana); proporción sin otra preparación; postulaciones e ingresos a becas y universidades. |
@@ -183,6 +184,7 @@ Taller corto (CV, entrevista, derechos laborales, uso de bolsas en línea) conec
 | **Para quién** | 18–29 años que buscan trabajo o no estudian ni trabajan; prioridad mujeres jóvenes |
 | **Nivel de evidencia** | Necesidad: **medio** · Interés o práctica: **medio** · Convocatoria: **medio** |
 | **Por qué** | Desempleo juvenil de 11,7 % e informalidad de 65 % en Lima Metropolitana; 22 % de las mujeres jóvenes no estudia ni trabaja. En Lima Este, trabajar es el principal motivo para no estudiar (31 %). |
+| **Barreras relevantes** | El tiempo: más de la mitad trabaja o busca trabajo. En las mujeres pesan más los problemas económicos, familiares y del hogar como motivo para no estudiar. Los programas de voluntariado casi no llegan a quienes trabajan. (H1-04; H2-06; H2-12) |
 | **Qué sabemos de su convocatoria** | Programas juveniles de empleabilidad en Lima Este con cifras pequeñas (62 aprobados, 50 y 143 jóvenes empleados). Las ferias atraen 'cientos' o 'miles' de personas de todas las edades. Los talleres gratuitos de empleabilidad de SENAJU agotaron inscripciones en 2024, pero a escala de Lima y el país. |
 | **Qué sigue siendo hipótesis** | Que jóvenes que no estudian, y en particular mujeres, acudan a un taller (el voluntariado casi no llega a quienes trabajan); qué horario y formato permite asistir; que la conexión con vacantes concretas aumente la asistencia. |
 | **Cómo validarla** | Inscritos frente a cupos; proporción de mujeres y de jóvenes que no estudian ni trabajan; asistencia; postulaciones y contrataciones a tres meses. |
@@ -221,6 +223,7 @@ Ligas o torneos de fútbol, vóley o básquet y sesiones de entrenamiento funcio
 | **Para quién** | 18–29 años; submeta mujeres jóvenes |
 | **Nivel de evidencia** | Necesidad: **bajo** · Interés o práctica: **alto** · Convocatoria: **bajo** |
 | **Por qué** | 27,6 % de los jóvenes de Lima Este hace deporte cada semana; en Lima Metropolitana, 49 % de los hombres y 20 % de las mujeres. No hay organizaciones juveniles deportivas acreditadas y la oferta visible se dirige a 6–17 años. |
+| **Barreras relevantes** | La inseguridad, sobre todo de noche y para las mujeres (un tercio dejó de hacer actividades por la delincuencia). El tiempo disponible. La brecha de género en la práctica deportiva. (H1-10; H2-02; H2-06) |
 | **Qué sabemos de su convocatoria** | Para 18–29 casi no hay datos: un taller de tiro con arco (30 alumnos por horario) y carreras abiertas a todas las edades ('más de mil'). La fuerte demanda de la Academia IPD es de 6–17 años y no se generaliza. |
 | **Qué sigue siendo hipótesis** | Que jóvenes de 18–29 se inscriban en deporte organizado si el horario es compatible; que un formato femenino o en horario seguro aumente la participación de mujeres (su baja práctica no prueba demanda insatisfecha). |
 | **Cómo validarla** | Inscritos por sexo y edad; asistencia y retención; comparación de horarios y formatos (femenino, mixto). |
@@ -254,6 +257,7 @@ Festivales o fechas periódicas gratuitas de música en vivo, freestyle, breakin
 | **Para quién** | 15–24 años |
 | **Nivel de evidencia** | Necesidad: **sin evidencia** · Interés o práctica: **alto** · Convocatoria: **bajo** |
 | **Por qué** | En Lima Este, 21,4 % fue a conciertos o festivales musicales, 19,6 % a festivales locales y 44,6 % a algún espectáculo en vivo en el año; el dinero es barrera en los conciertos, que casi siempre son pagados. Hay 20 organizaciones juveniles de cultura y arte acreditadas. |
+| **Barreras relevantes** | El dinero: casi 8 de cada 10 asistentes a conciertos pagaron entrada, y el dinero es un motivo para no ir. La falta de interés y de tiempo. La inseguridad nocturna. (H1-10; H2-09; H2-10) |
 | **Qué sabemos de su convocatoria** | Existen eventos de cultura urbana en Chosica, Santa Anita y SJL, pero ninguna nota informa asistencia juvenil; un festival intercultural en SJL reunió 'más de mil vecinos' de todas las edades. |
 | **Qué sigue siendo hipótesis** | Que un evento local y gratuito convoque a jóvenes (y no solo a familias); qué géneros; que participar como artista u organizador aumente la convocatoria. |
 | **Cómo validarla** | Asistentes y rango de edad (registro o conteo); artistas y colectivos inscritos; asistencia a una segunda fecha. |
@@ -285,6 +289,7 @@ Ciclo de cine gratuito con conversación después de la función y un taller cor
 | **Para quién** | 15–24 años |
 | **Nivel de evidencia** | Necesidad: **sin evidencia** · Interés o práctica: **alto** · Convocatoria: **sin evidencia** |
 | **Por qué** | El cine es la salida cultural más extendida (63,2 % en Lima Este); entre quienes no fueron, el 18,8 % lo atribuye al dinero; 92,8 % ve video por internet; la generación Z usa TikTok intensamente (Ipsos). |
+| **Barreras relevantes** | El dinero en el cine y la falta de tiempo o de interés como motivos para no ir. (H2-09; H2-10) |
 | **Qué sabemos de su convocatoria** | No hay actividad juvenil similar con datos en Lima Este: 'Cine en tu Barrio' se dirige a familias y no informa asistentes. |
 | **Qué sigue siendo hipótesis** | Que la práctica individual de ver cine y video se traduzca en asistencia a una actividad grupal; que haya interés en producir, no solo en consumir (hipótesis adicional para el taller). |
 | **Cómo validarla** | Asistentes por función y su edad; inscritos en el taller; videos producidos. |
@@ -319,6 +324,7 @@ Talleres cortos de ofimática avanzada, diseño y contenido digital o programaci
 | **Para quién** | 15–24 años (estudiantes de secundaria y superior) y 18–29 que buscan empleo |
 | **Nivel de evidencia** | Necesidad: **medio** · Interés o práctica: **medio** · Convocatoria: **bajo** |
 | **Por qué** | Uso de internet casi universal, pero solo 14,5 % programa y 55 % instala software (Lima Metropolitana); en Lima Este un tercio usa internet para aprender. |
+| **Barreras relevantes** | El acceso a equipos: la mayoría se conecta desde el celular y pocas personas tienen habilidades avanzadas. El tiempo disponible es escaso. (H1-09; H2-06) |
 | **Qué sabemos de su convocatoria** | Un solo dato: la hackathon municipal de SJL tuvo más de 400 inscripciones (mayores de 18, de varios distritos, no solo jóvenes). La oferta tecnológica dirigida a jóvenes es mínima y sin cifras. |
 | **Qué sigue siendo hipótesis** | Qué contenidos convocan (ofimática para el empleo, diseño y contenido, programación); si el formato de reto convoca más que un curso; presencial frente a virtual. |
 | **Cómo validarla** | Inscritos frente a cupos por contenido; asistencia; proyectos terminados; proporción de mujeres. |
@@ -349,6 +355,7 @@ Grupos de pares con actividades de arte, movimiento o conversación, facilitados
 | **Para quién** | Mujeres de 15–29 años (las adolescentes, en coordinación con colegios) |
 | **Nivel de evidencia** | Necesidad: **medio** · Interés o práctica: **bajo** · Convocatoria: **bajo** |
 | **Por qué** | Episodio depresivo en 21,6 % de las mujeres jóvenes de Lima Metropolitana; 31,5 % de las que tienen pareja sufrió violencia; 94 % de los jóvenes atendidos en los CEM de Lima Este son mujeres. En Lima Este, 32 % está poco o nada satisfecho con el tiempo para sus amistades. |
+| **Barreras relevantes** | La inseguridad y la carga del hogar en las mujeres. No hay datos sobre barreras para acudir a espacios de salud mental (por ejemplo, el estigma). (H1-10; H2-12) |
 | **Qué sabemos de su convocatoria** | La oferta de bienestar para jóvenes tiene cifras vagas ('decenas' en una campaña de salud en SJL) y la de prevención llega por colegios, con público cautivo. |
 | **Qué sigue siendo hipótesis** | Que mujeres jóvenes asistan voluntariamente a un espacio de bienestar; que funcione mejor como componente de otra actividad (deporte, arte) que como actividad sobre salud mental. |
 | **Cómo validarla** | Inscritas y asistencia; comparación entre formato propio y componente dentro de otra actividad; derivaciones realizadas. |
@@ -380,6 +387,7 @@ Jornadas cortas de fin de semana con un resultado concreto (recuperar un espacio
 | **Para quién** | 15–24 años estudiantes; probar formatos para jóvenes que trabajan |
 | **Nivel de evidencia** | Necesidad: **bajo** · Interés o práctica: **medio** · Convocatoria: **bajo** |
 | **Por qué** | 9 % de los jóvenes de Lima Este hace voluntariado o ayuda a la comunidad cada semana (referencial). Los inscritos en el Programa de Voluntariado tienen más experiencia en educación, ambiente y cultura, y son sobre todo mujeres estudiantes. |
+| **Barreras relevantes** | El tiempo, y que el voluntariado llega sobre todo a estudiantes, no a quienes trabajan. (H1-04; H2-06) |
 | **Qué sabemos de su convocatoria** | Cifras pequeñas o sin desglose por edad (20 jóvenes en Minka Joven; más de 300 voluntarios de edad no indicada en Chosica). La oferta de participación es frecuente, pero eso no indica interés. |
 | **Qué sigue siendo hipótesis** | Que el formato corto y con resultado visible atraiga a jóvenes que trabajan y a hombres, que hoy casi no llegan al voluntariado. |
 | **Cómo validarla** | Inscritos y perfil (estudia o trabaja, sexo); asistencia; repetición en una segunda jornada. |
@@ -410,6 +418,7 @@ Taller práctico de idea de negocio, costos y ventas en redes, con una feria de 
 | **Para quién** | 18–29 años (y 15–17 en formato escolar) |
 | **Nivel de evidencia** | Necesidad: **medio** · Interés o práctica: **bajo** · Convocatoria: **bajo** |
 | **Por qué** | Informalidad juvenil de 65 % en Lima Metropolitana; solo 3,9 % de los jóvenes de Lima Este vende por internet. La aspiración a emprender solo se midió en 2019–2020 (Ipsos, 13–20 años). |
+| **Barreras relevantes** | No hay datos sobre barreras para emprender en Lima Este.  |
 | **Qué sabemos de su convocatoria** | Ferias de jóvenes emprendedores en Santa Anita con 'muchos' participantes sin cifra; el CETPRO de La Molina duplicó sus alumnos (385, de 14 a 60 años). |
 | **Qué sigue siendo hipótesis** | Que la aspiración a emprender siga vigente en Lima Este; que jóvenes con un negocio pequeño o una idea se inscriban; que la feria de cierre motive la participación. |
 | **Cómo validarla** | Inscritos; proporción con negocio en marcha; asistencia; participación en la feria; ventas declaradas. |
@@ -439,6 +448,7 @@ Torneos presenciales de videojuegos populares, con espacios de juego libre y com
 | **Para quién** | 15–24 años |
 | **Nivel de evidencia** | Necesidad: **sin evidencia** · Interés o práctica: **medio** · Convocatoria: **sin evidencia** |
 | **Por qué** | En Lima Este, 46,3 % juega videojuegos en el celular y 34,7 % multijugador en línea (entre adultos de 30 años o más de Lima Este, 12,2 % y 4,3 %); aficiones y juegos: 27 % de los hombres y 9 % de las mujeres (Lima Metropolitana). |
+| **Barreras relevantes** | La brecha de género: los juegos ocupan la semana de muchos más hombres que mujeres. No hay datos sobre otras barreras. (H2-03) |
 | **Qué sabemos de su convocatoria** | Sin evidencia: no se encontró ninguna actividad de videojuegos en Lima Este (la ausencia de oferta no es demanda). |
 | **Qué sigue siendo hipótesis** | Que jugadores habituales, que juegan sobre todo en casa y solos o en línea, acudan a un evento presencial; que el formato convoque también a mujeres. |
 | **Cómo validarla** | Inscritos frente a cupos; asistencia; proporción de mujeres; interés en componentes formativos. |
@@ -471,6 +481,7 @@ Sesiones breves de educación sexual integral, relaciones sanas y rutas de ayuda
 | **Para quién** | Adolescentes de 15–19 años |
 | **Nivel de evidencia** | Necesidad: **alto** · Interés o práctica: **sin evidencia** · Convocatoria: **bajo** |
 | **Por qué** | Tasas de maternidad adolescente por encima de la mediana metropolitana en El Agustino, Santa Anita y Ate; 41 % de los jóvenes atendidos en los CEM tiene 15–19 años y 35 % de los casos son de violencia sexual. |
+| **Barreras relevantes** | No hay datos sobre barreras de participación. Al tratarse de menores de edad, requiere el consentimiento de madres y padres.  |
 | **Qué sabemos de su convocatoria** | Las intervenciones de prevención llegan por colegios con cientos de estudiantes, pero es público cautivo, no convocatoria voluntaria. |
 | **Qué sigue siendo hipótesis** | Que el componente, integrado en actividades de interés, sea aceptado sin reducir la asistencia a la actividad principal. |
 | **Cómo validarla** | Asistencia a la actividad principal con y sin el componente; valoración de los participantes. |
