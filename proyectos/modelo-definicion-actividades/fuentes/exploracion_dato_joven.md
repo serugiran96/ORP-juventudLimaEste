@@ -16,6 +16,8 @@ Fuente principal de la Capa 1: https://observatorio-juventud.minedu.gob.pe/dato-
    - La **población joven** y varios **registros administrativos** sí tienen **distrito (UBIGEO)**. Se verificó que devuelven datos para los siete distritos de Lima Este.
 5. **Edad:** todas las fuentes llegan como máximo a **29 años**. No hay datos para quienes tienen 30 años. Se aplicará la aproximación de 15 a 29 años prevista en el `README.md`.
 
+El **mapa analítico de la Capa 1** está en la [sección 8](#8-mapa-analítico-de-la-capa-1). Ordena por dimensión todo lo que Dato Joven permite responder.
+
 ## Cómo se hizo la exploración
 
 - Se descargó el HTML de las páginas del portal: la portada de Dato Joven, 5 módulos, 9 páginas de categorías de indicadores y 49 páginas de indicadores. Se hizo una petición por segundo.
@@ -181,7 +183,9 @@ Los totales de la tabla sirven solo para comprobar el acceso; no son datos final
 
 ## 5. Propuesta de extracción para la Capa 1
 
-### Prioridad 1 — datos distritales básicos
+Esta sección define **qué** extraer y con qué reglas. El **orden** de extracción está en la [sección 8.18](#818-orden-de-extracción-propuesto).
+
+### Datos distritales básicos
 
 | # | Dato | Tablero | Detalle | Uso en el proyecto |
 |---|---|---|---|---|
@@ -191,14 +195,14 @@ Los totales de la tabla sirven solo para comprobar el acceso; no son datos final
 | 4 | Voluntariado | Voluntariado, tabla `fact_Voluntarios` | Conteo por distrito × rango de edad × sexo, y por cada campo `INTERES_VOLUNTARIADO_*` | Participación, e **intereses declarados** que conectan con la Capa 2 |
 | 5 | Maternidad adolescente | CNV | Conteo por distrito × año × rango de edad (15–16, 17–18, 19) | Aproximación al embarazo adolescente por distrito |
 
-### Prioridad 2 — registros sensibles, solo agregados
+### Registros sensibles, solo agregados
 
 | # | Dato | Tablero | Detalle | Condición |
 |---|---|---|---|---|
 | 6 | Violencia atendida en los CEM | CEM | Conteo por distrito × año × grupo de edad × sexo × tipo de violencia | Solo conteos, sin datos individuales. Ocultar celdas pequeñas. |
 | 7 | Discapacidad | Certificación de discapacidad y CONADIS | Conteo por distrito × año × grupo de edad | Igual que la anterior |
 
-### Prioridad 3 — contexto de Lima Metropolitana
+### Contexto de Lima Metropolitana
 
 | # | Dato | Tablero | Detalle | Uso |
 |---|---|---|---|---|
@@ -257,6 +261,216 @@ Los totales de la tabla sirven solo para comprobar el acceso; no son datos final
 - **Enlaces de "Fuente de datos" incorrectos:** 37 de 42 páginas enlazan a un Excel de otro indicador. Conviene tenerlo en cuenta y no citar esos archivos como fuente de esos indicadores.
 - **Datos personales expuestos:** el Excel del RENOJ, enlazado en 29 páginas, incluye una hoja `Miembros` con **fecha de nacimiento, edad, sexo, cargo y organización** de más de 25 000 integrantes. El Excel del INPE incluye registros individuales de personas liberadas. Varios modelos de Power BI también contienen tablas individuales con datos sensibles (VIH, CEM, discapacidad, voluntarios). **El proyecto no usará ni guardará esos datos individuales.** Se podría informar de esto al Observatorio.
 - **Edad:** ninguna fuente de Dato Joven incluye a personas de 30 años.
+
+---
+
+## 8. Mapa analítico de la Capa 1
+
+Este mapa ordena, por dimensión, lo que Dato Joven permite responder sobre el contexto, las características y las necesidades de las juventudes. Se construyó **solo con lo ya verificado** en esta exploración; no se hizo ninguna extracción nueva.
+
+**Cómo leer las tablas**
+
+- **Periodo prioritario: 2022–2026.** En `años_disponibles` se indican los años exactos de ese periodo y, entre paréntesis, desde cuándo empieza la serie.
+- **Años de las encuestas:** son los verificados para Lima Metropolitana. A nivel nacional pueden variar en un año; solo se verificaron en 5 indicadores.
+- **Nivel geográfico:**
+  - **Distrito:** puede usarse como evidencia específica de los siete distritos de Lima Este.
+  - **Lima Metropolitana:** contexto metropolitano (43 distritos). **No se atribuye a Lima Este.**
+  - **Departamento / Nacional:** contexto general. **No se atribuye a Lima Este.**
+  - **Sin territorio de residencia:** el dato no indica dónde viven las personas.
+- **Categorías de las encuestas en Lima Metropolitana:** total, hombre, mujer y urbano. Las excepciones se indican en cada fila. Cada valor viene con su coeficiente de variación (CV).
+- **"Por verificar"** significa que el dato existe en los tableros, pero falta confirmar su contenido.
+- **Edad:** ninguna fuente incluye a personas de 30 años.
+
+### 8.1 Demografía
+
+| dimension | pregunta_analitica | indicador_disponible | fuente_original | años_disponibles | rango_edad | nivel_geografico | utilidad_para_el_proyecto | limitaciones |
+|---|---|---|---|---|---|---|---|---|
+| Demografía | ¿Cuántos jóvenes viven en cada uno de los siete distritos y cómo cambió esa cifra entre 2022 y 2026? | Población joven por distrito, sexo y grupo de edad | Estimaciones de población (fuente por verificar) | 2022–2026 (desde 2019) | 15–19, 20–24, 25–29 | **Distrito** | Dimensiona la población objetivo de cada distrito. Es el denominador para calcular tasas en otras dimensiones. | No incluye 30 años. El método de estimación está por verificar. |
+| Demografía | ¿Qué peso tienen los jóvenes en la población total de cada distrito? | Población total por distrito y sexo, junto con la población joven | Estimaciones de población (fuente por verificar) | 2022–2026 (desde 2019) | Todas las edades | **Distrito** | Permite comparar distritos según la proporción de jóvenes. | Igual que la fila anterior. |
+| Demografía | ¿Cómo se reparte la población joven por sexo y grupo de edad en cada distrito? | Población joven por distrito, sexo y grupo de edad | Estimaciones de población (fuente por verificar) | 2022–2026 (desde 2019) | 15–19, 20–24, 25–29 | **Distrito** | Distingue adolescentes (15–19) de jóvenes adultos (20–29), que suelen tener necesidades distintas. | Solo tres grupos de edad. |
+
+### 8.2 Educación
+
+| dimension | pregunta_analitica | indicador_disponible | fuente_original | años_disponibles | rango_edad | nivel_geografico | utilidad_para_el_proyecto | limitaciones |
+|---|---|---|---|---|---|---|---|---|
+| Educación | ¿Cuántos años de estudio alcanzan en promedio los jóvenes y cómo evolucionó entre 2022 y 2025? | Años promedio de estudios alcanzados | ENAHO | 2022–2025 (desde 2019) | 15–29 | Lima Metropolitana | Contexto del nivel educativo juvenil y su evolución. | No hay dato distrital. Es una estimación de encuesta (revisar CV). |
+| Educación | ¿Qué nivel educativo alcanzan los jóvenes y hay diferencias entre hombres y mujeres? | Nivel educativo alcanzado (4 categorías) | ENAHO | 2022–2025 (desde 2019) | 15–29 | Lima Metropolitana | Muestra la distribución por nivel educativo y las brechas de género. | No hay dato distrital. |
+| Educación | ¿Qué proporción de jóvenes accede a la educación superior? | Asistencia a educación superior (2 indicadores) | ENAHO | 2022–2025 (desde 2019) | 17–24 | Lima Metropolitana | Acceso a estudios superiores. | Rango de edad parcial. No hay dato distrital. |
+| Educación | ¿Qué proporción termina la secundaria a la edad esperada? | Conclusión de la educación secundaria | ENAHO | 2022–2025 (desde 2019) | 17–18 | Lima Metropolitana | Rezago o abandono escolar. | Solo cubre a quienes tienen 17 o 18 años. |
+| Educación | ¿Qué proporción concluye la educación superior? | Conclusión de la educación superior | ENAHO | 2022–2025 (desde 2019) | 22–24 | Lima Metropolitana | Culminación de estudios superiores. | Solo cubre a quienes tienen de 22 a 24 años. |
+| Educación | ¿Hay algún indicador educativo por distrito? | **No hay un indicador educativo representativo por distrito.** Solo existe el nivel educativo de algunos subgrupos: madres adolescentes (CNV), personas con discapacidad (CONADIS), víctimas atendidas en los CEM y personas voluntarias. | — | — | — | Distrito (solo subgrupos) | Podría describir a esos subgrupos específicos. | No describe a la juventud del distrito. |
+
+### 8.3 Empleo y situación laboral
+
+| dimension | pregunta_analitica | indicador_disponible | fuente_original | años_disponibles | rango_edad | nivel_geografico | utilidad_para_el_proyecto | limitaciones |
+|---|---|---|---|---|---|---|---|---|
+| Empleo | ¿Cómo evolucionó el desempleo juvenil entre 2022 y 2023, y hay brecha entre hombres y mujeres? | Tasa de desempleo | ENAHO / EPEN | 2022–2023 (desde 2019) | 15–29 | Lima Metropolitana | Dificultad para conseguir empleo. | En Lima Metropolitana no hay datos de 2024 ni 2025. Falta confirmar qué año viene de cada encuesta. |
+| Empleo | ¿Qué proporción de jóvenes trabaja o busca trabajo? | Población económicamente activa (PEA) | ENAHO / EPEN | 2022–2023 (desde 2019) | 15–29 | Lima Metropolitana | Inserción en el mercado laboral. | Igual que la fila anterior. |
+| Empleo | ¿Qué proporción de los empleos juveniles son formales o informales? | Empleo formal; empleo informal | ENAHO / EPEN | 2022–2023 (desde 2019) | 15–29 | Lima Metropolitana | Calidad del empleo. | Igual que la fila anterior. |
+| Empleo | ¿Cuánto ganan en promedio los jóvenes que trabajan? | Ingreso promedio mensual | ENAHO / EPEN | **Solo 2022 y 2023** | 15–29 | Lima Metropolitana | Nivel de ingresos. | Serie muy corta. |
+| Empleo | ¿A qué se dedican los jóvenes (estudiar, trabajar, otras situaciones) y cómo cambió entre 2022 y 2025? | Actividades que realizan los jóvenes (4 categorías) | ENAHO | 2022–2025 (desde 2019) | 15–29 | Lima Metropolitana | Combina estudio y trabajo en una sola lectura. | Faltan confirmar los nombres de las 4 categorías. |
+| Empleo | ¿Hay algún indicador laboral por distrito? | **No hay un indicador laboral representativo por distrito.** Solo existe la ocupación de las personas voluntarias y si trabajan las víctimas atendidas en los CEM. | — | — | — | Distrito (solo subgrupos) | — | No describe a la juventud del distrito. |
+
+### 8.4 Jóvenes que no estudian ni trabajan
+
+| dimension | pregunta_analitica | indicador_disponible | fuente_original | años_disponibles | rango_edad | nivel_geografico | utilidad_para_el_proyecto | limitaciones |
+|---|---|---|---|---|---|---|---|---|
+| No estudian ni trabajan | ¿Qué proporción de jóvenes no estudia ni trabaja, cómo evolucionó entre 2022 y 2025 y hay diferencias entre hombres y mujeres? | Jóvenes que no estudian ni trabajan (NINI) | ENAHO | 2022–2025 (desde 2019) | 15–29 | Lima Metropolitana | Identifica a la población desconectada de la educación y el empleo. | No hay dato distrital. |
+
+### 8.5 Salud
+
+| dimension | pregunta_analitica | indicador_disponible | fuente_original | años_disponibles | rango_edad | nivel_geografico | utilidad_para_el_proyecto | limitaciones |
+|---|---|---|---|---|---|---|---|---|
+| Salud | ¿Qué proporción de jóvenes tiene seguro de salud, y cuántos dependen del SIS? | Con algún seguro de salud; con Seguro Integral de Salud (SIS) | ENAHO | 2022–2025 (desde 2019) | 15–29 | Lima Metropolitana | Acceso a servicios de salud. | No hay dato distrital. |
+| Salud | ¿Qué proporción de jóvenes tiene algún problema de salud crónico? | Problema de salud crónico | ENAHO | 2022–2025 (desde 2019) | 15–29 | Lima Metropolitana | Carga de enfermedad crónica. | No hay dato distrital. |
+| Salud mental | ¿Qué proporción de jóvenes tuvo un episodio depresivo en los últimos 12 meses? | Episodio depresivo | ENDES | 2022–2024 (el nacional llega a 2025) | 15–29 | Lima Metropolitana | Único indicador de salud mental en las encuestas. | Serie corta. No hay dato distrital. |
+| Salud | ¿Qué proporción de jóvenes consume alcohol o tabaco? | Consumo de bebidas alcohólicas; consumo de cigarrillos | ENDES | Alcohol: 2022–2025. Cigarrillos: 2022–2024 (ambos desde 2019). | 15–29 | Lima Metropolitana | Conductas de riesgo. | No hay dato distrital. |
+| Salud sexual y reproductiva | ¿Cuántos nacimientos de madres de 15 a 19 años hay en cada distrito y cuál es la tasa respecto a las mujeres de esa edad? | Nacidos vivos de madres de 15 a 19 años | Registro de certificados de nacido vivo (entidad por verificar) | 2022–2026; 2026 solo hasta junio (desde 2019) | Madres de 15–16, 17–18 y 19 | **Distrito** | Evidencia distrital de maternidad adolescente. La tasa usa como denominador la población de la sección 8.1. | Mide nacimientos, no embarazos. Falta confirmar si el distrito es el de residencia de la madre. |
+| Salud sexual y reproductiva | ¿Qué proporción de adolescentes es madre o está embarazada? | Embarazo adolescente | ENDES | 2022–2024 (desde 2019) | 15–19 | Lima Metropolitana (solo total y urbano) | Contraste metropolitano para el dato distrital anterior. | No hay desagregación por sexo, porque el indicador es solo de mujeres. |
+| Discapacidad | ¿Cuántos jóvenes con discapacidad certificada o registrada hay en cada distrito? | Certificación de discapacidad; inscripción en el registro del CONADIS | MINSA; CONADIS | Certificación: 2022–2025. CONADIS: 2022–2026 (ambos desde 2019). | 15–29 (valores de los grupos por verificar) | **Distrito** | Inclusión y accesibilidad. | Son registros administrativos, no prevalencia. Son sensibles: solo agregados, ocultando celdas pequeñas. |
+| Salud | VIH / SIDA | Existe en los tableros, con distrito. | — | Por verificar | 15–29 | Distrito | — | **Excluido** por su sensibilidad y por su poca utilidad para el diseño de actividades. |
+
+### 8.6 Internet y competencias digitales
+
+| dimension | pregunta_analitica | indicador_disponible | fuente_original | años_disponibles | rango_edad | nivel_geografico | utilidad_para_el_proyecto | limitaciones |
+|---|---|---|---|---|---|---|---|---|
+| Internet | ¿Qué proporción de jóvenes usa internet y con qué frecuencia? | Jóvenes usuarios de internet; frecuencia de uso (3 categorías) | ENAHO | 2022–2025 (desde 2019) | 15–29 | Lima Metropolitana | Nivel de conectividad. | No hay dato distrital. |
+| Internet | ¿Desde dónde y con qué dispositivo se conectan los jóvenes? | Lugar de acceso (7 categorías); dispositivo de acceso (6 categorías) | ENAHO | Lugar: 2022–2025. Dispositivo: 2022–2024 (ambos desde 2019). | 15–29 | Lima Metropolitana | Condiciones de acceso, por ejemplo si dependen solo del celular. | No hay dato distrital. |
+| Competencias digitales | ¿Qué habilidades digitales tienen los jóvenes y cuáles son las menos frecuentes? | Actividades digitales (10 actividades: por ejemplo, usar fórmulas en hojas de cálculo, crear presentaciones, programar, instalar software) | ENAHO | 2022–2024 (desde 2019) | 15–29 | Lima Metropolitana | Identifica brechas de habilidades digitales concretas. | En Lima Metropolitana no hay dato de 2025. No hay dato distrital. |
+
+### 8.7 Seguridad y victimización
+
+| dimension | pregunta_analitica | indicador_disponible | fuente_original | años_disponibles | rango_edad | nivel_geografico | utilidad_para_el_proyecto | limitaciones |
+|---|---|---|---|---|---|---|---|---|
+| Victimización | ¿Qué proporción de jóvenes fue víctima de algún delito y cómo evolucionó? | Jóvenes víctimas de algún hecho delictivo | ENAPRES | 2022–2024 (desde 2019) | 15–29 (área urbana) | Lima Metropolitana (total, hombre y mujer) | Exposición al delito. | No hay dato distrital. |
+| Percepción de inseguridad | ¿Cuánta inseguridad perciben los jóvenes en general y al caminar solos de noche por su barrio? | Percepción de inseguridad en los próximos 12 meses; inseguridad al caminar solo/a de noche | ENAPRES | 2022–2025 (desde 2019) | 15–29 | Lima Metropolitana (total, hombre y mujer) | Percepción de seguridad en el espacio público. | No hay dato distrital. |
+| Seguridad | ¿Qué actividades dejan de hacer los jóvenes por miedo a la inseguridad? ¿Cuántos son víctimas más de una vez? | Tablas "Actividad que dejó de realizar" y "Revictimización" | Por verificar | Por verificar | Por verificar | Por verificar | Podría mostrar cómo la inseguridad limita el uso del tiempo y del espacio. | Solo aparecen en el tablero consolidado. Falta verificar su contenido. |
+| Seguridad | ¿Cuántos jóvenes son detenidos o intervenidos por la policía? | Detenidos por delitos; intervenidos por faltas | MININTER | 2022–2025 (desde 2018/2019). En el Excel, la hoja de detenidos no tiene 2022. | 18–29 | Departamento | Contexto general. | No hay distrito. "Lima" incluye más que Lima Este. |
+| Seguridad | ¿Cuántos jóvenes están privados de libertad? | Población penitenciaria | INPE | 2022–2025 (desde 2019) | 18–29 | Departamento | Contexto general. | No hay distrito de residencia. |
+
+### 8.8 Violencia y discriminación
+
+| dimension | pregunta_analitica | indicador_disponible | fuente_original | años_disponibles | rango_edad | nivel_geografico | utilidad_para_el_proyecto | limitaciones |
+|---|---|---|---|---|---|---|---|---|
+| Violencia | ¿Cuántos casos de violencia contra jóvenes atienden los CEM en cada distrito, de qué tipo, con qué vínculo con el agresor y a quién afectan? | Casos atendidos en los Centros Emergencia Mujer y Familia | Registros de los CEM | 2022–2026 (desde 2019). Falta confirmar si 2026 es parcial. | 15–19, 20–24, 25–29 | **Distrito** | Evidencia distrital sobre violencia. | Cuenta casos atendidos, no cuánta violencia hay. Falta confirmar si el distrito es el de residencia o el del CEM. Es sensible: solo agregados. |
+| Violencia | ¿Qué proporción de mujeres jóvenes sufrió violencia de su pareja? | Violencia familiar (física, psicológica y/o sexual); violencia física y/o sexual | ENDES | Familiar: 2022–2025. Física/sexual: 2022–2024 (ambos desde 2021). | Mujeres 15–29 | Lima Metropolitana (solo total y urbano) | Prevalencia de la violencia de pareja. | Solo mujeres. No hay dato distrital. |
+| Violencia | ¿Qué proporción de jóvenes sufrió violencia psicológica de su pareja? | Violencia psicológica | ENDES | 2022–2025 (desde 2021) | 15–29 | Lima Metropolitana (solo total y urbano) | Prevalencia de la violencia psicológica. | No hay dato distrital. |
+| Discriminación | ¿Qué proporción de jóvenes se sintió discriminada en el último año? | Percepción de discriminación | ENAHO | 2022–2024 (desde 2019) | 15–29 según el tablero; 18–29 según la página | Lima Metropolitana (también rural) | Exclusión percibida. | El rango de edad es inconsistente entre la página y el tablero. No hay dato distrital. |
+| Violencia | ¿Cuántos jóvenes sufrieron alguna vez violencia física, o violencia física, sexual o psicológica? | Tablas "Física alguna vez" y "Física, sexual o psicológica alguna vez" | Por verificar | Por verificar | Por verificar | Por verificar | Complementaría los indicadores anteriores. | Solo aparecen en el tablero consolidado. |
+
+### 8.9 Participación ciudadana
+
+| dimension | pregunta_analitica | indicador_disponible | fuente_original | años_disponibles | rango_edad | nivel_geografico | utilidad_para_el_proyecto | limitaciones |
+|---|---|---|---|---|---|---|---|---|
+| Participación | ¿Qué proporción de jóvenes participa en alguna organización y cómo evolucionó entre 2022 y 2025? | Participación juvenil en organizaciones | ENAHO | 2022–2025 (desde 2019) | 15–29 | Lima Metropolitana | Nivel de participación organizada. | No hay dato distrital. No indica el tipo de organización. |
+| Percepciones | ¿Cuáles consideran los jóvenes los principales problemas del país? | Principales problemas del país (17 opciones) | ENAHO | 2022–2024 (desde 2021) | 18–29 | Lima Metropolitana (también rural) | Muestra qué problemas priorizan los jóvenes. | Se refiere a problemas del país, no del barrio ni del distrito. |
+| Ciudadanía | ¿Cómo valoran los jóvenes la democracia? | Percepción de la democracia; importancia de la democracia; funcionamiento de la democracia; características asociadas (8) | ENAHO | 2022–2025 (desde 2021) | 18–29 | Lima Metropolitana (también rural) | Actitudes cívicas. | Relación indirecta con el diseño de actividades. |
+| Ciudadanía | ¿Cuánto confían los jóvenes en las instituciones? | Confianza en las instituciones (21 instituciones) | ENAHO | 2022–2024 (desde 2021) | 18–29 | Lima Metropolitana (también rural) | Confianza institucional, relevante si las actividades involucran a instituciones públicas. | No hay dato de 2025. |
+| Ciudadanía | ¿Conocen los jóvenes la democracia y la prefieren siempre? | Tablas "Conoce democracia" y "Democracia siempre preferible" | Por verificar | Por verificar | Por verificar | Por verificar | — | Solo aparecen en el tablero consolidado. |
+
+### 8.10 Organizaciones juveniles
+
+| dimension | pregunta_analitica | indicador_disponible | fuente_original | años_disponibles | rango_edad | nivel_geografico | utilidad_para_el_proyecto | limitaciones |
+|---|---|---|---|---|---|---|---|---|
+| Organizaciones juveniles | ¿Cuántas organizaciones juveniles acreditadas hay en cada distrito y cuántas se acreditaron entre 2022 y 2026? | Organizaciones registradas en el RENOJ, por distrito y año de acreditación | RENOJ | Acreditaciones 2022–2026 (desde 2019) | No aplica (son organizaciones) | **Distrito** | Mide el tejido organizativo juvenil. Identifica posibles organizaciones aliadas y se cruza con la Capa 3. | Solo incluye organizaciones registradas. El total es acumulado y no indica si siguen activas. |
+| Organizaciones juveniles | ¿En qué temáticas y tipos de organización se concentran en cada distrito? | Temática 1 y 2; tipo y detalle de tipo. Algunos valores vistos: "Cultura y arte", "Deporte y recreación", "Educación y desarrollo", "Inclusión y derechos", "Ambiente y sostenibilidad". | RENOJ | Igual que la fila anterior | No aplica | **Distrito** | Muestra en qué temas se organizan los jóvenes; es una señal de interés organizado. | La lista completa de temáticas está por verificar. Los datos de los miembros (edad, sexo) son individuales y no se extraen. |
+
+### 8.11 Voluntariado e intereses declarados
+
+| dimension | pregunta_analitica | indicador_disponible | fuente_original | años_disponibles | rango_edad | nivel_geografico | utilidad_para_el_proyecto | limitaciones |
+|---|---|---|---|---|---|---|---|---|
+| Voluntariado | ¿Cuántos jóvenes de cada distrito están inscritos en el Programa de Voluntariado Juvenil? | Personas voluntarias inscritas por distrito | Programa de Voluntariado Juvenil (SENAJU) | **Sin año** (la tabla de inscritos no tiene columna de año) | Edad y rango de edad (valores por verificar) | **Distrito** | Mide la disposición a participar. | Las personas se inscriben por decisión propia: no representan a la juventud del distrito. Algunos distritos tienen pocos inscritos. Falta confirmar si el distrito es el de residencia. |
+| Intereses declarados | ¿En qué temáticas declaran interés las personas voluntarias de cada distrito? | 6 intereses: educación integral; salud mental y bienestar; participación ciudadana; educación para la empleabilidad; poblaciones en situación de vulnerabilidad; participación juvenil mediante el deporte, el arte y la cultura | Programa de Voluntariado Juvenil | Sin año | Por verificar | **Distrito** | Es el único dato de Dato Joven sobre **intereses declarados**; conecta con la Capa 2. | Solo representa a las personas voluntarias. Las categorías son las del programa, no una pregunta abierta. |
+| Experiencia previa | ¿En qué temáticas tienen experiencia de voluntariado? | 9 temáticas: cultura, ciencia, economía, educación, medio ambiente, democracia, deporte, salud y otra | Programa de Voluntariado Juvenil | Sin año | Por verificar | **Distrito** | Indica en qué temas ya hay trayectoria de participación. | Igual que la fila anterior. |
+| Perfil | ¿Qué perfil tienen las personas voluntarias: nivel educativo, ocupación, área de estudio y participación en organizaciones o consejos de juventud? | Campos de perfil del registro de inscritos | Programa de Voluntariado Juvenil | Sin año | Por verificar | **Distrito** | Caracteriza a los jóvenes que ya participan. | El registro también tiene campos sensibles (salud, discapacidad, comunidad LGTBIQ+) que **no se extraen**. |
+| Movilización | ¿Cuántas personas voluntarias se movilizan y en qué tipo de actividades? | Jornadas de movilización | Programa de Voluntariado Juvenil | Por verificar | No aplica | Región | Contexto del funcionamiento del programa. | No tiene distrito. |
+
+### 8.12 Migración
+
+| dimension | pregunta_analitica | indicador_disponible | fuente_original | años_disponibles | rango_edad | nivel_geografico | utilidad_para_el_proyecto | limitaciones |
+|---|---|---|---|---|---|---|---|---|
+| Migración | ¿Cuántos jóvenes entran y salen del país y por qué motivos? | Movimiento migratorio de jóvenes | Registros de control migratorio (entidad por verificar) | 2022–2025 (desde 2019) | 15–29 | Nacional, sin territorio de residencia (país y punto de control) | Contexto general. | No se puede atribuir a Lima Este. |
+| Migración | ¿Cuántos jóvenes migrantes viven en el territorio? | Tabla "Población inmigrante" | Por verificar | Por verificar | Por verificar | Por verificar | Sería relevante si tuviera distrito. | Solo aparece en el tablero de portada. Falta verificar su contenido. |
+| Migración | ¿Hay datos de migración interna o de jóvenes migrantes por distrito? | **No hay información disponible** en lo explorado. | — | — | — | — | — | — |
+
+### 8.13 Cultura y deporte
+
+| dimension | pregunta_analitica | indicador_disponible | fuente_original | años_disponibles | rango_edad | nivel_geografico | utilidad_para_el_proyecto | limitaciones |
+|---|---|---|---|---|---|---|---|---|
+| Cultura | ¿Cuántos jóvenes trabajan en el sector cultural y en qué subsectores? | Trabajadores jóvenes del sector cultural | Registros del sector cultural (entidad por verificar) | Por verificar | 18–29 | Departamento | Contexto del empleo cultural. | No hay distrito. Mide empleo, no participación cultural. |
+| Deporte | ¿Cuántos jóvenes son atletas registrados en el IPD y en qué disciplinas? | Registro de atletas del IPD | IPD | Por verificar | 15–29 | Sin territorio de residencia (centro de alto rendimiento) | Contexto del deporte de alto rendimiento. | No refleja la práctica deportiva general. |
+| Cultura y deporte | ¿Hay intereses, experiencia u organizaciones vinculadas a la cultura y el deporte en cada distrito? | Interés en "participación juvenil mediante el deporte, el arte y la cultura" y experiencia en cultura o deporte (voluntariado); organizaciones con temáticas de cultura, arte, deporte y recreación (RENOJ) | Voluntariado; RENOJ | Ver secciones 8.10 y 8.11 | Ver secciones 8.10 y 8.11 | **Distrito** | Única evidencia distrital relacionada con cultura y deporte. | Solo representa a personas voluntarias y organizaciones registradas. |
+| Cultura y deporte | ¿Qué proporción de jóvenes practica deporte o participa en actividades culturales? | **No hay información disponible** en Dato Joven. | — | — | — | — | — | Habrá que buscarla en la Capa 2 o en otras fuentes. |
+
+### 8.14 Otras dimensiones
+
+| dimension | pregunta_analitica | indicador_disponible | fuente_original | años_disponibles | rango_edad | nivel_geografico | utilidad_para_el_proyecto | limitaciones |
+|---|---|---|---|---|---|---|---|---|
+| Política pública | ¿Cómo avanzan los indicadores de la Política Nacional de Juventud respecto de sus metas? | Valor esperado y valor obtenido por indicador y objetivo prioritario | Varias (campo "Fuente" del tablero) | Por verificar | Por verificar | Nacional | Marco de política con el que alinear el diagnóstico. | No es territorial. |
+| Pobreza y diversidad | ¿Hay brechas por pobreza, etnia o lengua materna? | Desagregaciones de los indicadores de encuestas: pobre / no pobre, etnia, lengua materna, nivel educativo | ENAHO, ENDES, ENAPRES | Según el indicador | Según el indicador | **Solo nacional** | Muestra brechas estructurales. | No existen para Lima Metropolitana ni por distrito. |
+| Justicia juvenil | ¿Cuántos adolescentes y jóvenes están en centros juveniles? | Tabla "PRONACEJ" | Por verificar | Por verificar | Por verificar | Por verificar | — | Solo aparece en el tablero de portada. |
+| Emprendimiento | ¿Qué proporción de jóvenes emprende? | **No hay indicador en Dato Joven.** Biblio Joven tiene una categoría "Empleo y emprendimiento" con documentos, no con indicadores. | — | — | — | — | — | Habrá que buscarlo en la Capa 2 o en otras fuentes. |
+| Uso del tiempo | ¿Cómo distribuyen los jóvenes su tiempo, incluido el trabajo no remunerado? | **No hay indicador en los tableros.** Existe el documento *Juventud y trabajo no remunerado 2024* en Biblio Joven. | — | — | — | Nacional (documento) | — | Solo documental. |
+
+### 8.15 Resumen por nivel geográfico
+
+| Dimensión | Evidencia por distrito | Contexto de Lima Metropolitana | Solo departamento o nacional | Sin información |
+|---|---|---|---|---|
+| Demografía | Población joven y total | — | — | — |
+| Educación | Solo subgrupos | 5 indicadores | — | Indicador distrital |
+| Empleo | Solo subgrupos | 6 indicadores | Sector cultural | Indicador distrital; datos de 2024–2025 |
+| No estudian ni trabajan | — | NINI | — | Indicador distrital |
+| Salud | Maternidad adolescente; discapacidad | 7 indicadores | — | Salud mental por distrito |
+| Internet y competencias digitales | — | 5 indicadores | — | Indicador distrital |
+| Seguridad y victimización | — | 3 indicadores | MININTER; INPE | Indicador distrital |
+| Violencia y discriminación | Casos atendidos en los CEM | 4 indicadores | — | — |
+| Participación ciudadana | — | 7 indicadores | — | Indicador distrital |
+| Organizaciones juveniles | RENOJ | — | — | — |
+| Voluntariado e intereses | Inscritos, intereses y experiencia | — | Movilizaciones (región) | Intereses de la juventud en general |
+| Migración | — | — | Movimiento migratorio | Migración por distrito |
+| Cultura y deporte | Intereses de voluntariado; temáticas del RENOJ | — | Sector cultural; IPD | Práctica deportiva y participación cultural |
+| Emprendimiento | — | — | — | Sin indicador |
+
+### 8.16 Evidencia que podría servir para decidir actividades
+
+Esta tabla **no propone actividades**. Solo indica qué evidencia de la Capa 1 podría usarse después, al cruzarla con la Capa 2 (intereses) y la Capa 3 (oferta).
+
+| Ámbito de decisión | Evidencia de la Capa 1 | Nivel | Posible cruce con otras capas |
+|---|---|---|---|
+| Educación y capacitación | Nivel educativo, asistencia y conclusión de secundaria y superior | Lima Metropolitana | Intereses educativos (Capa 2); becas y talleres (Capa 3) |
+| Empleo y empleabilidad | Desempleo, informalidad, ingresos, NINI; interés en "educación para la empleabilidad" | Lima Metropolitana; distrito (solo voluntariado) | Aspiraciones laborales (Capa 2); en la Capa 3 hasta ahora no hay oferta de empleo |
+| Competencias digitales | Uso de internet, dispositivos, 10 habilidades digitales | Lima Metropolitana | Uso digital (Capa 2); talleres de computación (Capa 3) |
+| Participación y organización | Participación en organizaciones; RENOJ; voluntariado | Distrito y Lima Metropolitana | Eventos como FestiJoven (Capa 3) |
+| Cultura | Temáticas del RENOJ; intereses y experiencia de voluntariado | Distrito | Intereses culturales (Capa 2); talleres culturales (Capa 3) |
+| Deporte | Temáticas del RENOJ; intereses y experiencia de voluntariado | Distrito | Intereses deportivos (Capa 2); talleres deportivos (Capa 3) |
+| Salud mental y bienestar | Episodio depresivo; interés en "salud mental y bienestar" | Lima Metropolitana; distrito (solo voluntariado) | En la Capa 3 hasta ahora no hay oferta de salud |
+| Salud sexual y reproductiva | Maternidad adolescente | Distrito | Oferta por identificar |
+| Prevención de la violencia | Casos atendidos en los CEM; violencia de pareja; discriminación | Distrito y Lima Metropolitana | Oferta por identificar |
+| Seguridad y uso del espacio público | Percepción de inseguridad; inseguridad de noche | Lima Metropolitana | Horarios y lugares de las actividades (Capa 3) |
+| Inclusión | Discapacidad por distrito | Distrito | Accesibilidad de la oferta (Capa 3) |
+
+### 8.17 Brechas de la Capa 1
+
+- **Casi todo el diagnóstico de necesidades es metropolitano.** Educación, empleo, NINI, internet, salud (encuestas), seguridad y participación solo llegan a Lima Metropolitana.
+- **Los datos distritales se limitan a** población, organizaciones juveniles, voluntariado, maternidad adolescente, violencia atendida y discapacidad.
+- **Años:** los indicadores de encuestas llegan como máximo a 2025. Algunos terminan en 2023 (empleo) o 2024. Solo los registros administrativos llegan a 2026.
+- **No hay datos de** emprendimiento, práctica deportiva, participación cultural, uso del tiempo ni migración por distrito.
+- **El único dato de intereses declarados** es el de las personas voluntarias, que no representa a toda la juventud. La Capa 2 tendrá que cubrir ese vacío.
+- **Falta verificar** 8 tablas que solo aparecen en los tableros consolidados (actividades que se dejan de hacer por inseguridad, revictimización, violencia alguna vez, conocimiento y preferencia por la democracia, población inmigrante, PRONACEJ).
+
+### 8.18 Orden de extracción propuesto
+
+Antes de empezar conviene resolver tres pendientes de la sección 6: el umbral para ocultar celdas pequeñas, la fuente de las estimaciones de población y las condiciones de uso de los datos.
+
+| Paso | Conjunto de datos | Por qué en este orden |
+|---|---|---|
+| 1 | **Población joven y total por distrito** (2019–2026) | Es la base de todo: dimensiona la población objetivo y es el denominador de todas las tasas distritales. No es sensible y tiene pocas filas, así que sirve para probar el método de extracción. |
+| 2 | **Los 38 indicadores de encuestas** para Lima Metropolitana y el total nacional, con CV | Evita que la Capa 1 quede reducida a demografía: cubre educación, empleo, NINI, salud, internet, seguridad, violencia y participación. Todos tienen la misma estructura, así que un mismo procedimiento sirve para todos. No son sensibles. |
+| 3 | **Las 8 tablas que solo están en los tableros consolidados** (primero verificarlas y, si son útiles, extraerlas) | Algunas pueden ser muy relevantes, como las actividades que los jóvenes dejan de hacer por inseguridad. Conviene verificarlas mientras se trabaja con la misma estructura del paso 2. |
+| 4 | **RENOJ y voluntariado**, solo como conteos por distrito | Son evidencia distrital de participación e intereses declarados, y conectan directamente con las Capas 2 y 3. Tienen una sensibilidad baja si se extraen solo como conteos. |
+| 5 | **Maternidad adolescente por distrito** (CNV) | Es evidencia distrital de una necesidad concreta. Usa como denominador la población del paso 1. Antes hay que confirmar qué significa el distrito en este registro. |
+| 6 | **Casos atendidos en los CEM y discapacidad** por distrito | Son los más sensibles. Van al final, cuando ya esté decidido el umbral para ocultar celdas pequeñas y confirmado el significado del distrito. |
+| 7 | **Contexto departamental o nacional** (opcional): MININTER, INPE, sector cultural, IPD, migración, Política Nacional de Juventud | Aportan poco para Lima Este. Solo se extraerían si el análisis lo necesita. |
 
 ---
 

@@ -1,0 +1,9 @@
+# Versiones con las que se desarrolló el proyecto (Python 3.14, Anaconda).
+pandas>=3.0
+numpy>=2.0
+requests>=2.32
+beautifulsoup4>=4.12
+matplotlib>=3.9
+nbformat>=5.10
+nbconvert>=7.16
+ipykernel>=6.29
