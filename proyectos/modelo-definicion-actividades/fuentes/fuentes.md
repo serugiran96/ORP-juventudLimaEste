@@ -3,7 +3,7 @@
 Registro formal de las fuentes del proyecto, organizado por capa de análisis (ver `README.md`). Este catálogo se completa **antes** de la extracción de datos: aquí no hay datos extraídos, solo la descripción de cada fuente.
 
 - **Fecha de elaboración:** 23/09/2026.
-- **Última actualización:** 25/09/2026. Se agregaron las fuentes representativas de la Capa 2 (C2-05 a C2-07) y se actualizaron las fichas de Ipsos. Antes (24/09/2026) se actualizaron C1-01 y C1-02 con la exploración técnica de Dato Joven.
+- **Última actualización:** 25/09/2026. Se reemplazaron las fichas de actividades de la Capa 3 por fichas de fuentes y un registro de oferta (`capa3_registro_oferta.csv`). Antes, ese mismo día, se agregaron las fuentes representativas de la Capa 2 (C2-05 a C2-07) y se actualizaron las fichas de Ipsos. Antes (24/09/2026) se actualizaron C1-01 y C1-02 con la exploración técnica de Dato Joven.
 - **Alcance del proyecto:** jóvenes de 15 a 30 años en siete distritos de Lima Este: Ate, Chaclacayo, El Agustino, La Molina, Lurigancho-Chosica, San Juan de Lurigancho y Santa Anita.
 
 ## Cómo se construyó
@@ -11,7 +11,7 @@ Registro formal de las fuentes del proyecto, organizado por capa de análisis (v
 Cada página se consultó una vez, el 23/09/2026, solo para leer su descripción. No se hizo scraping, no se descargaron archivos y no se escribió código.
 
 - Las páginas del Observatorio Nacional de Juventud, de Ipsos y de munichosica.pe **sí pudieron consultarse**.
-- Las páginas de **gob.pe rechazaron la consulta automatizada** (respuesta HTTP 418). En esas fuentes solo se registra lo que dicen el título, la URL o la descripción del equipo; el resto queda **por verificar** con una revisión manual.
+- Las páginas de **gob.pe rechazaron la consulta automatizada** (respuesta HTTP 418) ese día. El 25/09/2026 sí respondieron, y la Capa 3 se construyó con ellas (ver "Capa 3").
 - **Excepción:** las fichas C1-01 y C1-02 se completaron el 24/09/2026 con una exploración técnica de los tableros de Dato Joven. Esa exploración sí hizo consultas pequeñas a los tableros y revisó archivos de muestra. El método y los detalles están en [`exploracion_dato_joven.md`](exploracion_dato_joven.md).
 
 ## Convenciones
@@ -38,17 +38,12 @@ Cada página se consultó una vez, el 23/09/2026, solo para leer su descripción
 | C2-05 | 2 | ENUT 2024 — Encuesta Nacional de Uso del Tiempo (INEI) | 2024 | 12+ (se usan 15–29) | Nacional; Lima Metropolitana; Lima Este (estimación propia) | **Procesada** |
 | C2-06 | 2 | ENAPRES, capítulo 800A: patrimonio, servicios y bienes culturales (INEI) | 2022–2025 | 14+ (se usan 15–29) | Nacional; Lima Metropolitana; Lima Este (estimación propia) | **Procesada** |
 | C2-07 | 2 | ENAHO, Módulo 03: educación e internet (INEI) | 2022–2025 | 15–29 | Nacional; Lima Metropolitana; Lima Este (estimación propia) | **Procesada** |
-| C3-01 | 3 | Ate — Talleres Vacaciones Útiles 2026 | 2026 | Por verificar | Ate | Por verificar |
-| C3-02 | 3 | Chaclacayo | — | — | Chaclacayo | **Por identificar** |
-| C3-03 | 3 | El Agustino — Muni Becas 2025 | 2025 | Jóvenes (título) | El Agustino | Por verificar |
-| C3-04 | 3 | La Molina — Molitalleres de verano 2026 | 2026 | Por verificar | La Molina | Por verificar |
-| C3-05 | 3 | La Molina — Talleres deportivos de verano 2026 | 2026 | Por verificar | La Molina | Por verificar |
-| C3-06 | 3 | La Molina — Moltalleres gratuitos de computación | Por verificar | Niños y jóvenes (título) | La Molina | Por verificar |
-| C3-07 | 3 | Lurigancho-Chosica — Talleres Municipales de Verano 2026 | 2026 | Niños y adolescentes | Lurigancho-Chosica | Consultada |
-| C3-08 | 3 | Lurigancho-Chosica — Taller arqueológico "Aventureros de Cajamarquilla" | 2026 | Por verificar | Lurigancho-Chosica | Por verificar |
-| C3-09 | 3 | San Juan de Lurigancho — FestiJoven 2025 | 2025 | Organizaciones juveniles (título) | San Juan de Lurigancho | Por verificar |
-| C3-10 | 3 | Santa Anita — Talleres culturales y deportivos verano 2026 | 2026 | Por verificar | Santa Anita | Por verificar |
-| C3-11 | 3 | Santa Anita — Impulsamos el talento de nuestros jóvenes | Por verificar | Jóvenes (título) | Santa Anita | Por verificar |
+| C3-01 | 3 | Notas de prensa de las siete municipalidades en gob.pe | 2024–2026 | Vecinos; se registra la edad de cada actividad | Los siete distritos | **Procesada** |
+| C3-02 | 3 | munichosica.pe (Municipalidad de Lurigancho-Chosica) | 2024–2026 | Ídem | Lurigancho-Chosica | **Procesada** |
+| C3-03 | 3 | SERPAR — clubes metropolitanos de Lima Este | 2024–2026 | Ídem | SJL y Ate | **Procesada** |
+| C3-04 | 3 | SENAJU — actividades con sede en Lima Este | 2024–2026 | 15–29 años (casi siempre) | Varios distritos | **Procesada** |
+| C3-05 | 3 | gob.pe: MTPE, IPD, Ministerio de Cultura, DEVIDA, Municipalidad de Lima | 2024–2026 | Ídem | Notas que mencionan los distritos | **Procesada** |
+| C3-06 | 3 | Prensa y buscador web | 2024–2026 | Ídem | Complementaria | Consultada |
 
 ---
 
@@ -258,244 +253,58 @@ La columna "edad de esa cohorte en 2026" es un cálculo aproximado. Muestra que 
 
 ## Capa 3 — Evidencia territorial de Lima Este
 
+Desde el 25/09/2026 las actividades ya no se describen en fichas aquí: cada una es una fila de
+[`capa3_registro_oferta.csv`](capa3_registro_oferta.csv). Esta sección describe las **fuentes** de las que salen.
+El método, los criterios de codificación y las limitaciones están en [`metodologia_capa3.md`](metodologia_capa3.md).
+
 ### Tipos de evidencia
 
-Cada fuente se clasifica según lo que permite afirmar:
-
-| Tipo | Qué significa | Cuándo se registra |
+| Tipo | Qué permite afirmar | Cuándo se registra |
 |---|---|---|
-| **Oferta** | La actividad existe. | Cuando la fuente la anuncia o la describe. |
-| **Participación** | Hay cifras de inscritos, participantes o asistentes. | Solo cuando la fuente publica cifras. |
-| **Demanda o interés** | Los jóvenes quieren o buscan la actividad. | Solo con evidencia suficiente: por ejemplo, vacantes agotadas, listas de espera o consultas a jóvenes. **No se infiere del solo hecho de que una municipalidad ofrezca una actividad.** |
+| **Oferta** | La actividad se ofreció o se realizó. | La fuente la anuncia o la describe. |
+| **Participación declarada** | Hubo inscritos, asistentes o participantes, según quien organiza. | La fuente publica una cifra o una mención explícita de participantes. |
+| **Demanda observada** | Hubo más interesados que cupos. | Solo con una señal concreta: inscripciones agotadas, inscritos por encima del cupo, lista de espera. **No se infiere de que una actividad exista.** |
 
-| ID | Distrito | Oferta | Participación | Demanda o interés |
-|---|---|---|---|---|
-| C3-01 | Ate | Sí (título) | Por verificar | Sin evidencia |
-| C3-02 | Chaclacayo | Por identificar | — | — |
-| C3-03 | El Agustino | Sí (título) | Por verificar | Sin evidencia |
-| C3-04 | La Molina | Sí (título) | Por verificar | Sin evidencia |
-| C3-05 | La Molina | Sí (título) | Por verificar | Sin evidencia |
-| C3-06 | La Molina | Sí (título) | Por verificar | Sin evidencia |
-| C3-07 | Lurigancho-Chosica | Sí | **Sí**: más de 1 500 niños y adolescentes, según la municipalidad | Sin evidencia |
-| C3-08 | Lurigancho-Chosica | Sí (título) | Por verificar | Sin evidencia |
-| C3-09 | San Juan de Lurigancho | Sí (título) | Por verificar | Sin evidencia |
-| C3-10 | Santa Anita | Sí (título) | Por verificar | Sin evidencia |
-| C3-11 | Santa Anita | Sí (título) | Por verificar | Sin evidencia |
+### Fuentes
+
+| ID | Fuente | Cobertura | Periodo | Acceso | Verificación |
+|---|---|---|---|---|---|
+| C3-01 | Notas de prensa de las siete municipalidades en gob.pe | Los siete distritos | 01/2024–09/2026 | `scripts/capa3_noticias_gobpe.py` (búsqueda por términos) | Texto completo |
+| C3-02 | munichosica.pe, sitio de la Municipalidad de Lurigancho-Chosica | Lurigancho-Chosica | 01/2024–09/2026 | `scripts/capa3_noticias_wp.py` (API de WordPress) | Texto completo |
+| C3-03 | SERPAR, Servicio de Parques de Lima (serpar.gob.pe) | Clubes metropolitanos Wiracocha (SJL), Cahuide y Huaycán (Ate) | 01/2024–09/2026 | `scripts/capa3_noticias_wp.py` | Texto completo |
+| C3-04 | SENAJU, Secretaría Nacional de la Juventud (juventud.gob.pe) | Actividades con sede en Lima Este | 01/2024–09/2026 | `scripts/capa3_noticias_wp.py` (búsqueda por nombre de distrito) | Texto completo |
+| C3-05 | Notas en gob.pe del MTPE, IPD, Ministerio de Cultura, DEVIDA y Municipalidad de Lima | Notas que mencionan un distrito de Lima Este | 01/2024–09/2026 | `scripts/capa3_noticias_gobpe.py sectores` | Texto completo |
+| C3-06 | Prensa y buscador web | Vacíos de las fuentes anteriores | 2024–2026 | Búsqueda manual | Texto completo si el artículo pudo leerse; si no, resumen del buscador |
+
+**Acceso a gob.pe.** El 23/09/2026 gob.pe respondió HTTP 418 a la consulta automatizada, así que las fichas
+iniciales de esta capa quedaron "por verificar". El 25/09/2026 respondió con normalidad a un agente de usuario
+identificado. Su `robots.txt` solo prohíbe `/admin/` y la paginación con `sheet=`; los scripts no la usan.
 
 ### Consideraciones para toda la capa
 
-- **Método de extracción:** gob.pe rechazó la consulta automatizada (HTTP 418), así que el scraping de esas páginas probablemente no sea viable. Se prevé un registro manual y, más adelante, revisar sus términos de uso. munichosica.pe sí permitió la consulta; su scraping podría evaluarse respetando `robots.txt` y los términos del sitio.
-- **Población objetivo:** varios talleres de verano están dirigidos a niños y adolescentes. Hay que verificar en cada caso si incluyen a personas de 15 a 30 años antes de usarlos en el análisis.
-- **Cifras de participación:** las publica la propia municipalidad en notas de prensa. Suelen ser aproximadas ("más de") y no están auditadas.
-- **Sesgo de visibilidad:** solo se registra lo que las municipalidades publican en internet, y no todas publican con el mismo detalle.
+- **Sesgo de visibilidad:** solo se registra lo que se publica en internet. Las municipalidades publican con
+  frecuencia muy distinta: Chaclacayo tiene 6 notas en gob.pe entre 2024 y 2026 que coinciden con la búsqueda;
+  El Agustino, 365. **Pocas actividades registradas no significan poca oferta.**
+- **Oferta no municipal:** organizaciones sociales, parroquias, ONG, colectivos culturales y academias privadas
+  casi no aparecen, por falta de una fuente sistemática.
+- **Cifras declaradas:** las publica quien organiza, en notas de prensa. Suelen ser aproximadas ("más de") y no
+  están auditadas.
 
-### C3-01 — Ate: Talleres de verano Vacaciones Útiles 2026
+### Equivalencia con las fichas anteriores
 
-| Campo | Valor |
-|---|---|
-| Distrito | Ate |
-| Actividad / programa | Talleres de verano "Vacaciones Útiles 2026" (título) |
-| Categoría | Talleres de verano; tipos por verificar |
-| Población objetivo / edad | Por verificar. Hay que confirmar si incluye a jóvenes de 15 a 30 años. |
-| Fecha | Verano 2026 (título). Fechas exactas por verificar. |
-| Lugar | Por verificar |
-| Costo | Por verificar |
-| Vacantes | Por verificar |
-| Inscritos / participantes | Por verificar |
-| Organizador | Municipalidad de Ate |
-| Fuente | https://www.gob.pe/institucion/muniate/noticias/1342368-en-ate-inauguran-talleres-de-verano-vacaciones-utiles-2026 |
-| Tipo de información | Publicación municipal (nota de prensa) |
-| Tipo de evidencia | Oferta |
-| Posible método de extracción | Registro manual |
-| Limitaciones | Página no consultada (HTTP 418). |
+Las fichas C3-01 a C3-11 del 23/09/2026 describían actividades, no fuentes. Su contenido se verificó y quedó en
+el registro:
 
-### C3-02 — Chaclacayo
-
-| Campo | Valor |
-|---|---|
-| Distrito | Chaclacayo |
-| Estado | **Fuente por identificar.** Todavía no se ha verificado una fuente oficial suficientemente útil y reciente. |
-| Próximo paso | Buscar publicaciones oficiales de la Municipalidad de Chaclacayo sobre actividades, programas u oportunidades para jóvenes. |
-
-### C3-03 — El Agustino: Muni Becas 2025
-
-| Campo | Valor |
-|---|---|
-| Distrito | El Agustino |
-| Actividad / programa | Muni Becas (título) |
-| Categoría | Educación y capacitación (becas) |
-| Población objetivo / edad | Juventud (título). Edad y requisitos por verificar. |
-| Fecha | 2025 (descripción del equipo). Fecha exacta por verificar. |
-| Lugar | Por verificar |
-| Costo | Por verificar (tipo o porcentaje de beca) |
-| Vacantes | Por verificar |
-| Inscritos / beneficiarios | Por verificar |
-| Organizador | Municipalidad de El Agustino. Instituciones aliadas por verificar. |
-| Fuente | https://www.gob.pe/institucion/munielagustino/noticias/1230858-muni-becas-abre-camino-al-futuro-de-nuestra-juventud |
-| Tipo de información | Publicación municipal (nota de prensa) |
-| Tipo de evidencia | Oferta |
-| Posible método de extracción | Registro manual |
-| Limitaciones | Página no consultada (HTTP 418). Es de 2025; hay que verificar si sigue vigente. |
-
-### C3-04 — La Molina: Molitalleres de verano 2026
-
-| Campo | Valor |
-|---|---|
-| Distrito | La Molina |
-| Actividad / programa | Molitalleres de verano 2026 (título) |
-| Categoría | Arte, cultura, tecnología y educación (descripción del equipo) |
-| Población objetivo / edad | Por verificar |
-| Fecha | Verano 2026. La nota anuncia el cierre de inscripciones (título); fechas por verificar. |
-| Lugar | Por verificar |
-| Costo | Por verificar |
-| Vacantes | Por verificar |
-| Inscritos / participantes | Por verificar |
-| Organizador | Municipalidad de La Molina |
-| Fuente | https://www.gob.pe/institucion/munilamolina/noticias/1328590-este-viernes-cierran-las-inscripciones-para-los-molitalleres-de-verano-2026 |
-| Tipo de información | Publicación municipal (nota de prensa) |
-| Tipo de evidencia | Oferta |
-| Posible método de extracción | Registro manual |
-| Limitaciones | Página no consultada (HTTP 418). |
-
-### C3-05 — La Molina: Talleres deportivos de verano 2026
-
-| Campo | Valor |
-|---|---|
-| Distrito | La Molina |
-| Actividad / programa | Talleres deportivos de verano 2026 (título) |
-| Categoría | Deporte |
-| Población objetivo / edad | Por verificar |
-| Fecha | Verano 2026. La nota anuncia el inicio de inscripciones (título); fechas por verificar. |
-| Lugar | Por verificar |
-| Costo | Por verificar |
-| Vacantes | Por verificar |
-| Inscritos / participantes | Por verificar |
-| Organizador | Municipalidad de La Molina |
-| Fuente | https://www.gob.pe/institucion/munilamolina/noticias/1308761-empezaron-las-inscripciones-para-talleres-deportivos-de-verano-2026 |
-| Tipo de información | Publicación municipal (nota de prensa) |
-| Tipo de evidencia | Oferta |
-| Posible método de extracción | Registro manual |
-| Limitaciones | Página no consultada (HTTP 418). |
-
-### C3-06 — La Molina: Moltalleres gratuitos de computación
-
-| Campo | Valor |
-|---|---|
-| Distrito | La Molina |
-| Actividad / programa | Moltalleres de computación (título) |
-| Categoría | Tecnología y competencias digitales |
-| Población objetivo / edad | Niños y jóvenes (título). Edades por verificar. |
-| Fecha | 2026 según la descripción del equipo; por verificar. |
-| Lugar | Por verificar |
-| Costo | Gratuito (título) |
-| Vacantes | Por verificar |
-| Inscritos / participantes | Por verificar |
-| Organizador | Municipalidad de La Molina |
-| Fuente | https://www.gob.pe/institucion/munilamolina/noticias/1379493-la-molina-lanza-moltalleres-gratuitos-de-computacion-para-ninos-y-jovenes |
-| Tipo de información | Publicación municipal (nota de prensa) |
-| Tipo de evidencia | Oferta |
-| Posible método de extracción | Registro manual |
-| Limitaciones | Página no consultada (HTTP 418). |
-
-### C3-07 — Lurigancho-Chosica: Talleres Municipales de Verano 2026
-
-| Campo | Valor |
-|---|---|
-| Distrito | Lurigancho-Chosica |
-| Actividad / programa | Talleres de Verano 2026 |
-| Categoría | Deporte (fútbol, vóleibol, básquetbol, natación) y arte (dibujo, pintura). También un taller de danza para adultos mayores del CIAM, fuera del alcance del proyecto. |
-| Población objetivo / edad | "Niños y adolescentes". No indica edades. |
-| Fecha | Nota del 12/01/2026 (URL). No indica la duración de los talleres. |
-| Lugar | Inauguración en el Coliseo Carmela Estrella. Talleres también en Huampaní, Ñaña, Carapongo, Huachipa, Nievería, Cajamarquilla y Cerro Camote. |
-| Costo | No indica |
-| Vacantes | No indica |
-| Inscritos / participantes | "Más de 700 niños y adolescentes de Chosica" y "más de 800 niños" en otras sedes, en total "más de 1,500 niños y adolescentes". |
-| Organizador | Municipalidad de Lurigancho-Chosica |
-| Fuente | https://munichosica.pe/2026/01/12/inauguracion-de-talleres-municipales-de-verano-2026/ |
-| Tipo de información | Publicación municipal (nota en el sitio web propio) |
-| Tipo de evidencia | Oferta y participación |
-| Posible método de extracción | Registro manual. El sitio permitió la consulta, así que podría evaluarse el scraping (revisar `robots.txt` y términos). |
-| Limitaciones | Está dirigido a niños y adolescentes: no se sabe cuántos participantes tienen entre 15 y 30 años. Las cifras son aproximadas y declaradas por la municipalidad. |
-
-### C3-08 — Lurigancho-Chosica: Taller de verano arqueológico "Aventureros de Cajamarquilla"
-
-| Campo | Valor |
-|---|---|
-| Distrito | Lurigancho-Chosica |
-| Actividad / programa | Taller de verano arqueológico "Aventureros de Cajamarquilla" (título) |
-| Categoría | Cultura y patrimonio (título) |
-| Población objetivo / edad | Por verificar |
-| Fecha | Verano 2026 (descripción del equipo). Fechas por verificar. |
-| Lugar | Cajamarquilla (título). Sede exacta por verificar. |
-| Costo | Por verificar |
-| Vacantes | Por verificar |
-| Inscritos / participantes | Por verificar |
-| Organizador | Municipalidad de Lurigancho-Chosica. Aliados por verificar. |
-| Fuente | https://www.gob.pe/institucion/munilurigancho/noticias/1329207-iniciamos-el-taller-de-verano-arqueologico-aventureros-de-cajamarquilla |
-| Tipo de información | Publicación municipal (nota de prensa) |
-| Tipo de evidencia | Oferta |
-| Posible método de extracción | Registro manual |
-| Limitaciones | Página no consultada (HTTP 418). |
-
-### C3-09 — San Juan de Lurigancho: FestiJoven 2025
-
-| Campo | Valor |
-|---|---|
-| Distrito | San Juan de Lurigancho |
-| Actividad / programa | FestiJoven (título) |
-| Categoría | Participación juvenil y organizaciones juveniles |
-| Población objetivo / edad | Organizaciones juveniles de San Juan de Lurigancho (título). Edades por verificar. |
-| Fecha | 2025 (descripción del equipo). Fecha exacta por verificar. |
-| Lugar | Play Park (título). Dirección por verificar. |
-| Costo | Por verificar |
-| Vacantes | No aplica (evento) |
-| Inscritos / asistentes | Por verificar (número de organizaciones y de asistentes) |
-| Organizador | Municipalidad de San Juan de Lurigancho |
-| Fuente | https://www.gob.pe/institucion/munisanjuandelurigancho/noticias/1255171-festijoven-reune-a-las-organizaciones-juveniles-de-san-juan-de-lurigancho-en-el-play-park |
-| Tipo de información | Publicación municipal (nota de prensa) |
-| Tipo de evidencia | Oferta |
-| Posible método de extracción | Registro manual. Puede cruzarse con el RENOJ de Dato Joven (C1-01), que tiene organizaciones juveniles por distrito. |
-| Limitaciones | Página no consultada (HTTP 418). Es un evento puntual de 2025. |
-
-### C3-10 — Santa Anita: Talleres culturales y deportivos verano 2026
-
-| Campo | Valor |
-|---|---|
-| Distrito | Santa Anita |
-| Actividad / programa | Talleres culturales y deportivos verano 2026 (título) |
-| Categoría | Cultura y deporte |
-| Población objetivo / edad | Por verificar |
-| Fecha | Verano 2026 (título). Fechas por verificar. |
-| Lugar | Por verificar |
-| Costo | Por verificar |
-| Vacantes | Por verificar |
-| Inscritos / participantes | Por verificar |
-| Organizador | Municipalidad de Santa Anita |
-| Fuente | https://www.gob.pe/institucion/munisantanita/noticias/1343996-inician-los-talleres-culturales-y-deportivos-verano-2026 |
-| Tipo de información | Publicación municipal (nota de prensa) |
-| Tipo de evidencia | Oferta |
-| Posible método de extracción | Registro manual |
-| Limitaciones | Página no consultada (HTTP 418). |
-
-### C3-11 — Santa Anita: Impulsamos el talento de nuestros jóvenes
-
-| Campo | Valor |
-|---|---|
-| Distrito | Santa Anita |
-| Actividad / programa | Por verificar. El título es "Impulsamos el talento de nuestros jóvenes". |
-| Categoría | Actividades y oportunidades educativas (descripción del equipo) |
-| Población objetivo / edad | Jóvenes (título). Edades por verificar. |
-| Fecha | Por verificar |
-| Lugar | Por verificar |
-| Costo | Por verificar |
-| Vacantes | Por verificar |
-| Inscritos / participantes | Por verificar |
-| Organizador | Municipalidad de Santa Anita. Aliados por verificar. |
-| Fuente | https://www.gob.pe/institucion/munisantanita/noticias/1377405-impulsamos-el-talento-de-nuestros-jovenes |
-| Tipo de información | Publicación municipal (nota de prensa) |
-| Tipo de evidencia | Oferta |
-| Posible método de extracción | Registro manual |
-| Limitaciones | Página no consultada (HTTP 418). El contenido concreto se desconoce. |
+| Ficha anterior | Actividad | Dónde quedó |
+|---|---|---|
+| C3-01 | Ate: Vacaciones Útiles 2026 | Registro (fuente C3-01) |
+| C3-02 | Chaclacayo: fuente por identificar | Sus notas están en gob.pe (C3-01), pero son muy pocas |
+| C3-03 | El Agustino: Muni Becas 2025 | Registro (fuente C3-01) |
+| C3-04, C3-05, C3-06 | La Molina: Molitalleres, talleres deportivos y talleres de computación | Registro (fuente C3-01) |
+| C3-07 | Lurigancho-Chosica: Talleres Municipales de Verano 2026 | Registro (fuente C3-02) |
+| C3-08 | Lurigancho-Chosica: "Aventureros de Cajamarquilla" | Registro. **Es para niños de 7 a 11 años**, fuera del rango del proyecto |
+| C3-09 | San Juan de Lurigancho: FestiJoven 2025 | Registro (fuente C3-01) |
+| C3-10, C3-11 | Santa Anita: talleres de verano 2026 y "Impulsamos el talento de nuestros jóvenes" | Registro (fuente C3-01) |
 
 ---
 
@@ -505,23 +314,23 @@ Se mantiene el modelo metodológico del `README.md`:
 
 **necesidades y contexto (Capa 1) + intereses y aspiraciones (Capa 2) + evidencia territorial: oferta y participación (Capa 3) → identificación posterior de coincidencias, brechas e hipótesis de oportunidades.**
 
-### Cobertura temática preliminar
+### Cobertura temática
 
-La siguiente tabla muestra qué fuentes tratan cada tema, según lo que describen las páginas y, en C1-01 y C1-02, según la exploración técnica. **No son resultados**: sirve para ver qué temas tienen fuentes en las tres capas y cuáles no.
+La siguiente tabla muestra qué fuentes tratan cada tema. En la Capa 3 se indica el número de actividades del registro (`capa3_registro_oferta.csv`) con ese tema y, entre paréntesis, cuántas se dirigen a jóvenes. **No es un cruce de resultados**: sirve para ver qué temas tienen evidencia en las tres capas y cuáles no.
 
-| Tema | Capa 1 | Capa 2 | Capa 3 |
+| Tema | Capa 1 | Capa 2 | Capa 3 (actividades registradas) |
 |---|---|---|---|
-| Educación y capacitación | C1-02, C1-03 | C2-07 (asistencia, motivos para no estudiar, uso educativo de internet); C2-03 | C3-03, C3-04, C3-11 |
-| Empleo | C1-02, C1-03 | C2-01, C2-03, C2-04 | — |
-| Emprendimiento | C1-03 | C2-02, C2-03 (solo Ipsos, 2019–2020) | — |
-| Tecnología y competencias digitales | C1-02, C1-03 | C2-05, C2-06, C2-07; C2-02, C2-04 | C3-04, C3-06 |
-| Cultura y arte | C1-02 (trabajadores del sector cultural, solo por departamento) | C2-06 (asistencia y consumo cultural); C2-05 | C3-04, C3-07, C3-08, C3-10 |
-| Deporte | C1-02 (atletas del IPD, sin distrito) | C2-05 (práctica semanal); C2-02 | C3-05, C3-07, C3-10 |
-| Entretenimiento y uso del tiempo | C1-03 | C2-05, C2-06; C2-02, C2-03, C2-04 | — |
-| Consumo y finanzas | — | C2-01, C2-04 | — |
-| Salud | C1-02, C1-03 | — | — |
-| Seguridad, violencia y discriminación | C1-02, C1-03 | — | — |
-| Participación y organizaciones juveniles | C1-01, C1-02, C1-03 | — | C3-09 |
+| Educación y capacitación | C1-02, C1-03 | C2-07 (asistencia, motivos para no estudiar, uso educativo de internet); C2-03 | Preparación preuniversitaria 19 (11); orientación vocacional 3 (3); idiomas 4 (0) |
+| Empleo | C1-02, C1-03 | C2-01, C2-03, C2-04 | 27 (14) |
+| Emprendimiento | C1-03 | C2-02, C2-03 (solo Ipsos, 2019–2020) | 11 (4) |
+| Tecnología y competencias digitales | C1-02, C1-03 | C2-05, C2-06, C2-07; C2-02, C2-04 | 10 (2) |
+| Cultura y arte | C1-02 (trabajadores del sector cultural, solo por departamento) | C2-06 (asistencia y consumo cultural); C2-05 | Arte y cultura 48 (9); patrimonio 14 (4) |
+| Deporte | C1-02 (atletas del IPD, sin distrito) | C2-05 (práctica semanal); C2-02 | 47 (3) |
+| Entretenimiento y uso del tiempo | C1-03 | C2-05, C2-06; C2-02, C2-03, C2-04 | Recreación 6 (0) |
+| Consumo y finanzas | — | C2-01, C2-04 | Educación financiera 1 (0) |
+| Salud | C1-02, C1-03 | — | Salud y salud mental 26 (4); inclusión y discapacidad 10 (0) |
+| Seguridad, violencia y discriminación | C1-02, C1-03 | — | Prevención de drogas y violencia 16 (3); gestión de riesgos y primeros auxilios 2 (1) |
+| Participación y organizaciones juveniles | C1-01, C1-02, C1-03 | — | Participación y voluntariado 28 (17) |
 | Migración | C1-02 | — | — |
 
 ---
@@ -559,10 +368,18 @@ Pendientes:
 
 ### Capa 3
 
-- [ ] **Revisar manualmente las 9 notas de gob.pe** (C3-01, C3-03 a C3-06, C3-08 a C3-11). Ninguna pudo consultarse, así que todos sus campos, salvo los del título, están por verificar.
-- [ ] **Identificar una fuente oficial para Chaclacayo** (C3-02).
-- [ ] Verificar si cada actividad incluye a personas de 15 a 30 años. Varios talleres de verano parecen dirigidos a niños y adolescentes.
-- [ ] Buscar cifras de participación. Por ahora solo C3-07 tiene cifras, y corresponden a niños y adolescentes.
-- [ ] Buscar oferta en los temas que no tienen fuentes en esta capa: empleo, emprendimiento, salud (incluida la salud mental) y seguridad.
-- [ ] Buscar evidencia de demanda o interés (vacantes agotadas, listas de espera, consultas a jóvenes). Por ahora no hay ninguna.
-- [ ] Evaluar la viabilidad y las condiciones de uso del scraping, considerando que gob.pe bloquea la consulta automatizada.
+Resueltos el 25/09/2026:
+
+- [x] Notas de gob.pe revisadas: gob.pe volvió a responder y se recolectaron las notas de las siete municipalidades (ver `metodologia_capa3.md`).
+- [x] Chaclacayo: su fuente son sus notas en gob.pe, pero publica muy poco (6 notas en 2024–2026).
+- [x] Edad de cada actividad: registrada en `incluye_15_29`; la mayor parte de los talleres de verano es para 6 a 17 años.
+- [x] Cifras de participación: 58 actividades con participación declarada.
+- [x] Oferta en empleo, emprendimiento, salud mental y seguridad: registrada, aunque poca se dirige a jóvenes.
+- [x] Evidencia de demanda: 4 actividades (becas de CEPREMUNI en Santa Anita, talleres de SENAJU, Academia IPD y un taller infantil).
+- [x] Scraping: se hizo respetando el `robots.txt` de cada sitio (gob.pe sin paginación con `sheet=`).
+
+Pendientes:
+
+- [ ] Oferta de organizaciones sociales, ONG y colectivos, con una fuente que identifique el distrito.
+- [ ] Información directa de las municipalidades (sobre todo Chaclacayo, Ate y SJL en 2024) sobre su oferta, cupos e inscritos.
+- [ ] Evidencia de demanda de jóvenes de 18 a 29 años: listas de espera, cupos agotados o consulta directa.

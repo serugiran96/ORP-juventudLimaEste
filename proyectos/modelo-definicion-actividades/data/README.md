@@ -163,3 +163,43 @@ Estimaciones propias con microdatos del INEI. Todas tienen estas columnas comune
 - **`capa2_educacion_internet_enaho.csv`** (ENAHO 2022–2025): `familia` = `internet`, `proposito_internet`
   (% de usuarios), `educacion`, `nivel_asistencia` y `motivo_no_asistencia`.
 - **`capa2_educacion_internet_enaho_validacion.csv`**: comparación con Dato Joven.
+
+## `data/raw/capa3/` — notas de prensa (Capa 3)
+
+Material de revisión para codificar a mano el registro de oferta. No son datos para analizar directamente.
+
+| Archivo | Contenido | Script |
+|---|---|---|
+| `gobpe_listado.csv` | Notas de las siete municipalidades en gob.pe (2024–2026) encontradas con algún término de búsqueda: distrito, UBIGEO, id, fecha, título, enlace y términos que la encontraron | `capa3_noticias_gobpe.py listar` |
+| `noticias_gobpe.csv` | Las notas del listado que la búsqueda devolvió con un término sobre juventud, con su texto | `capa3_noticias_gobpe.py detalle` |
+| `gobpe_sectores_listado.csv`, `noticias_gobpe_sectores.csv` | Notas del MTPE, IPD, Ministerio de Cultura, DEVIDA y Municipalidad de Lima que mencionan un distrito de Lima Este, con su texto | `capa3_noticias_gobpe.py sectores` y `detalle_sectores` |
+| `noticias_munichosica.csv`, `noticias_serpar.csv`, `noticias_senaju.csv` | Notas de munichosica.pe, SERPAR y SENAJU (API de WordPress) | `capa3_noticias_wp.py` |
+| `directorio_puntos_de_cultura.pdf` | Directorio del Ministerio de Cultura. Revisado y descartado: no indica el distrito | Descarga manual |
+
+## `data/processed/` y `fuentes/` — Capa 3
+
+- **`data/processed/capa3_notas_candidatas.csv`** (`capa3_triaje.py`): notas que mencionan a jóvenes, adolescentes o
+  estudiantes y alguna actividad. Tiene fragmentos del texto con edades (`edades`), costos (`costo`), cifras
+  (`cifras`) y posibles señales de demanda (`demanda`) para agilizar la lectura. No clasifica nada.
+- **`fuentes/capa3_registro_oferta.csv`**: registro codificado a mano, una fila por actividad (se versiona en git).
+
+| Columna | Descripción |
+|---|---|
+| `id` | Identificador `C3-###` (se reasigna al reconstruir el registro; no usar como clave estable entre versiones) |
+| `distrito`, `ubigeo` | Distrito(s) donde se realiza; varios separados por `;` |
+| `ambito` | A quién está abierta: `distrital` (vecinos o colegios del distrito), `metropolitano` (cualquier persona de Lima) o `nacional` (todo el país, aunque la sede esté en Lima Este) |
+| `organizador`, `tipo_organizador` | Quién la organiza, y tipo: municipalidad distrital, Municipalidad de Lima / SERPAR, gobierno nacional, alianza público-privada, sociedad civil, privado |
+| `nombre` | Nombre de la actividad, programa, evento o espacio |
+| `tipo_oferta` | Taller o curso, programa, evento, feria, concurso o competencia, servicio, espacio o infraestructura, convocatoria de voluntariado, beca o premio |
+| `tematica` | Uno o más temas separados por `;` (lista cerrada, ver `metodologia_capa3.md`) |
+| `publico_declarado`, `edad_min`, `edad_max` | Público y edades tal como los indica la fuente (vacío si no los indica) |
+| `incluye_15_29` | `juventud` (dirigida a jóvenes o con rango dentro de 15–29), `adolescentes` (mezcla niños con adolescentes o "jóvenes"; incluye parte del rango 15–29), `todo público`, `no` (fuera del rango) o `no indica` |
+| `costo`, `costo_detalle` | `gratuito`, `pagado`, `mixto` o `no indica`, y el monto si se publica |
+| `modalidad` | `presencial`, `virtual`, `mixta` o `no indica` |
+| `fecha_referencia`, `anio`, `periodo` | Fecha de inicio o de la nota principal, año, y duración o frecuencia |
+| `lugar` | Sede(s) |
+| `evidencia` | `oferta`, `participación declarada` o `demanda observada` (ver `metodologia_capa3.md`) |
+| `cifra_tipo`, `cifra_n`, `cifra_texto`, `cifra_poblacion` | Tipo de cifra (inscritos, asistentes, vacantes, aforo, población beneficiaria estimada...), su valor (límite inferior si dice "más de"), el texto original y a quién se refiere |
+| `senal_demanda` | Qué indica demanda (solo si `evidencia` = `demanda observada`) |
+| `fuente_url`, `fuente_tipo`, `verificacion`, `fecha_consulta` | Enlace(s) separados por ` \| `, tipo de fuente, si se leyó el texto completo o solo el resumen del buscador, y fecha de consulta |
+| `notas` | Aclaraciones |
