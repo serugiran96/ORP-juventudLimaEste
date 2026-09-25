@@ -180,7 +180,8 @@ jupyter nbconvert --to notebook --execute --inplace notebooks/04_integracion.ipy
 El cruce parte de tres tablas escritas a partir de los notebooks 01–03: `resultados/hallazgos_integrados.csv`
 (49 hallazgos con su referencia técnica), `resultados/patrones.csv` y `resultados/propuestas.csv`. El notebook 04
 verifica que todas las referencias existan y resume el contexto por distrito. El informe
-`resultados/informe_final.md` se genera a partir de esas tablas con `python scripts/integracion_informe.py`. Las reglas y los niveles de evidencia están en
+`resultados/informe_final.md` se genera a partir de esas tablas con `python scripts/integracion_informe.py`, y su versión web
+(`resultados/informe_final.html`) con `python scripts/integracion_pagina.py`. Las reglas y los niveles de evidencia están en
 `fuentes/metodologia_integracion.md`.
 ## Datos y privacidad
 

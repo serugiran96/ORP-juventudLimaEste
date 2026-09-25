@@ -1,0 +1,678 @@
+<title>Juventudes de Lima Este</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+:root{
+  --bg:#f4f6f8; --surface:#ffffff; --ink:#141a22; --ink-2:#4b5566; --ink-3:#6b7485; --line:#dde2e9; --line-2:#c8cfd9;
+  --accent:#2a78d6; --accent-ink:#1c5aa6; --l0:#eceff3; --l1:#cddff5; --l2:#86b4ec; --l3:#2a78d6;
+  --l0-ink:#4b5566; --l1-ink:#1d3350; --l2-ink:#0f2440; --l3-ink:#ffffff;
+  --pat:#2a78d6; --bre:#b8562a; --dis:#3f7f6b; --hyp:#fff6e5; --hyp-line:#e3b865;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif; --body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#101318; --surface:#171b22; --ink:#e7ebf1; --ink-2:#aeb6c4; --ink-3:#8b94a4; --line:#262c36; --line-2:#343c48;
+    --accent:#5c9ce8; --accent-ink:#8cbaf2; --l0:#20252e; --l1:#223a58; --l2:#2f5c96; --l3:#4a8ce0;
+    --l0-ink:#aeb6c4; --l1-ink:#d6e5f8; --l2-ink:#eef4fc; --l3-ink:#0b1320;
+    --pat:#5c9ce8; --bre:#e08a5e; --dis:#6fb79e; --hyp:#2a2415; --hyp-line:#8a6d2f;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#101318; --surface:#171b22; --ink:#e7ebf1; --ink-2:#aeb6c4; --ink-3:#8b94a4; --line:#262c36; --line-2:#343c48;
+  --accent:#5c9ce8; --accent-ink:#8cbaf2; --l0:#20252e; --l1:#223a58; --l2:#2f5c96; --l3:#4a8ce0;
+  --l0-ink:#aeb6c4; --l1-ink:#d6e5f8; --l2-ink:#eef4fc; --l3-ink:#0b1320;
+  --pat:#5c9ce8; --bre:#e08a5e; --dis:#6fb79e; --hyp:#2a2415; --hyp-line:#8a6d2f;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;padding-inline:20px;padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+a{color:var(--accent-ink)}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+h1,h2,h3,h4{font-family:var(--display);font-stretch:88%;line-height:1.15;text-wrap:balance;margin:0}
+h2{font-size:1.75rem;font-weight:700;margin-block:0 16px}
+h3{font-size:1.2rem;font-weight:700}
+h4{font-size:1.1rem;font-weight:700}
+p{margin:0}
+.muted{color:var(--ink-3)}
+.code,.code-static{font-family:var(--mono);font-size:.78em;font-weight:500;letter-spacing:.01em}
+.code{text-decoration:none;background:var(--l0);color:var(--ink-2);padding:1px 5px;border-radius:4px;white-space:nowrap}
+.code:hover{background:var(--l1);color:var(--l1-ink)}
+.code-static{color:var(--ink-3)}
+section.block{padding-block:48px 8px;border-top:1px solid var(--line)}
+section.block>*+*{margin-top:16px}
+.lead{max-width:68ch;color:var(--ink-2)}
+
+/* cabecera */
+.masthead{padding-block:56px 32px;display:grid;gap:16px}
+.eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.masthead h1{font-size:clamp(2.4rem,7vw,4rem);font-weight:800;letter-spacing:-.01em}
+.dek{font-size:1.15rem;color:var(--ink-2);max-width:62ch}
+.districts{display:flex;flex-wrap:wrap;gap:6px}
+.districts span{font-size:.8rem;border:1px solid var(--line-2);border-radius:999px;padding:2px 10px;color:var(--ink-2)}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:8px}
+.facts div{background:var(--surface);padding:14px 16px;display:grid;gap:2px}
+.facts b{font-family:var(--display);font-stretch:88%;font-size:1.7rem;font-variant-numeric:tabular-nums}
+.facts span{font-size:.85rem;color:var(--ink-2);line-height:1.35}
+
+/* resumen */
+.summary{list-style:none;margin:0;padding:0;display:grid;gap:12px;max-width:72ch}
+.summary li{padding-left:18px;position:relative}
+.summary li::before{content:"";position:absolute;left:0;top:.7em;width:8px;height:2px;background:var(--accent)}
+.rules{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.rules div{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-size:.93rem}
+.rules b{display:block;font-family:var(--display);font-stretch:88%;font-size:1rem;margin-bottom:2px}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{text-align:left;vertical-align:top;padding:9px 10px;border-bottom:1px solid var(--line)}
+thead th{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-weight:500}
+
+/* capas */
+.layers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.layer{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:grid;gap:10px;align-content:start}
+.layer h3{font-size:1.05rem}
+.layer .q{font-size:.85rem;color:var(--ink-3)}
+.layer ul{margin:0;padding-left:18px;display:grid;gap:8px;font-size:.92rem}
+
+/* matriz */
+.matrix{background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.matrix table{min-width:620px}
+.matrix th[scope=row] a{color:var(--ink);text-decoration:none;font-weight:500}
+.matrix th[scope=row] a:hover{text-decoration:underline}
+.matrix td{width:118px;text-align:center}
+.matrix tbody tr:last-child>*{border-bottom:0}
+.pid{font-family:var(--mono);font-size:.78rem;color:var(--ink-3);margin-right:4px}
+.lvl{display:inline-block;min-width:92px;text-align:center;font-size:.8rem;font-weight:600;border-radius:5px;padding:3px 8px}
+.l0{background:var(--l0);color:var(--l0-ink)} .l1{background:var(--l1);color:var(--l1-ink)}
+.l2{background:var(--l2);color:var(--l2-ink)} .l3{background:var(--l3);color:var(--l3-ink)}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:.85rem;color:var(--ink-2);align-items:center}
+
+/* grupos y fichas */
+.grupo{display:grid;gap:14px;margin-top:32px}
+.grupo-head{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}
+.glyph{font-family:var(--display);font-stretch:88%;font-weight:800;font-size:1.4rem;width:40px;height:40px;display:grid;place-items:center;border:2px solid var(--ink);border-radius:50%}
+.grupo-head p{color:var(--ink-2);font-size:.95rem;max-width:68ch;margin-top:4px}
+.prop{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px;display:grid;gap:14px;scroll-margin-top:16px}
+.prop header{display:flex;gap:8px;align-items:baseline}
+.prop header .pid{font-size:.85rem}
+.desc{color:var(--ink-2);max-width:72ch}
+.levels{display:flex;flex-wrap:wrap;gap:10px 18px}
+.levels span{display:grid;gap:3px}
+.levels small{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.prop dl{margin:0;display:grid;gap:10px}
+.kv{display:grid;grid-template-columns:190px 1fr;gap:12px;font-size:.94rem}
+.kv dt{font-weight:600;color:var(--ink)}
+.kv dd{margin:0;color:var(--ink-2)}
+.kv.hyp{background:var(--hyp);border-left:3px solid var(--hyp-line);padding:8px 10px;border-radius:0 6px 6px 0}
+details summary{cursor:pointer;font-weight:600;font-size:.92rem;color:var(--accent-ink)}
+.trace{display:grid;gap:6px;margin-top:10px;font-size:.9rem}
+.trace h5{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin:8px 0 0;font-weight:500}
+.trace ul{margin:0;padding-left:0;list-style:none;display:grid;gap:8px}
+.trace .ev{font-size:.78rem;color:var(--ink-3)}
+
+/* patrones */
+.pats{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.pats li{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;gap:8px;scroll-margin-top:16px}
+.pat-head{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chip{font-size:.72rem;font-weight:600;border-radius:999px;padding:1px 9px;border:1px solid currentColor}
+.t-pat{color:var(--pat)} .t-bre{color:var(--bre)} .t-dis{color:var(--dis)}
+.caut{font-size:.9rem;color:var(--ink-2)}
+.caut span{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-right:4px}
+.refs{display:flex;flex-wrap:wrap;gap:4px}
+
+/* listas finales */
+.design{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;list-style:none;margin:0;padding:0}
+.design li{border-top:2px solid var(--ink);padding-top:8px;font-size:.93rem;color:var(--ink-2)}
+.design b{display:block;color:var(--ink);font-family:var(--display);font-stretch:88%;font-size:1.02rem}
+.steps{margin:0;padding-left:22px;display:grid;gap:10px;max-width:72ch}
+.limits{margin:0;padding-left:20px;display:grid;gap:8px;max-width:72ch;color:var(--ink-2)}
+
+/* catálogo */
+.cat{margin-top:24px}
+.hlist{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:0}
+.hlist li{display:grid;grid-template-columns:64px 1fr;gap:10px;padding-block:12px;border-top:1px solid var(--line);scroll-margin-top:16px}
+.hlist li:target{background:var(--l0);border-radius:6px}
+.hlist .code-static{padding-top:3px}
+.hlist p{font-size:.94rem}
+.meta{font-size:.8rem;color:var(--ink-3);margin-top:4px}
+.meta span{font-weight:600}
+.ref{font-family:var(--mono);font-size:.74rem}
+footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:.85rem;color:var(--ink-3)}
+
+@media (max-width:760px){
+  .facts{grid-template-columns:repeat(2,1fr)}
+  .layers,.rules,.design{grid-template-columns:1fr}
+  .kv{grid-template-columns:1fr;gap:2px}
+  body{padding-inline:16px}
+}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto}}
+html{scroll-behavior:smooth}
+</style>
+<div class="wrap">
+
+<header class="masthead">
+  <p class="eyebrow">Análisis para la Organización Rita Poma · 25 de septiembre de 2026</p>
+  <h1>Juventudes de Lima Este</h1>
+  <p class="dek">Qué necesitan, qué hacen, qué se les ofrece y qué actividades podrían convocarlos: el cruce de tres capas de evidencia en siete distritos, con propuestas que remiten a cada dato que las sustenta.</p>
+  <div class="districts"><span>Ate</span><span>Chaclacayo</span><span>El Agustino</span><span>La Molina</span><span>Lurigancho-Chosica</span><span>San Juan de Lurigancho</span><span>Santa Anita</span></div>
+  <div class="facts">
+    <div><b>712 mil</b><span>jóvenes de 15 a 29 años (2026)</span></div>
+    <div><b>44 de 151</b><span>actividades publicadas se dirigen a jóvenes</span></div>
+    <div><b>4</b><span>señales de demanda, todas por ofertas concretas y gratuitas</span></div>
+    <div><b>11</b><span>propuestas; ninguna con convocatoria demostrada</span></div>
+  </div>
+</header>
+
+<section class="block" aria-labelledby="resumen">
+  <h2 id="resumen">Resumen</h2>
+  <ul class="summary">
+    <li><strong>San Juan de Lurigancho y Ate concentran el 69 % de los jóvenes</strong> de los siete distritos (<a class="code" href="#H1-01">H1-01</a>).</li>
+    <li><strong>Estudio y empleo compiten por el tiempo y el dinero.</strong> Entre quienes no estudian en Lima Este, 31 % trabaja y 28 % menciona problemas económicos; solo 2 % no estudia por falta de interés (<a class="code" href="#H2-12">H2-12</a>). En Lima Metropolitana, el desempleo juvenil es de 11,7 % y el 22 % de las mujeres jóvenes no estudia ni trabaja (<a class="code" href="#H1-06">H1-06</a>, <a class="code" href="#H1-07">H1-07</a>).</li>
+    <li><strong>Lo que hacen, medido en Lima Este:</strong> 93 % usa pantallas cada semana, 63 % va al cine en el año, 45 % a espectáculos en vivo, 46 % juega en el celular y 28 % hace deporte cada semana, con una brecha grande por sexo (<a class="code" href="#H2-01">H2-01</a>, <a class="code" href="#H2-02">H2-02</a>, <a class="code" href="#H2-07">H2-07</a>, <a class="code" href="#H2-08">H2-08</a>).</li>
+    <li><strong>La oferta publicada casi termina a los 17 años.</strong> Lo dirigido a jóvenes se concentra en empleo, voluntariado y preparación preuniversitaria; para 18–29 casi no hay deporte, cultura ni tecnología (<a class="code" href="#H3-01">H3-01</a>, <a class="code" href="#H3-02">H3-02</a>).</li>
+    <li><strong>La convocatoria casi nunca se puede observar.</strong> Las cifras las declara quien organiza, y las únicas señales de demanda son por una beca o unos talleres gratuitos concretos, que no se generalizan (<a class="code" href="#H3-06">H3-06</a>, <a class="code" href="#H3-08">H3-08</a>, <a class="code" href="#H3-12">H3-12</a>).</li>
+    <li><strong>Las propuestas más respaldadas</strong> son la preparación preuniversitaria con orientación y becas y la empleabilidad y primer empleo. <strong>Deporte para 18–29, cultura urbana y música en vivo, y cine</strong> tienen práctica alta en Lima Este y son las mejores candidatas para pilotos que midan la convocatoria.</li>
+    <li><strong>Todas las propuestas son hipótesis de convocatoria:</strong> deben validarse con una consulta a jóvenes y pilotos con indicadores definidos de antemano.</li>
+  </ul>
+</section>
+
+<section class="block" aria-labelledby="leer">
+  <h2 id="leer">Cómo leer este informe</h2>
+  <p class="lead">El análisis tiene tres capas. Cada afirmación lleva un código (<span class="code-static">H1-</span>, <span class="code-static">H2-</span>, <span class="code-static">H3-</span>) que lleva al hallazgo, con su fuente, su población y lo que no permite afirmar.</p>
+  <div class="rules">
+    <div><b>La ausencia de oferta no es demanda</b>Que no se encontrara una actividad solo dice que no se publicó.</div>
+    <div><b>La frecuencia de oferta no es interés</b>Muchas actividades de un tema reflejan las decisiones de quien organiza.</div>
+    <div><b>Una señal de demanda vale para su oferta</b>Más postulantes que becas es demanda por esa beca, no interés general por la formación.</div>
+    <div><b>Lo infantil no se generaliza</b>Las cifras de talleres para 6–17 años no describen a los jóvenes de 15–29.</div>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>Tipo de evidencia</th><th>Qué permite afirmar</th></tr></thead>
+    <tbody>
+      <tr><td>Representativa de Lima Este</td><td>Estimación de los siete distritos juntos con encuestas del INEI; nunca por distrito.</td></tr>
+      <tr><td>Representativa de Lima Metropolitana</td><td>Describe a los 43 distritos; se cita como contexto, no como Lima Este.</td></tr>
+      <tr><td>Registro administrativo distrital</td><td>Nacimientos o casos atendidos por distrito; depende del acceso a los servicios.</td></tr>
+      <tr><td>Señal</td><td>Personas u organizaciones autoseleccionadas y estudios de mercado antiguos.</td></tr>
+      <tr><td>Oferta · participación declarada · demanda observada</td><td>Lo publicado, las cifras que da quien organiza y las señales de más interesados que cupos.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="block" aria-labelledby="capas">
+  <h2 id="capas">Lo que sabemos, capa por capa</h2>
+  <div class="layers">
+    <div class="layer"><h3>1 · Contexto y necesidades</h3><p class="q">Dato Joven, ENAHO</p><ul>
+      <li>~712 mil jóvenes; un tercio de 15–19 años (<a class="code" href="#H1-01">H1-01</a>).</li>
+      <li>Pocas organizaciones juveniles acreditadas en los distritos más poblados; ninguna de deporte (<a class="code" href="#H1-02">H1-02</a>).</li>
+      <li>Desempleo de 11,7 %, informalidad de 65 %, 22 % de mujeres jóvenes sin estudio ni empleo (Lima Metropolitana; <a class="code" href="#H1-06">H1-06</a>, <a class="code" href="#H1-07">H1-07</a>).</li>
+      <li>Episodio depresivo en 21,6 % de las mujeres jóvenes (Lima Metropolitana; <a class="code" href="#H1-08">H1-08</a>).</li>
+      <li>Un tercio dejó de hacer actividades por la delincuencia (<a class="code" href="#H1-10">H1-10</a>).</li>
+      <li>Maternidad adolescente sobre la mediana en El Agustino, Santa Anita y Ate (<a class="code" href="#H1-13">H1-13</a>).</li>
+    </ul></div>
+    <div class="layer"><h3>2 · Intereses y hábitos</h3><p class="q">ENUT, ENAPRES, ENAHO, Ipsos</p><ul>
+      <li>Cine 63 %, espectáculos en vivo 45 %, conciertos 21 % (Lima Este; <a class="code" href="#H2-07">H2-07</a>).</li>
+      <li>46 % juega en el celular, 35 % en línea (<a class="code" href="#H2-08">H2-08</a>).</li>
+      <li>Deporte semanal 28 %; 49 % de los hombres y 20 % de las mujeres (<a class="code" href="#H2-02">H2-02</a>).</li>
+      <li>El dinero frena el cine y los conciertos; "no hay oferta" casi no aparece como motivo (<a class="code" href="#H2-09">H2-09</a>).</li>
+      <li>La mitad estudia y más de la mitad trabaja: el tiempo es escaso (<a class="code" href="#H2-06">H2-06</a>).</li>
+      <li>El deseo de emprender solo se midió en 2019–2020 (<a class="code" href="#H2-13">H2-13</a>).</li>
+    </ul></div>
+    <div class="layer"><h3>3 · Oferta y convocatoria</h3><p class="q">Notas municipales y de entidades públicas, 2024–2026</p><ul>
+      <li>151 actividades: 44 para jóvenes, 53 para niños y adolescentes, 51 para todo público (<a class="code" href="#H3-01">H3-01</a>).</li>
+      <li>180 alumnos en la academia gratuita de Chosica; 100 becarios en El Agustino (<a class="code" href="#H3-05">H3-05</a>).</li>
+      <li>Hackathon en SJL con 400 inscripciones (<a class="code" href="#H3-10">H3-10</a>).</li>
+      <li>Cultura urbana ofrecida, sin cifras de asistencia juvenil (<a class="code" href="#H3-13">H3-13</a>).</li>
+      <li>Chaclacayo casi no publica; SJL no tiene notas de 2024 (<a class="code" href="#H3-18">H3-18</a>).</li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="block" aria-labelledby="patrones">
+  <h2 id="patrones">Patrones, brechas y condiciones de diseño</h2>
+  <p class="lead">Una <strong>brecha</strong> es la distancia entre una necesidad o práctica documentada y la oferta visible; no prueba que los jóvenes quieran la actividad que falta.</p>
+  <ol class="pats"><li id="PT-01"><div class="pat-head"><span class="code-static">PT-01</span><span class="chip t-pat">patrón</span><strong>Estudio y empleo</strong></div>
+<p>Para estudiar, la barrera no es el interés sino el trabajo y el dinero; la oferta publicada para jóvenes se concentra en empleo y preparación preuniversitaria, y es ahí donde aparecen más cifras de participación juvenil.</p><p class="caut"><span>Cautela</span> Las señales de demanda (becas, talleres de SENAJU) se refieren a ofertas concretas y gratuitas; no indican interés general por la formación.</p>
+<p class="refs"><a class="code" href="#H1-05">H1-05</a> <a class="code" href="#H1-06">H1-06</a> <a class="code" href="#H1-07">H1-07</a> <a class="code" href="#H2-06">H2-06</a> <a class="code" href="#H2-12">H2-12</a> <a class="code" href="#H3-02">H3-02</a> <a class="code" href="#H3-05">H3-05</a> <a class="code" href="#H3-06">H3-06</a> <a class="code" href="#H3-07">H3-07</a> <a class="code" href="#H3-08">H3-08</a></p></li>
+<li id="PT-02"><div class="pat-head"><span class="code-static">PT-02</span><span class="chip t-bre">brecha</span><strong>Edad</strong></div>
+<p>La oferta publicada casi termina a los 17 años, mientras más de dos tercios de los jóvenes de Lima Este tienen 20–29 años y practican deporte, cultura y actividades digitales. Fuera de empleo y preparación preuniversitaria, casi no hay oferta visible para 18–29.</p><p class="caut"><span>Cautela</span> Es una brecha entre práctica documentada y oferta visible. No prueba que los jóvenes de 18–29 quieran actividades organizadas.</p>
+<p class="refs"><a class="code" href="#H1-01">H1-01</a> <a class="code" href="#H2-02">H2-02</a> <a class="code" href="#H2-07">H2-07</a> <a class="code" href="#H2-08">H2-08</a> <a class="code" href="#H3-01">H3-01</a> <a class="code" href="#H3-02">H3-02</a> <a class="code" href="#H3-11">H3-11</a></p></li>
+<li id="PT-03"><div class="pat-head"><span class="code-static">PT-03</span><span class="chip t-bre">brecha</span><strong>Deporte</strong></div>
+<p>El deporte es una de las prácticas juveniles más extendidas (27,6 % semanal en Lima Este), con una gran brecha por sexo (49 % hombres, 20 % mujeres en Lima Metropolitana); no hay organizaciones juveniles deportivas acreditadas y la oferta deportiva visible se dirige a 6–17 años, aunque hay espacios nuevos o reabiertos.</p><p class="caut"><span>Cautela</span> La alta demanda de la Academia IPD es de 6–17 años y no se generaliza a 18–29. La baja práctica de las mujeres no es, por sí sola, demanda insatisfecha.</p>
+<p class="refs"><a class="code" href="#H1-02">H1-02</a> <a class="code" href="#H1-10">H1-10</a> <a class="code" href="#H2-02">H2-02</a> <a class="code" href="#H3-03">H3-03</a> <a class="code" href="#H3-11">H3-11</a> <a class="code" href="#H3-12">H3-12</a> <a class="code" href="#H3-17">H3-17</a> <a class="code" href="#H3-20">H3-20</a></p></li>
+<li id="PT-04"><div class="pat-head"><span class="code-static">PT-04</span><span class="chip t-pat">patrón</span><strong>Cultura y entretenimiento</strong></div>
+<p>Cine (63 %) y espectáculos en vivo (45 %) son las prácticas culturales más extendidas en Lima Este; el dinero es barrera en cine y conciertos, y los asistentes entran gratis sobre todo a ferias y festivales. Hay oferta de cultura urbana, pero sin cifras de asistencia juvenil.</p><p class="caut"><span>Cautela</span> Falta evidencia local de convocatoria a eventos juveniles; la práctica cultural no indica interés en eventos organizados por terceros.</p>
+<p class="refs"><a class="code" href="#H2-07">H2-07</a> <a class="code" href="#H2-09">H2-09</a> <a class="code" href="#H2-10">H2-10</a> <a class="code" href="#H3-04">H3-04</a> <a class="code" href="#H3-13">H3-13</a></p></li>
+<li id="PT-05"><div class="pat-head"><span class="code-static">PT-05</span><span class="chip t-pat">patrón</span><strong>Digital</strong></div>
+<p>Lo digital domina el tiempo y el consumo (pantallas, video, música, videojuegos), pero las habilidades avanzadas son minoritarias y solo un tercio usa internet para aprender; la oferta tecnológica para jóvenes es mínima y tiene un solo dato de convocatoria (hackathon con 400 inscripciones).</p><p class="caut"><span>Cautela</span> No se encontró oferta de videojuegos: esa ausencia no es evidencia de demanda. El juego es mayormente individual y en casa.</p>
+<p class="refs"><a class="code" href="#H1-09">H1-09</a> <a class="code" href="#H2-01">H2-01</a> <a class="code" href="#H2-08">H2-08</a> <a class="code" href="#H2-11">H2-11</a> <a class="code" href="#H2-15">H2-15</a> <a class="code" href="#H3-02">H3-02</a> <a class="code" href="#H3-10">H3-10</a> <a class="code" href="#H3-15">H3-15</a></p></li>
+<li id="PT-06"><div class="pat-head"><span class="code-static">PT-06</span><span class="chip t-bre">brecha</span><strong>Mujeres jóvenes</strong></div>
+<p>Las mujeres jóvenes concentran más necesidades documentadas (más NINI, menor participación laboral, más episodio depresivo, casi todas las víctimas atendidas en los CEM, más inseguridad nocturna) y mucha menos práctica deportiva y de juegos; son mayoría en el voluntariado. La oferta con enfoque en mujeres jóvenes es casi inexistente.</p><p class="caut"><span>Cautela</span> Casi toda la evidencia es de Lima Metropolitana o de registros que dependen del acceso a servicios.</p>
+<p class="refs"><a class="code" href="#H1-03">H1-03</a> <a class="code" href="#H1-06">H1-06</a> <a class="code" href="#H1-07">H1-07</a> <a class="code" href="#H1-08">H1-08</a> <a class="code" href="#H1-10">H1-10</a> <a class="code" href="#H1-11">H1-11</a> <a class="code" href="#H1-14">H1-14</a> <a class="code" href="#H2-02">H2-02</a> <a class="code" href="#H2-03">H2-03</a> <a class="code" href="#H2-12">H2-12</a> <a class="code" href="#H3-14">H3-14</a></p></li>
+<li id="PT-07"><div class="pat-head"><span class="code-static">PT-07</span><span class="chip t-pat">patrón</span><strong>Participación</strong></div>
+<p>La participación organizada es muy baja y la densidad de organizaciones juveniles es menor en los distritos más poblados; el voluntariado llega sobre todo a mujeres estudiantes, no a quienes trabajan. La oferta de participación es frecuente pero sus cifras son pequeñas.</p><p class="caut"><span>Cautela</span> Que haya mucha oferta de participación no indica interés.</p>
+<p class="refs"><a class="code" href="#H1-02">H1-02</a> <a class="code" href="#H1-03">H1-03</a> <a class="code" href="#H1-04">H1-04</a> <a class="code" href="#H1-12">H1-12</a> <a class="code" href="#H2-04">H2-04</a> <a class="code" href="#H3-02">H3-02</a> <a class="code" href="#H3-16">H3-16</a></p></li>
+<li id="PT-08"><div class="pat-head"><span class="code-static">PT-08</span><span class="chip t-dis">condición de diseño</span><strong>Tiempo</strong></div>
+<p>El tiempo es escaso y poco satisfactorio: la mitad estudia (~37 h) y más de la mitad trabaja o busca trabajo (~42 h); la falta de tiempo es la segunda barrera cultural. Conviene formatos cortos, fines de semana y cerca de casa.</p><p class="caut"><span>Cautela</span> No se midieron horarios preferidos.</p>
+<p class="refs"><a class="code" href="#H2-05">H2-05</a> <a class="code" href="#H2-06">H2-06</a> <a class="code" href="#H2-09">H2-09</a></p></li>
+<li id="PT-09"><div class="pat-head"><span class="code-static">PT-09</span><span class="chip t-dis">condición de diseño</span><strong>Costo</strong></div>
+<p>El dinero limita el estudio y la asistencia a cine y conciertos; la oferta publicada es casi toda gratuita, y las cuatro señales de demanda observadas son de ofertas gratuitas.</p><p class="caut"><span>Cautela</span> No se midió disposición a pagar.</p>
+<p class="refs"><a class="code" href="#H2-09">H2-09</a> <a class="code" href="#H2-10">H2-10</a> <a class="code" href="#H2-12">H2-12</a> <a class="code" href="#H3-04">H3-04</a> <a class="code" href="#H3-06">H3-06</a> <a class="code" href="#H3-08">H3-08</a> <a class="code" href="#H3-12">H3-12</a></p></li>
+<li id="PT-10"><div class="pat-head"><span class="code-static">PT-10</span><span class="chip t-dis">condición de diseño</span><strong>Seguridad</strong></div>
+<p>Un tercio de los jóvenes de Lima Metropolitana dejó de hacer actividades por la delincuencia, y dos de cada tres mujeres jóvenes se sienten inseguras de noche en su barrio. Horarios, recorridos y espacios deben considerarlo.</p><p class="caut"><span>Cautela</span> Dato de Lima Metropolitana.</p>
+<p class="refs"><a class="code" href="#H1-10">H1-10</a></p></li>
+<li id="PT-11"><div class="pat-head"><span class="code-static">PT-11</span><span class="chip t-dis">condición de diseño</span><strong>Información y difusión</strong></div>
+<p>La falta de información es una barrera relevante en ferias y exposiciones, la oferta municipal es poco visible en internet y los jóvenes usan intensamente redes como TikTok; la difusión no puede depender solo de notas municipales.</p><p class="caut"><span>Cautela</span> El dato de redes es de Ipsos (2022).</p>
+<p class="refs"><a class="code" href="#H2-09">H2-09</a> <a class="code" href="#H2-15">H2-15</a> <a class="code" href="#H3-18">H3-18</a></p></li>
+<li id="PT-12"><div class="pat-head"><span class="code-static">PT-12</span><span class="chip t-pat">patrón</span><strong>Adolescentes 15–19</strong></div>
+<p>Los registros de maternidad adolescente y de violencia atendida muestran necesidades concentradas en adolescentes (El Agustino, Santa Anita y Ate por encima de la mediana en maternidad; 41 % de las víctimas atendidas tiene 15–19 años). La oferta de prevención llega sobre todo por colegios.</p><p class="caut"><span>Cautela</span> Los registros no miden prevalencia; el alcance en colegios es de público cautivo, no convocatoria voluntaria.</p>
+<p class="refs"><a class="code" href="#H1-13">H1-13</a> <a class="code" href="#H1-14">H1-14</a> <a class="code" href="#H3-14">H3-14</a></p></li></ol>
+</section>
+
+<section class="block" aria-labelledby="propuestas">
+  <h2 id="propuestas">Propuestas de actividades</h2>
+  <p class="lead">Cada propuesta se califica por separado en tres dimensiones. <strong>Necesidad:</strong> ¿hay una necesidad documentada en ese segmento? <strong>Interés o práctica:</strong> ¿los jóvenes ya hacen algo parecido? <strong>Convocatoria:</strong> ¿hay evidencia de que una actividad así convoque jóvenes en Lima Este? No se combinan en un puntaje.</p>
+  <div class="legend"><span>Nivel:</span> <span class="lvl l0">sin evidencia</span> <span class="lvl l1">bajo</span> <span class="lvl l2">medio</span> <span class="lvl l3">alto</span></div>
+  <div class="matrix tbl"><table>
+    <thead><tr><th>Propuesta</th><th>Necesidad</th><th>Interés o práctica</th><th>Convocatoria</th></tr></thead>
+    <tbody><tr><th scope="row"><a href="#P01"><span class="pid">P01</span> Preparación preuniversitaria accesible con orientación vocacional y acompañamiento para postular a becas</a></th>
+<td><span class="lvl l3">alto</span></td><td><span class="lvl l2">medio</span></td><td><span class="lvl l2">medio</span></td></tr>
+<tr><th scope="row"><a href="#P02"><span class="pid">P02</span> Empleabilidad y primer empleo: taller breve y acompañamiento hacia vacantes reales</a></th>
+<td><span class="lvl l2">medio</span></td><td><span class="lvl l2">medio</span></td><td><span class="lvl l2">medio</span></td></tr>
+<tr><th scope="row"><a href="#P04"><span class="pid">P04</span> Deporte organizado para jóvenes de 18–29 (ligas, torneos y entrenamiento), con opciones seguras para mujeres jóvenes</a></th>
+<td><span class="lvl l1">bajo</span></td><td><span class="lvl l3">alto</span></td><td><span class="lvl l1">bajo</span></td></tr>
+<tr><th scope="row"><a href="#P05"><span class="pid">P05</span> Escenarios gratuitos de cultura urbana y música en vivo con jóvenes como artistas y organizadores</a></th>
+<td><span class="lvl l0">sin evidencia</span></td><td><span class="lvl l3">alto</span></td><td><span class="lvl l1">bajo</span></td></tr>
+<tr><th scope="row"><a href="#P06"><span class="pid">P06</span> Cine y creación audiovisual: proyecciones gratuitas con conversación y taller de video para redes</a></th>
+<td><span class="lvl l0">sin evidencia</span></td><td><span class="lvl l3">alto</span></td><td><span class="lvl l0">sin evidencia</span></td></tr>
+<tr><th scope="row"><a href="#P03"><span class="pid">P03</span> Habilidades digitales aplicadas y retos colaborativos (hackathons, proyectos)</a></th>
+<td><span class="lvl l2">medio</span></td><td><span class="lvl l2">medio</span></td><td><span class="lvl l1">bajo</span></td></tr>
+<tr><th scope="row"><a href="#P08"><span class="pid">P08</span> Espacios de bienestar y encuentro para mujeres jóvenes, con derivación a servicios</a></th>
+<td><span class="lvl l2">medio</span></td><td><span class="lvl l1">bajo</span></td><td><span class="lvl l1">bajo</span></td></tr>
+<tr><th scope="row"><a href="#P10"><span class="pid">P10</span> Voluntariado de corta duración con resultados visibles (ambiente, espacios públicos, patrimonio)</a></th>
+<td><span class="lvl l1">bajo</span></td><td><span class="lvl l2">medio</span></td><td><span class="lvl l1">bajo</span></td></tr>
+<tr><th scope="row"><a href="#P09"><span class="pid">P09</span> Emprendimiento juvenil y ventas por internet</a></th>
+<td><span class="lvl l2">medio</span></td><td><span class="lvl l1">bajo</span></td><td><span class="lvl l1">bajo</span></td></tr>
+<tr><th scope="row"><a href="#P07"><span class="pid">P07</span> Videojuegos y e-sports presenciales como punto de encuentro</a></th>
+<td><span class="lvl l0">sin evidencia</span></td><td><span class="lvl l2">medio</span></td><td><span class="lvl l0">sin evidencia</span></td></tr>
+<tr><th scope="row"><a href="#P11"><span class="pid">P11</span> Componente de educación sexual integral y prevención de violencia para adolescentes, dentro de otras actividades</a></th>
+<td><span class="lvl l3">alto</span></td><td><span class="lvl l0">sin evidencia</span></td><td><span class="lvl l1">bajo</span></td></tr></tbody>
+  </table></div>
+  <section class="grupo" aria-labelledby="gA"><div class="grupo-head"><span class="glyph">A</span><div><h3 id="gA">Con respaldo en las tres dimensiones</h3><p>Necesidad documentada, práctica o interés relacionados y participación declarada con cifras en actividades similares en Lima Este. Son las apuestas más sólidas, aunque su convocatoria no está demostrada.</p></div></div>
+<article class="prop" id="P01">
+  <header><span class="pid">P01</span><h4>Preparación preuniversitaria accesible con orientación vocacional y acompañamiento para postular a becas</h4></header>
+  <p class="desc">Ciclos gratuitos o becados de preparación para el examen de admisión, sesiones de orientación vocacional y apoyo para postular a Beca 18 y becas municipales o privadas.</p>
+  <div class="levels" aria-label="Nivel de evidencia">
+    <span><small>Necesidad</small><span class="lvl l3">alto</span></span>
+    <span><small>Interés o práctica</small><span class="lvl l2">medio</span></span>
+    <span><small>Convocatoria</small><span class="lvl l2">medio</span></span>
+  </div>
+  <dl><div class="kv"><dt>Para quién</dt><dd>16–19 años (5.º de secundaria y egresados recientes) de hogares con restricciones económicas</dd></div><div class="kv"><dt>Por qué</dt><dd>En Lima Este, 28 % de quienes no estudian lo atribuye a problemas económicos y solo 2 % a falta de interés. La oferta existente reúne cifras concretas: 180 alumnos en la academia gratuita de Chosica, 100 becarios en El Agustino, 300 asistentes a una feria vocacional.</dd></div><div class="kv"><dt>Qué sabemos de su convocatoria</dt><dd>Hay participación declarada con cifras en actividades similares para el mismo segmento en Lima Este. La única demanda observada es por una beca concreta (80 postulantes para 10 becas en Santa Anita), que muestra atracción por la gratuidad de esa oportunidad, no interés general.</dd></div><div class="kv hyp"><dt>Qué sigue siendo hipótesis</dt><dd>Que una oferta adicional atraiga a jóvenes que hoy no acceden a ninguna preparación (y no desplace a las academias municipales); qué componente convoca más (preparación, orientación o apoyo para becas).</dd></div><div class="kv"><dt>Cómo validarla</dt><dd>Inscritos frente a cupos y lista de espera; asistencia sostenida (4.ª semana); proporción sin otra preparación; postulaciones e ingresos a becas y universidades.</dd></div><div class="kv"><dt>Dónde podría pilotearse</dt><dd>Criterio operativo, no de demanda: SJL concentra 99 mil adolescentes de 15–19 y no se encontró academia municipal gratuita; coordinar con las academias de Chosica, Santa Anita, Ate y El Agustino para complementar, no duplicar.</dd></div><div class="kv"><dt>Cautelas</dt><dd>Evitar competir con academias municipales existentes; el ingreso universitario depende de factores fuera de la actividad.</dd></div></dl>
+  <details><summary>Hallazgos que la sustentan</summary>
+    <div class="trace">
+      <h5>Capa 1 · necesidades</h5><ul><li><a class="code" href="#H1-01">H1-01</a> <span class="ev">estimación distrital · distritos de Lima Este</span><br>En 2026 viven en los siete distritos unos 712 mil jóvenes de 15 a 29 años (23 % de la población); San Juan de Lurigancho concentra el 44 % y Ate el 25 %. Cerca de un tercio (226 mil) tiene 15–19 años.</li><li><a class="code" href="#H1-05">H1-05</a> <span class="ev">representativa de Lima Metropolitana · Lima Metropolitana</span><br>En Lima Metropolitana el acceso universitario aumentó (asistencia de 19,6 % a 25,6 % entre 2022 y 2025), pero la secundaria completa a los 17–18 años bajó de 85,6 % a 82,6 %.</li></ul>
+      <h5>Capa 2 · intereses y hábitos</h5><ul><li><a class="code" href="#H2-11">H2-11</a> <span class="ev">representativa de Lima Este (dominio no planificado) · Lima Este</span><br>El 32,7 % de los jóvenes de Lima Este usa internet para educación o capacitación (35,5 % en Lima Metropolitana; 43 % entre 20 y 24 años); solo el 3,9 % lo usa para vender productos o servicios.</li><li><a class="code" href="#H2-12">H2-12</a> <span class="ev">representativa de Lima Este (dominio no planificado) · Lima Este; Lima Metropolitana por sexo</span><br>El 35,4 % de los jóvenes de Lima Este asiste a un centro educativo. Entre quienes no asisten, los principales motivos son estar trabajando (31,3 %) y problemas económicos (28,0 %; 23,3 % en Lima Metropolitana); la falta de interés es mínima (2,1 %, referencial). En las mujeres pesan más los problemas económicos, familiares y del hogar.</li></ul>
+      <h5>Capa 3 · oferta y convocatoria</h5><ul><li><a class="code" href="#H3-02">H3-02</a> <span class="ev">oferta observada · 7 distritos</span><br>Lo dirigido a jóvenes se concentra en empleo y empleabilidad (13), participación y voluntariado (13) y preparación preuniversitaria (11). Hay poca oferta dirigida a jóvenes en deporte (3), salud y salud mental (3), emprendimiento (4) y tecnología (2).</li><li><a class="code" href="#H3-04">H3-04</a> <span class="ev">oferta observada · 7 distritos</span><br>La oferta publicada es casi toda gratuita (99 de 151) y presencial (143). Lo pagado son talleres de verano y escuelas deportivas (S/ 50 por ciclo en Ate; S/ 60–70 al mes en SERPAR, El Agustino y Santa Anita; S/ 140 por taller en el verano 2025 de Santa Anita) y academias preuniversitarias (S/ 150 al mes en Santa Anita).</li><li><a class="code" href="#H3-05">H3-05</a> <span class="ev">participación declarada · Lurigancho-Chosica, El Agustino, SJL, Santa Anita, Ate</span><br>Preparación preuniversitaria y orientación vocacional con participación declarada en Lima Este: 180 alumnos en la academia municipal gratuita de Lurigancho-Chosica, 300 estudiantes y vecinos en su feria vocacional, 100 becarios de Muni Becas (El Agustino), 35 ingresantes a universidades de la academia municipal de Ate (pagada), 17 becas Beca2 (SJL), &#x27;aulas completas&#x27; en la academia de Santa Anita y &#x27;miles&#x27; de escolares en la inscripción a Beca 18 en SJL.</li><li><a class="code" href="#H3-06">H3-06</a> <span class="ev">demanda observada (oferta concreta) · Santa Anita</span><br>En el concurso de becas de la academia municipal de Santa Anita (2024) más de 80 jóvenes compitieron por 10 becas. Es demanda observada por esa beca gratuita específica, no interés general por la formación.</li></ul>
+    </div>
+  </details>
+</article><article class="prop" id="P02">
+  <header><span class="pid">P02</span><h4>Empleabilidad y primer empleo: taller breve y acompañamiento hacia vacantes reales</h4></header>
+  <p class="desc">Taller corto (CV, entrevista, derechos laborales, uso de bolsas en línea) conectado con ferias, bolsas de trabajo y centros de empleo, con seguimiento de postulaciones.</p>
+  <div class="levels" aria-label="Nivel de evidencia">
+    <span><small>Necesidad</small><span class="lvl l2">medio</span></span>
+    <span><small>Interés o práctica</small><span class="lvl l2">medio</span></span>
+    <span><small>Convocatoria</small><span class="lvl l2">medio</span></span>
+  </div>
+  <dl><div class="kv"><dt>Para quién</dt><dd>18–29 años que buscan trabajo o no estudian ni trabajan; prioridad mujeres jóvenes</dd></div><div class="kv"><dt>Por qué</dt><dd>Desempleo juvenil de 11,7 % e informalidad de 65 % en Lima Metropolitana; 22 % de las mujeres jóvenes no estudia ni trabaja. En Lima Este, trabajar es el principal motivo para no estudiar (31 %).</dd></div><div class="kv"><dt>Qué sabemos de su convocatoria</dt><dd>Programas juveniles de empleabilidad en Lima Este con cifras pequeñas (62 aprobados, 50 y 143 jóvenes empleados). Las ferias atraen &#x27;cientos&#x27; o &#x27;miles&#x27; de personas de todas las edades. Los talleres gratuitos de empleabilidad de SENAJU agotaron inscripciones en 2024, pero a escala de Lima y el país.</dd></div><div class="kv hyp"><dt>Qué sigue siendo hipótesis</dt><dd>Que jóvenes que no estudian, y en particular mujeres, acudan a un taller (el voluntariado casi no llega a quienes trabajan); qué horario y formato permite asistir; que la conexión con vacantes concretas aumente la asistencia.</dd></div><div class="kv"><dt>Cómo validarla</dt><dd>Inscritos frente a cupos; proporción de mujeres y de jóvenes que no estudian ni trabajan; asistencia; postulaciones y contrataciones a tres meses.</dd></div><div class="kv"><dt>Dónde podría pilotearse</dt><dd>Criterio operativo: SJL (Agencia Local de Empleo y Centro de Empleo del MTPE) y Santa Anita (nuevo Centro de Empleo, Casa de la Juventud).</dd></div><div class="kv"><dt>Cautelas</dt><dd>No prometer empleo; las ferias existentes ya ofrecen vacantes, así que el valor está en preparar y acompañar.</dd></div></dl>
+  <details><summary>Hallazgos que la sustentan</summary>
+    <div class="trace">
+      <h5>Capa 1 · necesidades</h5><ul><li><a class="code" href="#H1-04">H1-04</a> <span class="ev">comparación descriptiva de composición · inscritos de Lima Este vs. población de Lima Metropolitana</span><br>Quienes llegan al voluntariado son sobre todo estudiantes: el 65 % solo estudia, frente al 26–30 % de los jóvenes de Lima Metropolitana; quienes solo trabajan son el 9 %, frente al 43–45 %.</li><li><a class="code" href="#H1-06">H1-06</a> <span class="ev">representativa de Lima Metropolitana · Lima Metropolitana</span><br>En Lima Metropolitana la informalidad juvenil era de 65,1 % (2023) y el desempleo, de 11,7 % en 2025 (cálculo propio con la ENAHO). La participación laboral de las mujeres jóvenes (53,8 %) está unos nueve puntos por debajo de la de los hombres (62,9 %).</li><li><a class="code" href="#H1-07">H1-07</a> <span class="ev">representativa de Lima Metropolitana · Lima Metropolitana</span><br>En 2025, el 17,9 % de los jóvenes de Lima Metropolitana no estudia ni trabaja: 22,1 % de las mujeres y 13,7 % de los hombres.</li></ul>
+      <h5>Capa 2 · intereses y hábitos</h5><ul><li><a class="code" href="#H2-06">H2-06</a> <span class="ev">representativa de Lima Este (dominio no planificado) · Lima Este; Lima Metropolitana</span><br>La mitad de los jóvenes estudia (≈ 37 h semanales entre quienes estudian) y más de la mitad trabaja o busca trabajo (58 % en Lima Este; ≈ 42 h semanales entre quienes trabajan).</li><li><a class="code" href="#H2-12">H2-12</a> <span class="ev">representativa de Lima Este (dominio no planificado) · Lima Este; Lima Metropolitana por sexo</span><br>El 35,4 % de los jóvenes de Lima Este asiste a un centro educativo. Entre quienes no asisten, los principales motivos son estar trabajando (31,3 %) y problemas económicos (28,0 %; 23,3 % en Lima Metropolitana); la falta de interés es mínima (2,1 %, referencial). En las mujeres pesan más los problemas económicos, familiares y del hogar.</li><li><a class="code" href="#H2-14">H2-14</a> <span class="ev">estudio de mercado (Ipsos) · Perú urbano</span><br>Entre quienes trabajaban en 2020, solo el 23 % lo hacía en algo relacionado con su carrera.</li></ul>
+      <h5>Capa 3 · oferta y convocatoria</h5><ul><li><a class="code" href="#H3-02">H3-02</a> <span class="ev">oferta observada · 7 distritos</span><br>Lo dirigido a jóvenes se concentra en empleo y empleabilidad (13), participación y voluntariado (13) y preparación preuniversitaria (11). Hay poca oferta dirigida a jóvenes en deporte (3), salud y salud mental (3), emprendimiento (4) y tecnología (2).</li><li><a class="code" href="#H3-07">H3-07</a> <span class="ev">participación declarada · Ate, SJL</span><br>Empleabilidad juvenil con resultados declarados pequeños: 143 jóvenes con empleo por &#x27;Mi Primera Chamba&#x27; (Ate, 2024), 62 aprobados en un programa de habilidades y empleabilidad (CEBA de SJL), 50 jóvenes contratados tras capacitación dual (SJL), &#x27;decenas&#x27; en una jornada de capacitación (SJL, 2026).</li><li><a class="code" href="#H3-08">H3-08</a> <span class="ev">demanda observada (oferta concreta) · Lima Metropolitana y nacional (una sede en SJL)</span><br>Los talleres juveniles gratuitos de SENAJU (arte, desarrollo y empleabilidad; 15–29 años) agotaron inscripciones en 2024: más de 5 000 inscritos para una meta de casi mil. Es demanda por esos talleres, medida en cinco sedes de Lima (una en SJL) y talleres virtuales nacionales.</li><li><a class="code" href="#H3-09">H3-09</a> <span class="ev">participación declarada · SJL, El Agustino, Santa Anita, Ate, Lurigancho-Chosica</span><br>Ferias y bolsas de empleo en SJL, El Agustino, Santa Anita, Ate y Lurigancho-Chosica ofrecen cientos o miles de vacantes; la asistencia se describe como &#x27;cientos&#x27; o &#x27;miles&#x27; de vecinos de todas las edades (en Santa Clara, Ate, &#x27;cientos de jóvenes y adultos&#x27; para unas 300 vacantes).</li><li><a class="code" href="#H3-17">H3-17</a> <span class="ev">oferta observada · SJL, Santa Anita, Ate, Lurigancho-Chosica, La Molina</span><br>Hay espacios e instituciones que podrían acoger actividades: Casa de la Juventud (Santa Anita), Coliseo Carmela Estrella (Chosica), complejos del IPD en SJL y Santa Anita, clubes metropolitanos Wiracocha, Cahuide y Huaycán, Agencia Local de Empleo y coworking de SJL (2026), CETPRO de La Molina, Centro de Empleo del MTPE en SJL y en construcción en Santa Anita.</li></ul>
+    </div>
+  </details>
+</article></section>
+<section class="grupo" aria-labelledby="gB"><div class="grupo-head"><span class="glyph">B</span><div><h3 id="gB">Práctica alta en Lima Este, convocatoria por medir</h3><p>Lo que los jóvenes ya hacen, medido con precisión en Lima Este, sin evidencia local de que una actividad organizada los convoque. Son las mejores candidatas para pilotos que midan la convocatoria.</p></div></div>
+<article class="prop" id="P04">
+  <header><span class="pid">P04</span><h4>Deporte organizado para jóvenes de 18–29 (ligas, torneos y entrenamiento), con opciones seguras para mujeres jóvenes</h4></header>
+  <p class="desc">Ligas o torneos de fútbol, vóley o básquet y sesiones de entrenamiento funcional o calistenia en espacios nuevos o reabiertos, en horarios compatibles con trabajo y estudio, con opciones femeninas o mixtas en horarios seguros.</p>
+  <div class="levels" aria-label="Nivel de evidencia">
+    <span><small>Necesidad</small><span class="lvl l1">bajo</span></span>
+    <span><small>Interés o práctica</small><span class="lvl l3">alto</span></span>
+    <span><small>Convocatoria</small><span class="lvl l1">bajo</span></span>
+  </div>
+  <dl><div class="kv"><dt>Para quién</dt><dd>18–29 años; submeta mujeres jóvenes</dd></div><div class="kv"><dt>Por qué</dt><dd>27,6 % de los jóvenes de Lima Este hace deporte cada semana; en Lima Metropolitana, 49 % de los hombres y 20 % de las mujeres. No hay organizaciones juveniles deportivas acreditadas y la oferta visible se dirige a 6–17 años.</dd></div><div class="kv"><dt>Qué sabemos de su convocatoria</dt><dd>Para 18–29 casi no hay datos: un taller de tiro con arco (30 alumnos por horario) y carreras abiertas a todas las edades (&#x27;más de mil&#x27;). La fuerte demanda de la Academia IPD es de 6–17 años y no se generaliza.</dd></div><div class="kv hyp"><dt>Qué sigue siendo hipótesis</dt><dd>Que jóvenes de 18–29 se inscriban en deporte organizado si el horario es compatible; que un formato femenino o en horario seguro aumente la participación de mujeres (su baja práctica no prueba demanda insatisfecha).</dd></div><div class="kv"><dt>Cómo validarla</dt><dd>Inscritos por sexo y edad; asistencia y retención; comparación de horarios y formatos (femenino, mixto).</dd></div><div class="kv"><dt>Dónde podría pilotearse</dt><dd>Criterio operativo: espacios nuevos o reabiertos en SJL (complejos del IPD, Club Wiracocha), Ate (Club Huaycán, Cahuide, losas) y Chosica (Coliseo Carmela Estrella).</dd></div><div class="kv"><dt>Cautelas</dt><dd>Coordinar el uso de espacios públicos; considerar la inseguridad nocturna.</dd></div></dl>
+  <details><summary>Hallazgos que la sustentan</summary>
+    <div class="trace">
+      <h5>Capa 1 · necesidades</h5><ul><li><a class="code" href="#H1-02">H1-02</a> <span class="ev">registro administrativo distrital · distritos de Lima Este</span><br>Hay 182 organizaciones juveniles acreditadas (RENOJ, 2019–2026). SJL, Ate, Lurigancho-Chosica y El Agustino tienen las densidades más bajas (1,6–2,3 por 10 mil jóvenes, frente a una mediana metropolitana de 3,3); La Molina, la más alta (14,3). Ninguna tiene como temática el deporte ni la participación y ciudadanía; 20 son de cultura y arte.</li><li><a class="code" href="#H1-10">H1-10</a> <span class="ev">representativa de Lima Metropolitana · Lima Metropolitana</span><br>En 2024, el 37,5 % de los jóvenes de Lima Metropolitana fue víctima de algún delito y el 33 % dejó de hacer alguna actividad para protegerse. El 58 % se siente inseguro al caminar de noche por su barrio: 67 % de las mujeres y 49 % de los hombres.</li></ul>
+      <h5>Capa 2 · intereses y hábitos</h5><ul><li><a class="code" href="#H2-02">H2-02</a> <span class="ev">representativa de Lima Este (dominio no planificado) · Lima Este; Lima Metropolitana por sexo</span><br>El 27,6 % de los jóvenes de Lima Este hace deporte o ejercicio en la semana (34,8 % en Lima Metropolitana). En Lima Metropolitana, 49,1 % de los hombres jóvenes y 19,7 % de las mujeres jóvenes.</li><li><a class="code" href="#H2-06">H2-06</a> <span class="ev">representativa de Lima Este (dominio no planificado) · Lima Este; Lima Metropolitana</span><br>La mitad de los jóvenes estudia (≈ 37 h semanales entre quienes estudian) y más de la mitad trabaja o busca trabajo (58 % en Lima Este; ≈ 42 h semanales entre quienes trabajan).</li><li><a class="code" href="#H2-15">H2-15</a> <span class="ev">estudio de mercado (Ipsos) · Perú urbano</span><br>Fuera de casa, los adolescentes y jóvenes urbanos se divierten saliendo a comer, en parques, visitando amigos y haciendo ejercicio (42–44 %) y yendo al cine (37 %) (2019). La generación Z de 18–25 años usa TikTok (55 %) y Discord (24 %) y juega videojuegos en casa (32 %) (2022).</li></ul>
+      <h5>Capa 3 · oferta y convocatoria</h5><ul><li><a class="code" href="#H3-03">H3-03</a> <span class="ev">oferta observada · 7 distritos</span><br>Deporte (39 actividades) y arte y cultura (46) son los temas más ofrecidos, pero sobre todo para niños y adolescentes o todo público; hay nuevos espacios deportivos en todos los distritos con más publicaciones (losas, complejos del IPD, clubes de SERPAR).</li><li><a class="code" href="#H3-11">H3-11</a> <span class="ev">participación declarada · La Molina, Santa Anita, Lurigancho-Chosica</span><br>Las cifras de participación más altas son de actividades para niños y adolescentes: 6 304 participantes en los talleres deportivos de La Molina (2024), más de 5 000 inscritos en el verano 2025 de Santa Anita (3–18 años), más de 1 500 en el verano 2026 de Lurigancho-Chosica. Solo una parte de estos participantes tiene 15 años o más.</li><li><a class="code" href="#H3-12">H3-12</a> <span class="ev">demanda observada (oferta concreta) · Lima Metropolitana (sedes en SJL y Santa Anita)</span><br>La Academia IPD (deporte gratuito, 6–17 años) agotó 19 mil cupos en Lima Metropolitana en 2026 y abrió 9 500 más; SJL fue el distrito con más inscritos. Es demanda por esos talleres para niños y adolescentes, medida en toda Lima.</li><li><a class="code" href="#H3-17">H3-17</a> <span class="ev">oferta observada · SJL, Santa Anita, Ate, Lurigancho-Chosica, La Molina</span><br>Hay espacios e instituciones que podrían acoger actividades: Casa de la Juventud (Santa Anita), Coliseo Carmela Estrella (Chosica), complejos del IPD en SJL y Santa Anita, clubes metropolitanos Wiracocha, Cahuide y Huaycán, Agencia Local de Empleo y coworking de SJL (2026), CETPRO de La Molina, Centro de Empleo del MTPE en SJL y en construcción en Santa Anita.</li><li><a class="code" href="#H3-20">H3-20</a> <span class="ev">participación declarada · La Molina, Lurigancho-Chosica, Santa Anita</span><br>Deporte dirigido a jóvenes con cifras: solo el taller de tiro con arco de La Molina (unos 30 alumnos por horario). Las carreras abiertas a todas las edades reúnen &#x27;más de mil&#x27; (Cajamarquilla) o &#x27;cientos&#x27; (Santa Anita) de participantes.</li></ul>
+    </div>
+  </details>
+</article><article class="prop" id="P05">
+  <header><span class="pid">P05</span><h4>Escenarios gratuitos de cultura urbana y música en vivo con jóvenes como artistas y organizadores</h4></header>
+  <p class="desc">Festivales o fechas periódicas gratuitas de música en vivo, freestyle, breaking y danza urbana, con convocatoria abierta a artistas y colectivos juveniles locales.</p>
+  <div class="levels" aria-label="Nivel de evidencia">
+    <span><small>Necesidad</small><span class="lvl l0">sin evidencia</span></span>
+    <span><small>Interés o práctica</small><span class="lvl l3">alto</span></span>
+    <span><small>Convocatoria</small><span class="lvl l1">bajo</span></span>
+  </div>
+  <dl><div class="kv"><dt>Para quién</dt><dd>15–24 años</dd></div><div class="kv"><dt>Por qué</dt><dd>En Lima Este, 21,4 % fue a conciertos o festivales musicales, 19,6 % a festivales locales y 44,6 % a algún espectáculo en vivo en el año; el dinero es barrera en los conciertos, que casi siempre son pagados. Hay 20 organizaciones juveniles de cultura y arte acreditadas.</dd></div><div class="kv"><dt>Qué sabemos de su convocatoria</dt><dd>Existen eventos de cultura urbana en Chosica, Santa Anita y SJL, pero ninguna nota informa asistencia juvenil; un festival intercultural en SJL reunió &#x27;más de mil vecinos&#x27; de todas las edades.</dd></div><div class="kv hyp"><dt>Qué sigue siendo hipótesis</dt><dd>Que un evento local y gratuito convoque a jóvenes (y no solo a familias); qué géneros; que participar como artista u organizador aumente la convocatoria.</dd></div><div class="kv"><dt>Cómo validarla</dt><dd>Asistentes y rango de edad (registro o conteo); artistas y colectivos inscritos; asistencia a una segunda fecha.</dd></div><div class="kv"><dt>Dónde podría pilotearse</dt><dd>Criterio operativo: distritos con eventos previos y espacios (Chosica, Santa Anita, SJL); aliarse con organizaciones de cultura y arte del RENOJ.</dd></div><div class="kv"><dt>Cautelas</dt><dd>Horarios y seguridad; evitar depender de patrocinio de alcohol.</dd></div></dl>
+  <details><summary>Hallazgos que la sustentan</summary>
+    <div class="trace">
+      <h5>Capa 1 · necesidades</h5><ul><li><a class="code" href="#H1-02">H1-02</a> <span class="ev">registro administrativo distrital · distritos de Lima Este</span><br>Hay 182 organizaciones juveniles acreditadas (RENOJ, 2019–2026). SJL, Ate, Lurigancho-Chosica y El Agustino tienen las densidades más bajas (1,6–2,3 por 10 mil jóvenes, frente a una mediana metropolitana de 3,3); La Molina, la más alta (14,3). Ninguna tiene como temática el deporte ni la participación y ciudadanía; 20 son de cultura y arte.</li><li><a class="code" href="#H1-10">H1-10</a> <span class="ev">representativa de Lima Metropolitana · Lima Metropolitana</span><br>En 2024, el 37,5 % de los jóvenes de Lima Metropolitana fue víctima de algún delito y el 33 % dejó de hacer alguna actividad para protegerse. El 58 % se siente inseguro al caminar de noche por su barrio: 67 % de las mujeres y 49 % de los hombres.</li></ul>
+      <h5>Capa 2 · intereses y hábitos</h5><ul><li><a class="code" href="#H2-03">H2-03</a> <span class="ev">representativa de Lima Este (dominio no planificado) · Lima Este; Lima Metropolitana</span><br>Aficiones, artes y juegos ocupan la semana del 19,4 % de los jóvenes de Lima Este (referencial); en Lima Metropolitana, 27,0 % de los hombres y 9,1 % de las mujeres. Asistir a eventos: 13,8 % en Lima Este (referencial), 21,9 % en Lima Metropolitana.</li><li><a class="code" href="#H2-07">H2-07</a> <span class="ev">representativa de Lima Este (dominio no planificado) · Lima Este</span><br>En 2022–2025, el 63,2 % de los jóvenes de Lima Este fue al cine en el año; 44,6 % a algún espectáculo en vivo; 21,4 % a conciertos o festivales musicales; 19,6 % a festivales locales; 19,4 % a ferias del libro; 18,3 % a espectáculos de danza.</li><li><a class="code" href="#H2-09">H2-09</a> <span class="ev">representativa de Lima Metropolitana · Lima Metropolitana</span><br>Entre quienes no asistieron a un servicio cultural, los motivos principales son la falta de interés (35–56 %) y de tiempo (30–40 %); el dinero pesa sobre todo en conciertos (18 %) y cine (15 %); &#x27;no hay oferta&#x27; casi no aparece (1–2 %) y la falta de información es relevante en ferias y exposiciones (8–11 %).</li><li><a class="code" href="#H2-10">H2-10</a> <span class="ev">representativa de Lima Metropolitana · Lima Metropolitana</span><br>La mayoría de jóvenes que asistió a bibliotecas, ferias, festivales y exposiciones entró gratis; en cambio, cerca de 8 de cada 10 asistentes a conciertos y 7 de cada 10 al teatro tuvo una entrada pagada.</li></ul>
+      <h5>Capa 3 · oferta y convocatoria</h5><ul><li><a class="code" href="#H3-04">H3-04</a> <span class="ev">oferta observada · 7 distritos</span><br>La oferta publicada es casi toda gratuita (99 de 151) y presencial (143). Lo pagado son talleres de verano y escuelas deportivas (S/ 50 por ciclo en Ate; S/ 60–70 al mes en SERPAR, El Agustino y Santa Anita; S/ 140 por taller en el verano 2025 de Santa Anita) y academias preuniversitarias (S/ 150 al mes en Santa Anita).</li><li><a class="code" href="#H3-13">H3-13</a> <span class="ev">oferta observada · Lurigancho-Chosica, Santa Anita, SJL, El Agustino</span><br>Existe oferta de cultura urbana y juvenil (Urban Fest en Chosica, Festi Rock y Cultura Urbana Fest en Santa Anita, FestiJoven y talleres de BMX y Canva en SJL, concurso de canto y baile en El Agustino), pero ninguna nota informa cuántos jóvenes asistieron. Un festival intercultural en SJL reunió &#x27;más de mil vecinos&#x27; de todas las edades.</li></ul>
+    </div>
+  </details>
+</article><article class="prop" id="P06">
+  <header><span class="pid">P06</span><h4>Cine y creación audiovisual: proyecciones gratuitas con conversación y taller de video para redes</h4></header>
+  <p class="desc">Ciclo de cine gratuito con conversación después de la función y un taller corto de producción de video para redes sociales.</p>
+  <div class="levels" aria-label="Nivel de evidencia">
+    <span><small>Necesidad</small><span class="lvl l0">sin evidencia</span></span>
+    <span><small>Interés o práctica</small><span class="lvl l3">alto</span></span>
+    <span><small>Convocatoria</small><span class="lvl l0">sin evidencia</span></span>
+  </div>
+  <dl><div class="kv"><dt>Para quién</dt><dd>15–24 años</dd></div><div class="kv"><dt>Por qué</dt><dd>El cine es la salida cultural más extendida (63,2 % en Lima Este); entre quienes no fueron, el 18,8 % lo atribuye al dinero; 92,8 % ve video por internet; la generación Z usa TikTok intensamente (Ipsos).</dd></div><div class="kv"><dt>Qué sabemos de su convocatoria</dt><dd>No hay actividad juvenil similar con datos en Lima Este: &#x27;Cine en tu Barrio&#x27; se dirige a familias y no informa asistentes.</dd></div><div class="kv hyp"><dt>Qué sigue siendo hipótesis</dt><dd>Que la práctica individual de ver cine y video se traduzca en asistencia a una actividad grupal; que haya interés en producir, no solo en consumir (hipótesis adicional para el taller).</dd></div><div class="kv"><dt>Cómo validarla</dt><dd>Asistentes por función y su edad; inscritos en el taller; videos producidos.</dd></div><div class="kv"><dt>Dónde podría pilotearse</dt><dd>Criterio operativo: espacios con auditorio o pantalla (Casa de la Juventud de Santa Anita, centros culturales municipales).</dd></div><div class="kv"><dt>Cautelas</dt><dd>Derechos de exhibición de las películas.</dd></div></dl>
+  <details><summary>Hallazgos que la sustentan</summary>
+    <div class="trace">
+      <h5>Capa 1 · necesidades</h5><ul><li><a class="code" href="#H1-09">H1-09</a> <span class="ev">representativa de Lima Metropolitana · Lima Metropolitana</span><br>El uso de internet es casi universal (96 %), sobre todo desde el celular (92 %), pero las habilidades avanzadas son minoritarias: instalar o configurar software (55 %) y programar (14,5 %).</li></ul>
+      <h5>Capa 2 · intereses y hábitos</h5><ul><li><a class="code" href="#H2-07">H2-07</a> <span class="ev">representativa de Lima Este (dominio no planificado) · Lima Este</span><br>En 2022–2025, el 63,2 % de los jóvenes de Lima Este fue al cine en el año; 44,6 % a algún espectáculo en vivo; 21,4 % a conciertos o festivales musicales; 19,6 % a festivales locales; 19,4 % a ferias del libro; 18,3 % a espectáculos de danza.</li><li><a class="code" href="#H2-08">H2-08</a> <span class="ev">representativa de Lima Este (dominio no planificado) · Lima Este</span><br>El consumo cultural de los jóvenes de Lima Este es sobre todo digital: 92,8 % ve películas o video por internet, 90,3 % escucha música por internet, 46,3 % juega videojuegos en el celular y 34,7 % videojuegos multijugador en línea.</li><li><a class="code" href="#H2-09">H2-09</a> <span class="ev">representativa de Lima Metropolitana · Lima Metropolitana</span><br>Entre quienes no asistieron a un servicio cultural, los motivos principales son la falta de interés (35–56 %) y de tiempo (30–40 %); el dinero pesa sobre todo en conciertos (18 %) y cine (15 %); &#x27;no hay oferta&#x27; casi no aparece (1–2 %) y la falta de información es relevante en ferias y exposiciones (8–11 %).</li><li><a class="code" href="#H2-15">H2-15</a> <span class="ev">estudio de mercado (Ipsos) · Perú urbano</span><br>Fuera de casa, los adolescentes y jóvenes urbanos se divierten saliendo a comer, en parques, visitando amigos y haciendo ejercicio (42–44 %) y yendo al cine (37 %) (2019). La generación Z de 18–25 años usa TikTok (55 %) y Discord (24 %) y juega videojuegos en casa (32 %) (2022).</li></ul>
+      <h5>Capa 3 · oferta y convocatoria</h5><ul><li><a class="code" href="#H3-13">H3-13</a> <span class="ev">oferta observada · Lurigancho-Chosica, Santa Anita, SJL, El Agustino</span><br>Existe oferta de cultura urbana y juvenil (Urban Fest en Chosica, Festi Rock y Cultura Urbana Fest en Santa Anita, FestiJoven y talleres de BMX y Canva en SJL, concurso de canto y baile en El Agustino), pero ninguna nota informa cuántos jóvenes asistieron. Un festival intercultural en SJL reunió &#x27;más de mil vecinos&#x27; de todas las edades.</li><li><a class="code" href="#H3-15">H3-15</a> <span class="ev">oferta observada (ausencia) · 7 distritos</span><br>No se encontró ninguna actividad publicada de videojuegos o e-sports ni de creación audiovisual para jóvenes; el cine aparece solo como &#x27;Cine en tu Barrio&#x27; para familias (El Agustino) y cine inclusivo (SJL).</li></ul>
+    </div>
+  </details>
+</article></section>
+<section class="grupo" aria-labelledby="gC"><div class="grupo-head"><span class="glyph">C</span><div><h3 id="gC">Evidencia parcial</h3><p>Sustento en alguna dimensión, pero descansan sobre todo en hipótesis. Conviene validarlas antes de invertir.</p></div></div>
+<article class="prop" id="P03">
+  <header><span class="pid">P03</span><h4>Habilidades digitales aplicadas y retos colaborativos (hackathons, proyectos)</h4></header>
+  <p class="desc">Talleres cortos de ofimática avanzada, diseño y contenido digital o programación inicial, que terminan en un reto o proyecto en equipo con un problema del barrio.</p>
+  <div class="levels" aria-label="Nivel de evidencia">
+    <span><small>Necesidad</small><span class="lvl l2">medio</span></span>
+    <span><small>Interés o práctica</small><span class="lvl l2">medio</span></span>
+    <span><small>Convocatoria</small><span class="lvl l1">bajo</span></span>
+  </div>
+  <dl><div class="kv"><dt>Para quién</dt><dd>15–24 años (estudiantes de secundaria y superior) y 18–29 que buscan empleo</dd></div><div class="kv"><dt>Por qué</dt><dd>Uso de internet casi universal, pero solo 14,5 % programa y 55 % instala software (Lima Metropolitana); en Lima Este un tercio usa internet para aprender.</dd></div><div class="kv"><dt>Qué sabemos de su convocatoria</dt><dd>Un solo dato: la hackathon municipal de SJL tuvo más de 400 inscripciones (mayores de 18, de varios distritos, no solo jóvenes). La oferta tecnológica dirigida a jóvenes es mínima y sin cifras.</dd></div><div class="kv hyp"><dt>Qué sigue siendo hipótesis</dt><dd>Qué contenidos convocan (ofimática para el empleo, diseño y contenido, programación); si el formato de reto convoca más que un curso; presencial frente a virtual.</dd></div><div class="kv"><dt>Cómo validarla</dt><dd>Inscritos frente a cupos por contenido; asistencia; proyectos terminados; proporción de mujeres.</dd></div><div class="kv"><dt>Dónde podría pilotearse</dt><dd>Criterio operativo: SJL (experiencia previa de hackathon, coworking) y La Molina (CETPRO, computación gratuita para 10–18).</dd></div><div class="kv"><dt>Cautelas</dt><dd>Garantizar acceso a equipos: el uso de internet es sobre todo desde el celular.</dd></div></dl>
+  <details><summary>Hallazgos que la sustentan</summary>
+    <div class="trace">
+      <h5>Capa 1 · necesidades</h5><ul><li><a class="code" href="#H1-09">H1-09</a> <span class="ev">representativa de Lima Metropolitana · Lima Metropolitana</span><br>El uso de internet es casi universal (96 %), sobre todo desde el celular (92 %), pero las habilidades avanzadas son minoritarias: instalar o configurar software (55 %) y programar (14,5 %).</li></ul>
+      <h5>Capa 2 · intereses y hábitos</h5><ul><li><a class="code" href="#H2-01">H2-01</a> <span class="ev">representativa de Lima Este (dominio no planificado) · Lima Este</span><br>Casi todos los jóvenes usan computadora, tablet o celular cada semana (92,7 % en Lima Este; 91,7 % en Lima Metropolitana) y el 80 % ve televisión o videos.</li><li><a class="code" href="#H2-08">H2-08</a> <span class="ev">representativa de Lima Este (dominio no planificado) · Lima Este</span><br>El consumo cultural de los jóvenes de Lima Este es sobre todo digital: 92,8 % ve películas o video por internet, 90,3 % escucha música por internet, 46,3 % juega videojuegos en el celular y 34,7 % videojuegos multijugador en línea.</li><li><a class="code" href="#H2-11">H2-11</a> <span class="ev">representativa de Lima Este (dominio no planificado) · Lima Este</span><br>El 32,7 % de los jóvenes de Lima Este usa internet para educación o capacitación (35,5 % en Lima Metropolitana; 43 % entre 20 y 24 años); solo el 3,9 % lo usa para vender productos o servicios.</li></ul>
+      <h5>Capa 3 · oferta y convocatoria</h5><ul><li><a class="code" href="#H3-02">H3-02</a> <span class="ev">oferta observada · 7 distritos</span><br>Lo dirigido a jóvenes se concentra en empleo y empleabilidad (13), participación y voluntariado (13) y preparación preuniversitaria (11). Hay poca oferta dirigida a jóvenes en deporte (3), salud y salud mental (3), emprendimiento (4) y tecnología (2).</li><li><a class="code" href="#H3-10">H3-10</a> <span class="ev">participación declarada · SJL (participantes de varios distritos)</span><br>Una hackathon municipal en SJL (2025, mayores de 18) reunió más de 400 inscripciones y más de 70 equipos de jóvenes, líderes vecinales, profesionales y emprendedores de varios distritos. Es la única cifra de convocatoria para una actividad tecnológica dirigida a jóvenes.</li><li><a class="code" href="#H3-17">H3-17</a> <span class="ev">oferta observada · SJL, Santa Anita, Ate, Lurigancho-Chosica, La Molina</span><br>Hay espacios e instituciones que podrían acoger actividades: Casa de la Juventud (Santa Anita), Coliseo Carmela Estrella (Chosica), complejos del IPD en SJL y Santa Anita, clubes metropolitanos Wiracocha, Cahuide y Huaycán, Agencia Local de Empleo y coworking de SJL (2026), CETPRO de La Molina, Centro de Empleo del MTPE en SJL y en construcción en Santa Anita.</li></ul>
+    </div>
+  </details>
+</article><article class="prop" id="P08">
+  <header><span class="pid">P08</span><h4>Espacios de bienestar y encuentro para mujeres jóvenes, con derivación a servicios</h4></header>
+  <p class="desc">Grupos de pares con actividades de arte, movimiento o conversación, facilitados por profesionales, con rutas de derivación a centros de salud mental comunitaria, CEM y DEMUNA.</p>
+  <div class="levels" aria-label="Nivel de evidencia">
+    <span><small>Necesidad</small><span class="lvl l2">medio</span></span>
+    <span><small>Interés o práctica</small><span class="lvl l1">bajo</span></span>
+    <span><small>Convocatoria</small><span class="lvl l1">bajo</span></span>
+  </div>
+  <dl><div class="kv"><dt>Para quién</dt><dd>Mujeres de 15–29 años (las adolescentes, en coordinación con colegios)</dd></div><div class="kv"><dt>Por qué</dt><dd>Episodio depresivo en 21,6 % de las mujeres jóvenes de Lima Metropolitana; 31,5 % de las que tienen pareja sufrió violencia; 94 % de los jóvenes atendidos en los CEM de Lima Este son mujeres. En Lima Este, 32 % está poco o nada satisfecho con el tiempo para sus amistades.</dd></div><div class="kv"><dt>Qué sabemos de su convocatoria</dt><dd>La oferta de bienestar para jóvenes tiene cifras vagas (&#x27;decenas&#x27; en una campaña de salud en SJL) y la de prevención llega por colegios, con público cautivo.</dd></div><div class="kv hyp"><dt>Qué sigue siendo hipótesis</dt><dd>Que mujeres jóvenes asistan voluntariamente a un espacio de bienestar; que funcione mejor como componente de otra actividad (deporte, arte) que como actividad sobre salud mental.</dd></div><div class="kv"><dt>Cómo validarla</dt><dd>Inscritas y asistencia; comparación entre formato propio y componente dentro de otra actividad; derivaciones realizadas.</dd></div><div class="kv"><dt>Dónde podría pilotearse</dt><dd>Criterio operativo: donde haya servicios para derivar; Santa Anita, Ate y Chaclacayo superan la mediana de casos atendidos en los CEM (dato de acceso, no de prevalencia).</dd></div><div class="kv"><dt>Cautelas</dt><dd>No reemplaza la atención clínica; requiere protocolos de protección y personal calificado.</dd></div></dl>
+  <details><summary>Hallazgos que la sustentan</summary>
+    <div class="trace">
+      <h5>Capa 1 · necesidades</h5><ul><li><a class="code" href="#H1-07">H1-07</a> <span class="ev">representativa de Lima Metropolitana · Lima Metropolitana</span><br>En 2025, el 17,9 % de los jóvenes de Lima Metropolitana no estudia ni trabaja: 22,1 % de las mujeres y 13,7 % de los hombres.</li><li><a class="code" href="#H1-08">H1-08</a> <span class="ev">representativa de Lima Metropolitana · Lima Metropolitana</span><br>El 15,9 % de los jóvenes de Lima Metropolitana tuvo un episodio depresivo (2024): 21,6 % de las mujeres y 10,3 % de los hombres.</li><li><a class="code" href="#H1-11">H1-11</a> <span class="ev">representativa de Lima Metropolitana · Lima Metropolitana</span><br>El 31,5 % de las mujeres jóvenes con pareja de Lima Metropolitana sufrió violencia familiar en el último año (2025).</li><li><a class="code" href="#H1-14">H1-14</a> <span class="ev">registro administrativo distrital · distritos de Lima Este</span><br>Los CEM atienden unos 3 000 casos al año de jóvenes con domicilio en Lima Este: 94 % mujeres, 41 % de 15–19 años, 35 % violencia sexual. Chaclacayo, Santa Anita y Ate superan la mediana metropolitana de casos por 10 mil jóvenes.</li></ul>
+      <h5>Capa 2 · intereses y hábitos</h5><ul><li><a class="code" href="#H2-02">H2-02</a> <span class="ev">representativa de Lima Este (dominio no planificado) · Lima Este; Lima Metropolitana por sexo</span><br>El 27,6 % de los jóvenes de Lima Este hace deporte o ejercicio en la semana (34,8 % en Lima Metropolitana). En Lima Metropolitana, 49,1 % de los hombres jóvenes y 19,7 % de las mujeres jóvenes.</li><li><a class="code" href="#H2-05">H2-05</a> <span class="ev">representativa de Lima Este (dominio no planificado) · Lima Este</span><br>Solo el 41 % de los jóvenes de Lima Este está muy o totalmente satisfecho con la cantidad de su tiempo libre; el 32,0 % está poco o nada satisfecho con el tiempo para sus amistades (23,4 % en Lima Metropolitana), una diferencia cercana al margen de error.</li></ul>
+      <h5>Capa 3 · oferta y convocatoria</h5><ul><li><a class="code" href="#H3-02">H3-02</a> <span class="ev">oferta observada · 7 distritos</span><br>Lo dirigido a jóvenes se concentra en empleo y empleabilidad (13), participación y voluntariado (13) y preparación preuniversitaria (11). Hay poca oferta dirigida a jóvenes en deporte (3), salud y salud mental (3), emprendimiento (4) y tecnología (2).</li><li><a class="code" href="#H3-14">H3-14</a> <span class="ev">oferta observada · 6 distritos</span><br>En salud mental y prevención, la oferta publicada llega sobre todo por colegios (charlas de DEVIDA con hasta 450 estudiantes por colegio, DEMUNA en el aula) o a niñas y adolescentes (programa &#x27;Caminemos Juntas y Seguras&#x27; en SJL). Para jóvenes: una campaña de salud integral en SJL con &#x27;decenas&#x27; de beneficiarios y un taller de autoestima en El Agustino, sin cifras.</li></ul>
+    </div>
+  </details>
+</article><article class="prop" id="P10">
+  <header><span class="pid">P10</span><h4>Voluntariado de corta duración con resultados visibles (ambiente, espacios públicos, patrimonio)</h4></header>
+  <p class="desc">Jornadas cortas de fin de semana con un resultado concreto (recuperar un espacio, arborizar, proteger un sitio patrimonial), con certificado y reconocimiento.</p>
+  <div class="levels" aria-label="Nivel de evidencia">
+    <span><small>Necesidad</small><span class="lvl l1">bajo</span></span>
+    <span><small>Interés o práctica</small><span class="lvl l2">medio</span></span>
+    <span><small>Convocatoria</small><span class="lvl l1">bajo</span></span>
+  </div>
+  <dl><div class="kv"><dt>Para quién</dt><dd>15–24 años estudiantes; probar formatos para jóvenes que trabajan</dd></div><div class="kv"><dt>Por qué</dt><dd>9 % de los jóvenes de Lima Este hace voluntariado o ayuda a la comunidad cada semana (referencial). Los inscritos en el Programa de Voluntariado tienen más experiencia en educación, ambiente y cultura, y son sobre todo mujeres estudiantes.</dd></div><div class="kv"><dt>Qué sabemos de su convocatoria</dt><dd>Cifras pequeñas o sin desglose por edad (20 jóvenes en Minka Joven; más de 300 voluntarios de edad no indicada en Chosica). La oferta de participación es frecuente, pero eso no indica interés.</dd></div><div class="kv hyp"><dt>Qué sigue siendo hipótesis</dt><dd>Que el formato corto y con resultado visible atraiga a jóvenes que trabajan y a hombres, que hoy casi no llegan al voluntariado.</dd></div><div class="kv"><dt>Cómo validarla</dt><dd>Inscritos y perfil (estudia o trabaja, sexo); asistencia; repetición en una segunda jornada.</dd></div><div class="kv"><dt>Dónde podría pilotearse</dt><dd>Criterio operativo: distritos con baja densidad de organizaciones acreditadas (SJL, Ate, Chosica, El Agustino).</dd></div><div class="kv"><dt>Cautelas</dt><dd>Ya hay mucha oferta municipal de voluntariado: coordinar para no duplicar.</dd></div></dl>
+  <details><summary>Hallazgos que la sustentan</summary>
+    <div class="trace">
+      <h5>Capa 1 · necesidades</h5><ul><li><a class="code" href="#H1-02">H1-02</a> <span class="ev">registro administrativo distrital · distritos de Lima Este</span><br>Hay 182 organizaciones juveniles acreditadas (RENOJ, 2019–2026). SJL, Ate, Lurigancho-Chosica y El Agustino tienen las densidades más bajas (1,6–2,3 por 10 mil jóvenes, frente a una mediana metropolitana de 3,3); La Molina, la más alta (14,3). Ninguna tiene como temática el deporte ni la participación y ciudadanía; 20 son de cultura y arte.</li><li><a class="code" href="#H1-03">H1-03</a> <span class="ev">registro de autoselección (señal) · distritos de Lima Este</span><br>1 727 personas de los siete distritos están inscritas en el Programa de Voluntariado Juvenil: 85 % mujeres, 46 % de 15–19 años, 65 % solo estudia. Sus intereses declarados no discriminan (81–93 % marca cada tema); su experiencia previa se concentra en educación (39 %), ambiente (31 %), cultura (23 %) y salud (20 %), frente a deporte (11 %).</li><li><a class="code" href="#H1-04">H1-04</a> <span class="ev">comparación descriptiva de composición · inscritos de Lima Este vs. población de Lima Metropolitana</span><br>Quienes llegan al voluntariado son sobre todo estudiantes: el 65 % solo estudia, frente al 26–30 % de los jóvenes de Lima Metropolitana; quienes solo trabajan son el 9 %, frente al 43–45 %.</li><li><a class="code" href="#H1-12">H1-12</a> <span class="ev">representativa de Lima Metropolitana · Lima Metropolitana</span><br>La participación de los jóvenes de Lima Metropolitana en asociaciones u organizaciones es muy baja (0,7 %, referencial) y solo el 24,5 % confía en su municipalidad distrital (2024).</li></ul>
+      <h5>Capa 2 · intereses y hábitos</h5><ul><li><a class="code" href="#H2-04">H2-04</a> <span class="ev">representativa de Lima Este (dominio no planificado) · Lima Este</span><br>Leer (12,9 %) y hacer voluntariado o ayudar a la comunidad (9,0 %) son actividades semanales poco frecuentes entre los jóvenes de Lima Este (ambas referenciales).</li></ul>
+      <h5>Capa 3 · oferta y convocatoria</h5><ul><li><a class="code" href="#H3-02">H3-02</a> <span class="ev">oferta observada · 7 distritos</span><br>Lo dirigido a jóvenes se concentra en empleo y empleabilidad (13), participación y voluntariado (13) y preparación preuniversitaria (11). Hay poca oferta dirigida a jóvenes en deporte (3), salud y salud mental (3), emprendimiento (4) y tecnología (2).</li><li><a class="code" href="#H3-16">H3-16</a> <span class="ev">participación declarada · Ate, Lurigancho-Chosica, SJL; Lima y Callao</span><br>En voluntariado y participación las cifras son pequeñas o sin desglose por edad: 20 jóvenes en Minka Joven (Ate), más de 300 voluntarios de edad no indicada en la Gran Cruzada Verde (Chosica), &#x27;cientos de jóvenes&#x27; en la réplica de CADE Universitario (SJL), 450 participantes de Lima y Callao en el encuentro de Defensores del Patrimonio.</li></ul>
+    </div>
+  </details>
+</article><article class="prop" id="P09">
+  <header><span class="pid">P09</span><h4>Emprendimiento juvenil y ventas por internet</h4></header>
+  <p class="desc">Taller práctico de idea de negocio, costos y ventas en redes, con una feria de jóvenes emprendedores al cierre.</p>
+  <div class="levels" aria-label="Nivel de evidencia">
+    <span><small>Necesidad</small><span class="lvl l2">medio</span></span>
+    <span><small>Interés o práctica</small><span class="lvl l1">bajo</span></span>
+    <span><small>Convocatoria</small><span class="lvl l1">bajo</span></span>
+  </div>
+  <dl><div class="kv"><dt>Para quién</dt><dd>18–29 años (y 15–17 en formato escolar)</dd></div><div class="kv"><dt>Por qué</dt><dd>Informalidad juvenil de 65 % en Lima Metropolitana; solo 3,9 % de los jóvenes de Lima Este vende por internet. La aspiración a emprender solo se midió en 2019–2020 (Ipsos, 13–20 años).</dd></div><div class="kv"><dt>Qué sabemos de su convocatoria</dt><dd>Ferias de jóvenes emprendedores en Santa Anita con &#x27;muchos&#x27; participantes sin cifra; el CETPRO de La Molina duplicó sus alumnos (385, de 14 a 60 años).</dd></div><div class="kv hyp"><dt>Qué sigue siendo hipótesis</dt><dd>Que la aspiración a emprender siga vigente en Lima Este; que jóvenes con un negocio pequeño o una idea se inscriban; que la feria de cierre motive la participación.</dd></div><div class="kv"><dt>Cómo validarla</dt><dd>Inscritos; proporción con negocio en marcha; asistencia; participación en la feria; ventas declaradas.</dd></div><div class="kv"><dt>Dónde podría pilotearse</dt><dd>Criterio operativo: Santa Anita (ferias previas) y SJL (coworking municipal).</dd></div><div class="kv"><dt>Cautelas</dt><dd>Evitar promover emprendimientos sin viabilidad; no sustituye el acceso a empleo formal.</dd></div></dl>
+  <details><summary>Hallazgos que la sustentan</summary>
+    <div class="trace">
+      <h5>Capa 1 · necesidades</h5><ul><li><a class="code" href="#H1-06">H1-06</a> <span class="ev">representativa de Lima Metropolitana · Lima Metropolitana</span><br>En Lima Metropolitana la informalidad juvenil era de 65,1 % (2023) y el desempleo, de 11,7 % en 2025 (cálculo propio con la ENAHO). La participación laboral de las mujeres jóvenes (53,8 %) está unos nueve puntos por debajo de la de los hombres (62,9 %).</li></ul>
+      <h5>Capa 2 · intereses y hábitos</h5><ul><li><a class="code" href="#H2-11">H2-11</a> <span class="ev">representativa de Lima Este (dominio no planificado) · Lima Este</span><br>El 32,7 % de los jóvenes de Lima Este usa internet para educación o capacitación (35,5 % en Lima Metropolitana; 43 % entre 20 y 24 años); solo el 3,9 % lo usa para vender productos o servicios.</li><li><a class="code" href="#H2-13">H2-13</a> <span class="ev">estudio de mercado (Ipsos) · Perú urbano</span><br>En 2020, el 45 % de los adolescentes y jóvenes urbanos (13–20) aspiraba a tener su propio negocio; en 2019, el 60 % de los de 18–20 sin negocio deseaba emprender.</li></ul>
+      <h5>Capa 3 · oferta y convocatoria</h5><ul><li><a class="code" href="#H3-02">H3-02</a> <span class="ev">oferta observada · 7 distritos</span><br>Lo dirigido a jóvenes se concentra en empleo y empleabilidad (13), participación y voluntariado (13) y preparación preuniversitaria (11). Hay poca oferta dirigida a jóvenes en deporte (3), salud y salud mental (3), emprendimiento (4) y tecnología (2).</li><li><a class="code" href="#H3-17">H3-17</a> <span class="ev">oferta observada · SJL, Santa Anita, Ate, Lurigancho-Chosica, La Molina</span><br>Hay espacios e instituciones que podrían acoger actividades: Casa de la Juventud (Santa Anita), Coliseo Carmela Estrella (Chosica), complejos del IPD en SJL y Santa Anita, clubes metropolitanos Wiracocha, Cahuide y Huaycán, Agencia Local de Empleo y coworking de SJL (2026), CETPRO de La Molina, Centro de Empleo del MTPE en SJL y en construcción en Santa Anita.</li><li><a class="code" href="#H3-19">H3-19</a> <span class="ev">participación declarada · Santa Anita, La Molina</span><br>En emprendimiento juvenil las cifras son vagas o no son de jóvenes: &#x27;muchos jóvenes emprendedores&#x27; en las ferias de Santa Anita, 385 alumnos de 14 a 60 años en el CETPRO de La Molina (el doble que años anteriores).</li></ul>
+    </div>
+  </details>
+</article><article class="prop" id="P07">
+  <header><span class="pid">P07</span><h4>Videojuegos y e-sports presenciales como punto de encuentro</h4></header>
+  <p class="desc">Torneos presenciales de videojuegos populares, con espacios de juego libre y componentes de habilidades digitales (streaming, diseño), diseñados para incluir a mujeres.</p>
+  <div class="levels" aria-label="Nivel de evidencia">
+    <span><small>Necesidad</small><span class="lvl l0">sin evidencia</span></span>
+    <span><small>Interés o práctica</small><span class="lvl l2">medio</span></span>
+    <span><small>Convocatoria</small><span class="lvl l0">sin evidencia</span></span>
+  </div>
+  <dl><div class="kv"><dt>Para quién</dt><dd>15–24 años</dd></div><div class="kv"><dt>Por qué</dt><dd>En Lima Este, 46,3 % juega videojuegos en el celular y 34,7 % multijugador en línea (entre adultos de 30 años o más de Lima Este, 12,2 % y 4,3 %); aficiones y juegos: 27 % de los hombres y 9 % de las mujeres (Lima Metropolitana).</dd></div><div class="kv"><dt>Qué sabemos de su convocatoria</dt><dd>Sin evidencia: no se encontró ninguna actividad de videojuegos en Lima Este (la ausencia de oferta no es demanda).</dd></div><div class="kv hyp"><dt>Qué sigue siendo hipótesis</dt><dd>Que jugadores habituales, que juegan sobre todo en casa y solos o en línea, acudan a un evento presencial; que el formato convoque también a mujeres.</dd></div><div class="kv"><dt>Cómo validarla</dt><dd>Inscritos frente a cupos; asistencia; proporción de mujeres; interés en componentes formativos.</dd></div><div class="kv"><dt>Dónde podría pilotearse</dt><dd>Criterio operativo: un solo piloto pequeño en un espacio con conectividad.</dd></div><div class="kv"><dt>Cautelas</dt><dd>Tiempo de pantalla; sesgo de género; contenidos adecuados por edad.</dd></div></dl>
+  <details><summary>Hallazgos que la sustentan</summary>
+    <div class="trace">
+      <h5>Capa 1 · necesidades</h5><ul><li><a class="code" href="#H1-09">H1-09</a> <span class="ev">representativa de Lima Metropolitana · Lima Metropolitana</span><br>El uso de internet es casi universal (96 %), sobre todo desde el celular (92 %), pero las habilidades avanzadas son minoritarias: instalar o configurar software (55 %) y programar (14,5 %).</li></ul>
+      <h5>Capa 2 · intereses y hábitos</h5><ul><li><a class="code" href="#H2-03">H2-03</a> <span class="ev">representativa de Lima Este (dominio no planificado) · Lima Este; Lima Metropolitana</span><br>Aficiones, artes y juegos ocupan la semana del 19,4 % de los jóvenes de Lima Este (referencial); en Lima Metropolitana, 27,0 % de los hombres y 9,1 % de las mujeres. Asistir a eventos: 13,8 % en Lima Este (referencial), 21,9 % en Lima Metropolitana.</li><li><a class="code" href="#H2-08">H2-08</a> <span class="ev">representativa de Lima Este (dominio no planificado) · Lima Este</span><br>El consumo cultural de los jóvenes de Lima Este es sobre todo digital: 92,8 % ve películas o video por internet, 90,3 % escucha música por internet, 46,3 % juega videojuegos en el celular y 34,7 % videojuegos multijugador en línea.</li><li><a class="code" href="#H2-15">H2-15</a> <span class="ev">estudio de mercado (Ipsos) · Perú urbano</span><br>Fuera de casa, los adolescentes y jóvenes urbanos se divierten saliendo a comer, en parques, visitando amigos y haciendo ejercicio (42–44 %) y yendo al cine (37 %) (2019). La generación Z de 18–25 años usa TikTok (55 %) y Discord (24 %) y juega videojuegos en casa (32 %) (2022).</li></ul>
+      <h5>Capa 3 · oferta y convocatoria</h5><ul><li><a class="code" href="#H3-15">H3-15</a> <span class="ev">oferta observada (ausencia) · 7 distritos</span><br>No se encontró ninguna actividad publicada de videojuegos o e-sports ni de creación audiovisual para jóvenes; el cine aparece solo como &#x27;Cine en tu Barrio&#x27; para familias (El Agustino) y cine inclusivo (SJL).</li></ul>
+    </div>
+  </details>
+</article></section>
+<section class="grupo" aria-labelledby="gD"><div class="grupo-head"><span class="glyph">D</span><div><h3 id="gD">Componente transversal</h3><p>Necesidad documentada sin evidencia de interés: se integra en otras actividades, no como actividad independiente.</p></div></div>
+<article class="prop" id="P11">
+  <header><span class="pid">P11</span><h4>Componente de educación sexual integral y prevención de violencia para adolescentes, dentro de otras actividades</h4></header>
+  <p class="desc">Sesiones breves de educación sexual integral, relaciones sanas y rutas de ayuda, integradas en actividades que ya convocan adolescentes (deporte, arte, preparación preuniversitaria) y en colegios.</p>
+  <div class="levels" aria-label="Nivel de evidencia">
+    <span><small>Necesidad</small><span class="lvl l3">alto</span></span>
+    <span><small>Interés o práctica</small><span class="lvl l0">sin evidencia</span></span>
+    <span><small>Convocatoria</small><span class="lvl l1">bajo</span></span>
+  </div>
+  <dl><div class="kv"><dt>Para quién</dt><dd>Adolescentes de 15–19 años</dd></div><div class="kv"><dt>Por qué</dt><dd>Tasas de maternidad adolescente por encima de la mediana metropolitana en El Agustino, Santa Anita y Ate; 41 % de los jóvenes atendidos en los CEM tiene 15–19 años y 35 % de los casos son de violencia sexual.</dd></div><div class="kv"><dt>Qué sabemos de su convocatoria</dt><dd>Las intervenciones de prevención llegan por colegios con cientos de estudiantes, pero es público cautivo, no convocatoria voluntaria.</dd></div><div class="kv hyp"><dt>Qué sigue siendo hipótesis</dt><dd>Que el componente, integrado en actividades de interés, sea aceptado sin reducir la asistencia a la actividad principal.</dd></div><div class="kv"><dt>Cómo validarla</dt><dd>Asistencia a la actividad principal con y sin el componente; valoración de los participantes.</dd></div><div class="kv"><dt>Dónde podría pilotearse</dt><dd>Criterio operativo: El Agustino, Santa Anita y Ate (tasas de maternidad adolescente sobre la mediana).</dd></div><div class="kv"><dt>Cautelas</dt><dd>Coordinar con salud, DEMUNA y colegios; consentimiento de padres para menores de edad.</dd></div></dl>
+  <details><summary>Hallazgos que la sustentan</summary>
+    <div class="trace">
+      <h5>Capa 1 · necesidades</h5><ul><li><a class="code" href="#H1-13">H1-13</a> <span class="ev">registro administrativo distrital · distritos de Lima Este</span><br>En 2025 se registraron 1 654 nacimientos de madres de 15–19 años con residencia en los siete distritos, menos de la mitad que en 2019. La tasa 2022–2025 supera la mediana metropolitana (16 por 1 000) en El Agustino (24), Santa Anita (19) y Ate (17).</li><li><a class="code" href="#H1-14">H1-14</a> <span class="ev">registro administrativo distrital · distritos de Lima Este</span><br>Los CEM atienden unos 3 000 casos al año de jóvenes con domicilio en Lima Este: 94 % mujeres, 41 % de 15–19 años, 35 % violencia sexual. Chaclacayo, Santa Anita y Ate superan la mediana metropolitana de casos por 10 mil jóvenes.</li></ul>
+      <h5>Capa 2 · intereses y hábitos</h5><p class="muted">Ninguna fuente mide este aspecto.</p>
+      <h5>Capa 3 · oferta y convocatoria</h5><ul><li><a class="code" href="#H3-14">H3-14</a> <span class="ev">oferta observada · 6 distritos</span><br>En salud mental y prevención, la oferta publicada llega sobre todo por colegios (charlas de DEVIDA con hasta 450 estudiantes por colegio, DEMUNA en el aula) o a niñas y adolescentes (programa &#x27;Caminemos Juntas y Seguras&#x27; en SJL). Para jóvenes: una campaña de salud integral en SJL con &#x27;decenas&#x27; de beneficiarios y un taller de autoestima en El Agustino, sin cifras.</li></ul>
+    </div>
+  </details>
+</article></section>
+</section>
+
+<section class="block" aria-labelledby="diseno">
+  <h2 id="diseno">Condiciones para cualquier actividad</h2>
+  <ul class="design">
+    <li><b>Gratuita o de costo mínimo</b>El dinero limita el estudio y el acceso a cine y conciertos; las cuatro señales de demanda son de ofertas gratuitas (<a class="code" href="#PT-09">PT-09</a>).</li>
+    <li><b>Corta y en horarios posibles</b>Fines de semana o bloques breves: la mitad estudia y más de la mitad trabaja (<a class="code" href="#PT-08">PT-08</a>).</li>
+    <li><b>Cerca y segura</b>Horarios diurnos, espacios seguros y recorridos cortos, sobre todo para mujeres (<a class="code" href="#PT-10">PT-10</a>).</li>
+    <li><b>Segmentada por edad</b>15–17 llegan por colegios; 18–24 buscan estudio y primer empleo; 25–29, empleo (<a class="code" href="#PT-02">PT-02</a>, <a class="code" href="#PT-12">PT-12</a>).</li>
+    <li><b>Con enfoque en mujeres jóvenes</b>Más necesidades documentadas y menos práctica deportiva: medir su participación en cada piloto (<a class="code" href="#PT-06">PT-06</a>).</li>
+    <li><b>Con difusión propia</b>Redes, colegios, institutos y organizaciones juveniles; no depender de la comunicación municipal (<a class="code" href="#PT-11">PT-11</a>).</li>
+  </ul>
+</section>
+
+<section class="block" aria-labelledby="siguientes">
+  <h2 id="siguientes">Próximos pasos</h2>
+  <ol class="steps">
+    <li><strong>Consulta breve a jóvenes de Lima Este</strong> en colegios, institutos, redes y organizaciones del RENOJ: interés en las actividades propuestas, horarios, distancia, costo y canal de información.</li>
+    <li><strong>Pilotos pequeños</strong> de los grupos A y B con indicadores definidos de antemano: inscritos frente a cupos, asistencia a la primera y cuarta sesión, perfil de quienes llegan y canal por el que se enteraron.</li>
+    <li><strong>Contacto directo con las municipalidades</strong>, sobre todo Chaclacayo, Ate y SJL, para conocer su oferta, cupos e inscritos.</li>
+    <li><strong>Decidir qué escalar</strong> con los resultados de la consulta y los pilotos.</li>
+  </ol>
+</section>
+
+<section class="block" aria-labelledby="limites">
+  <h2 id="limites">Límites</h2>
+  <ul class="limits">
+    <li>No hay datos por distrito sobre intereses o prácticas: las encuestas representan a Lima Este en conjunto o a Lima Metropolitana.</li>
+    <li>Ninguna fuente pregunta a los jóvenes de Lima Este qué actividades harían.</li>
+    <li>La oferta registrada no es un censo: depende de lo que cada municipalidad publica, y la de organizaciones sociales casi no aparece.</li>
+    <li>Las cifras de participación son declaradas, aproximadas y no comparables entre sí.</li>
+    <li>Empleo, salud mental y seguridad se conocen para Lima Metropolitana, no para Lima Este.</li>
+    <li>Las encuestas llegan a 2024 o 2025.</li>
+  </ul>
+</section>
+
+<section class="block" aria-labelledby="catalogo">
+  <h2 id="catalogo">Catálogo de hallazgos</h2>
+  <p class="lead">Los 49 hallazgos que sustentan patrones y propuestas, con su tipo de evidencia, población, geografía, periodo y precisión, lo que no permiten afirmar y dónde verificarlos en el repositorio del proyecto.</p>
+  <section class="cat" aria-labelledby="cat1"><h3 id="cat1">Capa 1 · contexto y necesidades</h3><ol class="hlist"><li id="H1-01"><span class="code-static">H1-01</span><div><p>En 2026 viven en los siete distritos unos 712 mil jóvenes de 15 a 29 años (23 % de la población); San Juan de Lurigancho concentra el 44 % y Ate el 25 %. Cerca de un tercio (226 mil) tiene 15–19 años.</p>
+<p class="meta">estimación distrital · 15–29 · distritos de Lima Este · 2026 · nivel; no se interpretan tendencias</p>
+<p class="meta"><span>No permite afirmar:</span> Tendencias de población 2022–2026 (series inestables).</p>
+<p class="meta ref">notebooks/01_capa1_diagnostico.ipynb §1; data/processed/capa1_poblacion_resumen.csv</p></div></li><li id="H1-02"><span class="code-static">H1-02</span><div><p>Hay 182 organizaciones juveniles acreditadas (RENOJ, 2019–2026). SJL, Ate, Lurigancho-Chosica y El Agustino tienen las densidades más bajas (1,6–2,3 por 10 mil jóvenes, frente a una mediana metropolitana de 3,3); La Molina, la más alta (14,3). Ninguna tiene como temática el deporte ni la participación y ciudadanía; 20 son de cultura y arte.</p>
+<p class="meta">registro administrativo distrital · organizaciones · distritos de Lima Este · 2019–2026 · conteo</p>
+<p class="meta"><span>No permite afirmar:</span> Que haya poca organización juvenil real: solo se cuentan las acreditadas.</p>
+<p class="meta ref">notebooks/01_capa1_diagnostico.ipynb §2; data/processed/capa1_renoj_resumen_distritos.csv</p></div></li><li id="H1-03"><span class="code-static">H1-03</span><div><p>1 727 personas de los siete distritos están inscritas en el Programa de Voluntariado Juvenil: 85 % mujeres, 46 % de 15–19 años, 65 % solo estudia. Sus intereses declarados no discriminan (81–93 % marca cada tema); su experiencia previa se concentra en educación (39 %), ambiente (31 %), cultura (23 %) y salud (20 %), frente a deporte (11 %).</p>
+<p class="meta">registro de autoselección (señal) · inscritos en el programa · distritos de Lima Este · acumulado sin fecha · conteo</p>
+<p class="meta"><span>No permite afirmar:</span> Intereses de la juventud en general.</p>
+<p class="meta ref">notebooks/01_capa1_diagnostico.ipynb §3; data/processed/capa1_voluntariado_resumen_distritos.csv</p></div></li><li id="H1-04"><span class="code-static">H1-04</span><div><p>Quienes llegan al voluntariado son sobre todo estudiantes: el 65 % solo estudia, frente al 26–30 % de los jóvenes de Lima Metropolitana; quienes solo trabajan son el 9 %, frente al 43–45 %.</p>
+<p class="meta">comparación descriptiva de composición · 15–29 · inscritos de Lima Este vs. población de Lima Metropolitana · acumulado / 2022–2023 · descriptiva</p>
+<p class="meta"><span>No permite afirmar:</span> Tasas de inscripción por situación de actividad (decisión D18).</p>
+<p class="meta ref">notebooks/01_capa1_diagnostico.ipynb §3.2; fuentes/metodologia_capa1.md D18</p></div></li><li id="H1-05"><span class="code-static">H1-05</span><div><p>En Lima Metropolitana el acceso universitario aumentó (asistencia de 19,6 % a 25,6 % entre 2022 y 2025), pero la secundaria completa a los 17–18 años bajó de 85,6 % a 82,6 %.</p>
+<p class="meta">representativa de Lima Metropolitana · 15–29 (según indicador) · Lima Metropolitana · 2022–2025 · confiable</p>
+<p class="meta"><span>No permite afirmar:</span> Niveles educativos de Lima Este.</p>
+<p class="meta ref">notebooks/01_capa1_diagnostico.ipynb §5.1; data/processed/capa1_indicadores_encuestas.csv</p></div></li><li id="H1-06"><span class="code-static">H1-06</span><div><p>En Lima Metropolitana la informalidad juvenil era de 65,1 % (2023) y el desempleo, de 11,7 % en 2025 (cálculo propio con la ENAHO). La participación laboral de las mujeres jóvenes (53,8 %) está unos nueve puntos por debajo de la de los hombres (62,9 %).</p>
+<p class="meta">representativa de Lima Metropolitana · 15–29 · Lima Metropolitana · 2023–2025 · confiable</p>
+<p class="meta"><span>No permite afirmar:</span> Situación laboral de Lima Este.</p>
+<p class="meta ref">notebooks/01_capa1_diagnostico.ipynb §5.1; data/processed/capa1_empleo_enaho.csv</p></div></li><li id="H1-07"><span class="code-static">H1-07</span><div><p>En 2025, el 17,9 % de los jóvenes de Lima Metropolitana no estudia ni trabaja: 22,1 % de las mujeres y 13,7 % de los hombres.</p>
+<p class="meta">representativa de Lima Metropolitana · 15–29 · Lima Metropolitana · 2025 · confiable</p>
+<p class="meta"><span>No permite afirmar:</span> Cuántos jóvenes de Lima Este no estudian ni trabajan.</p>
+<p class="meta ref">notebooks/01_capa1_diagnostico.ipynb §5.1</p></div></li><li id="H1-08"><span class="code-static">H1-08</span><div><p>El 15,9 % de los jóvenes de Lima Metropolitana tuvo un episodio depresivo (2024): 21,6 % de las mujeres y 10,3 % de los hombres.</p>
+<p class="meta">representativa de Lima Metropolitana · 15–29 · Lima Metropolitana · 2024 · confiable</p>
+<p class="meta"><span>No permite afirmar:</span> Prevalencia en Lima Este.</p>
+<p class="meta ref">notebooks/01_capa1_diagnostico.ipynb §5.1</p></div></li><li id="H1-09"><span class="code-static">H1-09</span><div><p>El uso de internet es casi universal (96 %), sobre todo desde el celular (92 %), pero las habilidades avanzadas son minoritarias: instalar o configurar software (55 %) y programar (14,5 %).</p>
+<p class="meta">representativa de Lima Metropolitana · 15–29 · Lima Metropolitana · 2022–2024 · confiable</p>
+<p class="meta"><span>No permite afirmar:</span> Brechas digitales de Lima Este.</p>
+<p class="meta ref">notebooks/01_capa1_diagnostico.ipynb §5.1</p></div></li><li id="H1-10"><span class="code-static">H1-10</span><div><p>En 2024, el 37,5 % de los jóvenes de Lima Metropolitana fue víctima de algún delito y el 33 % dejó de hacer alguna actividad para protegerse. El 58 % se siente inseguro al caminar de noche por su barrio: 67 % de las mujeres y 49 % de los hombres.</p>
+<p class="meta">representativa de Lima Metropolitana · 15–29 · Lima Metropolitana · 2024 · confiable</p>
+<p class="meta"><span>No permite afirmar:</span> Niveles de inseguridad de Lima Este.</p>
+<p class="meta ref">notebooks/01_capa1_diagnostico.ipynb §5.1</p></div></li><li id="H1-11"><span class="code-static">H1-11</span><div><p>El 31,5 % de las mujeres jóvenes con pareja de Lima Metropolitana sufrió violencia familiar en el último año (2025).</p>
+<p class="meta">representativa de Lima Metropolitana · mujeres 15–29 con pareja · Lima Metropolitana · 2025 · confiable</p>
+<p class="meta"><span>No permite afirmar:</span> Prevalencia en Lima Este.</p>
+<p class="meta ref">notebooks/01_capa1_diagnostico.ipynb §5.1</p></div></li><li id="H1-12"><span class="code-static">H1-12</span><div><p>La participación de los jóvenes de Lima Metropolitana en asociaciones u organizaciones es muy baja (0,7 %, referencial) y solo el 24,5 % confía en su municipalidad distrital (2024).</p>
+<p class="meta">representativa de Lima Metropolitana · 15–29 · Lima Metropolitana · 2024 · referencial (participación); confiable (confianza)</p>
+<p class="meta"><span>No permite afirmar:</span> Participación en Lima Este.</p>
+<p class="meta ref">notebooks/01_capa1_diagnostico.ipynb §5.1</p></div></li><li id="H1-13"><span class="code-static">H1-13</span><div><p>En 2025 se registraron 1 654 nacimientos de madres de 15–19 años con residencia en los siete distritos, menos de la mitad que en 2019. La tasa 2022–2025 supera la mediana metropolitana (16 por 1 000) en El Agustino (24), Santa Anita (19) y Ate (17).</p>
+<p class="meta">registro administrativo distrital · mujeres 15–19 · distritos de Lima Este · 2019–2025 · conteo (celdas &lt; 10 ocultas)</p>
+<p class="meta"><span>No permite afirmar:</span> Embarazos (solo se registran nacimientos).</p>
+<p class="meta ref">notebooks/01_capa1_diagnostico.ipynb §4; data/processed/capa1_registros_resumen.csv</p></div></li><li id="H1-14"><span class="code-static">H1-14</span><div><p>Los CEM atienden unos 3 000 casos al año de jóvenes con domicilio en Lima Este: 94 % mujeres, 41 % de 15–19 años, 35 % violencia sexual. Chaclacayo, Santa Anita y Ate superan la mediana metropolitana de casos por 10 mil jóvenes.</p>
+<p class="meta">registro administrativo distrital · 15–29 · distritos de Lima Este · 2022–2025 · conteo (celdas &lt; 10 ocultas)</p>
+<p class="meta"><span>No permite afirmar:</span> Prevalencia de la violencia (los CEM registran atenciones).</p>
+<p class="meta ref">notebooks/01_capa1_diagnostico.ipynb §4; data/processed/capa1_registros_resumen.csv</p></div></li></ol></section>
+<section class="cat" aria-labelledby="cat2"><h3 id="cat2">Capa 2 · intereses, hábitos y aspiraciones</h3><ol class="hlist"><li id="H2-01"><span class="code-static">H2-01</span><div><p>Casi todos los jóvenes usan computadora, tablet o celular cada semana (92,7 % en Lima Este; 91,7 % en Lima Metropolitana) y el 80 % ve televisión o videos.</p>
+<p class="meta">representativa de Lima Este (dominio no planificado) · 15–29 · Lima Este · 2024 · confiable</p>
+<p class="meta"><span>No permite afirmar:</span> Interés en actividades grupales digitales.</p>
+<p class="meta ref">notebooks/02_capa2_intereses.ipynb §1; data/processed/capa2_uso_tiempo_enut.csv</p></div></li><li id="H2-02"><span class="code-static">H2-02</span><div><p>El 27,6 % de los jóvenes de Lima Este hace deporte o ejercicio en la semana (34,8 % en Lima Metropolitana). En Lima Metropolitana, 49,1 % de los hombres jóvenes y 19,7 % de las mujeres jóvenes.</p>
+<p class="meta">representativa de Lima Este (dominio no planificado) · 15–29 · Lima Este; Lima Metropolitana por sexo · 2024 · confiable</p>
+<p class="meta"><span>No permite afirmar:</span> La brecha por sexo en Lima Este (muestra insuficiente); interés en actividades deportivas organizadas.</p>
+<p class="meta ref">notebooks/02_capa2_intereses.ipynb §1</p></div></li><li id="H2-03"><span class="code-static">H2-03</span><div><p>Aficiones, artes y juegos ocupan la semana del 19,4 % de los jóvenes de Lima Este (referencial); en Lima Metropolitana, 27,0 % de los hombres y 9,1 % de las mujeres. Asistir a eventos: 13,8 % en Lima Este (referencial), 21,9 % en Lima Metropolitana.</p>
+<p class="meta">representativa de Lima Este (dominio no planificado) · 15–29 · Lima Este; Lima Metropolitana · 2024 · referencial en Lima Este</p>
+<p class="meta"><span>No permite afirmar:</span> Qué aficiones concretas.</p>
+<p class="meta ref">notebooks/02_capa2_intereses.ipynb §1</p></div></li><li id="H2-04"><span class="code-static">H2-04</span><div><p>Leer (12,9 %) y hacer voluntariado o ayudar a la comunidad (9,0 %) son actividades semanales poco frecuentes entre los jóvenes de Lima Este (ambas referenciales).</p>
+<p class="meta">representativa de Lima Este (dominio no planificado) · 15–29 · Lima Este · 2024 · referencial</p>
+<p class="meta"><span>No permite afirmar:</span> Disposición a participar en voluntariado.</p>
+<p class="meta ref">notebooks/02_capa2_intereses.ipynb §1</p></div></li><li id="H2-05"><span class="code-static">H2-05</span><div><p>Solo el 41 % de los jóvenes de Lima Este está muy o totalmente satisfecho con la cantidad de su tiempo libre; el 32,0 % está poco o nada satisfecho con el tiempo para sus amistades (23,4 % en Lima Metropolitana), una diferencia cercana al margen de error.</p>
+<p class="meta">representativa de Lima Este (dominio no planificado) · 15–29 · Lima Este · 2024 · confiable (margen ±7 puntos)</p>
+<p class="meta"><span>No permite afirmar:</span> Que la insatisfacción sea mayor en Lima Este con certeza.</p>
+<p class="meta ref">notebooks/02_capa2_intereses.ipynb §1</p></div></li><li id="H2-06"><span class="code-static">H2-06</span><div><p>La mitad de los jóvenes estudia (≈ 37 h semanales entre quienes estudian) y más de la mitad trabaja o busca trabajo (58 % en Lima Este; ≈ 42 h semanales entre quienes trabajan).</p>
+<p class="meta">representativa de Lima Este (dominio no planificado) · 15–29 · Lima Este; Lima Metropolitana · 2024 · confiable</p>
+<p class="meta"><span>No permite afirmar:</span> Horarios disponibles concretos.</p>
+<p class="meta ref">notebooks/02_capa2_intereses.ipynb §1</p></div></li><li id="H2-07"><span class="code-static">H2-07</span><div><p>En 2022–2025, el 63,2 % de los jóvenes de Lima Este fue al cine en el año; 44,6 % a algún espectáculo en vivo; 21,4 % a conciertos o festivales musicales; 19,6 % a festivales locales; 19,4 % a ferias del libro; 18,3 % a espectáculos de danza.</p>
+<p class="meta">representativa de Lima Este (dominio no planificado) · 15–29 · Lima Este · 2022–2025 (agrupado) · confiable</p>
+<p class="meta"><span>No permite afirmar:</span> Preferencias por distrito; interés en actividades organizadas por terceros.</p>
+<p class="meta ref">notebooks/02_capa2_intereses.ipynb §2; data/processed/capa2_cultura_enapres.csv</p></div></li><li id="H2-08"><span class="code-static">H2-08</span><div><p>El consumo cultural de los jóvenes de Lima Este es sobre todo digital: 92,8 % ve películas o video por internet, 90,3 % escucha música por internet, 46,3 % juega videojuegos en el celular y 34,7 % videojuegos multijugador en línea.</p>
+<p class="meta">representativa de Lima Este (dominio no planificado) · 15–29 · Lima Este · 2022–2025 (agrupado) · confiable</p>
+<p class="meta"><span>No permite afirmar:</span> Interés en actividades presenciales o grupales de videojuegos.</p>
+<p class="meta ref">notebooks/02_capa2_intereses.ipynb §2</p></div></li><li id="H2-09"><span class="code-static">H2-09</span><div><p>Entre quienes no asistieron a un servicio cultural, los motivos principales son la falta de interés (35–56 %) y de tiempo (30–40 %); el dinero pesa sobre todo en conciertos (18 %) y cine (15 %); &#x27;no hay oferta&#x27; casi no aparece (1–2 %) y la falta de información es relevante en ferias y exposiciones (8–11 %).</p>
+<p class="meta">representativa de Lima Metropolitana · 15–29 · Lima Metropolitana · 2022–2025 (agrupado) · confiable</p>
+<p class="meta"><span>No permite afirmar:</span> Barreras en Lima Este por separado.</p>
+<p class="meta ref">notebooks/02_capa2_intereses.ipynb §2</p></div></li><li id="H2-10"><span class="code-static">H2-10</span><div><p>La mayoría de jóvenes que asistió a bibliotecas, ferias, festivales y exposiciones entró gratis; en cambio, cerca de 8 de cada 10 asistentes a conciertos y 7 de cada 10 al teatro tuvo una entrada pagada.</p>
+<p class="meta">representativa de Lima Metropolitana · 15–29 · Lima Metropolitana · 2022–2025 (agrupado) · confiable</p>
+<p class="meta"><span>No permite afirmar:</span> Disposición a pagar.</p>
+<p class="meta ref">notebooks/02_capa2_intereses.ipynb §2</p></div></li><li id="H2-11"><span class="code-static">H2-11</span><div><p>El 32,7 % de los jóvenes de Lima Este usa internet para educación o capacitación (35,5 % en Lima Metropolitana; 43 % entre 20 y 24 años); solo el 3,9 % lo usa para vender productos o servicios.</p>
+<p class="meta">representativa de Lima Este (dominio no planificado) · 15–29 · Lima Este · 2022–2025 (agrupado) · confiable</p>
+<p class="meta"><span>No permite afirmar:</span> Una brecha estable de Lima Este frente a Lima Metropolitana.</p>
+<p class="meta ref">notebooks/02_capa2_intereses.ipynb §3; data/processed/capa2_educacion_internet_enaho.csv</p></div></li><li id="H2-12"><span class="code-static">H2-12</span><div><p>El 35,4 % de los jóvenes de Lima Este asiste a un centro educativo. Entre quienes no asisten, los principales motivos son estar trabajando (31,3 %) y problemas económicos (28,0 %; 23,3 % en Lima Metropolitana); la falta de interés es mínima (2,1 %, referencial). En las mujeres pesan más los problemas económicos, familiares y del hogar.</p>
+<p class="meta">representativa de Lima Este (dominio no planificado) · 15–29 · Lima Este; Lima Metropolitana por sexo · 2022–2025 (agrupado) · confiable</p>
+<p class="meta"><span>No permite afirmar:</span> Interés en programas de estudio concretos.</p>
+<p class="meta ref">notebooks/02_capa2_intereses.ipynb §3</p></div></li><li id="H2-13"><span class="code-static">H2-13</span><div><p>En 2020, el 45 % de los adolescentes y jóvenes urbanos (13–20) aspiraba a tener su propio negocio; en 2019, el 60 % de los de 18–20 sin negocio deseaba emprender.</p>
+<p class="meta">estudio de mercado (Ipsos) · 13–20 · Perú urbano · 2019–2020 · sin error publicado</p>
+<p class="meta"><span>No permite afirmar:</span> Aspiraciones actuales de los jóvenes de Lima Este.</p>
+<p class="meta ref">notebooks/02_capa2_intereses.ipynb §4; fuentes/capa2_estudios_ipsos.csv</p></div></li><li id="H2-14"><span class="code-static">H2-14</span><div><p>Entre quienes trabajaban en 2020, solo el 23 % lo hacía en algo relacionado con su carrera.</p>
+<p class="meta">estudio de mercado (Ipsos) · 13–20 · Perú urbano · 2020 · sin error publicado</p>
+<p class="meta"><span>No permite afirmar:</span> Desajuste actual en Lima Este.</p>
+<p class="meta ref">notebooks/02_capa2_intereses.ipynb §4</p></div></li><li id="H2-15"><span class="code-static">H2-15</span><div><p>Fuera de casa, los adolescentes y jóvenes urbanos se divierten saliendo a comer, en parques, visitando amigos y haciendo ejercicio (42–44 %) y yendo al cine (37 %) (2019). La generación Z de 18–25 años usa TikTok (55 %) y Discord (24 %) y juega videojuegos en casa (32 %) (2022).</p>
+<p class="meta">estudio de mercado (Ipsos) · 13–20; 18–25 · Perú urbano · 2019–2022 · sin error publicado</p>
+<p class="meta"><span>No permite afirmar:</span> Preferencias actuales de los jóvenes de Lima Este.</p>
+<p class="meta ref">notebooks/02_capa2_intereses.ipynb §4</p></div></li></ol></section>
+<section class="cat" aria-labelledby="cat3"><h3 id="cat3">Capa 3 · oferta y convocatoria</h3><ol class="hlist"><li id="H3-01"><span class="code-static">H3-01</span><div><p>De 151 actividades publicadas en 2024–2026, solo 44 (29 %) se dirigen a jóvenes; 53 son para niños y adolescentes (casi siempre de 6 a 17 años) y 51 para todo público. Para personas de 18 a 29 años la oferta publicada es escasa.</p>
+<p class="meta">oferta observada · según actividad · 7 distritos · 2024–2026 · lo publicado en internet</p>
+<p class="meta"><span>No permite afirmar:</span> Que la oferta real sea escasa; ni que haya demanda por lo que falta.</p>
+<p class="meta ref">notebooks/03_capa3_oferta.ipynb §3; fuentes/capa3_registro_oferta.csv</p></div></li><li id="H3-02"><span class="code-static">H3-02</span><div><p>Lo dirigido a jóvenes se concentra en empleo y empleabilidad (13), participación y voluntariado (13) y preparación preuniversitaria (11). Hay poca oferta dirigida a jóvenes en deporte (3), salud y salud mental (3), emprendimiento (4) y tecnología (2).</p>
+<p class="meta">oferta observada · jóvenes · 7 distritos · 2024–2026 · lo publicado en internet</p>
+<p class="meta"><span>No permite afirmar:</span> Interés de los jóvenes por esos temas (la frecuencia de oferta no es interés).</p>
+<p class="meta ref">notebooks/03_capa3_oferta.ipynb §4</p></div></li><li id="H3-03"><span class="code-static">H3-03</span><div><p>Deporte (39 actividades) y arte y cultura (46) son los temas más ofrecidos, pero sobre todo para niños y adolescentes o todo público; hay nuevos espacios deportivos en todos los distritos con más publicaciones (losas, complejos del IPD, clubes de SERPAR).</p>
+<p class="meta">oferta observada · 6–17 y todo público · 7 distritos · 2024–2026 · lo publicado en internet</p>
+<p class="meta"><span>No permite afirmar:</span> Uso real de los espacios.</p>
+<p class="meta ref">C3-008, C3-009, C3-026, C3-051, C3-054, C3-077, C3-092, C3-114, C3-120, C3-134</p></div></li><li id="H3-04"><span class="code-static">H3-04</span><div><p>La oferta publicada es casi toda gratuita (99 de 151) y presencial (143). Lo pagado son talleres de verano y escuelas deportivas (S/ 50 por ciclo en Ate; S/ 60–70 al mes en SERPAR, El Agustino y Santa Anita; S/ 140 por taller en el verano 2025 de Santa Anita) y academias preuniversitarias (S/ 150 al mes en Santa Anita).</p>
+<p class="meta">oferta observada · según actividad · 7 distritos · 2024–2026 · lo publicado en internet</p>
+<p class="meta"><span>No permite afirmar:</span> Disposición a pagar.</p>
+<p class="meta ref">notebooks/03_capa3_oferta.ipynb §3</p></div></li><li id="H3-05"><span class="code-static">H3-05</span><div><p>Preparación preuniversitaria y orientación vocacional con participación declarada en Lima Este: 180 alumnos en la academia municipal gratuita de Lurigancho-Chosica, 300 estudiantes y vecinos en su feria vocacional, 100 becarios de Muni Becas (El Agustino), 35 ingresantes a universidades de la academia municipal de Ate (pagada), 17 becas Beca2 (SJL), &#x27;aulas completas&#x27; en la academia de Santa Anita y &#x27;miles&#x27; de escolares en la inscripción a Beca 18 en SJL.</p>
+<p class="meta">participación declarada · 16–19 aprox. (secundaria y egresados) · Lurigancho-Chosica, El Agustino, SJL, Santa Anita, Ate · 2024–2026 · cifras declaradas</p>
+<p class="meta"><span>No permite afirmar:</span> Comparar entre distritos ni con la población.</p>
+<p class="meta ref">C3-006, C3-046, C3-070, C3-080, C3-096, C3-099, C3-123, C3-141</p></div></li><li id="H3-06"><span class="code-static">H3-06</span><div><p>En el concurso de becas de la academia municipal de Santa Anita (2024) más de 80 jóvenes compitieron por 10 becas. Es demanda observada por esa beca gratuita específica, no interés general por la formación.</p>
+<p class="meta">demanda observada (oferta concreta) · 16–19 aprox. · Santa Anita · 2024 · cifra declarada</p>
+<p class="meta"><span>No permite afirmar:</span> Interés general por actividades de formación o participación (decisión C3-D9).</p>
+<p class="meta ref">C3-125</p></div></li><li id="H3-07"><span class="code-static">H3-07</span><div><p>Empleabilidad juvenil con resultados declarados pequeños: 143 jóvenes con empleo por &#x27;Mi Primera Chamba&#x27; (Ate, 2024), 62 aprobados en un programa de habilidades y empleabilidad (CEBA de SJL), 50 jóvenes contratados tras capacitación dual (SJL), &#x27;decenas&#x27; en una jornada de capacitación (SJL, 2026).</p>
+<p class="meta">participación declarada · 15–29 · Ate, SJL · 2024–2026 · cifras declaradas</p>
+<p class="meta"><span>No permite afirmar:</span> Tasa de inserción ni comparación entre programas.</p>
+<p class="meta ref">C3-003, C3-090, C3-094, C3-105</p></div></li><li id="H3-08"><span class="code-static">H3-08</span><div><p>Los talleres juveniles gratuitos de SENAJU (arte, desarrollo y empleabilidad; 15–29 años) agotaron inscripciones en 2024: más de 5 000 inscritos para una meta de casi mil. Es demanda por esos talleres, medida en cinco sedes de Lima (una en SJL) y talleres virtuales nacionales.</p>
+<p class="meta">demanda observada (oferta concreta) · 15–29 · Lima Metropolitana y nacional (una sede en SJL) · 2024 · cifra declarada</p>
+<p class="meta"><span>No permite afirmar:</span> Demanda en Lima Este por separado.</p>
+<p class="meta ref">C3-084</p></div></li><li id="H3-09"><span class="code-static">H3-09</span><div><p>Ferias y bolsas de empleo en SJL, El Agustino, Santa Anita, Ate y Lurigancho-Chosica ofrecen cientos o miles de vacantes; la asistencia se describe como &#x27;cientos&#x27; o &#x27;miles&#x27; de vecinos de todas las edades (en Santa Clara, Ate, &#x27;cientos de jóvenes y adultos&#x27; para unas 300 vacantes).</p>
+<p class="meta">participación declarada · todas las edades · SJL, El Agustino, Santa Anita, Ate, Lurigancho-Chosica · 2024–2026 · sin cifras exactas</p>
+<p class="meta"><span>No permite afirmar:</span> Cuántos jóvenes asisten ni si superan las vacantes.</p>
+<p class="meta ref">C3-044, C3-083, C3-093, C3-102, C3-135</p></div></li><li id="H3-10"><span class="code-static">H3-10</span><div><p>Una hackathon municipal en SJL (2025, mayores de 18) reunió más de 400 inscripciones y más de 70 equipos de jóvenes, líderes vecinales, profesionales y emprendedores de varios distritos. Es la única cifra de convocatoria para una actividad tecnológica dirigida a jóvenes.</p>
+<p class="meta">participación declarada · 18+ (mayoría jóvenes, sin desglose) · SJL (participantes de varios distritos) · 2025 · cifra declarada</p>
+<p class="meta"><span>No permite afirmar:</span> Generalizar a otras actividades tecnológicas.</p>
+<p class="meta ref">C3-100</p></div></li><li id="H3-11"><span class="code-static">H3-11</span><div><p>Las cifras de participación más altas son de actividades para niños y adolescentes: 6 304 participantes en los talleres deportivos de La Molina (2024), más de 5 000 inscritos en el verano 2025 de Santa Anita (3–18 años), más de 1 500 en el verano 2026 de Lurigancho-Chosica. Solo una parte de estos participantes tiene 15 años o más.</p>
+<p class="meta">participación declarada · niños y adolescentes (6–18) · La Molina, Santa Anita, Lurigancho-Chosica · 2024–2026 · cifras declaradas</p>
+<p class="meta"><span>No permite afirmar:</span> Generalizar a la juventud de 15–29 (decisión del equipo).</p>
+<p class="meta ref">C3-051, C3-079, C3-137</p></div></li><li id="H3-12"><span class="code-static">H3-12</span><div><p>La Academia IPD (deporte gratuito, 6–17 años) agotó 19 mil cupos en Lima Metropolitana en 2026 y abrió 9 500 más; SJL fue el distrito con más inscritos. Es demanda por esos talleres para niños y adolescentes, medida en toda Lima.</p>
+<p class="meta">demanda observada (oferta concreta) · 6–17 · Lima Metropolitana (sedes en SJL y Santa Anita) · 2026 · cifra declarada</p>
+<p class="meta"><span>No permite afirmar:</span> Demanda de deporte entre jóvenes de 18–29; demanda por sede.</p>
+<p class="meta ref">C3-121</p></div></li><li id="H3-13"><span class="code-static">H3-13</span><div><p>Existe oferta de cultura urbana y juvenil (Urban Fest en Chosica, Festi Rock y Cultura Urbana Fest en Santa Anita, FestiJoven y talleres de BMX y Canva en SJL, concurso de canto y baile en El Agustino), pero ninguna nota informa cuántos jóvenes asistieron. Un festival intercultural en SJL reunió &#x27;más de mil vecinos&#x27; de todas las edades.</p>
+<p class="meta">oferta observada · jóvenes / todo público · Lurigancho-Chosica, Santa Anita, SJL, El Agustino · 2024–2026 · sin cifras de jóvenes</p>
+<p class="meta"><span>No permite afirmar:</span> Capacidad de convocatoria de estos eventos entre jóvenes.</p>
+<p class="meta ref">C3-035, C3-073, C3-091, C3-098, C3-103, C3-127, C3-136</p></div></li><li id="H3-14"><span class="code-static">H3-14</span><div><p>En salud mental y prevención, la oferta publicada llega sobre todo por colegios (charlas de DEVIDA con hasta 450 estudiantes por colegio, DEMUNA en el aula) o a niñas y adolescentes (programa &#x27;Caminemos Juntas y Seguras&#x27; en SJL). Para jóvenes: una campaña de salud integral en SJL con &#x27;decenas&#x27; de beneficiarios y un taller de autoestima en El Agustino, sin cifras.</p>
+<p class="meta">oferta observada · adolescentes escolares; jóvenes · 6 distritos · 2024–2026 · cifras declaradas en colegios</p>
+<p class="meta"><span>No permite afirmar:</span> Convocatoria voluntaria de jóvenes a actividades de bienestar (las charlas escolares tienen público cautivo).</p>
+<p class="meta ref">C3-017, C3-027, C3-037, C3-087, C3-113</p></div></li><li id="H3-15"><span class="code-static">H3-15</span><div><p>No se encontró ninguna actividad publicada de videojuegos o e-sports ni de creación audiovisual para jóvenes; el cine aparece solo como &#x27;Cine en tu Barrio&#x27; para familias (El Agustino) y cine inclusivo (SJL).</p>
+<p class="meta">oferta observada (ausencia) · — · 7 distritos · 2024–2026 · ausencia en lo publicado</p>
+<p class="meta"><span>No permite afirmar:</span> Que haya demanda por esas actividades (la ausencia de oferta no es demanda).</p>
+<p class="meta ref">C3-024, C3-097</p></div></li><li id="H3-16"><span class="code-static">H3-16</span><div><p>En voluntariado y participación las cifras son pequeñas o sin desglose por edad: 20 jóvenes en Minka Joven (Ate), más de 300 voluntarios de edad no indicada en la Gran Cruzada Verde (Chosica), &#x27;cientos de jóvenes&#x27; en la réplica de CADE Universitario (SJL), 450 participantes de Lima y Callao en el encuentro de Defensores del Patrimonio.</p>
+<p class="meta">participación declarada · 15–29 / sin edad · Ate, Lurigancho-Chosica, SJL; Lima y Callao · 2024–2026 · cifras declaradas</p>
+<p class="meta"><span>No permite afirmar:</span> Interés de los jóvenes por el voluntariado en general.</p>
+<p class="meta ref">C3-011, C3-072, C3-108, C3-119</p></div></li><li id="H3-17"><span class="code-static">H3-17</span><div><p>Hay espacios e instituciones que podrían acoger actividades: Casa de la Juventud (Santa Anita), Coliseo Carmela Estrella (Chosica), complejos del IPD en SJL y Santa Anita, clubes metropolitanos Wiracocha, Cahuide y Huaycán, Agencia Local de Empleo y coworking de SJL (2026), CETPRO de La Molina, Centro de Empleo del MTPE en SJL y en construcción en Santa Anita.</p>
+<p class="meta">oferta observada · — · SJL, Santa Anita, Ate, Lurigancho-Chosica, La Molina · 2024–2026 · lo publicado</p>
+<p class="meta"><span>No permite afirmar:</span> Disponibilidad real ni condiciones de uso.</p>
+<p class="meta ref">C3-009, C3-064, C3-075, C3-093, C3-111, C3-114, C3-120, C3-124, C3-145</p></div></li><li id="H3-18"><span class="code-static">H3-18</span><div><p>La visibilidad de la oferta es muy desigual: Chaclacayo publicó 6 notas en 2024–2026; SJL casi ninguna en 2024; El Agustino y Santa Anita publican notas de una o dos líneas; la oferta de organizaciones sociales y ONG casi no aparece.</p>
+<p class="meta">cobertura de fuentes · — · 7 distritos · 2024–2026 · —</p>
+<p class="meta"><span>No permite afirmar:</span> Comparar la oferta real entre distritos.</p>
+<p class="meta ref">notebooks/03_capa3_oferta.ipynb §1; fuentes/metodologia_capa3.md §5</p></div></li><li id="H3-19"><span class="code-static">H3-19</span><div><p>En emprendimiento juvenil las cifras son vagas o no son de jóvenes: &#x27;muchos jóvenes emprendedores&#x27; en las ferias de Santa Anita, 385 alumnos de 14 a 60 años en el CETPRO de La Molina (el doble que años anteriores).</p>
+<p class="meta">participación declarada · jóvenes; 14–60 · Santa Anita, La Molina · 2024–2025 · sin cifras de jóvenes</p>
+<p class="meta"><span>No permite afirmar:</span> Convocatoria de jóvenes a actividades de emprendimiento.</p>
+<p class="meta ref">C3-064, C3-132</p></div></li><li id="H3-20"><span class="code-static">H3-20</span><div><p>Deporte dirigido a jóvenes con cifras: solo el taller de tiro con arco de La Molina (unos 30 alumnos por horario). Las carreras abiertas a todas las edades reúnen &#x27;más de mil&#x27; (Cajamarquilla) o &#x27;cientos&#x27; (Santa Anita) de participantes.</p>
+<p class="meta">participación declarada · jóvenes; todas las edades · La Molina, Lurigancho-Chosica, Santa Anita · 2024–2026 · cifras declaradas</p>
+<p class="meta"><span>No permite afirmar:</span> Convocatoria de jóvenes de 18–29 a deporte organizado.</p>
+<p class="meta ref">C3-053, C3-081, C3-133</p></div></li></ol></section>
+</section>
+
+<footer>Fuentes: Dato Joven (Observatorio Nacional de Juventud); ENAHO, ENAPRES y ENUT (INEI); Ipsos; notas de prensa de las siete municipalidades, SERPAR, SENAJU, MTPE, IPD, Ministerio de Cultura, DEVIDA y Municipalidad de Lima. Trazabilidad técnica: <span class="ref">resultados/</span> y <span class="ref">fuentes/metodologia_integracion.md</span> del repositorio ORP-juventudLimaEste.</footer>
+</div>
