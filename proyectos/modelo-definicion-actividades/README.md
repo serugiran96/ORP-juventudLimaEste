@@ -2,7 +2,7 @@
 
 Proyecto de análisis de datos sobre las juventudes de Lima Este.
 
-> Estado: Capas 1 y 2 con diagnóstico (notebooks 01 y 02). Capa 3 e integración pendientes.
+> Estado: Capas 1, 2 y 3 con diagnóstico (notebooks 01, 02 y 03). Integración pendiente.
 
 ## Objetivo
 
@@ -53,7 +53,7 @@ Identifica la oferta existente de actividades y oportunidades para jóvenes en e
 - **Fuentes:** información pública de municipalidades distritales de Lima Este y de otras organizaciones públicas.
 - **Contenido:** actividades, programas, talleres, eventos y oportunidades dirigidas a jóvenes.
 - **Oferta no es demanda:** que exista una actividad no significa que sea de interés de los jóvenes. Cuando haya datos de inscripciones, participación o asistencia, se registrarán como una señal adicional de interés.
-- **Recolección:** más adelante se evaluará qué información puede obtenerse mediante scraping y cuál requiere recolección manual.
+- **Recolección:** notas de prensa de las siete municipalidades y de entidades públicas (gob.pe, SERPAR, SENAJU), recolectadas respetando el `robots.txt` de cada sitio y codificadas a mano en un registro de 150 actividades (`fuentes/capa3_registro_oferta.csv`). Cada actividad se clasifica como oferta, participación declarada o demanda observada (`fuentes/metodologia_capa3.md`).
 
 ### Integración de las capas
 
@@ -76,11 +76,11 @@ Los resultados de la integración son **hipótesis** para orientar el diseño de
 
 | Capa | Fuente | Enlace | Estado |
 |---|---|---|---|
-| 1 | Dato Joven — Observatorio Nacional de Juventud | https://observatorio-juventud.minedu.gob.pe/dato-joven/ | Por revisar |
-| 2 | Estudios públicos de Ipsos Perú sobre jóvenes y Generación Z | Por identificar | Por revisar |
-| 2 | Otras investigaciones confiables sobre jóvenes peruanos | Por identificar | Por identificar |
-| 3 | Portales y canales oficiales de municipalidades de Lima Este | Por identificar | Por identificar |
-| 3 | Otras organizaciones públicas con oferta para jóvenes | Por identificar | Por identificar |
+| 1 | Dato Joven — Observatorio Nacional de Juventud | https://observatorio-juventud.minedu.gob.pe/dato-joven/ | Procesada |
+| 2 | Estudios públicos de Ipsos Perú sobre jóvenes y Generación Z | Ver `fuentes/fuentes.md` | Procesada |
+| 2 | Encuestas del INEI (ENUT, ENAPRES, ENAHO) | Ver `fuentes/fuentes.md` | Procesadas |
+| 3 | Notas de prensa de las municipalidades de Lima Este (gob.pe y munichosica.pe) | Ver `fuentes/fuentes.md` | Procesada |
+| 3 | SERPAR, SENAJU, MTPE, IPD, Ministerio de Cultura, DEVIDA, Municipalidad de Lima | Ver `fuentes/fuentes.md` | Procesadas |
 
 ### Registro de fuentes
 
@@ -151,6 +151,23 @@ jupyter nbconvert --to notebook --execute --inplace notebooks/02_capa2_intereses
 
 `capa2_educacion_internet_enaho.py calcular` valida contra Dato Joven, así que requiere haber ejecutado antes
 `procesar_capa1.py`. La metodología está en `fuentes/metodologia_capa2.md`.
+
+## Cómo reproducir la Capa 3
+
+```bash
+python scripts/capa3_noticias_gobpe.py listar            # notas municipales en gob.pe (2024–2026)
+python scripts/capa3_noticias_gobpe.py detalle           # texto de las notas relevantes (~30 min)
+python scripts/capa3_noticias_gobpe.py sectores          # notas del MTPE, IPD, Cultura, DEVIDA y Municipalidad de Lima
+python scripts/capa3_noticias_gobpe.py detalle_sectores  # su texto (~30 min)
+python scripts/capa3_noticias_wp.py                      # munichosica.pe, SERPAR y SENAJU
+python scripts/capa3_triaje.py                           # notas candidatas -> data/processed/
+python scripts/capa3_validar_registro.py                 # revisa el registro codificado a mano
+jupyter nbconvert --to notebook --execute --inplace notebooks/03_capa3_oferta.ipynb
+```
+
+El registro `fuentes/capa3_registro_oferta.csv` se codificó a mano a partir de las notas candidatas; los scripts
+solo recolectan y seleccionan notas. Las notas publicadas cambian con el tiempo, así que una nueva recolección
+puede dar resultados distintos. La metodología está en `fuentes/metodologia_capa3.md`.
 
 ## Datos y privacidad
 
