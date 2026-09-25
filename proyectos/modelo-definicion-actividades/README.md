@@ -133,6 +133,8 @@ Requiere Python 3 con las dependencias de `requirements.txt`. Desde esta carpeta
 python scripts/catalogo_dato_joven.py      # opcional: actualiza fuentes/catalogo_tableros_dato_joven.csv
 python scripts/extraer_dato_joven.py todo  # descarga agregados de Dato Joven -> data/raw/dato_joven/
 python scripts/procesar_capa1.py           # limpieza y organización -> data/processed/
+python scripts/empleo_enaho.py descargar   # microdatos ENAHO 2022–2025 (~1,5 GB) -> data/raw/enaho/
+python scripts/empleo_enaho.py calcular    # empleo 15–29 años, validado con Dato Joven -> data/processed/
 jupyter nbconvert --to notebook --execute --inplace notebooks/01_capa1_diagnostico.ipynb
 ```
 

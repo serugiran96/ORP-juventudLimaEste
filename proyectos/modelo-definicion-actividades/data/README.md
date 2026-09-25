@@ -32,6 +32,20 @@ de extracción y la fecha de última actualización del tablero.
 | `consolidado_regionales.csv` | Tablero consolidado "Indicadores regionales" (34 tablas), las mismas dos regiones |
 | `renoj_organizaciones_distritos_lima.csv` | Número de organizaciones del RENOJ por distrito × año de acreditación × tipo × temática |
 | `voluntariado_distritos_lima.csv` | Número de personas voluntarias inscritas por distrito × una variable a la vez |
+| `cnv_madres_15_19_distritos_lima.csv` | Nacimientos de madres de 15–19 años por distrito de residencia × año × edad de la madre. **Sensible: contiene celdas < 10** |
+| `cem_casos_edad_sexo_distritos_lima.csv` | Casos atendidos en los CEM por distrito de domicilio × año × grupo de edad × sexo. **Sensible** |
+| `cem_casos_tipo_violencia_distritos_lima.csv` | Casos atendidos en los CEM por distrito × año × tipo de violencia. **Sensible** |
+| `discapacidad_certificados_distritos_lima.csv` | Certificados de discapacidad emitidos por distrito × año × grupo de edad × sexo. **Sensible** |
+| `conadis_inscritos_distritos_lima.csv` | Inscripciones en el registro del CONADIS por distrito × año × grupo de edad × sexo. **Sensible** |
+
+Los archivos marcados como **sensibles** son conteos agregados, pero incluyen celdas pequeñas. **No deben
+compartirse ni analizarse directamente.** Se usan solo las versiones procesadas, que ocultan esas celdas.
+
+## `data/raw/enaho/` — microdatos de la ENAHO
+
+Los genera `scripts/empleo_enaho.py descargar`: son los archivos `enaho_{año}_modulo05.dta` (Módulo 05,
+Empleo e Ingresos, ENAHO anual 2022–2025) descargados del portal de microdatos del INEI. En total ocupan
+cerca de 1,5 GB.
 
 ## `data/processed/` — datos de la Capa 1
 
@@ -88,6 +102,27 @@ por distrito: `organizaciones_acumuladas` (2019–2026), `acreditadas_2022_2026`
 Personas inscritas en el Programa de Voluntariado Juvenil por distrito × variable × valor, con
 `pct_del_distrito`. El resumen tiene `personas_inscritas` e `inscritas_por_10mil_jovenes`.
 **Solo como señal complementaria:** son personas que se inscribieron por decisión propia.
+
+### Registros sensibles (celdas < 10 ocultas)
+En todos estos archivos, `casos` queda vacío y `oculto` = `True` cuando el conteo es menor de 10 o cuando
+se oculta de forma complementaria. `registro` toma los valores `maternidad_adolescente`,
+`violencia_atendida_cem`, `violencia_cem_por_tipo`, `discapacidad_certificados` y `discapacidad_conadis`.
+
+- **`capa1_registros_distrito_anio.csv`:** casos por distrito y año (43 distritos) y agregado de Lima Este.
+  `periodo_parcial` indica los años incompletos (por ejemplo, CNV 2026: enero–junio).
+- **`capa1_registros_distrito_desagregado.csv`:** casos 2022–2025 por distrito × `variable` (edad, sexo o
+  tipo de violencia) × `categoria`, con `pct_del_distrito`. El agregado de Lima Este tiene
+  `ubigeo` = `LIMA_ESTE`.
+- **`capa1_registros_resumen.csv`:** por distrito, `casos_2022_2025`, `promedio_anual`, `poblacion_2026`
+  (mujeres de 15–19 para el CNV; jóvenes de 15–29 para los demás), `tasa`, `tasa_por` y
+  `mediana_lima_metropolitana`.
+
+### `capa1_empleo_enaho.csv` y `capa1_empleo_enaho_validacion.csv`
+Lo genera `scripts/empleo_enaho.py calcular`. Es un **cálculo propio** con microdatos de la ENAHO: desempleo,
+tasa de actividad (PEA) y empleo formal/informal (este último solo en 2022–2023) de jóvenes de 15–29 años,
+para Lima Metropolitana y el total nacional, 2022–2025, por sexo. Incluye `valor`, `ee` (error estándar),
+`cv`, `referencial`, `n_muestral` y `replica_validada`. El archivo de validación compara 2022–2023 con Dato
+Joven.
 
 ### `control_consolidado_vs_tableros.csv`
 Valores que difieren entre el tablero consolidado y los tableros individuales. Vacío en la última
