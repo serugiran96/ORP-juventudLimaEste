@@ -28,6 +28,8 @@ import numpy as np
 import pandas as pd
 import requests
 
+from microdatos_inei import razon
+
 RAIZ = Path(__file__).resolve().parent.parent
 RAW = RAIZ / "data" / "raw" / "enaho"
 PROCESADOS = RAIZ / "data" / "processed"
@@ -76,28 +78,7 @@ def _leer(anio):
 
 
 def _razon(df, numerador, denominador, dominio):
-    """Razón ponderada y su error estándar (linealización, diseño estratificado por conglomerados).
-
-    numerador, denominador, dominio: arreglos booleanos o numéricos sobre toda la muestra; las
-    observaciones fuera del dominio contribuyen con cero (estimación por dominio).
-    """
-    w = df["fac500a"].to_numpy(float)
-    d = np.asarray(dominio, float)
-    y = np.asarray(numerador, float) * d
-    x = np.asarray(denominador, float) * d
-    X = np.sum(w * x)
-    if X == 0:
-        return np.nan, np.nan, 0
-    r = np.sum(w * y) / X
-    u = w * (y - r * x) / X
-    tot = pd.DataFrame({"h": df["estrato"].to_numpy(), "c": df["conglome"].to_numpy(), "u": u}) \
-        .groupby(["h", "c"], observed=True)["u"].sum().reset_index()
-    var = 0.0
-    for _, g in tot.groupby("h", observed=True):
-        n = len(g)
-        if n > 1:
-            var += n / (n - 1) * np.sum((g["u"] - g["u"].mean()) ** 2)
-    return 100 * r, 100 * np.sqrt(var), int(np.sum(x > 0))
+    return razon(df["fac500a"], df["estrato"], df["conglome"], numerador, denominador, dominio)
 
 
 def calcular():
