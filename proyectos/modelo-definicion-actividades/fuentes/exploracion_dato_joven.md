@@ -243,7 +243,7 @@ Esta sección define **qué** extraer y con qué reglas. El **orden** de extracc
 
 ### Supuestos o pendientes de verificar
 
-- **Fuente de las estimaciones de población** de Datos Demográficos: el tablero tiene un campo "Fuente:" cuyo contenido no se extrajo.
+- **Fuente de las estimaciones de población:** resuelto. Es el Repositorio Único Nacional de Información en Salud (REUNIS) y las proyecciones de población del INEI; ver `metodologia_capa1.md` (D5) sobre la inestabilidad de sus series por edad.
 - **Qué significa el distrito** en cada registro:
   - CNV: probablemente es la residencia de la madre, porque hay columnas aparte para el establecimiento de salud. Por verificar.
   - CEM: no está claro si `ubigeo` es el domicilio de la víctima o la ubicación del CEM.

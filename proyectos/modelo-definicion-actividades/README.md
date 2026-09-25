@@ -2,7 +2,7 @@
 
 Proyecto de análisis de datos sobre las juventudes de Lima Este.
 
-> Estado: enfoque definido. Aún no se han recolectado ni descargado datos.
+> Estado: Capa 1 en construcción (extracción y diagnóstico con Dato Joven). Capas 2 y 3 pendientes.
 
 ## Objetivo
 
@@ -120,9 +120,23 @@ Cada fuente usada debe documentarse con, al menos:
 | Carpeta | Contenido |
 |---|---|
 | `data/raw/` | Datos tal como se obtienen de la fuente, sin modificar. |
-| `data/processed/` | Datos limpios o anonimizados, listos para el análisis. |
+| `data/processed/` | Datos limpios o anonimizados, listos para el análisis. Diccionario en `data/README.md`. |
+| `fuentes/` | Catálogo de fuentes, exploración de Dato Joven, catálogo de tableros y metodología de la Capa 1. |
 | `notebooks/` | Notebooks de exploración y análisis (Jupyter). |
 | `scripts/` | Código reutilizable: recolección, limpieza y utilidades. |
+
+## Cómo reproducir la Capa 1
+
+Requiere Python 3 con las dependencias de `requirements.txt`. Desde esta carpeta:
+
+```bash
+python scripts/catalogo_dato_joven.py      # opcional: actualiza fuentes/catalogo_tableros_dato_joven.csv
+python scripts/extraer_dato_joven.py todo  # descarga agregados de Dato Joven -> data/raw/dato_joven/
+python scripts/procesar_capa1.py           # limpieza y organización -> data/processed/
+jupyter nbconvert --to notebook --execute --inplace notebooks/01_capa1_diagnostico.ipynb
+```
+
+Las decisiones metodológicas están en `fuentes/metodologia_capa1.md`.
 
 ## Datos y privacidad
 

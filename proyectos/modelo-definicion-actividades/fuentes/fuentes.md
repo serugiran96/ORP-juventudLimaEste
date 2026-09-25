@@ -68,7 +68,7 @@ Esta ficha cubre la plataforma y sus módulos de población, organizaciones juve
 | Año / fecha | Datos Demográficos: 2019–2026. RENOJ: organizaciones acreditadas entre 2019 y 2026. Voluntariado y Política Nacional: por verificar. Los tableros se actualizaron por última vez entre el 20/08/2026 y el 26/08/2026. |
 | Población / edad | Datos Demográficos: 15–19, 20–24 y 25–29 años, por sexo. **No incluye a personas de 30 años.** RENOJ y Voluntariado: edad y rango de edad de las personas registradas. |
 | Cobertura geográfica | **Distrito (UBIGEO)** en Datos Demográficos, RENOJ y personas voluntarias inscritas; **verificado para los siete distritos**. Política Nacional: solo nacional. |
-| Fuentes de origen | Según el portal: ENAHO, EPEN, ENDES, ENAPRES y registros administrativos. La fuente de las estimaciones de población está por verificar. |
+| Fuentes de origen | Según el portal: ENAHO, EPEN, ENDES, ENAPRES y registros administrativos. Las estimaciones de población provienen del Repositorio Único Nacional de Información en Salud (REUNIS) y de las proyecciones de población del INEI; sus series por edad son inestables entre años (ver `metodologia_capa1.md`, D5). |
 | Aporte al proyecto | Población joven por distrito, edad, sexo y año, que sirve de denominador para calcular tasas. Organizaciones juveniles por distrito, temática y tipo, que también sirve para la Capa 3. Personas voluntarias por distrito, con sus **intereses declarados**, que conectan con la Capa 2. |
 | Tipo de información | Estadística oficial y registros administrativos. |
 | Formato | Tableros de Power BI publicados en la web. No hay descarga en CSV. |
@@ -485,7 +485,7 @@ Resueltos con la exploración técnica del 24/09/2026:
 
 Pendientes:
 
-- [ ] Identificar la fuente de las estimaciones de población de Datos Demográficos.
+- [x] Fuente de las estimaciones de población: REUNIS y proyecciones del INEI. Sus series por edad son inestables entre años (ver `metodologia_capa1.md`).
 - [ ] Confirmar si el distrito del CNV, del CEM y de las personas voluntarias es el de residencia o el del establecimiento.
 - [ ] Revisar los manuales en PDF de los indicadores: definiciones, metodología y umbral de CV.
 - [ ] Confirmar las condiciones de uso de los datos con el Observatorio, o solicitarlos formalmente.
