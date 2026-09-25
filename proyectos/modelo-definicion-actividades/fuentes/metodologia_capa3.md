@@ -79,7 +79,7 @@ notebooks/03_capa3_oferta.ipynb                   → resúmenes por distrito, t
 | Notas de entidades nacionales y de la Municipalidad de Lima que mencionan los distritos | 483 (IPD 135, Municipalidad de Lima 190, Ministerio de Cultura 92, MTPE 48, DEVIDA 18) |
 | Notas de munichosica.pe, SERPAR y SENAJU | 69, 57 y 19 |
 | Notas revisadas por el triaje / candidatas | 1 183 / 589 |
-| **Actividades registradas** | **150**: 88 con evidencia de oferta, 58 con participación declarada y 4 con demanda observada |
+| **Actividades registradas** | **151**: 88 con evidencia de oferta, 59 con participación declarada y 4 con demanda observada |
 
 La codificación se hizo leyendo las notas candidatas y, en los distritos con notas breves, también el inicio de
 las demás notas descargadas (C3-D6). La fecha de consulta de cada fila está en `fecha_consulta`.
@@ -96,6 +96,7 @@ las demás notas descargadas (C3-D6). La fecha de consulta de cada fila está en
 | C3-D6 | El triaje automático solo selecciona notas y extrae fragmentos; **toda clasificación es manual**. Además, se revisaron los títulos y el inicio de las notas descargadas que el triaje no marcó. | Las palabras clave no distinguen entre una actividad y una mención de paso, y algunas notas son de una o dos líneas. La revisión encontró actividades que el triaje no marcaba (juegos florales, brigadas escolares, un consejo consultivo); se ampliaron los términos. |
 | C3-D7 | En las entidades nacionales y metropolitanas (C3-05), "Ate" se busca como la frase "distrito de Ate", además de Vitarte y Huaycán. | La búsqueda de gob.pe encontraba "Ate" dentro de otras palabras: devolvía más de 1 000 notas ajenas al distrito. |
 | C3-D8 | Periodo: enero de 2024 a septiembre de 2026. | "Reciente" dentro del periodo prioritario 2022–2026. |
+| C3-D9 | Una señal de demanda se refiere **solo a la oferta concreta** en que se observó. Si hay más postulantes que becas, se registra como demanda observada **por esa beca**, en una fila separada de la actividad a la que da acceso (por ejemplo, la academia pagada). Lo mismo con los cupos agotados de talleres gratuitos. Ninguna se usa como evidencia de interés general por actividades de formación, deporte o participación. | Decisión del equipo (25/09/2026). Una beca gratuita puede atraer postulantes por su valor económico, no por interés en la actividad. |
 
 ## 5. Limitaciones
 

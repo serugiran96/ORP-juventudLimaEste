@@ -53,7 +53,7 @@ Identifica la oferta existente de actividades y oportunidades para jóvenes en e
 - **Fuentes:** información pública de municipalidades distritales de Lima Este y de otras organizaciones públicas.
 - **Contenido:** actividades, programas, talleres, eventos y oportunidades dirigidas a jóvenes.
 - **Oferta no es demanda:** que exista una actividad no significa que sea de interés de los jóvenes. Cuando haya datos de inscripciones, participación o asistencia, se registrarán como una señal adicional de interés.
-- **Recolección:** notas de prensa de las siete municipalidades y de entidades públicas (gob.pe, SERPAR, SENAJU), recolectadas respetando el `robots.txt` de cada sitio y codificadas a mano en un registro de 150 actividades (`fuentes/capa3_registro_oferta.csv`). Cada actividad se clasifica como oferta, participación declarada o demanda observada (`fuentes/metodologia_capa3.md`).
+- **Recolección:** notas de prensa de las siete municipalidades y de entidades públicas (gob.pe, SERPAR, SENAJU), recolectadas respetando el `robots.txt` de cada sitio y codificadas a mano en un registro de 151 actividades (`fuentes/capa3_registro_oferta.csv`). Cada actividad se clasifica como oferta, participación declarada o demanda observada (`fuentes/metodologia_capa3.md`).
 
 ### Integración de las capas
 

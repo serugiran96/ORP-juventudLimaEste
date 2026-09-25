@@ -316,21 +316,21 @@ Se mantiene el modelo metodológico del `README.md`:
 
 ### Cobertura temática
 
-La siguiente tabla muestra qué fuentes tratan cada tema. En la Capa 3 se indica el número de actividades del registro (`capa3_registro_oferta.csv`) con ese tema y, entre paréntesis, cuántas se dirigen a jóvenes. **No es un cruce de resultados**: sirve para ver qué temas tienen evidencia en las tres capas y cuáles no.
+La siguiente tabla muestra qué fuentes tratan cada tema. En la Capa 3 se indica el número de actividades del registro (`capa3_registro_oferta.csv`) con ese tema, contando cada actividad una vez, y entre paréntesis cuántas se dirigen a jóvenes. **No es un cruce de resultados**: sirve para ver qué temas tienen evidencia en las tres capas y cuáles no.
 
 | Tema | Capa 1 | Capa 2 | Capa 3 (actividades registradas) |
 |---|---|---|---|
 | Educación y capacitación | C1-02, C1-03 | C2-07 (asistencia, motivos para no estudiar, uso educativo de internet); C2-03 | Preparación preuniversitaria 19 (11); orientación vocacional 3 (3); idiomas 4 (0) |
-| Empleo | C1-02, C1-03 | C2-01, C2-03, C2-04 | 27 (14) |
+| Empleo | C1-02, C1-03 | C2-01, C2-03, C2-04 | 25 (13) |
 | Emprendimiento | C1-03 | C2-02, C2-03 (solo Ipsos, 2019–2020) | 11 (4) |
 | Tecnología y competencias digitales | C1-02, C1-03 | C2-05, C2-06, C2-07; C2-02, C2-04 | 10 (2) |
-| Cultura y arte | C1-02 (trabajadores del sector cultural, solo por departamento) | C2-06 (asistencia y consumo cultural); C2-05 | Arte y cultura 48 (9); patrimonio 14 (4) |
-| Deporte | C1-02 (atletas del IPD, sin distrito) | C2-05 (práctica semanal); C2-02 | 47 (3) |
-| Entretenimiento y uso del tiempo | C1-03 | C2-05, C2-06; C2-02, C2-03, C2-04 | Recreación 6 (0) |
+| Cultura y arte | C1-02 (trabajadores del sector cultural, solo por departamento) | C2-06 (asistencia y consumo cultural); C2-05 | Arte y cultura 46 (9); patrimonio 8 (1) |
+| Deporte | C1-02 (atletas del IPD, sin distrito) | C2-05 (práctica semanal); C2-02 | 39 (3) |
+| Entretenimiento y uso del tiempo | C1-03 | C2-05, C2-06; C2-02, C2-03, C2-04 | Recreación 5 (0) |
 | Consumo y finanzas | — | C2-01, C2-04 | Educación financiera 1 (0) |
-| Salud | C1-02, C1-03 | — | Salud y salud mental 26 (4); inclusión y discapacidad 10 (0) |
-| Seguridad, violencia y discriminación | C1-02, C1-03 | — | Prevención de drogas y violencia 16 (3); gestión de riesgos y primeros auxilios 2 (1) |
-| Participación y organizaciones juveniles | C1-01, C1-02, C1-03 | — | Participación y voluntariado 28 (17) |
+| Salud | C1-02, C1-03 | — | Salud y salud mental 15 (3); inclusión y discapacidad 9 (0) |
+| Seguridad, violencia y discriminación | C1-02, C1-03 | — | Prevención de drogas y violencia 10 (2); gestión de riesgos y primeros auxilios 2 (1) |
+| Participación y organizaciones juveniles | C1-01, C1-02, C1-03 | — | Participación y voluntariado 22 (13) |
 | Migración | C1-02 | — | — |
 
 ---
@@ -373,9 +373,9 @@ Resueltos el 25/09/2026:
 - [x] Notas de gob.pe revisadas: gob.pe volvió a responder y se recolectaron las notas de las siete municipalidades (ver `metodologia_capa3.md`).
 - [x] Chaclacayo: su fuente son sus notas en gob.pe, pero publica muy poco (6 notas en 2024–2026).
 - [x] Edad de cada actividad: registrada en `incluye_15_29`; la mayor parte de los talleres de verano es para 6 a 17 años.
-- [x] Cifras de participación: 58 actividades con participación declarada.
+- [x] Cifras de participación: 59 actividades con participación declarada.
 - [x] Oferta en empleo, emprendimiento, salud mental y seguridad: registrada, aunque poca se dirige a jóvenes.
-- [x] Evidencia de demanda: 4 actividades (becas de CEPREMUNI en Santa Anita, talleres de SENAJU, Academia IPD y un taller infantil).
+- [x] Evidencia de demanda: 4 actividades, cada una referida solo a esa oferta concreta (una beca de CEPREMUNI en Santa Anita, talleres de SENAJU, Academia IPD y un taller infantil).
 - [x] Scraping: se hizo respetando el `robots.txt` de cada sitio (gob.pe sin paginación con `sheet=`).
 
 Pendientes:

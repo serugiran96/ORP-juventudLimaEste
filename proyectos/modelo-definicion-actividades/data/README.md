@@ -200,6 +200,6 @@ Material de revisión para codificar a mano el registro de oferta. No son datos 
 | `lugar` | Sede(s) |
 | `evidencia` | `oferta`, `participación declarada` o `demanda observada` (ver `metodologia_capa3.md`) |
 | `cifra_tipo`, `cifra_n`, `cifra_texto`, `cifra_poblacion` | Tipo de cifra (inscritos, asistentes, vacantes, aforo, población beneficiaria estimada...), su valor (límite inferior si dice "más de"), el texto original y a quién se refiere |
-| `senal_demanda` | Qué indica demanda (solo si `evidencia` = `demanda observada`) |
+| `senal_demanda` | Qué indica demanda y **a qué oferta concreta se refiere** (solo si `evidencia` = `demanda observada`); no es evidencia de interés general |
 | `fuente_url`, `fuente_tipo`, `verificacion`, `fecha_consulta` | Enlace(s) separados por ` \| `, tipo de fuente, si se leyó el texto completo o solo el resumen del buscador, y fecha de consulta |
 | `notas` | Aclaraciones |
