@@ -1,248 +1,213 @@
-"""Genera resultados/informe_final.md a partir de las tablas del cruce de las tres capas.
+"""Genera resultados/informe_final.md (segunda versión) a partir de las tablas de la integración.
 
-El texto de las secciones 1, 2 y 5–7 es fijo; los patrones y las fichas de propuestas se generan desde
-resultados/patrones.csv, resultados/propuestas.csv y resultados/hallazgos_integrados.csv, para que el informe
-no se aparte de las tablas. Si se editan las tablas, volver a ejecutar este script.
+Todo el contenido sale de resultados/*.csv (que genera integracion_construir.py). El resumen usa los mismos
+marcadores {E-###} que el resto de la integración, así que el informe no tiene cifras escritas a mano. Las fichas se
+presentan por línea temática: el informe no ordena las actividades por evidencia ni las califica.
 
-Uso (desde la carpeta del proyecto):
+Uso (desde la carpeta del proyecto, después de integracion_construir.py):
     python scripts/integracion_informe.py
 """
 from pathlib import Path
 
 import pandas as pd
 
+import integracion_evidencias as IE
+from integracion_construir import Render
+
 PROY = Path(__file__).resolve().parent.parent
 R = PROY / "resultados"
-hall = pd.read_csv(R / "hallazgos_integrados.csv").set_index("id")
-pat = pd.read_csv(R / "patrones.csv")
-prop = pd.read_csv(R / "propuestas.csv").fillna("").set_index("id")
+DISTRITOS = "Ate, Chaclacayo, El Agustino, La Molina, Lurigancho-Chosica, San Juan de Lurigancho y Santa Anita"
 
-GRUPOS = [
-    ("A. Con respaldo en las tres dimensiones", "Necesidad documentada, práctica o interés relacionados y participación declarada con cifras en actividades similares en Lima Este. Son las apuestas más sólidas, aunque su convocatoria no llega a estar demostrada.", ["P01", "P02"]),
-    ("B. Práctica alta en Lima Este, convocatoria por medir", "Lo que los jóvenes ya hacen, medido con precisión en Lima Este, pero sin evidencia local de que una actividad organizada los convoque. Son las mejores candidatas para pilotos que midan la convocatoria.", ["P04", "P05", "P06"]),
-    ("C. Evidencia parcial: necesidad o práctica relacionada, convocatoria débil o desconocida", "Tienen sustento en alguna dimensión, pero descansan sobre todo en hipótesis. Conviene validarlas antes de invertir.", ["P03", "P08", "P10", "P09", "P07"]),
-    ("D. Componente transversal", "Necesidad documentada sin evidencia de interés: se propone integrarlo en otras actividades, no como actividad independiente.", ["P11"]),
+RESUMEN = [
+    "**Cuántos son.** Dato Joven proyecta {E-001} jóvenes de 15 a 29 años en los siete distritos (2026); las encuestas "
+    "del INEI estiman otros totales (entre {E-009} y {E-007}). Por eso las cantidades de este informe se dan con las "
+    "dos bases y nunca como una cifra exacta.",
+    "**Estudio y trabajo.** {E-043} de los jóvenes no estudia ni trabaja (definición del proyecto). Entre las mujeres "
+    "de ese grupo, la situación más frecuente es dedicarse al hogar ({E-054}): son {E-070} de todas las mujeres "
+    "jóvenes. {E-049} no tiene trabajo y busca o quiere trabajar, y {E-057} tiene un empleo informal (2022–2023).",
+    "**Acceso a estudios superiores.** {E-023} de los jóvenes de 15–24 no estudia y su nivel máximo es secundaria "
+    "completa; para un tercio de ellos el motivo principal es económico ({E-025}). No sabemos cuántos quieren "
+    "continuar estudiando: ninguna fuente lo pregunta.",
+    "**Qué hacen.** En el año, {E-110} fue al cine y {E-138} a algún espectáculo en vivo; {E-170} hizo deporte o "
+    "ejercicio en la semana; {E-160} de los hombres juega videojuegos en línea. Lima Este va más que Lima "
+    "Metropolitana a festivales locales ({E-130}) y bibliotecas ({E-140}), casi siempre gratis, y menos a conciertos "
+    "({E-120}), casi siempre pagados.",
+    "**Cuándo y con qué riesgo.** Las ventanas de tiempo libre son las noches de semana ({E-180}) y la tarde del "
+    "domingo ({E-184}); de noche, {E-100} se siente inseguro caminando por su barrio ({E-101} de las mujeres) y "
+    "{E-103} evitó salir de noche en el último año.",
+    "**Convocatoria.** Casi nunca se puede observar: las cifras las declara quien organiza, sin cupos, y las cuatro "
+    "señales de demanda son por ofertas concretas y gratuitas (una beca, unos talleres), que no se generalizan.",
 ]
 
+LEYENDAS = {
+    "Necesidad": [
+        ("prevalencia", "Encuesta representativa que mide el problema en la población."),
+        ("brecha de acceso", "Situación medida que limita el acceso a algo (por ejemplo, no estudia y solo tiene "
+                             "secundaria completa)."),
+        ("registro de atención", "Casos atendidos o registrados: dependen del acceso a servicios, no miden "
+                                 "prevalencia."),
+        ("situación documentada", "Situación medida que no es por sí misma una necesidad declarada."),
+        ("objetivo institucional", "Lo que la organización quiere cambiar; no es una necesidad medida en los "
+                                   "jóvenes."),
+        ("sin evidencia", "Ninguna fuente mide una necesidad relacionada (lo esperable en cultura u ocio)."),
+    ],
+    "Interés o práctica": [
+        ("P0", "Sin evidencia."),
+        ("P1", "Práctica relacionada: dominio más amplio u otro formato."),
+        ("P2", "Práctica de la misma actividad, en el mismo formato."),
+        ("I1", "Interés declarado en el tema (solo Ipsos 2019–2022, fuera de Lima Este)."),
+        ("I2", "Interés declarado en participar en la actividad propuesta: no existe en ninguna fuente."),
+    ],
+    "Convocatoria": [
+        ("C0", "Sin evidencia: no se encontró actividad comparable con datos. No es evidencia negativa."),
+        ("C1", "Solo oferta, sin información de participación."),
+        ("C2", "Participación declarada sin cifra o con segmento o territorio solo parcialmente comparables."),
+        ("C3", "Participación declarada con cifra, en segmento y territorio comparables."),
+        ("C4", "Demanda observada (más interesados que cupos) en una oferta comparable; vale solo para esa oferta."),
+        ("no aplica", "Protocolos y poblaciones que requieren consulta: no convocan."),
+    ],
+    "Alcance potencial": [
+        ("amplia", "La evidencia se refiere a toda la juventud y la actividad no exige una condición particular."),
+        ("segmento identificable", "La actividad es para una condición medible; se da su tamaño."),
+        ("desconocido", "No hay denominador: alcance no estimable con la evidencia disponible."),
+    ],
+}
+CAPAS = {1: "Capa 1 · contexto y necesidades", 2: "Capa 2 · intereses, hábitos y barreras",
+         3: "Capa 3 · oferta y convocatoria"}
 
-def lista_hallazgos(celda):
-    ids = [x.strip() for x in celda.split(";") if x.strip()]
-    if not ids:
-        return " sin hallazgos (ninguna fuente mide este aspecto)."
-    return "".join(f"\n  - **{i}** ({hall.loc[i, 'tipo_evidencia']}; {hall.loc[i, 'geografia']}): {hall.loc[i, 'enunciado']}" for i in ids)
+
+def cargar():
+    t = {n: pd.read_csv(R / f"{n}.csv") for n in ["hallazgos_integrados", "patrones", "segmentos", "fichas_actividad",
+                                                   "fichas_cadena", "fichas_componentes", "cambios_primera_version"]}
+    rd = Render(IE.construir(), pd.read_csv(PROY / "fuentes" / "capa3_registro_oferta.csv"))
+    t["resumen"] = [rd.texto(b, "resumen") for b in RESUMEN]
+    f = t["fichas_actividad"]
+    conteo = f.tipo_ficha.value_counts()
+    t["resumen"].append(
+        f"**Fichas de actividades.** {len(f)} fichas por actividad y segmento, presentadas por tema y sin puntaje: "
+        f"{conteo.get('actividad de convocatoria abierta', 0)} actividades de convocatoria abierta, "
+        f"{conteo.get('intervención segmentada', 0)} intervenciones segmentadas, "
+        f"{conteo.get('protocolo transversal', 0)} protocolo transversal y "
+        f"{conteo.get('población que requiere consulta directa', 0)} población que requiere consulta directa (mujeres "
+        "jóvenes dedicadas al hogar). Ninguna tiene interés declarado en participar (I2): es la principal pregunta "
+        "pendiente, y solo una consulta directa a jóvenes de Lima Este puede responderla.")
+    return t
 
 
-def ficha(pid):
-    p = prop.loc[pid]
-    return f"""#### {pid}. {p.propuesta}
-
-{p.descripcion}
-
-| | |
-|---|---|
-| **Para quién** | {p.segmento} |
-| **Nivel de evidencia** | Necesidad: **{p.nivel_necesidad}** · Interés o práctica: **{p.nivel_interes}** · Convocatoria: **{p.nivel_convocatoria}** |
-| **Por qué** | {p.sustento} |
-| **Barreras relevantes** | {p.barreras} {("(" + p.hallazgos_barreras + ")") if p.hallazgos_barreras else ""} |
-| **Qué sabemos de su convocatoria** | {p.convocatoria} |
-| **Qué sigue siendo hipótesis** | {p.hipotesis} |
-| **Cómo validarla** | {p.validacion} |
-| **Dónde podría pilotearse** | {p.donde} |
-| **Cautelas** | {p.cautelas} |
-
-<details><summary>Hallazgos que la sustentan</summary>
-
-- **Capa 1 (necesidades):**{lista_hallazgos(p.hallazgos_c1)}
-- **Capa 2 (intereses y hábitos):**{lista_hallazgos(p.hallazgos_c2)}
-- **Capa 3 (oferta y convocatoria):**{lista_hallazgos(p.hallazgos_c3)}
-
-</details>
-"""
+def md_tabla(filas, cab):
+    s = "| " + " | ".join(cab) + " |\n|" + "---|" * len(cab) + "\n"
+    return s + "".join("| " + " | ".join(str(x).replace("|", "/").replace("\n", " ") for x in f) + " |\n"
+                       for f in filas)
 
 
-resumen_prop = "\n".join(
-    f"| {pid} | {prop.loc[pid, 'propuesta']} | {prop.loc[pid, 'segmento']} | {prop.loc[pid, 'nivel_necesidad']} | {prop.loc[pid, 'nivel_interes']} | {prop.loc[pid, 'nivel_convocatoria']} |"
-    for _, _, ids in GRUPOS for pid in ids)
+def informe(t):
+    hall, pat, seg, fichas = t["hallazgos_integrados"], t["patrones"], t["segmentos"], t["fichas_actividad"]
+    cadena, comp, cambios = t["fichas_cadena"], t["fichas_componentes"], t["cambios_primera_version"]
+    out = [f"# Juventudes de Lima Este: evidencia para definir actividades\n",
+           f"**Organización Rita Poma · Informe del análisis, segunda versión · 25 de septiembre de 2026**\n",
+           f"Siete distritos: {DISTRITOS}. Jóvenes de 15 a 30 años (las fuentes llegan a 29). Periodo prioritario: "
+           "2022–2026.\n",
+           "Esta versión reemplaza a la del mismo día tras una auditoría metodológica (`fuentes/auditoria_integracion.md`). "
+           "Los cambios están en la sección 8.\n", "## Resumen\n"]
+    out += [f"- {b}" for b in t["resumen"]]
 
-bloques_prop = "\n".join(
-    f"### {titulo}\n\n{texto}\n\n" + "\n".join(ficha(pid) for pid in ids) for titulo, texto, ids in GRUPOS)
+    out += ["\n## 1. Cómo leer este informe\n",
+            "Cada ficha responde, por separado: qué necesidad existe, a quién aplica y cuántos son, qué práctica o "
+            "interés se observó, qué oferta existe, qué evidencia hay de participación, qué barreras hay, qué no "
+            "sabemos, qué podemos afirmar y qué es solo hipótesis. **Las dimensiones no se suman ni se comparan entre "
+            "fichas**: una ficha con práctica de la misma actividad y sin datos de convocatoria no es mejor ni peor que "
+            "otra con demanda observada y sin interés medido; responden a preguntas distintas.\n",
+            "**Ámbito.** Lima Este (siete distritos juntos, estimación propia con encuestas del INEI; nunca por "
+            "distrito), Lima Metropolitana (contexto), Perú urbano (estudios de mercado antiguos) y distrito (registros "
+            "administrativos). Las cifras con precisión limitada llevan la marca *(referencial)*; las no publicables no "
+            "se citan.\n",
+            "**Cantidades.** Se dan dos estimaciones que no se combinan: el porcentaje aplicado a la población 2026 de "
+            "Dato Joven, y el total que estima la propia encuesta. Difieren porque las encuestas no se calibran por "
+            "distrito y la proyección de Dato Joven es inestable por edad.\n"]
+    for nombre, filas in LEYENDAS.items():
+        out.append(f"**{nombre}**\n")
+        out.append(md_tabla(filas, ["Código", "Significado"]))
 
-tabla_pat = "\n".join(f"| {r.id} | {r.tipo} | {r.tema} | {r.enunciado} | {r.cautela} |" for r in pat.itertuples())
+    out.append("\n## 2. Lo que sabemos, capa por capa\n")
+    for c, titulo in CAPAS.items():
+        out.append(f"### {titulo}\n")
+        for r in hall[hall.capa == c].itertuples():
+            out.append(f"- **{r.id}.** {r.enunciado}  \n  *{r.geografia} · {r.periodo} · {r.precision}. No permite "
+                       f"afirmar: {r.no_permite}*")
+        out.append("")
 
-texto = f"""# Juventudes de Lima Este: necesidades, intereses, oferta y oportunidades de convocatoria
+    out.append("## 3. Patrones, brechas y condiciones transversales\n")
+    out.append("Cada patrón separa el dato observado, su interpretación y lo que no permite afirmar.\n")
+    for r in pat.itertuples():
+        out.append(f"**{r.id} · {r.tema}** ({r.tipo})\n")
+        out.append(f"- *Dato observado:* {r.dato_observado}\n- *Interpretación:* {r.interpretacion}\n"
+                   f"- *No permite afirmar:* {r.no_permite_afirmar}\n- *Hallazgos:* {r.hallazgos}\n")
 
-**Organización Rita Poma · Informe final del análisis · 25 de septiembre de 2026**
+    out.append("## 4. Segmentos: a quién aplica y cuántos son\n")
+    out.append(md_tabla([(r.id, r.segmento, r.texto, r.periodo, r.fichas) for r in seg.itertuples()],
+                        ["ID", "Segmento", "Tamaño", "Periodo", "Fichas"]))
 
-Siete distritos: Ate, Chaclacayo, El Agustino, La Molina, Lurigancho-Chosica, San Juan de Lurigancho y Santa Anita.
-Jóvenes de 15 a 30 años (las fuentes llegan a 29). Periodo prioritario: 2022–2026.
+    out.append("\n## 5. Mapa de la evidencia\n")
+    out.append("Una fila por ficha, en orden temático. **No es un ranking:** cada columna se lee por separado.\n")
+    out.append(md_tabla([(r.id, r.actividad, r.tipo_ficha, r.necesidad_tipo, r.interes_codigo, r.alcance_tipo,
+                          r.convocatoria_codigo) for r in fichas.itertuples()],
+                        ["Ficha", "Actividad", "Tipo", "Necesidad", "Interés o práctica", "Alcance", "Convocatoria"]))
 
-## Resumen
+    out.append("\n## 6. Fichas de actividades\n")
+    for linea, grupo in fichas.groupby("linea", sort=False):
+        out.append(f"### {linea}\n")
+        for f in grupo.itertuples():
+            out.append(f"#### {f.id}. {f.actividad}\n")
+            out.append(f"*{f.tipo_ficha.capitalize()} · primera versión: {f.origen_v1} · resultado de la auditoría: "
+                       f"{f.resultado_auditoria}*\n")
+            pasos = cadena[cadena.ficha == f.id].sort_values("orden")
+            out.append(md_tabla([(f"{p.orden}. {p.paso}", p.codigo if isinstance(p.codigo, str) else "", p.texto)
+                                 for p in pasos.itertuples()], ["Paso", "Código", "Evidencia"]))
+            cf = comp[comp.ficha == f.id]
+            out.append("\n**Componentes**\n")
+            out.append(md_tabla([(c.componente, c.estado, c.nota if isinstance(c.nota, str) else "")
+                                 for c in cf.itertuples()], ["Componente", "Estado", "Nota"]))
+            out.append(f"\n- **Cómo validarla en un piloto:** {f.validacion_piloto}\n- **Dónde (criterio operativo, no "
+                       f"de demanda):** {f.donde}\n- **Cambio frente a la primera versión:** {f.cambio_v1}\n"
+                       f"- **Trazabilidad:** evidencias {f.evidencias}; actividades de la Capa 3 "
+                       f"{f.actividades_c3 if isinstance(f.actividades_c3, str) else '—'}.\n")
 
-- **En Lima Este viven unos 712 mil jóvenes de 15 a 29 años**; San Juan de Lurigancho concentra el 44 % y Ate el 25 %.
-- **Estudio y empleo compiten por el tiempo y el dinero.** Entre quienes no estudian en Lima Este, el 31 % trabaja y
-  el 28 % menciona problemas económicos; casi nadie deja de estudiar por falta de interés (2 %). En Lima
-  Metropolitana, el desempleo juvenil es de 11,7 % y el 22 % de las mujeres jóvenes no estudia ni trabaja.
-- **Lo que los jóvenes hacen** (medido en Lima Este): usan pantallas casi todos (93 %), van al cine (63 % en el
-  año), a espectáculos en vivo (45 %) y a conciertos o festivales (21 %), y juegan videojuegos (46 % en el celular).
-  El 28 % hace deporte cada semana, con una brecha grande por sexo (49 % de los hombres y 20 % de las mujeres en
-  Lima Metropolitana).
-- **La oferta publicada casi termina a los 17 años.** De 151 actividades registradas en 2024–2026, solo 44 se
-  dirigen a jóvenes, y se concentran en empleo, voluntariado y preparación preuniversitaria. Para jóvenes de 18 a
-  29 casi no hay deporte, cultura ni tecnología publicados.
-- **La convocatoria casi nunca se puede observar.** Las pocas cifras son declaradas por quien organiza, y las
-  únicas señales de demanda son por ofertas concretas y gratuitas (una beca, unos talleres), que no se generalizan.
-- **Once propuestas**, ninguna con evidencia alta de convocatoria. Las más respaldadas son la **preparación
-  preuniversitaria con orientación y becas** y la **empleabilidad y primer empleo**. **Deporte para 18–29, cultura
-  urbana y música en vivo, y cine** tienen práctica alta medida en Lima Este y son las mejores candidatas para
-  pilotos que midan la convocatoria.
-- **Todas las propuestas son hipótesis de convocatoria** y deben validarse con una consulta a jóvenes y pilotos
-  pequeños con indicadores definidos de antemano.
+    out.append("## 7. Qué no sabemos y cómo averiguarlo\n")
+    out += ["- **Interés en participar en actividades concretas (I2):** ninguna fuente lo pregunta a los jóvenes de "
+            "Lima Este.",
+            "- **Horarios preferidos, distancia aceptable y disposición a pagar:** solo hay disponibilidad observada y "
+            "desplazamiento de quienes estudian.",
+            "- **Intención de continuar estudios** y cuántos ya se preparan en academias.",
+            "- **Salud mental e inseguridad por distrito**; salud mental en Lima Este.",
+            "- **Convocatoria real de la oferta existente:** las cifras son declaradas y casi nunca informan cupos.\n",
+            "**Cómo averiguarlo:**\n",
+            "1. **Consulta directa a jóvenes de Lima Este**, que incluya a las mujeres dedicadas al hogar en sus hogares "
+            "o espacios comunitarios: qué actividades y formatos harían, horarios, distancia, cuidado infantil, costo, "
+            "canales, intención de estudiar y seguridad para salir de noche.",
+            "2. **Registros administrativos de convocatoria** (solicitudes de acceso a la información pública a "
+            "municipalidades, SENAJU e IPD): inscritos, asistentes, cupos y listas de espera por edad y sexo.",
+            "3. **Pilotos pequeños** con los indicadores de cada ficha, definidos antes de empezar. Los umbrales los "
+            "decide el equipo; no salen de los datos.\n"]
 
-## 1. Cómo leer este informe
+    out.append("## 8. Cambios respecto de la primera versión\n")
+    out.append(md_tabla([(r.v1, r.v1_nombre, r.resultado, r.fichas_v2, r.cambio) for r in cambios.itertuples()],
+                        ["Primera versión", "Propuesta", "Resultado", "Fichas", "Cambio"]))
+    out.append("\nLos niveles alto/medio/bajo se reemplazaron por categorías descriptivas con reglas escritas. Se "
+               "corrigieron errores de la primera versión: los motivos para no estudiar eran de 15–24 años (no de "
+               "15–29), las temáticas del RENOJ ocultaban organizaciones de ciudadanía y tecnología, y varias "
+               "prácticas relacionadas figuraban como interés 'alto'. El detalle está en la columna `cambio_v2` de "
+               "`resultados/hallazgos_integrados.csv`.\n")
 
-El análisis se hizo en tres capas y un cruce:
+    out.append("## 9. Fuentes y método\n")
+    out.append("Dato Joven (Observatorio Nacional de Juventud); microdatos del INEI procesados por el proyecto: ENAHO "
+               "2022–2025 (Módulos 02, 03 y 05), ENAPRES 2022–2025 (capítulos de cultura y de seguridad ciudadana) y "
+               "ENUT 2024; estudios de Ipsos 2019–2022; notas de prensa de las siete municipalidades y de entidades "
+               "públicas (2024–2026). Método, reglas, categorías y validaciones: `fuentes/metodologia_integracion.md`. "
+               "Cada cifra remite a `resultados/evidencias.csv` y, desde ahí, al archivo de datos que la produjo.\n")
+    return "\n".join(out)
 
-| Capa | Pregunta | Fuentes principales |
-|---|---|---|
-| **1. Contexto y necesidades** | ¿Quiénes son y qué necesitan? | Dato Joven (Observatorio Nacional de Juventud), ENAHO |
-| **2. Intereses y hábitos** | ¿Qué hacen, qué consumen, qué les impide participar? | ENUT 2024, ENAPRES 2022–2025, ENAHO 2022–2025 (INEI), Ipsos |
-| **3. Oferta y convocatoria** | ¿Qué se les ofrece y qué evidencia hay de que asistan? | Notas de las 7 municipalidades, SERPAR, SENAJU, MTPE, IPD, Ministerio de Cultura, DEVIDA |
 
-**Tipos de evidencia.** No todo dato permite lo mismo:
-
-- **Representativa de Lima Este:** estimación de los siete distritos juntos con encuestas del INEI (nunca por
-  distrito).
-- **Representativa de Lima Metropolitana:** describe a los 43 distritos; se cita como tal, no como Lima Este.
-- **Registros administrativos distritales:** nacimientos, casos atendidos; dependen del acceso a los servicios.
-- **Señales:** personas u organizaciones autoseleccionadas (voluntariado, RENOJ) y estudios de mercado antiguos (Ipsos).
-- **Oferta, participación declarada y demanda observada:** lo que se publicó, las cifras que da quien organiza y
-  las señales de más interesados que cupos.
-
-**Reglas del cruce.** La ausencia de oferta no es demanda; la frecuencia de oferta no es interés; una señal de
-demanda solo vale para la oferta concreta en que se observó; los resultados de actividades para niños y
-adolescentes no se generalizan a la juventud.
-
-Cada afirmación remite a un hallazgo con código (`H1-##`, `H2-##`, `H3-##`) en `resultados/hallazgos_integrados.csv`.
-
-## 2. Lo que sabemos de las juventudes de Lima Este
-
-### Quiénes son y qué necesitan (Capa 1)
-
-- **Población:** ~712 mil jóvenes de 15 a 29 años (2026), un tercio de 15–19; SJL y Ate concentran el 69 % (H1-01).
-- **Organización:** 182 organizaciones juveniles acreditadas; densidad baja en los distritos más poblados (SJL,
-  Ate, Lurigancho-Chosica, El Agustino); ninguna de deporte ni de participación ciudadana (H1-02).
-- **Empleo** (Lima Metropolitana): informalidad de 65 % (2023), desempleo de 11,7 % (2025) y 17,9 % que no estudia
-  ni trabaja, 22,1 % entre las mujeres (H1-06, H1-07).
-- **Salud mental** (Lima Metropolitana): episodio depresivo en 15,9 % de los jóvenes, 21,6 % de las mujeres (H1-08).
-- **Seguridad** (Lima Metropolitana): un tercio dejó de hacer actividades por la delincuencia; dos de cada tres
-  mujeres jóvenes se sienten inseguras de noche en su barrio (H1-10).
-- **Adolescentes** (registros distritales): tasas de maternidad adolescente por encima de la mediana metropolitana
-  en El Agustino, Santa Anita y Ate; el 41 % de los jóvenes atendidos por violencia en los CEM tiene 15–19 años y
-  el 94 % son mujeres (H1-13, H1-14).
-- **Participación:** el voluntariado llega sobre todo a mujeres estudiantes, no a quienes trabajan (H1-03, H1-04).
-
-### Qué hacen y qué les frena (Capa 2)
-
-- **Pantallas y consumo digital:** 93 % usa dispositivos cada semana; 93 % ve video por internet; 46 % juega en el
-  celular y 35 % en línea (Lima Este; H2-01, H2-08).
-- **Deporte:** 28 % cada semana en Lima Este; 49 % de los hombres y 20 % de las mujeres en Lima Metropolitana (H2-02).
-- **Cultura:** cine 63 %, espectáculos en vivo 45 %, conciertos o festivales 21 %, festivales locales 20 %, ferias
-  del libro 19 %, danza 18 % (Lima Este, en el año; H2-07).
-- **Barreras:** falta de interés y de tiempo; el dinero pesa en cine y conciertos; "no hay oferta" casi no aparece
-  como motivo (H2-09, H2-10). El tiempo es escaso: la mitad estudia y más de la mitad trabaja (H2-06).
-- **Estudio:** trabajar (31 %) y los problemas económicos (28 %) son los motivos para no estudiar en Lima Este; la
-  falta de interés es mínima (H2-12). Un tercio usa internet para aprender (H2-11).
-- **Aspiraciones:** el deseo de emprender solo se midió en 2019–2020 (Ipsos) y no describe a Lima Este hoy (H2-13).
-
-### Qué se ofrece y qué convoca (Capa 3)
-
-- **151 actividades** publicadas en 2024–2026: 44 dirigidas a jóvenes, 53 a niños y adolescentes, 51 a todo
-  público; casi todas gratuitas y presenciales (H3-01, H3-04).
-- **Lo dirigido a jóvenes**: empleo (13), participación y voluntariado (13) y preparación preuniversitaria (11);
-  muy poco en deporte (3), salud mental (3) y tecnología (2) (H3-02).
-- **Participación declarada** en actividades para jóvenes: academias preuniversitarias y becas (180 alumnos en
-  Chosica, 100 becarios en El Agustino), programas de empleo (62, 50 y 143 jóvenes), una hackathon con 400
-  inscripciones (H3-05, H3-07, H3-10).
-- **Demanda observada**, siempre por ofertas concretas y gratuitas: una beca en Santa Anita (80 postulantes para
-  10 becas), los talleres juveniles de SENAJU (agotados a escala de Lima) y la Academia IPD para 6–17 años (agotada
-  en Lima) (H3-06, H3-08, H3-12).
-- **Visibilidad desigual:** Chaclacayo casi no publica; SJL no tiene notas de 2024; la oferta de organizaciones
-  sociales casi no aparece (H3-18).
-
-## 3. Patrones, brechas y condiciones de diseño
-
-| ID | Tipo | Tema | Enunciado | Cautela |
-|---|---|---|---|---|
-{tabla_pat}
-
-## 4. Propuestas de actividades
-
-Cada propuesta indica **para quién** hay evidencia, **qué sabemos de su convocatoria** y **qué sigue siendo
-hipótesis**. El nivel de evidencia se califica por separado en tres dimensiones (criterios en
-`fuentes/metodologia_integracion.md`):
-
-- **Necesidad:** ¿hay una necesidad documentada en ese segmento?
-- **Interés o práctica:** ¿los jóvenes ya hacen algo parecido?
-- **Convocatoria:** ¿hay evidencia de que una actividad así convoque jóvenes en Lima Este?
-
-| ID | Propuesta | Segmento | Necesidad | Interés o práctica | Convocatoria |
-|---|---|---|---|---|---|
-{resumen_prop}
-
-{bloques_prop}
-## 5. Condiciones de diseño para todas las propuestas
-
-Surgen de la evidencia y aplican a cualquier actividad:
-
-- **Gratuidad o costo mínimo:** el dinero limita el estudio y la asistencia a cine y conciertos, y todas las
-  señales de demanda observadas son de ofertas gratuitas (PT-09).
-- **Formatos cortos y en horarios posibles:** fines de semana o bloques breves; la mitad estudia y más de la mitad
-  trabaja (PT-08).
-- **Cercanía y seguridad:** horarios diurnos o espacios seguros y recorridos cortos, sobre todo para mujeres (PT-10).
-- **Segmentar por edad:** 15–17 (llegan por colegios), 18–24 (estudio y primer empleo) y 25–29 (empleo), con metas
-  y canales distintos (PT-02, PT-12).
-- **Enfoque en mujeres jóvenes:** cuentan con más necesidades documentadas y menos práctica deportiva; conviene
-  medir su participación en todos los pilotos (PT-06).
-- **Difusión propia:** redes sociales, colegios, institutos y organizaciones juveniles; no depender de la
-  comunicación municipal (PT-11).
-- **Aliarse con lo que existe:** academias municipales, centros de empleo, complejos del IPD, clubes de SERPAR,
-  Casa de la Juventud de Santa Anita, organizaciones del RENOJ (H3-17), en lugar de duplicar.
-
-## 6. Límites del análisis
-
-- **No hay datos por distrito** sobre intereses o prácticas: las encuestas representan a Lima Este en conjunto o a
-  Lima Metropolitana.
-- **Ninguna fuente pregunta** a los jóvenes de Lima Este qué actividades harían.
-- **La oferta registrada no es un censo:** depende de lo que cada municipalidad publica; la oferta de
-  organizaciones sociales y privadas casi no aparece.
-- **Las cifras de participación son declaradas**, aproximadas y no comparables entre sí.
-- **Parte de la evidencia es de Lima Metropolitana** (empleo, salud mental, seguridad) y se usa como contexto, no
-  como descripción de Lima Este.
-- **Las encuestas llegan a 2024 o 2025**; no hay datos de 2026.
-
-## 7. Próximos pasos
-
-1. **Consulta breve a jóvenes de Lima Este** (colegios, institutos, redes, organizaciones del RENOJ) sobre las
-   actividades propuestas: interés, horarios, distancia, costo y canal de información.
-2. **Pilotos pequeños** de las propuestas de los grupos A y B, con indicadores definidos de antemano: inscritos
-   frente a cupos, asistencia a la primera y cuarta sesión, perfil de quienes llegan (edad, sexo, si estudia o
-   trabaja) y canal por el que se enteraron.
-3. **Contacto directo con las municipalidades**, sobre todo Chaclacayo, Ate y SJL, para conocer su oferta real,
-   cupos e inscritos.
-4. **Decidir con los resultados** de la consulta y los pilotos qué actividades escalar.
-
-## Trazabilidad técnica
-
-| Archivo | Contenido |
-|---|---|
-| `resultados/hallazgos_integrados.csv` | 49 hallazgos de las tres capas con tipo de evidencia, población, geografía y referencia técnica |
-| `resultados/patrones.csv` | 12 patrones, brechas y condiciones de diseño con sus hallazgos |
-| `resultados/propuestas.csv` | 11 propuestas con hallazgos por capa, niveles, hipótesis y validación |
-| `notebooks/04_integracion.ipynb` | Verificación de la trazabilidad, contexto por distrito y matriz de evidencia |
-| `notebooks/01`–`03` | Análisis de cada capa |
-| `fuentes/metodologia_capa1.md`, `metodologia_capa2.md`, `metodologia_capa3.md`, `metodologia_integracion.md` | Decisiones metodológicas |
-| `fuentes/capa3_registro_oferta.csv` | Registro de las 151 actividades de la Capa 3 |
-"""
-
-(R / "informe_final.md").write_text(texto)
-print(f"resultados/informe_final.md: {len(texto.split())} palabras")
+if __name__ == "__main__":
+    texto = informe(cargar())
+    (R / "informe_final.md").write_text(texto)
+    print(f"resultados/informe_final.md: {len(texto.splitlines())} líneas")
