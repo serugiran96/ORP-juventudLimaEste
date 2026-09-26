@@ -1,0 +1,86 @@
+```{r}
+# ---------- Mapa de evidencia: una fila por ficha, agrupadas por línea temática (orden del catálogo, no ranking)
+lineas <- unique(fichas$linea)
+mapa <- tags$table(class = "mapa",
+  tags$thead(tags$tr(tags$th("Alternativa"), tags$th("Tipo"), tags$th("Necesidad"), tags$th("Alcance"),
+                     tags$th("Práctica"), tags$th("Convocatoria"), tags$th("Participación concreta"))),
+  tags$tbody(lapply(lineas, function(l) {
+    ff <- fichas |> filter(linea == l)
+    tagList(tags$tr(class = "linea-cab", tags$td(colspan = 7, l)),
+            lapply(seq_len(nrow(ff)), function(i) {
+              f <- ff[i, ]; part <- participacion(f)
+              tags$tr(tags$td(a(href = paste0("#", f$id), span(class = "mono", f$id), " ", f$actividad)),
+                      tags$td(class = "pert", f$tipo_ficha),
+                      tags$td(class = "pert", f$necesidad_tipo),
+                      tags$td(span(class = paste("pert", paste0("pert-", ALCANCE_CLASE[[f$alcance_tipo]])),
+                                   ALCANCE_TXT[[f$alcance_tipo]])),
+                      tags$td(cod(f$interes_codigo, na = f$interes_codigo %in% c("P0", "no aplica"))),
+                      tags$td(cod(f$convocatoria_codigo, na = f$convocatoria_codigo %in% c("C0", "no aplica"))),
+                      tags$td(span(class = paste("part", paste0("part-", str_replace(part$corto, " ", "-"))), part$corto)))
+            }))
+  })))
+
+# ---------- Explorador: índice filtrable + una ficha visible a la vez
+TIPOS_F <- setNames(unique(fichas$tipo_ficha), unique(fichas$tipo_ficha))
+indice <- div(class = "fichas-indice", role = "list",
+  lapply(seq_len(nrow(fichas)), function(i) {
+    f <- fichas[i, ]
+    a(class = paste("fi", if (i == 1) "activo"), href = paste0("#", f$id), role = "listitem",
+      `data-filtrable` = "fichas", `data-f-linea` = f$linea, `data-f-tipo` = f$tipo_ficha, `data-f-alcance` = f$alcance_tipo,
+      span(class = "fi-id", f$id), span(class = "fi-nom", f$actividad), span(class = "fi-lin", f$linea))
+  }))
+cuerpo <- div(class = "fichas-cuerpo", lapply(seq_len(nrow(fichas)), function(i) ficha_html(fichas[i, ], visible = i == 1)))
+
+leyenda_estados <- div(class = "leyenda-rc",
+  span(class = "rc-k rc-def", "definición"), span(class = "rc-k rc-dato", "dato observado"),
+  span(class = "rc-k rc-debil", "señal débil o indirecta"), span(class = "rc-k rc-vacio", "sin evidencia o vacío"),
+  span(class = "rc-k rc-na", "no aplica"), span(class = "rc-k rc-validar", "por validar con jóvenes"))
+
+leyenda_codigos <- tags$details(class = "mas",
+  tags$summary("Qué significa cada código"),
+  div(class = "leyenda-codigos", style = "margin-top:10px",
+    div(tags$b("Práctica o interés"), tags$dl(
+      tags$dt(cod("P0", TRUE)), tags$dd("Sin evidencia de práctica ni de interés."),
+      tags$dt(cod("P1")), tags$dd("Práctica relacionada: dominio más amplio u otro formato."),
+      tags$dt(cod("P2")), tags$dd("Práctica de la misma actividad, formato y edad."),
+      tags$dt(cod("I1")), tags$dd("Interés declarado en el tema (solo Ipsos, fuera de Lima Este)."),
+      tags$dt(cod("I2")), tags$dd("Interés en participar en la actividad: no existe en ninguna fuente; requiere consulta directa."))),
+    div(tags$b("Convocatoria"), tags$dl(
+      tags$dt(cod("C0", TRUE)), tags$dd("Sin registros comparables (no es evidencia negativa)."),
+      tags$dt(cod("C1")), tags$dd("Solo oferta, sin datos de participación."),
+      tags$dt(cod("C2")), tags$dd("Participación sin cifra o poco comparable (señal débil)."),
+      tags$dt(cod("C3")), tags$dd("Participación declarada con cifra, en segmento y territorio comparables."),
+      tags$dt(cod("C4")), tags$dd("Demanda observada: más interesados que cupos (solo para esa oferta)."),
+      tags$dt(cod("CB")), tags$dd("Baja convocatoria: la categoría existe, pero no apareció ningún caso."))),
+    div(tags$b("Necesidad y alcance"), tags$dl(
+      tags$dt("prevalencia"), tags$dd("Encuesta representativa que mide el problema."),
+      tags$dt("brecha de acceso"), tags$dd("Situación medida que limita el acceso a algo."),
+      tags$dt("registro de atención"), tags$dd("Casos atendidos: no mide prevalencia."),
+      tags$dt("situación documentada"), tags$dd("Situación medida que no es por sí misma una necesidad."),
+      tags$dt("objetivo institucional"), tags$dd("Lo que la organización quiere cambiar; no medido en jóvenes."),
+      tags$dt(span(class = "pert pert-amplia", "toda la juventud")), tags$dd("La evidencia es de 15–29 y la actividad no exige una condición."),
+      tags$dt(span(class = "pert pert-segmento", "segmento")), tags$dd("Solo para una condición medible, con su tamaño."),
+      tags$dt(span(class = "pert pert-desconocido", "no estimable")), tags$dd("No hay denominador.")))))
+
+tagList(
+  encabezado("Actividades",
+             paste0(nrow(fichas), " alternativas derivadas de la evidencia. Para cada una: para quién, qué sabemos, qué tamaño tiene, qué práctica se relaciona, qué convocatoria se observó, qué barreras hay, qué no sabemos y qué habría que validar."),
+             capa = "Fichas de alternativas"),
+  aviso(tags$b("No es un ranking."),
+        " Las fichas se ordenan por línea temática y cada dimensión se lee por separado: los códigos no se suman ni se comparan entre fichas. ",
+        "Son alternativas derivadas de evidencia secundaria: ninguna fuente preguntó a los jóvenes de Lima Este si participarían. ",
+        "La participación concreta se validará con jóvenes en una fase posterior (consulta directa, registros de convocatoria y pilotos)."),
+  div(class = "seccion", h3("Cómo leer una ficha"),
+      p(class = "nota", "Cada ficha es un recorrido de ocho pasos. Las casillas indican qué tipo de evidencia hay en cada paso; al hacer clic se va al detalle."),
+      leyenda_estados, leyenda_codigos),
+  div(class = "seccion", h3("Mapa de evidencia"),
+      p(class = "nota", "Una fila por alternativa, agrupadas por línea temática. Haz clic en una alternativa para abrir su ficha."),
+      div(class = "desplazable", mapa)),
+  div(class = "seccion", id = "explorador", h3("Explora las fichas"),
+      filtro_chips("fichas", list(
+        linea = list(etiqueta = "Línea", valores = setNames(lineas, lineas)),
+        tipo = list(etiqueta = "Tipo de ficha", valores = TIPOS_F),
+        alcance = list(etiqueta = "Alcance", valores = setNames(ALCANCE_TXT, names(ALCANCE_TXT))))),
+      div(class = "explorador", indice, cuerpo))
+)
+```
