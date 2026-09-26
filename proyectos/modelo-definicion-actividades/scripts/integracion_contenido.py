@@ -57,8 +57,8 @@ HALLAZGOS = [
          cambio="Reemplaza indicadores de Lima Metropolitana por estimaciones de Lima Este."),
     dict(id="H1-06", capa=1, dimension="empleo", estado="reemplazado",
          enunciado="En Lima Este (2022–2025), la tasa de desempleo juvenil es {E-046} ({E-047} a los 15–19). "
-                   "{E-056} de los jóvenes ocupados tiene empleo informal (2022–2023) y {E-058} trabaja por cuenta "
-                   "propia o como empleador.",
+                   "{E-056} de los jóvenes ocupados tiene empleo informal (2022–2023) y {E-058} de los ocupados trabaja "
+                   "por cuenta propia o como empleador.",
          no_permite="Informalidad de 2024–2025 (el INEI dejó de publicar la variable, D16).",
          evidencias="E-046; E-047; E-056; E-058",
          cambio="Reemplaza cifras de Lima Metropolitana por estimaciones de Lima Este."),
@@ -187,9 +187,10 @@ HALLAZGOS = [
          evidencias="E-115; E-116; E-114; E-125; E-144",
          cambio="Usa barreras de Lima Este (antes decía que no había datos de Lima Este)."),
     dict(id="H2-10", capa=2, dimension="barreras", estado="ampliado",
-         enunciado="En Lima Este casi todos entraron gratis a festivales locales ({E-132}), bibliotecas ({E-148}) y "
-                   "ferias del libro ({E-143}); en cambio, {E-124} de los asistentes a conciertos compró su entrada y, "
-                   "en el cine, {E-113} tuvo la entrada pagada por otra persona.",
+         enunciado="En Lima Este, entre quienes asistieron, casi todos entraron gratis a festivales locales ({E-132}) "
+                   "y bibliotecas ({E-148}), y la mayoría a ferias del libro ({E-143}); en cambio, {E-124} de los "
+                   "asistentes a conciertos compró su entrada y, en el cine, {E-113} tuvo la entrada pagada por otra "
+                   "persona.",
          no_permite="Disposición a pagar.", evidencias="E-132; E-148; E-143; E-124; E-113",
          cambio="Se agrega la dependencia de terceros para pagar el cine."),
     dict(id="H2-11", capa=2, dimension="aprendizaje", estado="corregido",
@@ -232,8 +233,8 @@ HALLAZGOS = [
                    "jóvenes de Lima Este entre 18:00 y 22:00 de un día de semana, {E-183} el sábado entre 18:00 y "
                    "22:00, {E-184} el domingo entre 14:00 y 18:00, {E-182} el sábado entre 14:00 y 18:00 y {E-185} el "
                    "domingo entre 09:00 y 13:00; muchos menos el sábado entre 09:00 y 13:00 ({E-186}) y entre 14:00 y "
-                   "18:00 de un día de semana ({E-181}). En Lima Metropolitana, las mujeres tienen menos noches libres en la semana que los hombres ({E-187} "
-                   "frente a {E-188}).",
+                   "18:00 de un día de semana ({E-181}). En Lima Metropolitana, menos mujeres que hombres tuvieron 2 horas libres seguidas entre 18:00 y "
+                   "22:00 en el día de semana registrado ({E-187} frente a {E-188}).",
          no_permite="Preferencias de horario; tiempo de traslado.",
          evidencias="E-180; E-183; E-184; E-182; E-186; E-185; E-181; E-187; E-188", cambio="Nuevo."),
     dict(id="H2-19", capa=2, dimension="hogar y cuidado", estado="nuevo",
@@ -373,11 +374,11 @@ HALLAZGOS_RETIRADOS = {"H3-12": "Integrado en H3-11 (ambos describen convocatori
 PATRONES = [
     dict(id="PT-01", tipo="patrón", tema="Acceso a estudios superiores",
          dato="{E-023} de los jóvenes de 15–24 no estudia y su nivel máximo es secundaria completa; para un tercio "
-              "el motivo principal es económico ({E-025}) y para otro tercio el trabajo ({E-026}). Las academias y "
+              "de ellos el motivo principal es económico ({E-025}) y para otro tercio el trabajo ({E-026}). Las academias y "
               "becas municipales gratuitas publican participación con cifras y una beca tuvo más postulantes que "
               "cupos.",
-         interpretacion="Hay un segmento grande en situación compatible con la educación superior, frenado sobre todo "
-                        "por dinero y trabajo según su propia respuesta.",
+         interpretacion="Hay un segmento grande en situación compatible con la educación superior, que declara como "
+                        "motivo principal para no estudiar sobre todo el dinero y el trabajo.",
          no_permite="Que quieran continuar estudios: ninguna fuente lo pregunta.",
          hallazgos="H1-17; H2-12; H3-05; H3-06", evidencias="E-023; E-025; E-026"),
     dict(id="PT-02", tipo="brecha", tema="Edad",
@@ -391,17 +392,17 @@ PATRONES = [
          dato="{E-170} hizo deporte o ejercicio en la semana; en Lima Metropolitana, {E-171} de los hombres y {E-172} "
               "de las mujeres. Hay {E-219} organizaciones juveniles acreditadas de deporte, la oferta deportiva "
               "publicada se dirige sobre todo a 6–17 años y para 18–29 hay un solo dato de participación.",
-         interpretacion="Una práctica de alcance amplio sin evidencia de convocatoria a formatos organizados para "
-                        "18–29.",
+         interpretacion="Una práctica de alcance amplio con un solo dato de participación en formatos organizados "
+                        "para jóvenes (un taller de tiro con arco).",
          no_permite="Que la menor práctica de las mujeres sea demanda insatisfecha; que haya interés en ligas.",
          hallazgos="H2-02; H1-02; H3-03; H3-11; H3-20", evidencias="E-170; E-171; E-172; E-219"),
     dict(id="PT-04", tipo="patrón", tema="Cultura gratuita y local",
          dato="Lima Este va más que Lima Metropolitana a festivales locales ({E-130} frente a {E-131}) y bibliotecas "
               "({E-140} frente a {E-141}), casi siempre gratis ({E-132}, {E-148}), y menos a conciertos ({E-120} "
-              "frente a {E-128}), casi siempre pagados ({E-124}). En el cine, {E-113} tuvo la entrada pagada por otra "
+              "frente a {E-128}), a los que la mayoría entró con entrada comprada ({E-124}). En el cine, {E-113} tuvo la entrada pagada por otra "
               "persona.",
-         interpretacion="En Lima Este pesan las prácticas culturales gratuitas y cercanas; el dinero limita las "
-                        "pagadas.",
+         interpretacion="En Lima Este tienen más peso relativo las prácticas culturales gratuitas y locales; el "
+                        "dinero es un motivo declarado para no ir a las pagadas.",
          no_permite="Que un evento gratuito organizado por terceros convoque a jóvenes (no hay datos de asistencia "
                     "juvenil).", hallazgos="H2-16; H2-10; H2-09; H3-13",
          evidencias="E-130; E-131; E-140; E-141; E-132; E-148; E-120; E-128; E-124; E-113"),
@@ -417,15 +418,16 @@ PATRONES = [
               "hogar ({E-070} de todas las mujeres jóvenes). Se sienten más inseguras de noche ({E-101} frente a "
               "{E-102}) y evitan más salir de noche ({E-104} frente a {E-105}). En cultura participan igual o más que "
               "los hombres (cine: {E-111} frente a {E-112}).",
-         interpretacion="Las barreras de las mujeres jóvenes son sobre todo de tiempo, cuidado y seguridad; no de "
-                        "falta de práctica cultural.",
+         interpretacion="En las mujeres jóvenes se documentan más dedicación al hogar y más inseguridad nocturna; "
+                        "en cultura no se observa menor práctica. No se midió cuánto limitan esas condiciones su "
+                        "participación.",
          no_permite="Qué actividades quieren; la magnitud de su salud mental en Lima Este.",
          hallazgos="H1-07; H1-15; H1-16; H1-10; H2-08; H2-19",
          evidencias="E-044; E-045; E-070; E-101; E-102; E-104; E-105; E-111; E-112"),
     dict(id="PT-07", tipo="patrón", tema="Participación",
          dato="La participación en asociaciones es muy baja en Lima Metropolitana ({E-220}); SJL tiene {E-222} "
               "organizaciones acreditadas por 10 000 jóvenes (mediana metropolitana: {E-223}); el voluntariado llega "
-              "sobre todo a estudiantes ({E-228}) y mujeres ({E-227}).",
+              "sobre todo a estudiantes y mujeres ({E-228} y {E-227} de los inscritos).",
          interpretacion="La participación organizada es un objetivo institucional con poca base de práctica medida.",
          no_permite="Interés de los jóvenes por participar.", hallazgos="H1-02; H1-03; H1-04; H1-12; H3-16",
          evidencias="E-220; E-222; E-223; E-228; E-227"),
@@ -440,12 +442,14 @@ PATRONES = [
     dict(id="PT-09", tipo="condición transversal", tema="Seguridad",
          dato="{E-100} se siente inseguro caminando solo de noche por su barrio ({E-101} de las mujeres); {E-103} dejó "
               "o evitó salir de noche en el último año ({E-104} de las mujeres).",
-         interpretacion="Las ventanas de tiempo libre (noches) coinciden con el horario que más inseguridad genera.",
+         interpretacion="Las ventanas de tiempo libre más amplias (noches) coinciden con el horario en que la "
+                        "mayoría se siente insegura en su barrio. Es una coincidencia observada, no una relación "
+                        "causal medida.",
          no_permite="Qué horarios o lugares evitan concretamente; inseguridad por distrito.",
          hallazgos="H1-10; H2-18", evidencias="E-100; E-101; E-103; E-104"),
     dict(id="PT-10", tipo="condición transversal", tema="Costo",
-         dato="El dinero es el motivo principal de no estudiar para {E-025} de quienes tienen solo secundaria "
-              "completa y de no ir a conciertos para {E-125}; la oferta publicada es casi toda gratuita ({E-304} de "
+         dato="El dinero es el motivo principal de no estudiar para {E-025} de los jóvenes de 15–24 que no "
+              "estudian y solo tienen secundaria completa, y de no ir a conciertos para {E-125} de quienes no fueron; la oferta publicada es casi toda gratuita ({E-304} de "
               "{E-300}) y las cuatro señales de demanda observadas son de ofertas gratuitas.",
          interpretacion="La gratuidad parece una condición de acceso, no un atributo diferencial.",
          no_permite="Disposición a pagar.", hallazgos="H1-17; H2-09; H3-04; H3-06; H3-08",
@@ -522,8 +526,9 @@ FICHAS = [
                         texto="{E-023} de los jóvenes de 15–24 de Lima Este no estudia y su nivel máximo es secundaria "
                               "completa. Entre ellos, {E-025} menciona problemas económicos como motivo principal y "
                               "{E-026} que está trabajando.")],
-        poblacion="Jóvenes de 15–24 sin estudios en curso y con secundaria completa: {E-023:personas}. Con motivo "
-                  "económico: {E-024} de los jóvenes de 15–24 ({E-024:personas}).",
+        poblacion="Jóvenes de 15–24 sin estudios en curso y con secundaria completa: {E-023:personas}; {E-038} de "
+                  "los hombres y {E-039} de las mujeres de 15–24. A los 16–19, {E-029}. Con motivo económico: {E-024} "
+                  "de los jóvenes de 15–24 ({E-024:personas}).",
         interes=[dict(codigo="P0", evidencias="E-027; E-028",
                       texto="Ninguna fuente mide la intención de continuar estudios ni de prepararse. La respuesta "
                             "'terminó sus estudios o asiste a academia' ({E-027}; {E-028} a los 16–19) mezcla a quienes "
@@ -547,9 +552,10 @@ FICHAS = [
             dict(pertinencia="directa", evidencias="E-025", c3="C3-123",
                  texto="Dinero: {E-025} de quienes no estudian con secundaria completa menciona problemas económicos; "
                        "algunas academias municipales son pagadas."),
-            dict(pertinencia="directa", evidencias="E-026; E-180; E-184",
-                 texto="Trabajo y tiempo: {E-026} está trabajando. La disponibilidad observada es mayor en la noche de "
-                       "los días de semana ({E-180}) y la tarde del domingo ({E-184})."),
+            dict(pertinencia="directa", evidencias="E-026; E-180; E-184; E-100",
+                 texto="Trabajo y tiempo: {E-026} de ese segmento menciona que está trabajando. La disponibilidad "
+                       "observada es mayor en la noche de los días de semana ({E-180}) y la tarde del domingo ({E-184}); "
+                       "de noche, {E-100} de los jóvenes se siente inseguro en su barrio."),
             dict(pertinencia="indirecta", evidencias="E-030",
                  texto="Desplazamiento: {E-030} de quienes estudian a los 20–24 lo hace en otro distrito (mide "
                        "movilidad existente, no una barrera)."),
@@ -652,7 +658,8 @@ FICHAS = [
         necesidad=[dict(tipo="prevalencia", evidencias="E-056; E-057",
                         texto="{E-056} de los jóvenes ocupados de Lima Este tiene empleo informal (2022–2023), "
                               "equivalente a {E-057} de todos los jóvenes.")],
-        poblacion="Jóvenes con empleo informal: {E-057:personas}.",
+        poblacion="Jóvenes con empleo informal: {E-057:personas}. Entre los ocupados, {E-064} de los hombres y "
+                  "{E-065} de las mujeres.",
         interes=[dict(codigo="P0", evidencias="", texto="Ninguna fuente mide interés en información sobre derechos "
                                                           "laborales o formalización.")],
         salto="De tener un empleo informal a querer información o apoyo para formalizarse.",
@@ -660,9 +667,10 @@ FICHAS = [
         oferta=dict(texto="Un encuentro sobre formalización laboral en La Molina (UNALM) y un programa de inserción "
                           "laboral en El Agustino.", c3="C3-061; C3-042"),
         convocatoria=[conv("C3-061", "sí", "sí", "sí", "sí", "Encuentro con asistentes sin número exacto.")],
-        barreras=[dict(pertinencia="directa", evidencias="E-061; E-180; E-184",
-                       texto="Tiempo: quienes trabajan dedican {E-061} a la semana; sus ventanas libres son la noche "
-                             "({E-180}) y la tarde del domingo ({E-184}).")],
+        barreras=[dict(pertinencia="directa", evidencias="E-061; E-180; E-184; E-100",
+                       texto="Tiempo: quienes trabajan dedican {E-061} a la semana; las ventanas libres de los jóvenes "
+                             "son la noche ({E-180}) y la tarde del domingo ({E-184}); de noche, {E-100} se siente "
+                             "inseguro en su barrio.")],
         vacios=["Qué problemas laborales enfrentan (no se midió).",
                 "Informalidad de 2024–2025 (el INEI dejó de publicar la variable).",
                 "Si conocerían o usarían esa información."],
@@ -684,7 +692,8 @@ FICHAS = [
         necesidad=[dict(tipo="sin evidencia", evidencias="",
                         texto="Trabajar por cuenta propia no es por sí mismo una necesidad; no tenemos datos de "
                               "ingresos ni de problemas de estos negocios.")],
-        poblacion="{E-059} de los jóvenes ({E-059:personas}); {E-058} de los ocupados.",
+        poblacion="{E-059} de los jóvenes ({E-059:personas}); {E-058} de los ocupados. {E-066} de los hombres y "
+                  "{E-067} de las mujeres jóvenes.",
         interes=[dict(codigo="P1", evidencias="E-058; E-231; E-240; E-241",
                       texto="Práctica observada: ya trabajan por cuenta propia ({E-058} de los ocupados); {E-231} de los "
                             "usuarios de internet lo usa para vender. La aspiración a emprender solo se midió en "
@@ -740,9 +749,11 @@ FICHAS = [
             dict(pertinencia="directa", evidencias="E-100; E-101; E-104",
                  texto="Seguridad de noche: {E-100} se siente inseguro caminando solo de noche ({E-101} de las mujeres) "
                        "y {E-104} de las mujeres evitó salir de noche."),
-            dict(pertinencia="directa", evidencias="E-180; E-184; E-186",
+            dict(pertinencia="directa", evidencias="E-180; E-184; E-186; E-187; E-188",
                  texto="Horario: hay más jóvenes disponibles en la noche de semana ({E-180}) y la tarde del domingo "
-                       "({E-184}) que en la mañana del sábado ({E-186})."),
+                       "({E-184}) que en la mañana del sábado ({E-186}). En Lima Metropolitana, menos mujeres que "
+                       "hombres tuvieron 2 horas libres seguidas entre 18:00 y 22:00 en el día de semana registrado "
+                       "({E-187} frente a {E-188})."),
         ],
         vacios=["Si practican en ligas informales.", "Interés en un formato organizado.",
                 "Deporte por sexo en Lima Este."],
@@ -772,14 +783,16 @@ FICHAS = [
         resultado="B: reformulada", segmentos="S-08; S-09",
         necesidad=[dict(tipo="sin evidencia", evidencias="", texto="Es una práctica cultural, no una respuesta a una "
                                                                   "necesidad medida.")],
-        poblacion="15–29; los conciertos son sobre todo de 20–29 ({E-122}; {E-123}) y poco de 15–19 ({E-121}).",
+        poblacion="15–29. Los conciertos son sobre todo de 20–29 ({E-122}; {E-123}) y poco de 15–19 ({E-121}); los "
+                  "festivales locales, de 25–29 ({E-135}) más que de 15–19 ({E-134}), y en proporción parecida entre "
+                  "mujeres ({E-159}) y hombres ({E-139}).",
         interes=[
             dict(codigo="P2", evidencias="E-130; E-131; E-132",
                  texto="Festival local: {E-130} fue a un festival local o tradicional en el año (más que en Lima "
-                       "Metropolitana, {E-131}); {E-132} entró gratis."),
+                       "Metropolitana, {E-131}); de quienes fueron, {E-132} entró gratis."),
             dict(codigo="P1", evidencias="E-120; E-124; E-136; E-137",
-                 texto="Música en vivo: {E-120} fue a un concierto (casi siempre con entrada comprada: {E-124}); "
-                       "{E-136} fue a danza y {E-137} a una feria artesanal."),
+                 texto="Música en vivo: {E-120} fue a un concierto (de ellos, {E-124} compró su entrada); {E-136} "
+                       "fue a danza y {E-137} a una feria artesanal."),
         ],
         salto="De asistir a fiestas locales o conciertos pagados a asistir a un festival juvenil gratuito organizado "
               "por la organización.",
@@ -807,8 +820,8 @@ FICHAS = [
         afirmaciones=[
             dict(texto="Uno de cada cinco jóvenes fue a un festival local en el año ({E-130}), casi siempre gratis "
                        "({E-132}).", evidencias="E-130; E-132"),
-            dict(texto="Los conciertos son una práctica de 20–29 años más que de 15–19 y casi siempre pagada.",
-                 evidencias="E-121; E-122; E-123; E-124"),
+            dict(texto="Los conciertos son una práctica de 20–29 años más que de 15–19, y la mayoría de quienes "
+                       "asisten compra su entrada ({E-124}).", evidencias="E-121; E-122; E-123; E-124"),
         ],
         hipotesis=["Que un festival gratuito organizado para jóvenes convoque a jóvenes, y no solo a familias.",
                    "Que la cultura urbana (freestyle, breaking) tenga público en Lima Este (no se midió).",
@@ -843,13 +856,16 @@ FICHAS = [
         convocatoria=[conv("C3-024", "no", "sí", "sí", "sí", "Proyecciones para familias, sin cifras.")],
         barreras=[dict(pertinencia="directa", evidencias="E-114; E-115; E-116",
                        texto="Entre quienes no fueron al cine: falta de interés ({E-115}), de tiempo ({E-116}) y de "
-                             "dinero ({E-114}).")],
+                             "dinero ({E-114})."),
+                  dict(pertinencia="indirecta", evidencias="E-183; E-100",
+                       texto="Si es de noche: el sábado por la noche es una ventana libre para {E-183}, pero {E-100} se "
+                             "siente inseguro caminando por su barrio.")],
         vacios=["Si una proyección gratuita reemplaza o no la salida al cine comercial.", "Qué películas.",
                 "Convocatoria de proyecciones juveniles."],
         afirmaciones=[
             dict(texto="Ir al cine es la práctica cultural presencial más extendida ({E-110}).", evidencias="E-110"),
-            dict(texto="Para algunos jóvenes el dinero es el motivo de no ir ({E-114}) y cuatro de cada diez "
-                       "asistentes no pagaron su entrada ({E-113}).", evidencias="E-114; E-113"),
+            dict(texto="Entre quienes no fueron al cine, {E-114} menciona el dinero; entre quienes fueron, {E-113} tuvo "
+                       "la entrada pagada por otra persona.", evidencias="E-114; E-113"),
         ],
         hipotesis=["Que una proyección gratuita convoque a jóvenes que hoy no van al cine por dinero.",
                    "Que haya interés en conversar después de la función (cineforo).",
@@ -868,7 +884,8 @@ FICHAS = [
         tipo="actividad de convocatoria abierta", origen="Nueva", resultado="Nueva", segmentos="S-11; S-12",
         necesidad=[dict(tipo="sin evidencia", evidencias="", texto="Es una práctica cultural, no una respuesta a una "
                                                                   "necesidad medida.")],
-        poblacion="15–29.",
+        poblacion="15–29, sin grandes diferencias por edad (ferias del libro: {E-155} a los 15–19 y {E-156} a los "
+                  "25–29) ni por sexo ({E-153} de las mujeres y {E-154} de los hombres).",
         interes=[dict(codigo="P2", evidencias="E-142; E-140; E-141",
                       texto="{E-142} fue a una feria del libro y {E-140} a una biblioteca en el año (más que en Lima "
                             "Metropolitana, {E-141})."),
@@ -905,7 +922,8 @@ FICHAS = [
         tipo="actividad de convocatoria abierta", origen="Nueva", resultado="Nueva", segmentos="S-13",
         necesidad=[dict(tipo="sin evidencia", evidencias="", texto="Es una práctica cultural, no una respuesta a una "
                                                                   "necesidad medida.")],
-        poblacion="15–29; la oferta publicada es sobre todo escolar.",
+        poblacion="15–29 (monumentos: {E-157} a los 15–19 y {E-158} a los 25–29); la oferta publicada es sobre todo "
+                  "escolar.",
         interes=[dict(codigo="P2", evidencias="E-150; E-151; E-152",
                       texto="{E-150} visitó un monumento histórico en el año, {E-151} un museo y {E-152} un sitio "
                             "arqueológico.")],
@@ -1009,9 +1027,11 @@ FICHAS = [
         convocatoria=[conv("C3-017", "no", "sí", "parcial", "sí", "Charlas escolares (público cautivo)."),
                       conv("C3-087", "parcial", "sí", "parcial", "sí", "Campaña de salud con 'decenas' de "
                                                                       "beneficiarios.")],
-        barreras=[dict(pertinencia="indirecta", evidencias="E-101; E-089",
-                       texto="Seguridad ({E-101} se siente insegura de noche) y cuidado ({E-089} de las mujeres jóvenes "
-                             "de Lima Metropolitana cuidó a alguien del hogar). El estigma no se midió.")],
+        barreras=[dict(pertinencia="indirecta", evidencias="E-101; E-104; E-089; E-187",
+                       texto="Seguridad: {E-101} de las mujeres jóvenes se siente insegura de noche y {E-104} evitó salir "
+                             "de noche. Cuidado y tiempo: en Lima Metropolitana, {E-089} de las mujeres jóvenes cuidó a "
+                             "alguien del hogar en la semana y {E-187} tuvo 2 horas libres seguidas entre 18:00 y "
+                             "22:00 en el día de semana registrado. El estigma no se midió.")],
         vacios=["Prevalencia en Lima Este.", "Disposición a participar.", "Estigma.",
                 "Servicios de salud mental comunitaria disponibles."],
         afirmaciones=[dict(texto="La necesidad está documentada en Lima Metropolitana y en registros de atención de "
@@ -1037,9 +1057,10 @@ FICHAS = [
                               "sexual. En Lima Metropolitana, {E-211} de las mujeres de 15–19 estuvo alguna vez "
                               "embarazada.")],
         poblacion="Adolescentes de 15–19 que participen en cualquier actividad.",
-        interes=[dict(codigo="P0", evidencias="", texto="No aplica: no es una actividad de convocatoria.")],
+        interes=[dict(codigo="no aplica", evidencias="", texto="No aplica: no es una actividad de convocatoria.")],
         salto="",
-        alcance=dict(tipo="segmento identificable", evidencias="E-207"),
+        alcance=dict(tipo="no aplica", evidencias="",
+                     texto="No aplica: es una condición para toda actividad en la que participen menores de 18 años."),
         oferta=dict(texto="Charlas en colegios (DEMUNA, DEVIDA).", c3="C3-027; C3-017"),
         convocatoria=[],
         barreras=[dict(pertinencia="directa", evidencias="", texto="Requiere consentimiento de madres y padres para "
@@ -1100,8 +1121,9 @@ FICHAS = [
                         texto="{E-070} de las mujeres de 15–29 no estudia ni trabaja y se dedica al hogar; entre los "
                               "hombres, {E-071}. Es la situación principal de las mujeres que no estudian ni trabajan "
                               "({E-054}).")],
-        poblacion="{E-070:personas}. {E-078} tiene 25–29 años; {E-074} está en unión (frente a {E-075} de las demás "
-                  "mujeres); {E-076} vive con niños de 0 a 5 años (frente a {E-077}); {E-085} es jefa de hogar o "
+        poblacion="{E-070:personas}. Es más frecuente a los 25–29 ({E-072} de las mujeres de esa edad) que a los "
+                  "15–19 ({E-073}). De ellas, {E-078} tiene 25–29 años; {E-074} está en unión (frente a {E-075} de las "
+                  "demás mujeres); {E-076} vive con niños de 0 a 5 años (frente a {E-077}); {E-085} es jefa de hogar o "
                   "pareja del jefe y {E-084} es hija; {E-079} tiene secundaria completa.",
         interes=[dict(codigo="P0", evidencias="E-081; E-082; E-083; E-080",
                       texto="No sabemos qué actividades les interesan. {E-081} usó internet el mes anterior, pero solo "
@@ -1119,6 +1141,9 @@ FICHAS = [
             dict(pertinencia="directa", evidencias="E-101; E-104",
                  texto="Seguridad: {E-101} de las mujeres jóvenes se siente insegura de noche y {E-104} evitó salir de "
                        "noche."),
+            dict(pertinencia="indirecta", evidencias="E-187",
+                 texto="Tiempo: en Lima Metropolitana, {E-187} de las mujeres jóvenes (todas, no solo este grupo) "
+                       "tuvo 2 horas libres seguidas entre 18:00 y 22:00 en el día de semana registrado."),
         ],
         vacios=["Qué actividades les interesan.", "En qué horarios podrían participar.",
                 "Si necesitan cuidado infantil durante una actividad.", "Qué distancia pueden recorrer.",

@@ -14,7 +14,7 @@ Esta versión reemplaza a la del mismo día tras una auditoría metodológica (`
 - **Qué hacen.** En el año, 63,2 % fue al cine y 44,6 % a algún espectáculo en vivo; 27,6 % hizo deporte o ejercicio en la semana; 52,8 % de los hombres juega videojuegos en línea. Lima Este va más que Lima Metropolitana a festivales locales (19,6 %) y bibliotecas (14,1 %), casi siempre gratis, y menos a conciertos (21,4 %), casi siempre pagados.
 - **Cuándo y con qué riesgo.** Las ventanas de tiempo libre son las noches de semana (37,5 %) y la tarde del domingo (47,6 %); de noche, 63,4 % se siente inseguro caminando por su barrio (72,3 % de las mujeres) y 12,8 % evitó salir de noche en el último año.
 - **Convocatoria.** Casi nunca se puede observar: las cifras las declara quien organiza, sin cupos, y las cuatro señales de demanda son por ofertas concretas y gratuitas (una beca, unos talleres), que no se generalizan.
-- **Fichas de actividades.** 15 fichas por actividad y segmento, presentadas por tema y sin puntaje: 8 actividades de convocatoria abierta, 5 intervenciones segmentadas, 1 protocolo transversal y 1 población que requiere consulta directa (mujeres jóvenes dedicadas al hogar). Ninguna tiene interés declarado en participar (I2): es la principal pregunta pendiente, y solo una consulta directa a jóvenes de Lima Este puede responderla.
+- **Fichas de actividades.** 15 fichas por actividad y segmento, presentadas por tema y sin puntaje: 8 actividades de convocatoria abierta, 5 intervenciones segmentadas, 1 protocolo transversal y 1 población que requiere consulta directa (mujeres jóvenes dedicadas al hogar). Son **alternativas derivadas de evidencia secundaria**: en ninguna se ha validado todavía la participación concreta de los jóvenes (I2). Esa validación, con consulta directa y pilotos, es una fase posterior del proyecto.
 
 ## 1. Cómo leer este informe
 
@@ -79,7 +79,7 @@ Cada ficha responde, por separado: qué necesidad existe, a quién aplica y cuá
   *Lima Este; Lima Este (suma de 7 distritos) · 2022-2025; acumulado sin fecha · confiable. No permite afirmar: Tasas de inscripción por situación (D18): es una comparación descriptiva.*
 - **H1-05.** En Lima Este asiste a educación 62,4 % de los jóvenes de 15–19 y 10,8 % de los de 25–29. 29,0 % de los jóvenes de 15–24 no estudia y su nivel máximo es secundaria completa.  
   *Lima Este · 2022-2025 · confiable. No permite afirmar: Intención de continuar estudios.*
-- **H1-06.** En Lima Este (2022–2025), la tasa de desempleo juvenil es 9,6 % (18,9 % a los 15–19). 70,0 % de los jóvenes ocupados tiene empleo informal (2022–2023) y 18,2 % trabaja por cuenta propia o como empleador.  
+- **H1-06.** En Lima Este (2022–2025), la tasa de desempleo juvenil es 9,6 % (18,9 % a los 15–19). 70,0 % de los jóvenes ocupados tiene empleo informal (2022–2023) y 18,2 % de los ocupados trabaja por cuenta propia o como empleador.  
   *Lima Este · 2022-2023; 2022-2025 · confiable. No permite afirmar: Informalidad de 2024–2025 (el INEI dejó de publicar la variable, D16).*
 - **H1-07.** Con la definición del proyecto, 17,6 % de los jóvenes de Lima Este no estudia ni trabaja: 22,4 % de las mujeres y 12,6 % de los hombres.  
   *Lima Este · 2022-2025 · confiable. No permite afirmar: Comparar con la cifra 'NINI' de Dato Joven (definición distinta, no equivalente).*
@@ -130,7 +130,7 @@ Cada ficha responde, por separado: qué necesidad existe, a quién aplica y cuá
   *Lima Este · 2022-2025 · confiable. No permite afirmar: Interés en actividades presenciales de videojuegos.*
 - **H2-09.** En Lima Este, entre quienes no fueron al cine, 42,4 % lo atribuye a falta de interés, 31,6 % a falta de tiempo y 18,8 % al dinero; entre quienes no fueron a conciertos, 21,2 % al dinero. La falta de información pesa en las ferias del libro (11,6 %).  
   *Lima Este · 2022-2025 · confiable. No permite afirmar: Barreras de actividades que la encuesta no pregunta (deporte, talleres).*
-- **H2-10.** En Lima Este casi todos entraron gratis a festivales locales (92,7 %), bibliotecas (96,0 %) y ferias del libro (76,9 %); en cambio, 58,6 % de los asistentes a conciertos compró su entrada y, en el cine, 40,7 % tuvo la entrada pagada por otra persona.  
+- **H2-10.** En Lima Este, entre quienes asistieron, casi todos entraron gratis a festivales locales (92,7 %) y bibliotecas (96,0 %), y la mayoría a ferias del libro (76,9 %); en cambio, 58,6 % de los asistentes a conciertos compró su entrada y, en el cine, 40,7 % tuvo la entrada pagada por otra persona.  
   *Lima Este · 2022-2025 · confiable. No permite afirmar: Disposición a pagar.*
 - **H2-11.** 32,7 % de los jóvenes usuarios de internet de Lima Este lo usa para educación o capacitación y 3,9 % para vender productos o servicios (2022–2025).  
   *Lima Este · 2022-2025 · confiable. No permite afirmar: Una brecha estable de Lima Este frente a Lima Metropolitana.*
@@ -146,7 +146,7 @@ Cada ficha responde, por separado: qué necesidad existe, a quién aplica y cuá
   *Lima Este; Lima Metropolitana · 2022-2025 · incluye valores referenciales. No permite afirmar: Diferencias por distrito.*
 - **H2-17.** Los videojuegos en línea son más frecuentes entre los más jóvenes: 47,0 % a los 15–19 y 22,9 % a los 25–29.  
   *Lima Este · 2022-2025 · confiable. No permite afirmar: Interés en formatos presenciales.*
-- **H2-18.** En un día registrado de 2024, tuvo al menos 2 horas seguidas sin obligaciones: 37,5 % de los jóvenes de Lima Este entre 18:00 y 22:00 de un día de semana, 47,1 % el sábado entre 18:00 y 22:00, 47,6 % el domingo entre 14:00 y 18:00, 31,0 % el sábado entre 14:00 y 18:00 y 30,3 % el domingo entre 09:00 y 13:00; muchos menos el sábado entre 09:00 y 13:00 (13,4 % (referencial)) y entre 14:00 y 18:00 de un día de semana (11,8 % (referencial)). En Lima Metropolitana, las mujeres tienen menos noches libres en la semana que los hombres (33,5 % frente a 47,9 %).  
+- **H2-18.** En un día registrado de 2024, tuvo al menos 2 horas seguidas sin obligaciones: 37,5 % de los jóvenes de Lima Este entre 18:00 y 22:00 de un día de semana, 47,1 % el sábado entre 18:00 y 22:00, 47,6 % el domingo entre 14:00 y 18:00, 31,0 % el sábado entre 14:00 y 18:00 y 30,3 % el domingo entre 09:00 y 13:00; muchos menos el sábado entre 09:00 y 13:00 (13,4 % (referencial)) y entre 14:00 y 18:00 de un día de semana (11,8 % (referencial)). En Lima Metropolitana, menos mujeres que hombres tuvieron 2 horas libres seguidas entre 18:00 y 22:00 en el día de semana registrado (33,5 % frente a 47,9 %).  
   *Lima Este; Lima Metropolitana · 2024 · incluye valores referenciales. No permite afirmar: Preferencias de horario; tiempo de traslado.*
 - **H2-19.** 48,9 % de los jóvenes de Lima Este cuidó a otras personas del hogar en la semana. En Lima Metropolitana, 56,6 % de las mujeres y 36,3 % de los hombres; las mujeres jóvenes que no trabajaron ni estudiaron en la semana dedicaron 61,9 horas al trabajo doméstico y de cuidado (muestra pequeña), frente a 17,4 horas de las que trabajaron o estudiaron.  
   *Lima Este; Lima Metropolitana · 2024 · confiable. No permite afirmar: Cuidado por sexo en Lima Este.*
@@ -206,8 +206,8 @@ Cada patrón separa el dato observado, su interpretación y lo que no permite af
 
 **PT-01 · Acceso a estudios superiores** (patrón)
 
-- *Dato observado:* 29,0 % de los jóvenes de 15–24 no estudia y su nivel máximo es secundaria completa; para un tercio el motivo principal es económico (33,7 %) y para otro tercio el trabajo (34,4 %). Las academias y becas municipales gratuitas publican participación con cifras y una beca tuvo más postulantes que cupos.
-- *Interpretación:* Hay un segmento grande en situación compatible con la educación superior, frenado sobre todo por dinero y trabajo según su propia respuesta.
+- *Dato observado:* 29,0 % de los jóvenes de 15–24 no estudia y su nivel máximo es secundaria completa; para un tercio de ellos el motivo principal es económico (33,7 %) y para otro tercio el trabajo (34,4 %). Las academias y becas municipales gratuitas publican participación con cifras y una beca tuvo más postulantes que cupos.
+- *Interpretación:* Hay un segmento grande en situación compatible con la educación superior, que declara como motivo principal para no estudiar sobre todo el dinero y el trabajo.
 - *No permite afirmar:* Que quieran continuar estudios: ninguna fuente lo pregunta.
 - *Hallazgos:* H1-17; H2-12; H3-05; H3-06
 
@@ -221,14 +221,14 @@ Cada patrón separa el dato observado, su interpretación y lo que no permite af
 **PT-03 · Deporte** (brecha)
 
 - *Dato observado:* 27,6 % hizo deporte o ejercicio en la semana; en Lima Metropolitana, 49,1 % de los hombres y 19,7 % de las mujeres. Hay 0 organizaciones juveniles acreditadas de deporte, la oferta deportiva publicada se dirige sobre todo a 6–17 años y para 18–29 hay un solo dato de participación.
-- *Interpretación:* Una práctica de alcance amplio sin evidencia de convocatoria a formatos organizados para 18–29.
+- *Interpretación:* Una práctica de alcance amplio con un solo dato de participación en formatos organizados para jóvenes (un taller de tiro con arco).
 - *No permite afirmar:* Que la menor práctica de las mujeres sea demanda insatisfecha; que haya interés en ligas.
 - *Hallazgos:* H2-02; H1-02; H3-03; H3-11; H3-20
 
 **PT-04 · Cultura gratuita y local** (patrón)
 
-- *Dato observado:* Lima Este va más que Lima Metropolitana a festivales locales (19,6 % frente a 15,0 %) y bibliotecas (14,1 % frente a 10,4 %), casi siempre gratis (92,7 %, 96,0 %), y menos a conciertos (21,4 % frente a 26,8 %), casi siempre pagados (58,6 %). En el cine, 40,7 % tuvo la entrada pagada por otra persona.
-- *Interpretación:* En Lima Este pesan las prácticas culturales gratuitas y cercanas; el dinero limita las pagadas.
+- *Dato observado:* Lima Este va más que Lima Metropolitana a festivales locales (19,6 % frente a 15,0 %) y bibliotecas (14,1 % frente a 10,4 %), casi siempre gratis (92,7 %, 96,0 %), y menos a conciertos (21,4 % frente a 26,8 %), a los que la mayoría entró con entrada comprada (58,6 %). En el cine, 40,7 % tuvo la entrada pagada por otra persona.
+- *Interpretación:* En Lima Este tienen más peso relativo las prácticas culturales gratuitas y locales; el dinero es un motivo declarado para no ir a las pagadas.
 - *No permite afirmar:* Que un evento gratuito organizado por terceros convoque a jóvenes (no hay datos de asistencia juvenil).
 - *Hallazgos:* H2-16; H2-10; H2-09; H3-13
 
@@ -242,13 +242,13 @@ Cada patrón separa el dato observado, su interpretación y lo que no permite af
 **PT-06 · Mujeres jóvenes** (brecha)
 
 - *Dato observado:* Más mujeres que hombres no estudian ni trabajan (22,4 % frente a 12,6 %), sobre todo por dedicarse al hogar (14,0 % de todas las mujeres jóvenes). Se sienten más inseguras de noche (72,3 % frente a 53,9 %) y evitan más salir de noche (16,0 % frente a 9,7 %). En cultura participan igual o más que los hombres (cine: 66,6 % frente a 59,3 %).
-- *Interpretación:* Las barreras de las mujeres jóvenes son sobre todo de tiempo, cuidado y seguridad; no de falta de práctica cultural.
+- *Interpretación:* En las mujeres jóvenes se documentan más dedicación al hogar y más inseguridad nocturna; en cultura no se observa menor práctica. No se midió cuánto limitan esas condiciones su participación.
 - *No permite afirmar:* Qué actividades quieren; la magnitud de su salud mental en Lima Este.
 - *Hallazgos:* H1-07; H1-15; H1-16; H1-10; H2-08; H2-19
 
 **PT-07 · Participación** (patrón)
 
-- *Dato observado:* La participación en asociaciones es muy baja en Lima Metropolitana (0,7 % (referencial)); SJL tiene 1,9 organizaciones acreditadas por 10 000 jóvenes (mediana metropolitana: 3,3); el voluntariado llega sobre todo a estudiantes (65,4 %) y mujeres (84,9 %).
+- *Dato observado:* La participación en asociaciones es muy baja en Lima Metropolitana (0,7 % (referencial)); SJL tiene 1,9 organizaciones acreditadas por 10 000 jóvenes (mediana metropolitana: 3,3); el voluntariado llega sobre todo a estudiantes y mujeres (65,4 % y 84,9 % de los inscritos).
 - *Interpretación:* La participación organizada es un objetivo institucional con poca base de práctica medida.
 - *No permite afirmar:* Interés de los jóvenes por participar.
 - *Hallazgos:* H1-02; H1-03; H1-04; H1-12; H3-16
@@ -263,13 +263,13 @@ Cada patrón separa el dato observado, su interpretación y lo que no permite af
 **PT-09 · Seguridad** (condición transversal)
 
 - *Dato observado:* 63,4 % se siente inseguro caminando solo de noche por su barrio (72,3 % de las mujeres); 12,8 % dejó o evitó salir de noche en el último año (16,0 % de las mujeres).
-- *Interpretación:* Las ventanas de tiempo libre (noches) coinciden con el horario que más inseguridad genera.
+- *Interpretación:* Las ventanas de tiempo libre más amplias (noches) coinciden con el horario en que la mayoría se siente insegura en su barrio. Es una coincidencia observada, no una relación causal medida.
 - *No permite afirmar:* Qué horarios o lugares evitan concretamente; inseguridad por distrito.
 - *Hallazgos:* H1-10; H2-18
 
 **PT-10 · Costo** (condición transversal)
 
-- *Dato observado:* El dinero es el motivo principal de no estudiar para 33,7 % de quienes tienen solo secundaria completa y de no ir a conciertos para 21,2 %; la oferta publicada es casi toda gratuita (99 de 151) y las cuatro señales de demanda observadas son de ofertas gratuitas.
+- *Dato observado:* El dinero es el motivo principal de no estudiar para 33,7 % de los jóvenes de 15–24 que no estudian y solo tienen secundaria completa, y de no ir a conciertos para 21,2 % de quienes no fueron; la oferta publicada es casi toda gratuita (99 de 151) y las cuatro señales de demanda observadas son de ofertas gratuitas.
 - *Interpretación:* La gratuidad parece una condición de acceso, no un atributo diferencial.
 - *No permite afirmar:* Disposición a pagar.
 - *Hallazgos:* H1-17; H2-09; H3-04; H3-06; H3-08
@@ -337,7 +337,7 @@ Una fila por ficha, en orden temático. **No es un ranking:** cada columna se le
 | F-10 | Encuentros o torneos presenciales de videojuegos | actividad de convocatoria abierta | sin evidencia | P1 | segmento identificable | C0 |
 | F-11 | Retos colaborativos de tecnología (hackathon) | actividad de convocatoria abierta | sin evidencia | P0 | desconocido | C2 |
 | F-12 | Bienestar y salud mental de mujeres jóvenes (espacio propio o componente con derivación) | intervención segmentada | prevalencia; registro de atención | P0 | desconocido | C2 |
-| F-13 | Protocolo de protección y derivación en actividades con adolescentes | protocolo transversal | registro de atención | P0 | segmento identificable | no aplica |
+| F-13 | Protocolo de protección y derivación en actividades con adolescentes | protocolo transversal | registro de atención | no aplica | no aplica | no aplica |
 | F-14 | Voluntariado de corta duración con resultados visibles | actividad de convocatoria abierta | objetivo institucional | P1 | desconocido | C3 |
 | F-15 | Mujeres jóvenes dedicadas al hogar: población que requiere consulta directa | población que requiere consulta directa | situación documentada | P0 | segmento identificable | no aplica |
 
@@ -353,12 +353,12 @@ Una fila por ficha, en orden temático. **No es un ranking:** cada columna se le
 | Paso | Código | Evidencia |
 |---|---|---|
 | 1. Contexto o necesidad | brecha de acceso | 29,0 % de los jóvenes de 15–24 de Lima Este no estudia y su nivel máximo es secundaria completa. Entre ellos, 33,7 % menciona problemas económicos como motivo principal y 34,4 % que está trabajando. |
-| 2. Población a la que aplica |  | Jóvenes de 15–24 sin estudios en curso y con secundaria completa: ≈ 119–140 mil según la población 2026 de Dato Joven; 136–177 mil según la expansión de la encuesta. Con motivo económico: 9,8 % de los jóvenes de 15–24 (≈ 36–51 mil según la población 2026 de Dato Joven; 43–63 mil según la expansión de la encuesta). |
+| 2. Población a la que aplica |  | Jóvenes de 15–24 sin estudios en curso y con secundaria completa: ≈ 119–140 mil según la población 2026 de Dato Joven; 136–177 mil según la expansión de la encuesta; 32,5 % de los hombres y 25,4 % de las mujeres de 15–24. A los 16–19, 31,4 %. Con motivo económico: 9,8 % de los jóvenes de 15–24 (≈ 36–51 mil según la población 2026 de Dato Joven; 43–63 mil según la expansión de la encuesta). |
 | 3. Interés o práctica observada | P0 | [P0] Ninguna fuente mide la intención de continuar estudios ni de prepararse. La respuesta 'terminó sus estudios o asiste a academia' (21,6 %; 38,8 % a los 16–19) mezcla a quienes ya se preparan con quienes dieron por terminados sus estudios. Salto inferencial: De 'no estudia y tiene secundaria completa' a 'quiere prepararse para postular'. |
-| 4. Alcance potencial | segmento identificable | No estudia y su nivel máximo es secundaria completa: 29,0 % de 15-24 años (≈ 119–140 mil según la población 2026 de Dato Joven; 136–177 mil según la expansión de la encuesta). No estudia, secundaria completa y motivo principal: problemas económicos: 9,8 % de 15-24 años (≈ 36–51 mil según la población 2026 de Dato Joven; 43–63 mil según la expansión de la encuesta). |
+| 4. Alcance potencial | segmento identificable | No estudia y su nivel máximo es secundaria completa (Lima Este, 2022-2025): 29,0 % de 15-24 años (≈ 119–140 mil según la población 2026 de Dato Joven; 136–177 mil según la expansión de la encuesta). No estudia, secundaria completa y motivo principal: problemas económicos (Lima Este, 2022-2025): 9,8 % de 15-24 años (≈ 36–51 mil según la población 2026 de Dato Joven; 43–63 mil según la expansión de la encuesta). |
 | 5. Oferta territorial existente |  | Academias preuniversitarias municipales en Lurigancho-Chosica (gratuita), Ate y Santa Anita (pagadas); becas municipales de preparación en El Agustino y Santa Anita; becas integrales en SJL; ferias vocacionales en Lurigancho-Chosica y Santa Anita. |
 | 6. Evidencia de participación o convocatoria | C4 | C4 por C3-125: comparable en todas las dimensiones. Es demanda por esa oferta concreta, no interés general (C3-D9). [C3] 180 matriculados en la academia municipal gratuita (2024). [C3] 100 becarios de preparación preuniversitaria (2025). [C4] Más de 80 postulantes para 10 becas: demanda por esa beca concreta (C3-D9). [C2] 'Aulas completas' en la academia pagada (sin cifra). [C2] 300 asistentes a una feria vocacional (estudiantes y vecinos). |
-| 7. Barreras |  | [directa] Dinero: 33,7 % de quienes no estudian con secundaria completa menciona problemas económicos; algunas academias municipales son pagadas. [directa] Trabajo y tiempo: 34,4 % está trabajando. La disponibilidad observada es mayor en la noche de los días de semana (37,5 %) y la tarde del domingo (47,6 %). [indirecta] Desplazamiento: 64,1 % de quienes estudian a los 20–24 lo hace en otro distrito (mide movilidad existente, no una barrera). |
+| 7. Barreras |  | [directa] Dinero: 33,7 % de quienes no estudian con secundaria completa menciona problemas económicos; algunas academias municipales son pagadas. [directa] Trabajo y tiempo: 34,4 % de ese segmento menciona que está trabajando. La disponibilidad observada es mayor en la noche de los días de semana (37,5 %) y la tarde del domingo (47,6 %); de noche, 63,4 % de los jóvenes se siente inseguro en su barrio. [indirecta] Desplazamiento: 64,1 % de quienes estudian a los 20–24 lo hace en otro distrito (mide movilidad existente, no una barrera). |
 | 8. Vacíos de información |  | • Intención de continuar estudios y carrera de interés. • Cuántos ya asisten a una academia (la ENAHO no lo separa de 'terminó sus estudios'). • Capacidad de pago y distancia aceptable. • Resultados de las academias municipales: solo hay un dato (35 ingresantes en Ate). |
 | 9. Qué podemos afirmar |  | • Un segmento identificable de jóvenes de 15–24 no estudia y solo tiene secundaria completa (29,0 %; ≈ 119–140 mil según la población 2026 de Dato Joven; 136–177 mil según la expansión de la encuesta). • Para un tercio de ese segmento el motivo principal es económico (33,7 %). • Hay participación declarada con cifras en academias y becas municipales gratuitas de Lima Este y una beca concreta tuvo más postulantes que cupos. |
 | 10. Qué solo podemos plantear como hipótesis |  | • Que una preparación gratuita atraiga a jóvenes que hoy no se preparan, y no solo a quienes ya asisten a otra academia. • Que el apoyo para postular a becas convoque por sí mismo. • Que un horario nocturno o de domingo permita participar a quienes trabajan. |
@@ -376,7 +376,7 @@ Una fila por ficha, en orden temático. **No es un ranking:** cada columna se le
 - **Cómo validarla en un piloto:** Inscritos frente a cupos y lista de espera; proporción que no se preparaba en otra academia; proporción que trabaja; asistencia a la 4.ª semana; postulaciones a becas e ingresos.
 - **Dónde (criterio operativo, no de demanda):** Criterio operativo (I-R7): San Juan de Lurigancho no tiene academia municipal gratuita publicada y tiene la mayor población joven (311 mil); coordinar con las academias existentes para no duplicar.
 - **Cambio frente a la primera versión:** Segmento redefinido con un denominador de Lima Este; componentes separados; el interés pasa de 'medio' a P0 (no medido); la necesidad deja de apoyarse en 'no le interesa: 2 %'.
-- **Trazabilidad:** evidencias E-023; E-024; E-025; E-026; E-027; E-028; E-030; E-180; E-184; actividades de la Capa 3 C3-006; C3-046; C3-070; C3-080; C3-096; C3-099; C3-123; C3-125; C3-141.
+- **Trazabilidad:** evidencias E-023; E-024; E-025; E-026; E-027; E-028; E-029; E-030; E-038; E-039; E-100; E-180; E-184; actividades de la Capa 3 C3-006; C3-046; C3-070; C3-080; C3-096; C3-099; C3-123; C3-125; C3-141.
 
 ### Empleo e ingresos
 
@@ -389,7 +389,7 @@ Una fila por ficha, en orden temático. **No es un ranking:** cada columna se le
 | 1. Contexto o necesidad | prevalencia | La tasa de desempleo juvenil en Lima Este es 9,6 % (18,9 % a los 15–19); 5,8 % de todos los jóvenes busca trabajo. |
 | 2. Población a la que aplica |  | Sin trabajo y buscan o quieren trabajar: 11,4 % de los jóvenes (≈ 72–91 mil según la población 2026 de Dato Joven; 82–111 mil según la expansión de la encuesta); 13,4 % de las mujeres y 9,3 % de los hombres. |
 | 3. Interés o práctica observada | P1 | [P1] Buscar trabajo es una práctica observada en este segmento (lo define), pero ninguna fuente mide interés en talleres o acompañamiento. Salto inferencial: De buscar trabajo a asistir a una preparación o a un acompañamiento. |
-| 4. Alcance potencial | segmento identificable | Sin trabajo y busca o quiere trabajar: 11,4 % de 15-29 años (≈ 72–91 mil según la población 2026 de Dato Joven; 82–111 mil según la expansión de la encuesta). |
+| 4. Alcance potencial | segmento identificable | Sin trabajo y busca o quiere trabajar (Lima Este, 2022-2025): 11,4 % de 15-29 años (≈ 72–91 mil según la población 2026 de Dato Joven; 82–111 mil según la expansión de la encuesta). |
 | 5. Oferta territorial existente |  | Programas municipales de empleabilidad (Ate, SJL, Santa Anita), ferias y bolsas de empleo en cinco distritos, Agencia Local de Empleo y Centro de Empleo del MTPE en SJL. |
 | 6. Evidencia de participación o convocatoria | C4 | C4 por C3-084: comparable en parte; no plenamente en territorio, formato. Es demanda por esa oferta concreta, no interés general (C3-D9). [C3] 143 jóvenes con empleo (resultado declarado). [C3] 62 aprobados en un programa de empleabilidad. [C3] 50 jóvenes contratados tras capacitación dual. [C4] Talleres de SENAJU con más de 5 000 inscritos para casi mil cupos (Lima y nacional; incluyen arte). [no comparable] Ferias de empleo con 'cientos' o 'miles' de vecinos de todas las edades. |
 | 7. Barreras |  | [indirecta] Horario y seguridad: la disponibilidad se concentra en las noches (37,5 %), cuando 63,4 % se siente inseguro caminando por su barrio. [directa] Entre las mujeres que no estudian ni trabajan, la mayoría se dedica al hogar (62,4 %) y pocas buscan trabajo (19,6 %): un taller de búsqueda de empleo no responde a su situación. |
@@ -419,12 +419,12 @@ Una fila por ficha, en orden temático. **No es un ranking:** cada columna se le
 | Paso | Código | Evidencia |
 |---|---|---|
 | 1. Contexto o necesidad | prevalencia | 70,0 % de los jóvenes ocupados de Lima Este tiene empleo informal (2022–2023), equivalente a 37,6 % de todos los jóvenes. |
-| 2. Población a la que aplica |  | Jóvenes con empleo informal: ≈ 246–290 mil según la población 2026 de Dato Joven; 251–351 mil según la expansión de la encuesta. |
+| 2. Población a la que aplica |  | Jóvenes con empleo informal: ≈ 246–290 mil según la población 2026 de Dato Joven; 251–351 mil según la expansión de la encuesta. Entre los ocupados, 69,2 % de los hombres y 71,2 % de las mujeres. |
 | 3. Interés o práctica observada | P0 | [P0] Ninguna fuente mide interés en información sobre derechos laborales o formalización. Salto inferencial: De tener un empleo informal a querer información o apoyo para formalizarse. |
-| 4. Alcance potencial | segmento identificable | Ocupado con empleo informal: 37,6 % de 15-29 años (≈ 246–290 mil según la población 2026 de Dato Joven; 251–351 mil según la expansión de la encuesta). |
+| 4. Alcance potencial | segmento identificable | Ocupado con empleo informal (Lima Este, 2022-2023): 37,6 % de 15-29 años (≈ 246–290 mil según la población 2026 de Dato Joven; 251–351 mil según la expansión de la encuesta). |
 | 5. Oferta territorial existente |  | Un encuentro sobre formalización laboral en La Molina (UNALM) y un programa de inserción laboral en El Agustino. |
 | 6. Evidencia de participación o convocatoria | C2 | C2 por C3-061: comparable en todas las dimensiones. [C2] Encuentro con asistentes sin número exacto. |
-| 7. Barreras |  | [directa] Tiempo: quienes trabajan dedican 42,0 horas a la semana; sus ventanas libres son la noche (37,5 %) y la tarde del domingo (47,6 %). |
+| 7. Barreras |  | [directa] Tiempo: quienes trabajan dedican 42,0 horas a la semana; las ventanas libres de los jóvenes son la noche (37,5 %) y la tarde del domingo (47,6 %); de noche, 63,4 % se siente inseguro en su barrio. |
 | 8. Vacíos de información |  | • Qué problemas laborales enfrentan (no se midió). • Informalidad de 2024–2025 (el INEI dejó de publicar la variable). • Si conocerían o usarían esa información. |
 | 9. Qué podemos afirmar |  | • La informalidad afecta a 70,0 % de los jóvenes ocupados de Lima Este (2022–2023). |
 | 10. Qué solo podemos plantear como hipótesis |  | • Que jóvenes con empleo informal asistan a una actividad sobre derechos laborales o formalización. • Que un formato breve, de noche o en domingo, sea compatible con su jornada. |
@@ -440,7 +440,7 @@ Una fila por ficha, en orden temático. **No es un ranking:** cada columna se le
 - **Cómo validarla en un piloto:** Inscritos; proporción con empleo informal; asistencia; consultas o trámites iniciados después.
 - **Dónde (criterio operativo, no de demanda):** Sin criterio de demanda por distrito.
 - **Cambio frente a la primera versión:** Alternativa nueva: surge de la informalidad estimada para Lima Este.
-- **Trazabilidad:** evidencias E-056; E-057; E-061; E-180; E-184; actividades de la Capa 3 C3-042; C3-061.
+- **Trazabilidad:** evidencias E-056; E-057; E-061; E-064; E-065; E-100; E-180; E-184; actividades de la Capa 3 C3-042; C3-061.
 
 #### F-04. Apoyo a jóvenes que ya trabajan por cuenta propia
 
@@ -449,9 +449,9 @@ Una fila por ficha, en orden temático. **No es un ranking:** cada columna se le
 | Paso | Código | Evidencia |
 |---|---|---|
 | 1. Contexto o necesidad | sin evidencia | Trabajar por cuenta propia no es por sí mismo una necesidad; no tenemos datos de ingresos ni de problemas de estos negocios. |
-| 2. Población a la que aplica |  | 9,9 % de los jóvenes (≈ 62–79 mil según la población 2026 de Dato Joven; 71–97 mil según la expansión de la encuesta); 18,2 % de los ocupados. |
+| 2. Población a la que aplica |  | 9,9 % de los jóvenes (≈ 62–79 mil según la población 2026 de Dato Joven; 71–97 mil según la expansión de la encuesta); 18,2 % de los ocupados. 11,6 % de los hombres y 8,2 % de las mujeres jóvenes. |
 | 3. Interés o práctica observada | P1 | [P1] Práctica observada: ya trabajan por cuenta propia (18,2 % de los ocupados); 3,9 % de los usuarios de internet lo usa para vender. La aspiración a emprender solo se midió en 2019–2020 fuera de Lima Este (45 %; 60 %). Salto inferencial: De trabajar por cuenta propia a querer capacitarse en gestión o ventas. |
-| 4. Alcance potencial | segmento identificable | Trabaja como independiente o empleador: 9,9 % de 15-29 años (≈ 62–79 mil según la población 2026 de Dato Joven; 71–97 mil según la expansión de la encuesta). |
+| 4. Alcance potencial | segmento identificable | Trabaja como independiente o empleador (Lima Este, 2022-2025): 9,9 % de 15-29 años (≈ 62–79 mil según la población 2026 de Dato Joven; 71–97 mil según la expansión de la encuesta). |
 | 5. Oferta territorial existente |  | Ferias de jóvenes emprendedores (Santa Anita), CETPRO de La Molina, capacitación de Jóvenes Productivos, coworking municipal en SJL. |
 | 6. Evidencia de participación o convocatoria | C2 | C2 por C3-132: comparable en parte; no plenamente en formato. [C2] Ferias con 'muchos jóvenes emprendedores', sin cifra. [no comparable] 385 alumnos de 14 a 60 años. |
 | 7. Barreras |  | [indirecta] Tiempo: quienes trabajan dedican 42,0 horas a la semana. |
@@ -472,7 +472,7 @@ Una fila por ficha, en orden temático. **No es un ranking:** cada columna se le
 - **Cómo validarla en un piloto:** Inscritos con negocio en marcha; asistencia; cambios declarados en el negocio.
 - **Dónde (criterio operativo, no de demanda):** Sin criterio de demanda por distrito.
 - **Cambio frente a la primera versión:** El salto 'informalidad → emprendimiento' se descarta; la ficha se limita a un segmento con práctica observada.
-- **Trazabilidad:** evidencias E-058; E-059; E-061; E-231; E-240; E-241; actividades de la Capa 3 C3-041; C3-064; C3-111; C3-132.
+- **Trazabilidad:** evidencias E-058; E-059; E-061; E-066; E-067; E-231; E-240; E-241; actividades de la Capa 3 C3-041; C3-064; C3-111; C3-132.
 
 ### Deporte y actividad física
 
@@ -485,10 +485,10 @@ Una fila por ficha, en orden temático. **No es un ranking:** cada columna se le
 | 1. Contexto o necesidad | sin evidencia | No hay datos de actividad física insuficiente ni de salud física juvenil en nuestras fuentes. |
 | 2. Población a la que aplica |  | Jóvenes de 18–29 (la oferta deportiva publicada se dirige a 6–17); la práctica se mide para 15–29. |
 | 3. Interés o práctica observada | P1 | [P1] 27,6 % hizo deporte o ejercicio en la semana (2024); 22,2 % (referencial) a los 25–29. En Lima Metropolitana, 49,1 % de los hombres y 19,7 % de las mujeres. Salto inferencial: De hacer deporte o ejercicio, en cualquier forma, a inscribirse en una liga o entrenamiento organizado. |
-| 4. Alcance potencial | amplia | Hizo deporte o ejercicio en la semana (diario): 27,6 % de 15-29 años (≈ 147–247 mil según la población 2026 de Dato Joven; 99–209 mil según la expansión de la encuesta). |
+| 4. Alcance potencial | amplia | Hizo deporte o ejercicio en la semana (diario) (Lima Este, 2024): 27,6 % de 15-29 años (≈ 147–247 mil según la población 2026 de Dato Joven; 99–209 mil según la expansión de la encuesta). |
 | 5. Oferta territorial existente |  | Espacios deportivos nuevos o reabiertos; talleres y escuelas para 6–17; taller de tiro con arco para jóvenes (La Molina). |
 | 6. Evidencia de participación o convocatoria | C3 | C3 por C3-053: comparable en parte; no plenamente en costo. Cifra declarada por quien organiza, sin cupos publicados. [C3] Unos 30 alumnos por horario. [no comparable] Academia IPD (6–17): 19 000 cupos agotados. [no comparable] Carrera abierta: más de 1 000 participantes de todas las edades. |
-| 7. Barreras |  | [directa] Seguridad de noche: 63,4 % se siente inseguro caminando solo de noche (72,3 % de las mujeres) y 16,0 % de las mujeres evitó salir de noche. [directa] Horario: hay más jóvenes disponibles en la noche de semana (37,5 %) y la tarde del domingo (47,6 %) que en la mañana del sábado (13,4 % (referencial)). |
+| 7. Barreras |  | [directa] Seguridad de noche: 63,4 % se siente inseguro caminando solo de noche (72,3 % de las mujeres) y 16,0 % de las mujeres evitó salir de noche. [directa] Horario: hay más jóvenes disponibles en la noche de semana (37,5 %) y la tarde del domingo (47,6 %) que en la mañana del sábado (13,4 % (referencial)). En Lima Metropolitana, menos mujeres que hombres tuvieron 2 horas libres seguidas entre 18:00 y 22:00 en el día de semana registrado (33,5 % frente a 47,9 %). |
 | 8. Vacíos de información |  | • Si practican en ligas informales. • Interés en un formato organizado. • Deporte por sexo en Lima Este. |
 | 9. Qué podemos afirmar |  | • Uno de cada cuatro jóvenes de Lima Este hizo deporte o ejercicio en la semana (27,6 %). • La oferta deportiva publicada se dirige sobre todo a 6–17 años; para 18–29 hay un solo dato de participación. |
 | 10. Qué solo podemos plantear como hipótesis |  | • Que jóvenes de 18–29 que ya practican se inscriban en un formato organizado. • Que un horario diurno de domingo y espacios seguros permitan participar a más mujeres (su menor práctica en Lima Metropolitana no prueba demanda insatisfecha). |
@@ -505,7 +505,7 @@ Una fila por ficha, en orden temático. **No es un ranking:** cada columna se le
 - **Cómo validarla en un piloto:** Inscritos por sexo y edad; asistencia y retención; comparación entre horarios.
 - **Dónde (criterio operativo, no de demanda):** Criterio operativo: espacios nuevos o reabiertos en SJL, Ate y Lurigancho-Chosica.
 - **Cambio frente a la primera versión:** El interés pasa de 'alto' a P1 (práctica relacionada); la convocatoria deja de llamarse 'baja' y se describe como un solo dato comparable.
-- **Trazabilidad:** evidencias E-100; E-101; E-104; E-170; E-171; E-172; E-173; E-180; E-184; E-186; E-309; E-313; actividades de la Capa 3 C3-009; C3-051; C3-053; C3-054; C3-081; C3-114; C3-120; C3-121.
+- **Trazabilidad:** evidencias E-100; E-101; E-104; E-170; E-171; E-172; E-173; E-180; E-184; E-186; E-187; E-188; E-309; E-313; actividades de la Capa 3 C3-009; C3-051; C3-053; C3-054; C3-081; C3-114; C3-120; C3-121.
 
 ### Cultura y encuentro
 
@@ -516,14 +516,14 @@ Una fila por ficha, en orden temático. **No es un ranking:** cada columna se le
 | Paso | Código | Evidencia |
 |---|---|---|
 | 1. Contexto o necesidad | sin evidencia | Es una práctica cultural, no una respuesta a una necesidad medida. |
-| 2. Población a la que aplica |  | 15–29; los conciertos son sobre todo de 20–29 (27,8 %; 29,5 %) y poco de 15–19 (8,4 % (referencial)). |
-| 3. Interés o práctica observada | P2 | [P2] Festival local: 19,6 % fue a un festival local o tradicional en el año (más que en Lima Metropolitana, 15,0 %); 92,7 % entró gratis. [P1] Música en vivo: 21,4 % fue a un concierto (casi siempre con entrada comprada: 58,6 %); 18,3 % fue a danza y 20,8 % a una feria artesanal. Salto inferencial: De asistir a fiestas locales o conciertos pagados a asistir a un festival juvenil gratuito organizado por la organización. |
-| 4. Alcance potencial | amplia | Fue a un festival local o tradicional en los últimos 12 meses: 19,6 % de 15-29 años (≈ 115–164 mil según la población 2026 de Dato Joven; 105–160 mil según la expansión de la encuesta). Fue a un concierto o festival musical en los últimos 12 meses: 21,4 % de 15-29 años (≈ 128–176 mil según la población 2026 de Dato Joven; 116–173 mil según la expansión de la encuesta). |
+| 2. Población a la que aplica |  | 15–29. Los conciertos son sobre todo de 20–29 (27,8 %; 29,5 %) y poco de 15–19 (8,4 % (referencial)); los festivales locales, de 25–29 (23,5 %) más que de 15–19 (14,8 % (referencial)), y en proporción parecida entre mujeres (20,8 %) y hombres (18,2 %). |
+| 3. Interés o práctica observada | P2 | [P2] Festival local: 19,6 % fue a un festival local o tradicional en el año (más que en Lima Metropolitana, 15,0 %); de quienes fueron, 92,7 % entró gratis. [P1] Música en vivo: 21,4 % fue a un concierto (de ellos, 58,6 % compró su entrada); 18,3 % fue a danza y 20,8 % a una feria artesanal. Salto inferencial: De asistir a fiestas locales o conciertos pagados a asistir a un festival juvenil gratuito organizado por la organización. |
+| 4. Alcance potencial | amplia | Fue a un festival local o tradicional en los últimos 12 meses (Lima Este, 2022-2025): 19,6 % de 15-29 años (≈ 115–164 mil según la población 2026 de Dato Joven; 105–160 mil según la expansión de la encuesta). Fue a un concierto o festival musical en los últimos 12 meses (Lima Este, 2022-2025): 21,4 % de 15-29 años (≈ 128–176 mil según la población 2026 de Dato Joven; 116–173 mil según la expansión de la encuesta). |
 | 5. Oferta territorial existente |  | Eventos de cultura urbana y juvenil en Lurigancho-Chosica, Santa Anita y SJL; concurso de canto y baile en El Agustino; festival intercultural en SJL; Cajamarquilla Raymi. |
 | 6. Evidencia de participación o convocatoria | C2 | C2 por C3-035: comparable en parte; no plenamente en formato. [C1] Cultura Urbana Fest: sin cifras de asistencia. [C2] Concurso con participantes sin número. [no comparable] Festival intercultural: 1 000 vecinos de todas las edades. [no comparable] 4 000 asistentes de todas las edades. |
 | 7. Barreras |  | [directa] Entre quienes no fueron a conciertos: dinero (21,2 %), falta de interés (40,8 %) y falta de tiempo (31,9 %). [directa] Entre quienes no fueron a festivales, la mayoría no tenía interés (54,5 %). [directa] Noche: la noche del sábado es una ventana libre (47,1 %), pero 63,4 % se siente inseguro y 12,8 % evitó salir de noche. |
 | 8. Vacíos de información |  | • Géneros musicales preferidos. • Asistencia juvenil a eventos locales (no se publica). • Seguridad percibida en eventos nocturnos. |
-| 9. Qué podemos afirmar |  | • Uno de cada cinco jóvenes fue a un festival local en el año (19,6 %), casi siempre gratis (92,7 %). • Los conciertos son una práctica de 20–29 años más que de 15–19 y casi siempre pagada. |
+| 9. Qué podemos afirmar |  | • Uno de cada cinco jóvenes fue a un festival local en el año (19,6 %), casi siempre gratis (92,7 %). • Los conciertos son una práctica de 20–29 años más que de 15–19, y la mayoría de quienes asisten compra su entrada (58,6 %). |
 | 10. Qué solo podemos plantear como hipótesis |  | • Que un festival gratuito organizado para jóvenes convoque a jóvenes, y no solo a familias. • Que la cultura urbana (freestyle, breaking) tenga público en Lima Este (no se midió). • Que participar como artistas u organizadores aumente la convocatoria. |
 
 
@@ -539,7 +539,7 @@ Una fila por ficha, en orden temático. **No es un ranking:** cada columna se le
 - **Cómo validarla en un piloto:** Asistentes y su edad (registro o conteo); artistas y colectivos inscritos; asistencia a una segunda fecha.
 - **Dónde (criterio operativo, no de demanda):** Criterio operativo: distritos con eventos previos y espacios (Lurigancho-Chosica, Santa Anita, SJL).
 - **Cambio frente a la primera versión:** Se reorienta a festival local gratuito (práctica de la misma actividad); el segmento 15–24 se corrige (la música en vivo es de 20–29); cultura urbana y jóvenes organizadores pasan a hipótesis.
-- **Trazabilidad:** evidencias E-100; E-103; E-120; E-121; E-122; E-123; E-124; E-125; E-126; E-127; E-130; E-131; E-132; E-133; E-136; E-137; E-183; actividades de la Capa 3 C3-035; C3-073; C3-076; C3-091; C3-098; C3-103; C3-127; C3-136.
+- **Trazabilidad:** evidencias E-100; E-103; E-120; E-121; E-122; E-123; E-124; E-125; E-126; E-127; E-130; E-131; E-132; E-133; E-134; E-135; E-136; E-137; E-139; E-159; E-183; actividades de la Capa 3 C3-035; C3-073; C3-076; C3-091; C3-098; C3-103; C3-127; C3-136.
 
 #### F-07. Proyecciones de cine gratuitas
 
@@ -550,12 +550,12 @@ Una fila por ficha, en orden temático. **No es un ranking:** cada columna se le
 | 1. Contexto o necesidad | sin evidencia | Es una práctica cultural, no una respuesta a una necesidad medida. |
 | 2. Población a la que aplica |  | 15–29; más a los 15–19 (68,2 %) que a los 25–29 (57,3 %); mujeres 66,6 %, hombres 59,3 %. |
 | 3. Interés o práctica observada | P1 | [P1] 63,2 % fue al cine comercial en el año; 40,7 % tuvo la entrada pagada por otra persona; entre quienes no fueron, 18,8 % menciona el dinero. Salto inferencial: De ir al cine comercial a ir a una proyección gratuita organizada; ver películas no dice nada sobre conversar después ni sobre producir video. |
-| 4. Alcance potencial | amplia | Fue al cine en los últimos 12 meses: 63,2 % de 15-29 años (≈ 422–478 mil según la población 2026 de Dato Joven; 371–484 mil según la expansión de la encuesta). |
+| 4. Alcance potencial | amplia | Fue al cine en los últimos 12 meses (Lima Este, 2022-2025): 63,2 % de 15-29 años (≈ 422–478 mil según la población 2026 de Dato Joven; 371–484 mil según la expansión de la encuesta). |
 | 5. Oferta territorial existente |  | 'Cine en tu Barrio' (familias, El Agustino) y cine inclusivo (SJL). |
-| 6. Evidencia de participación o convocatoria | C0 | [no comparable] Proyecciones para familias, sin cifras. |
-| 7. Barreras |  | [directa] Entre quienes no fueron al cine: falta de interés (42,4 %), de tiempo (31,6 %) y de dinero (18,8 %). |
+| 6. Evidencia de participación o convocatoria | C0 | No se encontró ninguna actividad comparable con datos para jóvenes (sin evidencia, no evidencia negativa). Registros no comparables: [no comparable] Proyecciones para familias, sin cifras. |
+| 7. Barreras |  | [directa] Entre quienes no fueron al cine: falta de interés (42,4 %), de tiempo (31,6 %) y de dinero (18,8 %). [indirecta] Si es de noche: el sábado por la noche es una ventana libre para 47,1 %, pero 63,4 % se siente inseguro caminando por su barrio. |
 | 8. Vacíos de información |  | • Si una proyección gratuita reemplaza o no la salida al cine comercial. • Qué películas. • Convocatoria de proyecciones juveniles. |
-| 9. Qué podemos afirmar |  | • Ir al cine es la práctica cultural presencial más extendida (63,2 %). • Para algunos jóvenes el dinero es el motivo de no ir (18,8 %) y cuatro de cada diez asistentes no pagaron su entrada (40,7 %). |
+| 9. Qué podemos afirmar |  | • Ir al cine es la práctica cultural presencial más extendida (63,2 %). • Entre quienes no fueron al cine, 18,8 % menciona el dinero; entre quienes fueron, 40,7 % tuvo la entrada pagada por otra persona. |
 | 10. Qué solo podemos plantear como hipótesis |  | • Que una proyección gratuita convoque a jóvenes que hoy no van al cine por dinero. • Que haya interés en conversar después de la función (cineforo). • Que haya interés en producir video. |
 
 
@@ -571,7 +571,7 @@ Una fila por ficha, en orden temático. **No es un ranking:** cada columna se le
 - **Cómo validarla en un piloto:** Asistentes por función y su edad; asistencia a la conversación; repetición.
 - **Dónde (criterio operativo, no de demanda):** Criterio operativo: espacios con pantalla o auditorio.
 - **Cambio frente a la primera versión:** Se conserva la proyección gratuita; cineforo y taller de video pasan a componentes sin evidencia.
-- **Trazabilidad:** evidencias E-110; E-111; E-112; E-113; E-114; E-115; E-116; E-117; E-118; actividades de la Capa 3 C3-024; C3-097.
+- **Trazabilidad:** evidencias E-100; E-110; E-111; E-112; E-113; E-114; E-115; E-116; E-117; E-118; E-183; actividades de la Capa 3 C3-024; C3-097.
 
 #### F-08. Actividades juveniles en ferias del libro y bibliotecas
 
@@ -580,9 +580,9 @@ Una fila por ficha, en orden temático. **No es un ranking:** cada columna se le
 | Paso | Código | Evidencia |
 |---|---|---|
 | 1. Contexto o necesidad | sin evidencia | Es una práctica cultural, no una respuesta a una necesidad medida. |
-| 2. Población a la que aplica |  | 15–29. |
+| 2. Población a la que aplica |  | 15–29, sin grandes diferencias por edad (ferias del libro: 18,6 % a los 15–19 y 20,2 % a los 25–29) ni por sexo (19,4 % de las mujeres y 19,4 % de los hombres). |
 | 3. Interés o práctica observada | P2 | [P2] 19,4 % fue a una feria del libro y 14,1 % a una biblioteca en el año (más que en Lima Metropolitana, 10,4 %). [P1] 54,8 % leyó libros digitales y 39,2 % impresos; en la semana, 12,9 % (referencial) leyó. Salto inferencial: De ir a una feria o biblioteca a participar en una actividad juvenil organizada allí (club, presentación, taller). |
-| 4. Alcance potencial | amplia | Fue a una feria del libro: 19,4 % de 15-29 años (≈ 115–162 mil según la población 2026 de Dato Joven; 104–159 mil según la expansión de la encuesta). Fue a una biblioteca o sala de lectura: 14,1 % de 15-29 años (≈ 78–124 mil según la población 2026 de Dato Joven; 71–120 mil según la expansión de la encuesta). |
+| 4. Alcance potencial | amplia | Fue a una feria del libro (Lima Este, 2022-2025): 19,4 % de 15-29 años (≈ 115–162 mil según la población 2026 de Dato Joven; 104–159 mil según la expansión de la encuesta). Fue a una biblioteca o sala de lectura (Lima Este, 2022-2025): 14,1 % de 15-29 años (≈ 78–124 mil según la población 2026 de Dato Joven; 71–120 mil según la expansión de la encuesta). |
 | 5. Oferta territorial existente |  | Ferias del libro en Ate, La Molina, Lurigancho-Chosica y SJL (todo público); biblioteca municipal de La Molina (escolares); 'Ruta Lectora' en colegios de SJL. |
 | 6. Evidencia de participación o convocatoria | C2 | C2 por C3-107: comparable en parte; no plenamente en segmento, formato. [C1] Ferias del libro sin cifras de asistencia. [C2] 700 participantes escolares (público cautivo). |
 | 7. Barreras |  | [directa] Información: 11,6 % de quienes no fueron a ferias del libro no tuvo información oportuna. La entrada suele ser libre (76,9 % en ferias; 96,0 % en bibliotecas). |
@@ -602,7 +602,7 @@ Una fila por ficha, en orden temático. **No es un ranking:** cada columna se le
 - **Cómo validarla en un piloto:** Asistentes y su edad; repetición; canal por el que se enteraron.
 - **Dónde (criterio operativo, no de demanda):** Criterio operativo: distritos con ferias del libro y bibliotecas (Ate, La Molina, Lurigancho-Chosica, SJL).
 - **Cambio frente a la primera versión:** Alternativa nueva: la primera versión no consideró la lectura.
-- **Trazabilidad:** evidencias E-140; E-141; E-142; E-143; E-144; E-145; E-146; E-147; E-148; actividades de la Capa 3 C3-013; C3-055; C3-065; C3-082; C3-104; C3-107.
+- **Trazabilidad:** evidencias E-140; E-141; E-142; E-143; E-144; E-145; E-146; E-147; E-148; E-153; E-154; E-155; E-156; actividades de la Capa 3 C3-013; C3-055; C3-065; C3-082; C3-104; C3-107.
 
 #### F-09. Visitas y rutas de patrimonio cultural
 
@@ -611,9 +611,9 @@ Una fila por ficha, en orden temático. **No es un ranking:** cada columna se le
 | Paso | Código | Evidencia |
 |---|---|---|
 | 1. Contexto o necesidad | sin evidencia | Es una práctica cultural, no una respuesta a una necesidad medida. |
-| 2. Población a la que aplica |  | 15–29; la oferta publicada es sobre todo escolar. |
+| 2. Población a la que aplica |  | 15–29 (monumentos: 25,1 % a los 15–19 y 28,4 % a los 25–29); la oferta publicada es sobre todo escolar. |
 | 3. Interés o práctica observada | P2 | [P2] 25,1 % visitó un monumento histórico en el año, 20,3 % un museo y 17,5 % un sitio arqueológico. Salto inferencial: De visitar un sitio por cuenta propia, con la familia o el colegio a participar en una ruta organizada. |
-| 4. Alcance potencial | amplia | Visitó un monumento histórico: 25,1 % de 15-29 años (≈ 152–205 mil según la población 2026 de Dato Joven; 138–202 mil según la expansión de la encuesta). |
+| 4. Alcance potencial | amplia | Visitó un monumento histórico (Lima Este, 2022-2025): 25,1 % de 15-29 años (≈ 152–205 mil según la población 2026 de Dato Joven; 138–202 mil según la expansión de la encuesta). |
 | 5. Oferta territorial existente |  | Juegos en sitios arqueológicos para escolares, Cajamarquilla Raymi (todo público), grupos de Defensores del Patrimonio. |
 | 6. Evidencia de participación o convocatoria | C2 | C2 por C3-019: comparable en parte; no plenamente en segmento. [C2] 450 participantes de Lima y Callao en el encuentro anual. [C2] 1 269 participantes escolares. [no comparable] Taller para niños con más inscritos que cupos. |
 | 7. Barreras |  | [sin datos] La encuesta no pregunta por barreras para visitar patrimonio. |
@@ -632,7 +632,7 @@ Una fila por ficha, en orden temático. **No es un ranking:** cada columna se le
 - **Cómo validarla en un piloto:** Inscritos y su edad; asistencia; repetición.
 - **Dónde (criterio operativo, no de demanda):** Criterio operativo: distritos con sitios arqueológicos (Lurigancho-Chosica, Ate, SJL).
 - **Cambio frente a la primera versión:** Alternativa nueva que emerge del cruce.
-- **Trazabilidad:** evidencias E-150; E-151; E-152; actividades de la Capa 3 C3-019; C3-076; C3-078; C3-119.
+- **Trazabilidad:** evidencias E-150; E-151; E-152; E-157; E-158; actividades de la Capa 3 C3-019; C3-076; C3-078; C3-119.
 
 ### Cultura digital
 
@@ -645,9 +645,9 @@ Una fila por ficha, en orden temático. **No es un ranking:** cada columna se le
 | 1. Contexto o necesidad | sin evidencia | Es una práctica de ocio, no una respuesta a una necesidad medida. |
 | 2. Población a la que aplica |  | Hombres de 15–29; más frecuente a los 15–19 (47,0 %) que a los 25–29 (22,9 %). |
 | 3. Interés o práctica observada | P1 | [P1] 52,8 % de los hombres jugó en línea y 60,9 % en el celular; entre las mujeres, 18,9 % y 33,6 %. Salto inferencial: De jugar en casa o en línea a asistir a un encuentro presencial. |
-| 4. Alcance potencial | segmento identificable | Jugó videojuegos multijugador en línea: 52,8 % de hombres 15-29 años (≈ 155–195 mil según la población 2026 de Dato Joven; 135–197 mil según la expansión de la encuesta). |
+| 4. Alcance potencial | segmento identificable | Jugó videojuegos multijugador en línea (Lima Este, 2022-2025): 52,8 % de hombres 15-29 años (≈ 155–195 mil según la población 2026 de Dato Joven; 135–197 mil según la expansión de la encuesta). |
 | 5. Oferta territorial existente |  | No se encontró ninguna actividad publicada de videojuegos (la ausencia de oferta no es demanda). |
-| 6. Evidencia de participación o convocatoria | C0 | No se encontró ninguna actividad comparable con datos (sin evidencia, no evidencia negativa). |
+| 6. Evidencia de participación o convocatoria | C0 | No se encontró ninguna actividad comparable con datos para jóvenes (sin evidencia, no evidencia negativa). |
 | 7. Barreras |  | [indirecta] Sin datos específicos; si es de noche, la inseguridad (63,4 %). |
 | 8. Vacíos de información |  | • Interés en un formato presencial. • Juegos y equipamiento. • Participación de mujeres. |
 | 9. Qué podemos afirmar |  | • La mitad de los hombres jóvenes de Lima Este juega videojuegos en línea (52,8 %). |
@@ -713,7 +713,7 @@ Una fila por ficha, en orden temático. **No es un ranking:** cada columna se le
 | 4. Alcance potencial | desconocido | Alcance potencial no estimable con la evidencia disponible. |
 | 5. Oferta territorial existente |  | Charlas en colegios, campaña de salud en SJL, taller de autoestima en El Agustino, programa para niñas y adolescentes en SJL. |
 | 6. Evidencia de participación o convocatoria | C2 | C2 por C3-087: comparable en parte; no plenamente en segmento, formato. [no comparable] Charlas escolares (público cautivo). [C2] Campaña de salud con 'decenas' de beneficiarios. |
-| 7. Barreras |  | [indirecta] Seguridad (72,3 % se siente insegura de noche) y cuidado (56,6 % de las mujeres jóvenes de Lima Metropolitana cuidó a alguien del hogar). El estigma no se midió. |
+| 7. Barreras |  | [indirecta] Seguridad: 72,3 % de las mujeres jóvenes se siente insegura de noche y 16,0 % evitó salir de noche. Cuidado y tiempo: en Lima Metropolitana, 56,6 % de las mujeres jóvenes cuidó a alguien del hogar en la semana y 33,5 % tuvo 2 horas libres seguidas entre 18:00 y 22:00 en el día de semana registrado. El estigma no se midió. |
 | 8. Vacíos de información |  | • Prevalencia en Lima Este. • Disposición a participar. • Estigma. • Servicios de salud mental comunitaria disponibles. |
 | 9. Qué podemos afirmar |  | • La necesidad está documentada en Lima Metropolitana y en registros de atención de Lima Este; su magnitud en Lima Este no se conoce. |
 | 10. Qué solo podemos plantear como hipótesis |  | • Que mujeres jóvenes asistan voluntariamente a un espacio de bienestar. • Que funcione mejor como componente de otra actividad y como ruta de derivación. |
@@ -730,7 +730,7 @@ Una fila por ficha, en orden temático. **No es un ranking:** cada columna se le
 - **Cómo validarla en un piloto:** Inscritas y asistencia; comparación entre formato propio y componente; derivaciones realizadas.
 - **Dónde (criterio operativo, no de demanda):** Criterio operativo: donde haya servicios a los cuales derivar.
 - **Cambio frente a la primera versión:** El interés pasa de 'bajo' a P0 (lo citado no era interés); el alcance en Lima Este es desconocido.
-- **Trazabilidad:** evidencias E-089; E-101; E-200; E-201; E-202; E-203; E-204; actividades de la Capa 3 C3-017; C3-027; C3-037; C3-087; C3-113.
+- **Trazabilidad:** evidencias E-089; E-101; E-104; E-187; E-200; E-201; E-202; E-203; E-204; actividades de la Capa 3 C3-017; C3-027; C3-037; C3-087; C3-113.
 
 #### F-13. Protocolo de protección y derivación en actividades con adolescentes
 
@@ -740,8 +740,8 @@ Una fila por ficha, en orden temático. **No es un ranking:** cada columna se le
 |---|---|---|
 | 1. Contexto o necesidad | registro de atención | En 2025 hubo 1 654 nacimientos de madres de 15–19 (en 2019, 3 439); la tasa de El Agustino (24,2 por cada 1 000) supera la mediana metropolitana (16,2). 40,9 % de las víctimas atendidas por los CEM tiene 15–19 años y 34,9 % de los casos es de violencia sexual. En Lima Metropolitana, 3,4 % (referencial) de las mujeres de 15–19 estuvo alguna vez embarazada. |
 | 2. Población a la que aplica |  | Adolescentes de 15–19 que participen en cualquier actividad. |
-| 3. Interés o práctica observada | P0 | [P0] No aplica: no es una actividad de convocatoria. |
-| 4. Alcance potencial | segmento identificable | Nacimientos de madres de 15-19 con residencia en Lima Este: 1 654 (2025). |
+| 3. Interés o práctica observada | no aplica | [no aplica] No aplica: no es una actividad de convocatoria. |
+| 4. Alcance potencial | no aplica | No aplica: es una condición para toda actividad en la que participen menores de 18 años. |
 | 5. Oferta territorial existente |  | Charlas en colegios (DEMUNA, DEVIDA). |
 | 6. Evidencia de participación o convocatoria | no aplica | No aplica. |
 | 7. Barreras |  | [directa] Requiere consentimiento de madres y padres para menores de 18. |
@@ -804,12 +804,12 @@ Una fila por ficha, en orden temático. **No es un ranking:** cada columna se le
 | Paso | Código | Evidencia |
 |---|---|---|
 | 1. Contexto o necesidad | situación documentada | 14,0 % de las mujeres de 15–29 no estudia ni trabaja y se dedica al hogar; entre los hombres, 3,8 %. Es la situación principal de las mujeres que no estudian ni trabajan (62,4 %). |
-| 2. Población a la que aplica |  | ≈ 45–61 mil según la población 2026 de Dato Joven; 49–71 mil según la expansión de la encuesta. 46,8 % tiene 25–29 años; 53,3 % está en unión (frente a 13,1 % de las demás mujeres); 57,9 % vive con niños de 0 a 5 años (frente a 29,4 %); 37,8 % es jefa de hogar o pareja del jefe y 46,1 % es hija; 84,0 % tiene secundaria completa. |
+| 2. Población a la que aplica |  | ≈ 45–61 mil según la población 2026 de Dato Joven; 49–71 mil según la expansión de la encuesta. Es más frecuente a los 25–29 (17,9 % de las mujeres de esa edad) que a los 15–19 (8,0 % (referencial)). De ellas, 46,8 % tiene 25–29 años; 53,3 % está en unión (frente a 13,1 % de las demás mujeres); 57,9 % vive con niños de 0 a 5 años (frente a 29,4 %); 37,8 % es jefa de hogar o pareja del jefe y 46,1 % es hija; 84,0 % tiene secundaria completa. |
 | 3. Interés o práctica observada | P0 | [P0] No sabemos qué actividades les interesan. 93,9 % usó internet el mes anterior, pero solo 16,6 % (referencial) lo usa para aprender (frente a 38,1 % de las demás mujeres); 20,8 % (referencial) quería trabajar. |
-| 4. Alcance potencial | segmento identificable | No estudia ni trabaja y se dedica a los quehaceres del hogar: 14,0 % de mujeres 15-29 años (≈ 45–61 mil según la población 2026 de Dato Joven; 49–71 mil según la expansión de la encuesta). |
+| 4. Alcance potencial | segmento identificable | No estudia ni trabaja y se dedica a los quehaceres del hogar (Lima Este, 2022-2025): 14,0 % de mujeres 15-29 años (≈ 45–61 mil según la población 2026 de Dato Joven; 49–71 mil según la expansión de la encuesta). |
 | 5. Oferta territorial existente |  | No se encontró ninguna actividad publicada dirigida a este grupo. |
 | 6. Evidencia de participación o convocatoria | no aplica | No aplica. |
-| 7. Barreras |  | [directa] Cuidado: en Lima Metropolitana, las mujeres jóvenes que no trabajaron ni estudiaron en la semana dedicaron 61,9 horas al trabajo doméstico y de cuidado (muestra pequeña), frente a 17,4 horas de las que trabajaron o estudiaron. [directa] Seguridad: 72,3 % de las mujeres jóvenes se siente insegura de noche y 16,0 % evitó salir de noche. |
+| 7. Barreras |  | [directa] Cuidado: en Lima Metropolitana, las mujeres jóvenes que no trabajaron ni estudiaron en la semana dedicaron 61,9 horas al trabajo doméstico y de cuidado (muestra pequeña), frente a 17,4 horas de las que trabajaron o estudiaron. [directa] Seguridad: 72,3 % de las mujeres jóvenes se siente insegura de noche y 16,0 % evitó salir de noche. [indirecta] Tiempo: en Lima Metropolitana, 33,5 % de las mujeres jóvenes (todas, no solo este grupo) tuvo 2 horas libres seguidas entre 18:00 y 22:00 en el día de semana registrado. |
 | 8. Vacíos de información |  | • Qué actividades les interesan. • En qué horarios podrían participar. • Si necesitan cuidado infantil durante una actividad. • Qué distancia pueden recorrer. • Si quieren estudiar o trabajar y qué se los impide. • Por qué canales se informan. |
 | 9. Qué podemos afirmar |  | • Es un segmento identificable (≈ 45–61 mil según la población 2026 de Dato Joven; 49–71 mil según la expansión de la encuesta) que ni la oferta publicada ni la primera integración cubrían. |
 | 10. Qué solo podemos plantear como hipótesis |  | No aplica. |
@@ -825,17 +825,17 @@ Una fila por ficha, en orden temático. **No es un ranking:** cada columna se le
 - **Cómo validarla en un piloto:** Consulta directa (entrevistas o grupos focales en hogares o espacios comunitarios) antes de diseñar cualquier actividad.
 - **Dónde (criterio operativo, no de demanda):** No aplica hasta la consulta.
 - **Cambio frente a la primera versión:** Segmento nuevo; se caracteriza y se deja explícitamente sin actividad propuesta.
-- **Trazabilidad:** evidencias E-054; E-070; E-071; E-074; E-075; E-076; E-077; E-078; E-079; E-080; E-081; E-082; E-083; E-084; E-085; E-086; E-087; E-101; E-104; actividades de la Capa 3 —.
+- **Trazabilidad:** evidencias E-054; E-070; E-071; E-072; E-073; E-074; E-075; E-076; E-077; E-078; E-079; E-080; E-081; E-082; E-083; E-084; E-085; E-086; E-087; E-101; E-104; E-187; actividades de la Capa 3 —.
 
 ## 7. Qué no sabemos y cómo averiguarlo
 
-- **Interés en participar en actividades concretas (I2):** ninguna fuente lo pregunta a los jóvenes de Lima Este.
+- **Interés en participar en actividades concretas (I2):** ninguna fuente lo pregunta a los jóvenes de Lima Este. Por eso todas las fichas son alternativas derivadas de evidencia secundaria y su participación concreta queda por validar.
 - **Horarios preferidos, distancia aceptable y disposición a pagar:** solo hay disponibilidad observada y desplazamiento de quienes estudian.
 - **Intención de continuar estudios** y cuántos ya se preparan en academias.
 - **Salud mental e inseguridad por distrito**; salud mental en Lima Este.
 - **Convocatoria real de la oferta existente:** las cifras son declaradas y casi nunca informan cupos.
 
-**Cómo averiguarlo:**
+**Cómo averiguarlo (fase posterior de validación, decidida por el equipo el 25/09/2026):**
 
 1. **Consulta directa a jóvenes de Lima Este**, que incluya a las mujeres dedicadas al hogar en sus hogares o espacios comunitarios: qué actividades y formatos harían, horarios, distancia, cuidado infantil, costo, canales, intención de estudiar y seguridad para salir de noche.
 2. **Registros administrativos de convocatoria** (solicitudes de acceso a la información pública a municipalidades, SENAJU e IPD): inscritos, asistentes, cupos y listas de espera por edad y sexo.

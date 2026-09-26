@@ -186,7 +186,7 @@ jupyter nbconvert --to notebook --execute --inplace notebooks/04_integracion.ipy
 
 La segunda versión del cruce (25/09/2026) reemplaza los niveles alto/medio/bajo y las 11 propuestas por:
 
-- `resultados/evidencias.csv`: 203 datos atómicos leídos de los datos procesados;
+- `resultados/evidencias.csv`: 217 datos atómicos leídos de los datos procesados;
 - `hallazgos_integrados.csv` y `patrones.csv`, cuyas cifras se generan desde esas evidencias;
 - `segmentos.csv`: tamaño de cada segmento en porcentaje y en personas, con dos bases de población;
 - `fichas_actividad.csv` y `fichas_cadena.csv`: 15 fichas por actividad y segmento, con la cadena necesidad →

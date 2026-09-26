@@ -89,8 +89,9 @@ def cargar():
         f"{conteo.get('intervención segmentada', 0)} intervenciones segmentadas, "
         f"{conteo.get('protocolo transversal', 0)} protocolo transversal y "
         f"{conteo.get('población que requiere consulta directa', 0)} población que requiere consulta directa (mujeres "
-        "jóvenes dedicadas al hogar). Ninguna tiene interés declarado en participar (I2): es la principal pregunta "
-        "pendiente, y solo una consulta directa a jóvenes de Lima Este puede responderla.")
+        "jóvenes dedicadas al hogar). Son **alternativas derivadas de evidencia secundaria**: en ninguna se ha validado "
+        "todavía la participación concreta de los jóvenes (I2). Esa validación, con consulta directa y pilotos, es una "
+        "fase posterior del proyecto.")
     return t
 
 
@@ -174,13 +175,14 @@ def informe(t):
 
     out.append("## 7. Qué no sabemos y cómo averiguarlo\n")
     out += ["- **Interés en participar en actividades concretas (I2):** ninguna fuente lo pregunta a los jóvenes de "
-            "Lima Este.",
+            "Lima Este. Por eso todas las fichas son alternativas derivadas de evidencia secundaria y su participación "
+            "concreta queda por validar.",
             "- **Horarios preferidos, distancia aceptable y disposición a pagar:** solo hay disponibilidad observada y "
             "desplazamiento de quienes estudian.",
             "- **Intención de continuar estudios** y cuántos ya se preparan en academias.",
             "- **Salud mental e inseguridad por distrito**; salud mental en Lima Este.",
             "- **Convocatoria real de la oferta existente:** las cifras son declaradas y casi nunca informan cupos.\n",
-            "**Cómo averiguarlo:**\n",
+            "**Cómo averiguarlo (fase posterior de validación, decidida por el equipo el 25/09/2026):**\n",
             "1. **Consulta directa a jóvenes de Lima Este**, que incluya a las mujeres dedicadas al hogar en sus hogares "
             "o espacios comunitarios: qué actividades y formatos harían, horarios, distancia, cuidado infantil, costo, "
             "canales, intención de estudiar y seguridad para salir de noche.",

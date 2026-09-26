@@ -224,16 +224,17 @@ def construir():
             nec.append((n["tipo"], rd.texto(n["texto"], fid)))
         intereses = []
         for i in f["interes"]:
-            if i["codigo"] not in ORDEN_INTERES:
+            if i["codigo"] not in ORDEN_INTERES and not (i["codigo"] == "no aplica" and f["tipo"] == "protocolo transversal"):
                 raise ValueError(f"{fid}: código de interés inválido {i['codigo']}")
             pe, _ = placeholders(i["texto"])
             if not pe <= set(ids(i["evidencias"])):
                 raise ValueError(f"{fid} interés: evidencias no declaradas")
-            if i["codigo"] != "P0" and not ids(i["evidencias"]):
+            if i["codigo"] not in ("P0", "no aplica") and not ids(i["evidencias"]):
                 raise ValueError(f"{fid}: un interés {i['codigo']} necesita al menos una evidencia")
             todas_e |= set(ids(i["evidencias"]))
             intereses.append((i["codigo"], rd.texto(i["texto"], fid)))
-        cod_interes = max((c for c, _ in intereses), key=ORDEN_INTERES.index)
+        cod_interes = ("no aplica" if all(c == "no aplica" for c, _ in intereses)
+                       else max((c for c, _ in intereses if c != "no aplica"), key=ORDEN_INTERES.index))
 
         # Convocatoria
         regs = []
@@ -268,20 +269,25 @@ def construir():
                     detalle_conv += ". Es demanda por esa oferta concreta, no interés general (C3-D9)"
                 elif cod_conv == "C3":
                     detalle_conv += ". Cifra declarada por quien organiza, sin cupos publicados"
-        texto_conv = " ".join(f"[{c}] {n}" for c, _, _, n in regs) or (
-            "No se encontró ninguna actividad comparable con datos (sin evidencia, no evidencia negativa)."
-            if cod_conv == "C0" else "No aplica.")
+        texto_conv = " ".join(f"[{c}] {n}" for c, _, _, n in regs)
+        if cod_conv == "C0":
+            texto_conv = ("No se encontró ninguna actividad comparable con datos para jóvenes (sin evidencia, no "
+                          "evidencia negativa)." + (" Registros no comparables: " + texto_conv if texto_conv else ""))
+        elif not texto_conv:
+            texto_conv = "No aplica."
 
         # Alcance
         al = f["alcance"]
-        if al["tipo"] == "desconocido":
+        if al["tipo"] == "no aplica":
+            texto_alc = al.get("texto", "No aplica.")
+        elif al["tipo"] == "desconocido":
             texto_alc = "Alcance potencial no estimable con la evidencia disponible."
         else:
             partes = []
             for eid in ids(al["evidencias"]):
                 e = evi.loc[eid]
-                p = (f"{e.indicador}: {rd.valor(eid)} de {e.poblacion}" if e.unidad == "%" else
-                     f"{e.indicador}: {rd.valor(eid)} ({e.periodo})")
+                p = (f"{e.indicador} ({e.ambito}, {e.periodo}): {rd.valor(eid)} de {e.poblacion}" if e.unidad == "%"
+                     else f"{e.indicador}: {rd.valor(eid)} ({e.periodo})")
                 if pd.notna(e.personas_dj_inf) or pd.notna(e.personas_encuesta):
                     p += f" ({rd.personas(eid)})"
                 rd.usadas_e.add(eid)
@@ -364,8 +370,96 @@ def construir():
                 fichas_convocatoria=pd.DataFrame(convs), cambios_primera_version=cambios)
 
 
+FRASES_PROHIBIDAS = ["baja convocatoria", "convoca poco", "más respaldad", "mejores candidat", "mejor candidat",
+                     "demuestra interés", "demuestra demanda", "alta demanda", "quieren participar"]
+INTENCION = re.compile(r"\b(quieren?|les interesa)\s+(participar|asistir|inscribirse)|interés en participar|"
+                       r"intención de participar", re.I)
+
+
+def validar(tablas):
+    """Controles de consistencia entre tablas. Devuelve una tabla control / resultado / detalle."""
+    ev, fichas, conv = tablas["evidencias"].set_index("id"), tablas["fichas_actividad"], tablas["fichas_convocatoria"]
+    comp, cad, hall, pat = tablas["fichas_componentes"], tablas["fichas_cadena"], tablas["hallazgos_integrados"], \
+        tablas["patrones"]
+    filas = []
+
+    def control(nombre, fallas):
+        filas.append({"control": nombre, "resultado": "ok" if not fallas else "FALLA",
+                      "detalle": "; ".join(map(str, fallas))[:500]})
+
+    # 1. El código de convocatoria de cada ficha es el máximo de sus registros comparables.
+    f1 = []
+    for f in fichas.itertuples():
+        if f.convocatoria_codigo == "no aplica":
+            continue
+        cods = [c for c in conv[conv.ficha == f.id].codigo if c in ORDEN_CONV]
+        esperado = max(cods, key=ORDEN_CONV.index) if cods else "C0"
+        if esperado != f.convocatoria_codigo:
+            f1.append(f"{f.id}: {f.convocatoria_codigo} ≠ {esperado}")
+    control("Convocatoria de la ficha = máximo de sus registros comparables", f1)
+    # 2. Alcance 'amplia' solo con evidencia sobre toda la juventud de 15-29; con cantidades estimadas.
+    f2 = []
+    for f in fichas.itertuples():
+        if f.alcance_tipo in ("amplia", "segmento identificable"):
+            eids = [e for e in re.findall(r"E-\d{3}", f.alcance)] or []
+        if f.alcance_tipo == "amplia":
+            for e in C.FICHAS[[x["id"] for x in C.FICHAS].index(f.id)]["alcance"]["evidencias"].split(";"):
+                e = e.strip()
+                if ev.loc[e, "poblacion"] != "15-29 años":
+                    f2.append(f"{f.id}: {e} describe a {ev.loc[e, 'poblacion']}")
+                if pd.isna(ev.loc[e, "personas_dj_inf"]) and pd.isna(ev.loc[e, "personas_encuesta"]):
+                    f2.append(f"{f.id}: {e} sin cantidad estimada")
+    control("Alcance 'amplia' solo con evidencia sobre toda la juventud y con cantidades", f2)
+    # 3. Sin frases de ranking, de convocatoria baja por falta de datos o de demanda generalizada.
+    textos = list(cad.texto) + list(pat.dato_observado) + list(pat.interpretacion) + list(hall.enunciado)
+    f3 = [f"'{fr}'" for fr in FRASES_PROHIBIDAS for tx in textos if fr in str(tx).lower()]
+    control("Sin lenguaje de ranking, 'baja convocatoria' o demanda generalizada", sorted(set(f3)))
+    # 4. 'Qué podemos afirmar' no afirma intención o interés de participar.
+    f4 = [f"{r.ficha}" for r in cad[cad.orden == 9].itertuples() if INTENCION.search(str(r.texto))]
+    control("Las afirmaciones no atribuyen intención de participar", f4)
+    # 5. C0 siempre acompañado de la aclaración de que no es evidencia negativa.
+    f5 = [r.ficha for r in cad[(cad.orden == 6) & (cad.codigo == "C0")].itertuples()
+          if "no evidencia negativa" not in str(r.texto)]
+    control("C0 se presenta como ausencia de evidencia, no como resultado negativo", f5)
+    # 6. Estados de componentes coherentes con las dimensiones respaldadas de la ficha.
+    f6 = []
+    for f in fichas.itertuples():
+        dims = int(f.necesidad_tipo not in ("sin evidencia", "objetivo institucional")) + \
+            int(f.interes_codigo in ("P1", "P2", "I1", "I2")) + int(f.convocatoria_codigo in ("C3", "C4"))
+        for c in comp[comp.ficha == f.id].itertuples():
+            if c.estado == "respaldado en dos o más dimensiones" and dims < 2:
+                f6.append(f"{f.id}: '{c.componente}' con {dims} dimensión(es) en la ficha")
+            if c.estado == "respaldado en una dimensión" and dims < 1:
+                f6.append(f"{f.id}: '{c.componente}' sin dimensiones respaldadas")
+    control("Estados de componentes coherentes con las dimensiones de la ficha", f6)
+    # 7. Toda evidencia citada tiene ámbito y periodo.
+    citadas = set(ev[ev.citada_en == "sí"].index)
+    f7 = [e for e in citadas if not str(ev.loc[e, "ambito"]).strip() or not str(ev.loc[e, "periodo"]).strip()]
+    control("Toda evidencia citada tiene ámbito y periodo", f7)
+    # 8. Cantidades: solo sobre porcentajes de la población de un grupo (no de subgrupos condicionales).
+    f8 = [e for e in ev.index if pd.notna(ev.loc[e, "personas_dj_inf"]) and ev.loc[e, "unidad"] != "%"]
+    control("Cantidades estimadas solo a partir de porcentajes de un grupo de población", f8)
+    # 9. Cada ficha de convocatoria tiene salto inferencial, vacíos e hipótesis.
+    f9 = [f.id for f in fichas.itertuples() if f.tipo_ficha not in ("protocolo transversal",
+                                                                   "población que requiere consulta directa")
+          and (not str(f.salto_inferencial).strip() or str(f.salto_inferencial) == "nan"
+               or str(f.hipotesis) in ("", "nan", "No aplica."))]
+    control("Cada actividad de convocatoria explicita su salto inferencial y sus hipótesis", f9)
+    # 10. Protocolos y poblaciones a consultar no llevan código de convocatoria ni actividad inventada.
+    f10 = [f.id for f in fichas.itertuples() if f.tipo_ficha in ("protocolo transversal",
+                                                                "población que requiere consulta directa")
+           and f.convocatoria_codigo != "no aplica"]
+    control("Protocolos y poblaciones a consultar sin código de convocatoria", f10)
+    return pd.DataFrame(filas)
+
+
 def main():
     tablas = construir()
+    val = validar(tablas)
+    val.to_csv(R / "validacion_integracion.csv", index=False)
+    print(val.to_string(index=False))
+    if (val.resultado != "ok").any():
+        raise SystemExit("Hay controles de consistencia que fallan (ver resultados/validacion_integracion.csv)")
     for nombre, df in tablas.items():
         df.to_csv(R / f"{nombre}.csv", index=False)
         print(f"  {nombre}.csv: {len(df)} filas")
