@@ -123,6 +123,7 @@ Cada fuente usada debe documentarse con, al menos:
 | `data/processed/` | Datos limpios o anonimizados, listos para el análisis. Diccionario en `data/README.md`. |
 | `fuentes/` | Catálogo de fuentes, exploración de Dato Joven, registro de oferta de la Capa 3 y metodología de cada capa y del cruce. |
 | `resultados/` | Producto final: informe, registro de evidencias, hallazgos, patrones, segmentos y fichas de actividades con trazabilidad. |
+| `observatorio/` | Observatorio web (R + Quarto): un HTML estático con las tres capas, el cruce y las fichas. Ver `observatorio/README.md`. |
 | `notebooks/` | Notebooks de exploración y análisis (Jupyter). |
 | `scripts/` | Código reutilizable: recolección, limpieza y utilidades. |
 
@@ -195,6 +196,21 @@ La segunda versión del cruce (25/09/2026) reemplaza los niveles alto/medio/bajo
 
 Los cambios frente a la primera versión están en `resultados/cambios_primera_version.csv`. Las reglas, las
 categorías y las validaciones están en `fuentes/metodologia_integracion.md`. El notebook 04 verifica la trazabilidad.
+
+## Observatorio
+
+El observatorio reemplaza la función de la versión web del informe. Muestra en un solo archivo HTML el contexto,
+los intereses, la oferta, el cruce de evidencia y las fichas de alternativas, con filtros que funcionan sin
+servidor. Lee los resultados de la integración; no recalcula estimaciones.
+
+```bash
+cd observatorio
+Rscript instalar_paquetes.R   # solo la primera vez
+quarto render                 # genera observatorio/salida/observatorio.html
+```
+
+El HTML no se versiona porque incorpora datos agregados de `data/`. Es una versión local de revisión: todavía
+no se publica. Detalles en `observatorio/README.md`.
 ## Datos y privacidad
 
 - Los archivos de `data/` **no se suben al repositorio**; se guardan solo en local (ver `.gitignore`). Solo se versionan el código, los notebooks y la documentación.
