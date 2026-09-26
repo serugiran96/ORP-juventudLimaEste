@@ -1,0 +1,98 @@
+```{r}
+PUBLICO <- c(juventud = "Jóvenes", adolescentes = "Niños y adolescentes", "todo público" = "Todo público",
+             "no indica" = "No indica", no = "Fuera de 15–29")
+act <- oferta |>
+  mutate(publico = PUBLICO[incluye_15_29], cifra = ifelse(is.na(cifra_n), cifra_texto, paste0(num(cifra_n), " ", cifra_tipo)),
+         enlace = paste0('<a href="', str_extract(fuente_url, "^[^ |]+"), '" target="_blank" rel="noopener">fuente</a>'),
+         evidencia = factor(evidencia, levels = c("oferta", "participación declarada", "demanda observada")),
+         anio = as.character(anio))
+sd_act <- SharedData$new(act, key = ~id, group = "oferta")
+sd_dist <- SharedData$new(act |> select(id, distrito) |> separate_rows(distrito, sep = "; "), key = ~id, group = "oferta")
+sd_tema <- SharedData$new(act |> select(id, tematica) |> separate_rows(tematica, sep = "; ") |> rename(tema = tematica),
+                          key = ~id, group = "oferta")
+
+filtros <- div(class = "ct-filtros",
+  filter_select("of-dist", "Distrito", sd_dist, ~distrito, multiple = TRUE),
+  filter_select("of-tema", "Tema", sd_tema, ~tema, multiple = TRUE),
+  filter_checkbox("of-pub", "Público", sd_act, ~publico),
+  filter_checkbox("of-ev", "Tipo de evidencia", sd_act, ~evidencia),
+  filter_checkbox("of-costo", "Costo", sd_act, ~costo, inline = TRUE),
+  filter_checkbox("of-anio", "Año", sd_act, ~anio, inline = TRUE),
+  filter_select("of-org", "Organizador", sd_act, ~tipo_organizador, multiple = TRUE),
+  filter_select("of-tipo", "Tipo de oferta", sd_act, ~tipo_oferta, multiple = TRUE))
+
+contadores <- kpis(
+  kpi(span(id = "k-total", nrow(act)), "actividades con los filtros actuales"),
+  kpi(span(id = "k-juventud", sum(act$incluye_15_29 == "juventud")), "dirigidas a jóvenes"),
+  kpi(span(id = "k-participacion", sum(act$evidencia == "participación declarada")), "con participación declarada"),
+  kpi(span(id = "k-demanda", sum(act$evidencia == "demanda observada")), "con demanda observada", acento = TRUE),
+  kpi(span(id = "k-gratuito", sum(act$costo == "gratuito")), "gratuitas"))
+datos_js <- tags$script(id = "oferta-datos", type = "application/json",
+                        HTML(toJSON(act |> transmute(id, publico = incluye_15_29, evidencia = as.character(evidencia), costo))))
+
+g_ev <- plot_ly(sd_act, y = ~evidencia, type = "histogram", color = ~evidencia, colors = COLOR_EVIDENCIA,
+                hovertemplate = "%{y}: %{x} actividades<extra></extra>") |>
+  tema(alto = 200, leyenda = FALSE) |> layout(xaxis = list(title = "actividades"), yaxis = list(title = "", categoryorder = "array",
+                                             categoryarray = rev(levels(act$evidencia))))
+g_pub <- plot_ly(sd_act, y = ~publico, type = "histogram", marker = list(color = TINTA_2),
+                 hovertemplate = "%{y}: %{x} actividades<extra></extra>") |>
+  tema(alto = 230, leyenda = FALSE) |> layout(xaxis = list(title = "actividades"), yaxis = list(title = "", categoryorder = "total ascending"))
+g_tema <- plot_ly(sd_tema, y = ~tema, type = "histogram", marker = list(color = GRIS),
+                  hovertemplate = "%{y}: %{x} actividades<extra></extra>") |>
+  tema(alto = 440, leyenda = FALSE) |> layout(xaxis = list(title = "actividades"),
+                                              yaxis = list(title = "", categoryorder = "total ascending"))
+tabla <- datatable(sd_act, escape = FALSE, rownames = FALSE, class = "compact stripe", width = "100%",
+                   colnames = c("ID" = "id", "Distrito" = "distrito", "Actividad" = "nombre", "Público" = "publico",
+                                "Tema" = "tematica", "Costo" = "costo", "Evidencia" = "evidencia", "Cifra declarada" = "cifra",
+                                "Año" = "anio", "Fuente" = "enlace"),
+                   options = list(pageLength = 10, dom = "tip", autoWidth = FALSE, scrollX = TRUE,
+                                  language = list(info = "_START_–_END_ de _TOTAL_", infoEmpty = "Sin actividades",
+                                                  infoFiltered = "", paginate = list(previous = "Anterior", `next` = "Siguiente"),
+                                                  zeroRecords = "Ninguna actividad con estos filtros"),
+                                  columnDefs = list(list(visible = FALSE, targets = which(!names(act) %in%
+                                    c("id", "distrito", "nombre", "publico", "tematica", "costo", "evidencia", "cifra", "anio", "enlace")) - 1))))
+
+demanda <- act |> filter(evidencia == "demanda observada")
+tarjetas_demanda <- div(class = "tarjetas", lapply(seq_len(nrow(demanda)), function(i) {
+  d <- demanda[i, ]
+  div(class = "tarjeta", span(class = "num", paste0(num(d$cifra_n))), h4(d$nombre),
+      p(d$senal_demanda), p(class = "fuente", paste0(d$id, " · ", d$distrito, " · ", d$anio, " · público: ", d$publico)))
+}))
+
+vis <- notas_gobpe |> mutate(anio = substr(fecha, 1, 4)) |> count(distrito, anio)
+g_vis <- plot_ly(vis, y = ~distrito, x = ~n, color = ~anio, colors = c(GRIS_CLARO, GRIS, TINTA), type = "bar", orientation = "h",
+                 hovertemplate = "%{y} · %{fullData.name}: %{x} notas<extra></extra>") |>
+  tema(alto = 300) |> layout(barmode = "stack", xaxis = list(title = "notas municipales en gob.pe con términos de juventud"),
+                             yaxis = list(title = "", categoryorder = "total ascending"))
+
+tagList(
+  encabezado("Oferta", "Qué actividades para jóvenes se publicaron en los siete distritos entre 2024 y 2026, y qué participación informan quienes las organizan.",
+             capa = "Capa 3 · Oferta y convocatoria"),
+  aviso(tags$b("Oferta registrada ≠ demanda demostrada."),
+        "Que exista una actividad no prueba que interese a los jóvenes, y que no aparezca no prueba que falte ni que la quieran. El registro solo contiene lo que cada institución publicó en internet."),
+  div(class = "seccion", h3("Explora el registro"), filtros, contadores, datos_js,
+      div(class = "dos-col",
+          bloque("Tipo de evidencia", g_ev,
+                 dice = "Casi todo es oferta o participación declarada. La demanda observada (más interesados que cupos) es excepcional y vale solo para esa oferta concreta.",
+                 importante = "Las cifras de participación las declara quien organiza y casi nunca informan cupos: no se pueden comparar entre sí.",
+                 fuente = "Registro de oferta de la Capa 3 (notas de prensa 2024–2026).", ambito = "Registro publicado"),
+          bloque("A quién se dirige", g_pub,
+                 dice = paste0(num(EV["E-301", "valor"]), " de ", num(EV["E-300", "valor"]), " actividades se dirigen a jóvenes; ",
+                               num(EV["E-302", "valor"]), " son para niños y adolescentes (hasta 18 años; la mayoría no declara la edad exacta)."),
+                 importante = "Los resultados de actividades para niños y adolescentes no se generalizan a los jóvenes de 15–29.",
+                 fuente = "Registro de oferta de la Capa 3.", ambito = "Registro publicado")),
+      bloque("Temas", g_tema,
+             dice = "La frecuencia de un tema refleja las decisiones de quien organiza y publica, no el interés de los jóvenes. Una actividad puede tener varios temas.",
+             fuente = "Registro de oferta de la Capa 3.", ambito = "Registro publicado"),
+      div(class = "bloque", h3("Actividades"), tabla)),
+  div(class = "seccion", h3("Las cuatro señales de demanda observada"),
+      p(class = "nota", "Más interesados que cupos en una oferta concreta. Cada señal vale solo para esa oferta: no indica interés general por un tema, y dos son de actividades para niños y adolescentes."),
+      tarjetas_demanda),
+  div(class = "seccion", h3("Cuánto publica cada municipalidad"),
+      bloque("Visibilidad de la oferta", g_vis,
+             dice = paste0("La cantidad de notas varía mucho entre distritos: Chaclacayo publicó ", ev("E-320"),
+                           " en 2024–2026 y San Juan de Lurigancho ", ev("E-321"), " en 2024."),
+             importante = "Por eso la oferta registrada no permite comparar distritos: un distrito con pocas actividades puede simplemente publicar poco.",
+             fuente = "gob.pe: notas de las siete municipalidades (2024–2026).", ambito = "Registro publicado"))
+)
+```

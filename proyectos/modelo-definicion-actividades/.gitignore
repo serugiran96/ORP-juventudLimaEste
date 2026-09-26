@@ -1,0 +1,6 @@
+# Datos: se guardan solo en local y no se suben al repositorio
+# (pueden contener información personal de jóvenes).
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep

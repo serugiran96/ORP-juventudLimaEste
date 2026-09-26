@@ -1,0 +1,73 @@
+```{r}
+# Participación de cada distrito en la población joven 2026 (Dato Joven).
+por_distrito <- poblacion |> group_by(distrito) |> summarise(n = sum(poblacion)) |>
+  mutate(p = 100 * n / sum(n)) |> arrange(desc(n))
+tonos <- colorRampPalette(c(TINTA, GRIS_CLARO))(nrow(por_distrito))
+franja <- div(class = "franja", role = "img",
+              `aria-label` = "Participación de cada distrito en la población joven de Lima Este (2026)",
+              lapply(seq_len(nrow(por_distrito)), function(i) {
+                d <- por_distrito[i, ]
+                div(style = sprintf("width:%.2f%%;background:%s", d$p, tonos[i]),
+                    title = paste0(d$distrito, ": ", mil(d$n), " (", pct(d$p, 0), ")"),
+                    if (d$p > 9) paste0(pct(d$p, 0)))
+              }))
+ley <- div(class = "franja-ley", lapply(seq_len(nrow(por_distrito)), function(i)
+  span(tags$i(style = paste0("background:", tonos[i])), paste0(por_distrito$distrito[i], " · ", mil(por_distrito$n[i])))))
+
+n_fichas <- nrow(fichas)
+tagList(
+  div(class = "hero",
+      div(h1(HTML("Observatorio de <span>Juventudes</span> de Lima Este")),
+          p(class = "bajada", style = "margin-top:14px",
+            "Qué sabemos de las y los jóvenes de 15 a 29 años de siete distritos: su situación, lo que hacen, ",
+            "lo que se les ofrece y qué alternativas de actividades tienen respaldo en la evidencia disponible.")),
+      div(class = "hero-marca", div(class = "org", "Organización Juvenil Rita Poma"),
+          div(class = "mono", "Evidencia secundaria · 2022–2026"))),
+  div(class = "seccion",
+      kpis(
+        kpi(ev("E-001"), "jóvenes de 15 a 29 años (proyección 2026, Dato Joven)",
+            paste0("Las encuestas del INEI estiman otros totales para Lima Este (entre ", mil(EV["E-009", "valor"]),
+                   " y ", mil(EV["E-007", "valor"]), "): por eso las cantidades se dan como rangos."), acento = TRUE),
+        kpi("7", "distritos: Ate, Chaclacayo, El Agustino, La Molina, Lurigancho-Chosica, San Juan de Lurigancho y Santa Anita"),
+        kpi(num(EV["E-300", "valor"]), paste0("actividades publicadas en 2024–2026; ", num(EV["E-301", "valor"]), " dirigidas a jóvenes"),
+            "Lo publicado en internet, no toda la oferta real."),
+        kpi(n_fichas, "alternativas de actividades con su evidencia",
+            paste0(nrow(evidencias), " evidencias y ", nrow(hallazgos), " hallazgos las sustentan. No es un ranking."))
+      ),
+      franja, ley,
+      p(class = "nota", "Población joven de cada distrito en 2026 (Dato Joven). Es una proyección administrativa: se usa solo su nivel, no su evolución.")),
+  div(class = "seccion", h3("Qué encontrarás"),
+      div(class = "tarjetas",
+          a(class = "tarjeta", href = "#contexto", span(class = "num", "01"), h4("Contexto"),
+            p("Quiénes son y en qué situación están: población, estudio y trabajo, seguridad, organización y registros.")),
+          a(class = "tarjeta", href = "#intereses", span(class = "num", "02"), h4("Intereses"),
+            p("Qué hacen: uso del tiempo, horarios disponibles, cultura, vida digital y barreras declaradas.")),
+          a(class = "tarjeta", href = "#oferta", span(class = "num", "03"), h4("Oferta"),
+            p("Qué se les ofrece en los siete distritos y qué participación se ha publicado.")),
+          a(class = "tarjeta", href = "#cruce", span(class = "num", "04"), h4("Cruce de evidencia"),
+            p("Patrones, segmentos y hallazgos: dato observado, interpretación y lo que no permite afirmar.")),
+          a(class = "tarjeta", href = "#actividades", span(class = "num", "05"), h4("Actividades"),
+            p("Alternativas derivadas de la evidencia: para quién, qué sabemos y qué falta validar.")))),
+  div(class = "seccion", h3("Fuentes"),
+      div(class = "fuentes",
+          span("Dato Joven · Observatorio Nacional de Juventud"), span("ENAHO 2022–2025 (INEI)"),
+          span("ENAPRES 2022–2025: cultura y seguridad (INEI)"), span("ENUT 2024 (INEI)"),
+          span("Registros: nacimientos, CEM, RENOJ, voluntariado"), span("Ipsos 2019–2022 (exploratorio)"),
+          span("Notas de municipalidades y entidades públicas 2024–2026")),
+      p(class = "nota", "Las encuestas del INEI se procesaron con sus microdatos: Lima Este se estima para los siete distritos juntos (dominio no planificado), con umbrales de precisión. Las réplicas de Lima Metropolitana se validaron con Dato Joven.")),
+  div(class = "seccion", h3("Antes de leer"),
+      tags$ol(class = "advertencias",
+        tags$li(tags$b("Las actividades son alternativas derivadas de evidencia secundaria."), " Ninguna fuente preguntó a los jóvenes de Lima Este si participarían; eso se validará en una fase posterior."),
+        tags$li(tags$b("Sin evidencia no es evidencia negativa."), " Y la oferta publicada no es demanda."),
+        tags$li(tags$b("Lo que los jóvenes hacen no es lo que quieren hacer."), " Cada alternativa muestra el salto entre la práctica observada y la actividad propuesta."),
+        tags$li(tags$b("Lima Este se estima para los siete distritos juntos, nunca por distrito."), " Varios datos son de Lima Metropolitana o de Perú urbano, y se marcan así."),
+        tags$li(tags$b("Las encuestas son de 2022–2025"), " (uso del tiempo: 2024; informalidad: 2022–2023). Nada describe 2026."),
+        tags$li(tags$b("Las cantidades son órdenes de magnitud"), " con dos bases de población que no se combinan; por sexo son más inciertas."),
+        tags$li(tags$b("\"No estudia ni trabaja\" es una definición del proyecto,"), " no la cifra \"NINI\" de Dato Joven."),
+        tags$li(tags$b("Las cifras de participación las declara quien organiza,"), " casi nunca con cupos; una señal de demanda vale solo para su oferta concreta."),
+        tags$li(tags$b("Los registros (CEM, nacimientos) miden atenciones,"), " no prevalencia."),
+        tags$li(tags$b("La disponibilidad horaria es observada, no una preferencia;"), " la inseguridad nocturna coincide con esas franjas, pero no se midió que impida participar."),
+        tags$li(tags$b("Precisión:"), " las cifras referenciales (CV entre 15 % y 25 %) llevan un asterisco (*) en los textos y un marcador hueco en los gráficos; las no publicables no se muestran."),
+        tags$li(tags$b("\"Dónde pilotear\" es un criterio operativo,"), " no una señal de demanda por distrito.")))
+)
+```

@@ -1,0 +1,13 @@
+v1,v1_nombre,resultado,fichas_v2,cambio
+P01,Preparación preuniversitaria con orientación vocacional y becas,B: reformulada,F-01,Segmento con denominador de Lima Este (15–24 sin estudios con secundaria completa); componentes separados; el interés se reclasifica como no medido; se corrige la población de los motivos (15–24).
+P02,Empleabilidad y primer empleo,B: reformulada,F-02; F-03,Necesidad medida en Lima Este; segmento = sin trabajo y busca o quiere trabajar; se retira la prioridad a mujeres que no estudian ni trabajan (la mayoría se dedica al hogar); los derechos laborales pasan a una ficha propia.
+P03,Habilidades digitales aplicadas y retos colaborativos,B: reformulada (parcial),F-11,"Se descartan los talleres generales (sin necesidad ni interés documentados); queda el reto colaborativo, con una señal de convocatoria."
+P04,Deporte organizado para 18–29,B: reformulada,F-05,Interés de 'alto' a P1 (práctica relacionada); la convocatoria se describe como un solo dato comparable; el componente femenino pasa a hipótesis de diseño basada en barreras medidas.
+P05,Cultura urbana y música en vivo,B: reformulada,F-06,Se reorienta a festival local gratuito (práctica de la misma actividad); se corrige la edad (la música en vivo es de 20–29); cultura urbana y jóvenes organizadores pasan a hipótesis.
+P06,Cine y creación audiovisual,B: reformulada; cineforo y taller de video sin evidencia,F-07,Se conserva la proyección gratuita; conversación y producción de video quedan como componentes sin evidencia.
+P07,Videojuegos y e-sports presenciales,B: reformulada,F-10,Segmento con dato de Lima Este por sexo y edad.
+P08,Bienestar para mujeres jóvenes,B: reformulada,F-12,Interés de 'bajo' a P0 (lo citado no era interés); alcance en Lima Este desconocido.
+P09,Emprendimiento juvenil y ventas por internet,C tal como estaba; reformulada para un segmento,F-04,Se descarta el salto 'informalidad → emprendimiento'; la ficha se limita a jóvenes que ya trabajan por cuenta propia.
+P10,Voluntariado de corta duración,B: reformulada,F-14,La 'necesidad' se reclasifica como objetivo institucional; la práctica se lee como proxy amplio.
+P11,Educación sexual integral y prevención para adolescentes,C como actividad; reclasificada como protocolo,F-13,"Necesidad intensa en un grupo reducido y en descenso: protocolo transversal de protección y derivación, no actividad de convocatoria."
+—,(no existía),Nuevas,F-03; F-08; F-09; F-15,"Derechos laborales, lectura y ferias del libro, rutas de patrimonio y un segmento que requiere consulta directa (mujeres dedicadas al hogar)."

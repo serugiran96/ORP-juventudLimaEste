@@ -1,0 +1,149 @@
+```{r}
+# ---------- De las fuentes a las fichas: cuántos elementos tiene cada paso de la integración
+cadena_datos <- div(class = "cadena-datos",
+  div(tags$small("Paso 1"), tags$b(nrow(evidencias)), span("evidencias atómicas: cada cifra con su ámbito, periodo y precisión")),
+  div(tags$small("Paso 2"), tags$b(nrow(hallazgos)), span("hallazgos por capa (contexto, intereses, oferta)")),
+  div(tags$small("Paso 3"), tags$b(nrow(patrones)), span("patrones, brechas y condiciones que cruzan las capas")),
+  div(tags$small("Paso 4"), tags$b(nrow(segmentos)), span("segmentos con tamaño estimado en Lima Este")),
+  div(tags$small("Resultado"), tags$b(nrow(fichas)), span("fichas de alternativas, sin ranking")))
+
+# ---------- Patrones
+TIPOS_PATRON <- c("patrón" = "Patrón", "brecha" = "Brecha", "condición transversal" = "Condición transversal")
+tarjetas_patrones <- div(class = "lista", lapply(seq_len(nrow(patrones)), function(i) {
+  x <- patrones[i, ]
+  div(class = "patron", id = x$id, `data-filtrable` = "patrones", `data-f-tipo` = x$tipo,
+      div(class = "patron-cab", span(class = "id", x$id), h4(x$tema), span(class = "tipo", x$tipo)),
+      div(class = "c c-obs", tags$b("Dato observado"), marca_ref(x$dato_observado)),
+      div(class = "c c-int", tags$b("Interpretación"), marca_ref(x$interpretacion)),
+      div(class = "c c-no", tags$b("No permite afirmar"), marca_ref(x$no_permite_afirmar)),
+      div(class = "refs", ref_enlaces(x$hallazgos), ref_ev(x$evidencias)))
+}))
+
+# ---------- Segmentos: dos bases de población que no se combinan
+seg <- segmentos |>
+  # El intervalo de la encuesta se toma de evidencias.csv (error estándar sin redondear), como en los demás textos.
+  mutate(personas_encuesta = EV[evidencia, "personas_encuesta"],
+         personas_encuesta_ic95 = 1.96 * EV[evidencia, "personas_encuesta_ee"]) |>
+  mutate(pos = rev(seq_len(n())),
+         etiqueta = paste0(id, "  ", str_replace_all(str_wrap(segmento, 46), "\n", "<br>")),
+         ref = recode(poblacion_de_referencia, "15-24 años" = "de 15–24", "15-29 años" = "de 15–29",
+                      "hombres 15-29 años" = "de los hombres de 15–29", "mujeres 15-29 años" = "de las mujeres de 15–29"),
+         dj = paste0(num(personas_base_dato_joven_inf / 1000), "–", num(personas_base_dato_joven_sup / 1000), " mil"),
+         enc = ifelse(is.na(personas_encuesta), "sin total de la encuesta (solo porcentajes)",
+                      paste0(num((personas_encuesta - personas_encuesta_ic95) / 1000), "–",
+                             num((personas_encuesta + personas_encuesta_ic95) / 1000), " mil")),
+         hover = paste0("<b>", id, "</b> · ", periodo, "<br>", num(porcentaje, 1), " % ", ref,
+                        " (IC 95 %: ", num(ic95_inf, 1), "–", num(ic95_sup, 1), ")<br>",
+                        "Con la población de Dato Joven: ", dj, "<br>Según la encuesta: ", enc))
+seg_enc <- seg |> filter(!is.na(personas_encuesta))
+g_seg <- plot_ly() |>
+  add_segments(data = seg, x = ~personas_base_dato_joven_inf / 1000, xend = ~personas_base_dato_joven_sup / 1000,
+               y = ~pos + 0.16, yend = ~pos + 0.16, line = list(color = TINTA, width = 7),
+               name = "Rango con la población 2026 de Dato Joven", hoverinfo = "skip") |>
+  add_segments(data = seg_enc, x = ~(personas_encuesta - personas_encuesta_ic95) / 1000,
+               xend = ~(personas_encuesta + personas_encuesta_ic95) / 1000,
+               y = ~pos - 0.16, yend = ~pos - 0.16, line = list(color = GRIS, width = 2),
+               showlegend = FALSE, hoverinfo = "skip") |>
+  add_markers(data = seg_enc, x = ~personas_encuesta / 1000, y = ~pos - 0.16,
+              marker = list(color = GRIS, symbol = "square", size = 9),
+              name = "Total de la encuesta (IC 95 %)", text = ~hover, hoverinfo = "text") |>
+  add_markers(data = seg, x = ~(personas_base_dato_joven_inf + personas_base_dato_joven_sup) / 2000, y = ~pos + 0.16,
+              marker = list(color = "rgba(0,0,0,0)", size = 14), showlegend = FALSE, text = ~hover, hoverinfo = "text") |>
+  tema(alto = 60 + 44 * nrow(seg)) |>
+  layout(xaxis = list(title = "miles de jóvenes (orden de magnitud)", rangemode = "tozero"),
+         yaxis = list(title = "", tickvals = seg$pos, ticktext = seg$etiqueta, range = c(0.4, nrow(seg) + 0.6),
+                      tickfont = list(size = 12)))
+
+tabla_seg <- div(class = "desplazable", tags$table(class = "tabla-simple",
+  tags$thead(tags$tr(tags$th("ID"), tags$th("Segmento"), tags$th("% (IC 95 %)"), tags$th("Periodo"),
+                     tags$th("Personas: población Dato Joven"), tags$th("Personas: encuesta"), tags$th("Fichas"))),
+  tags$tbody(lapply(seq_len(nrow(seg)), function(i) {
+    x <- seg[i, ]
+    tags$tr(tags$td(class = "mono", x$id), tags$td(x$segmento, tags$br(), tags$small(class = "meta", x$fuente)),
+            tags$td(paste0(num(x$porcentaje, 1), " % ", x$ref), tags$br(),
+                    tags$small(class = "meta", paste0(num(x$ic95_inf, 1), "–", num(x$ic95_sup, 1)))),
+            tags$td(x$periodo), tags$td(x$dj), tags$td(x$enc),
+            tags$td(if (startsWith(x$fichas, "F-")) ref_enlaces(x$fichas) else x$fichas))
+  }))))
+
+# ---------- Hallazgos
+CAPAS <- c("1" = "Contexto y necesidades", "2" = "Intereses y prácticas", "3" = "Oferta y convocatoria")
+ESTADOS_H <- c("sin cambios" = "Sin cambios", "ampliado" = "Ampliado", "corregido" = "Corregido",
+               "reemplazado" = "Reemplazado", "nuevo" = "Nuevo")
+tarjetas_hallazgos <- div(class = "lista", lapply(seq_len(nrow(hallazgos)), function(i) {
+  x <- hallazgos[i, ]
+  div(class = "hallazgo", id = x$id, `data-filtrable` = "hallazgos", `data-f-capa` = x$capa, `data-f-estado` = x$estado_v2,
+      span(class = "id", x$id),
+      div(p(marca_ref(x$enunciado)),
+          div(class = "meta", tags$b("No permite afirmar: "), marca_ref(x$no_permite)),
+          div(class = "meta", tags$b("Dimensión: "), x$dimension, " · ", tags$b("Tipo: "), x$tipo_evidencia, " · ",
+              tags$b("Ámbito: "), x$geografia, " · ", tags$b("Periodo: "), x$periodo, " · ", tags$b("Precisión: "), x$precision,
+              span(class = "estado", x$estado_v2)),
+          if (!is.na(x$cambio_v2)) div(class = "meta", tags$b("Cambio respecto de la primera versión: "), x$cambio_v2),
+          div(class = "refs", style = "padding:6px 0 0;border:0", ref_ev(x$evidencias),
+              if (!is.na(x$actividades_c3)) span(class = "meta", style = "margin:0", "Actividades del registro: ", x$actividades_c3))))
+}))
+
+# ---------- Registro de evidencias
+fmt_ev <- function(id) tryCatch(ev(id), error = function(e) "—")
+ev_tabla <- evidencias |>
+  mutate(valor_txt = map_chr(id, fmt_ev),
+         ic = ifelse(is.na(ic95_inf), "", paste0(num(ic95_inf, 1), "–", num(ic95_sup, 1))),
+         precision = ifelse(precision == "referencial", "referencial*", precision)) |>
+  select(ID = id, Tema = tema, Indicador = indicador, `Población` = poblacion, `Ámbito` = ambito, Periodo = periodo,
+         Valor = valor_txt, `IC 95 %` = ic, `Precisión` = precision, Naturaleza = naturaleza, Fuente = fuente,
+         `Limitación` = limitacion)
+tabla_ev <- datatable(ev_tabla, rownames = FALSE, class = "compact stripe", width = "100%", filter = "none",
+                      options = list(pageLength = 15, dom = "ftip", scrollX = TRUE, autoWidth = FALSE,
+                                     columnDefs = list(list(visible = FALSE, targets = 11)),
+                                     language = list(search = "Buscar:", info = "_START_–_END_ de _TOTAL_",
+                                                     infoFiltered = "(de _MAX_)", zeroRecords = "Sin coincidencias",
+                                                     paginate = list(previous = "Anterior", `next` = "Siguiente"))))
+
+# ---------- Cambios respecto de la primera versión y validación automática
+tabla_cambios <- div(class = "desplazable", tags$table(class = "tabla-simple",
+  tags$thead(tags$tr(tags$th("Primera versión"), tags$th("Resultado de la auditoría"), tags$th("Fichas actuales"), tags$th("Qué cambió"))),
+  tags$tbody(lapply(seq_len(nrow(cambios_v1)), function(i) {
+    x <- cambios_v1[i, ]
+    tags$tr(tags$td(tags$b(x$v1), " ", x$v1_nombre), tags$td(x$resultado), tags$td(ref_enlaces(x$fichas_v2)), tags$td(x$cambio))
+  }))))
+lista_validacion <- tags$ul(class = "validacion", lapply(seq_len(nrow(validacion)), function(i)
+  tags$li(class = if (validacion$resultado[i] != "ok") "falla", validacion$control[i])))
+
+tagList(
+  encabezado("Cruce de evidencia",
+             "Cómo se combinan las tres capas: cada cifra se registra una vez, se interpreta con cuidado y se dice qué no permite afirmar.",
+             capa = "Integración de las capas 1, 2 y 3"),
+  div(class = "seccion", cadena_datos,
+      div(class = "flujo", style = "margin-top:14px",
+          div(tags$b("Dato observado"), "Lo que mide una fuente, con su población, ámbito, periodo y precisión."),
+          div(tags$b("Interpretación"), "Lo que razonablemente sugiere el dato combinado con otros."),
+          div(tags$b("No permite afirmar"), "El límite: lo que sería un salto sin evidencia, como leer interés en una práctica.")),
+      p(class = "nota", "Pasa el cursor sobre una referencia E-### para ver su indicador, población, ámbito, periodo y fuente; las referencias H y F llevan al hallazgo o a la ficha.")),
+  subtabs("cruce",
+    "Patrones" = tagList(
+      filtro_chips("patrones", list(tipo = list(etiqueta = "Tipo", valores = TIPOS_PATRON))),
+      tarjetas_patrones),
+    "Segmentos" = tagList(
+      bloque("Tamaño de los segmentos en Lima Este", g_seg,
+             dice = paste0("Cada segmento se estima con su porcentaje en Lima Este y se traduce a personas de dos formas: con la población 2026 de Dato Joven (barra negra) y con el total que expande la propia encuesta (cuadrado gris). Las dos bases dan órdenes de magnitud parecidos, pero no iguales."),
+             importante = "Las dos bases no se promedian ni se combinan. Los segmentos se superponen: no se pueden sumar. El orden es el del catálogo, no una prioridad. S-18 (seguridad) no tiene total de la encuesta: el factor de ese módulo no produce totales coherentes.",
+             fuente = "ENAHO 2022–2025, ENAPRES 2022–2025 y ENUT 2024 (INEI), cálculo propio; población 2026 de Dato Joven.",
+             ambito = "Lima Este"),
+      div(class = "bloque", h3("Detalle de los segmentos"), tabla_seg)),
+    "Hallazgos" = tagList(
+      filtro_chips("hallazgos", list(capa = list(etiqueta = "Capa", valores = CAPAS),
+                                     estado = list(etiqueta = "Respecto de la primera versión", valores = ESTADOS_H))),
+      tarjetas_hallazgos),
+    "Evidencias" = tagList(
+      aviso("Cada fila es una cifra atómica. Los textos del observatorio y del informe citan estas cifras por su ID: no se escriben porcentajes a mano. Las cifras no publicables (CV > 25 %) no se registran como evidencia."),
+      div(class = "bloque", tabla_ev)),
+    "Cambios y validación" = tagList(
+      div(class = "seccion", h3("Qué cambió respecto de la primera versión"),
+          p(class = "nota", "La primera versión tenía 11 propuestas con niveles alto, medio o bajo, que mezclaban ámbito, precisión y tipo de evidencia y podían leerse como ranking. La auditoría los reemplazó por fichas con categorías descriptivas."),
+          tabla_cambios),
+      div(class = "seccion", h3("Controles automáticos de la integración"),
+          p(class = "nota", "Se verifican cada vez que se reconstruye la integración (scripts/integracion_construir.py); si uno falla, no se generan los resultados."),
+          lista_validacion)))
+)
+```

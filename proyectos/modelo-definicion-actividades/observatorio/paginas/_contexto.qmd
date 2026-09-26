@@ -1,0 +1,188 @@
+```{r}
+# ------------------------------------------------------------------ Población (Dato Joven 2026)
+pob <- poblacion |> mutate(fila = row_number())
+sd_pob <- SharedData$new(pob, key = ~fila, group = "pob")
+tot_d <- pob |> group_by(distrito) |> summarise(n = sum(poblacion)) |> mutate(p = 100 * n / sum(n))
+sjl <- tot_d |> filter(distrito == "San Juan de Lurigancho")
+ate <- tot_d |> filter(distrito == "Ate")
+g_pob <- plot_ly(sd_pob, y = ~distrito, x = ~poblacion, type = "histogram", histfunc = "sum", orientation = "h",
+                 marker = list(color = ROJO), hovertemplate = "%{y}: %{x:,.0f} jóvenes<extra></extra>") |>
+  tema(alto = 330, leyenda = FALSE) |>
+  layout(yaxis = list(categoryorder = "total ascending", title = ""), xaxis = list(title = "jóvenes (2026)", tickformat = ",d"))
+pestana_poblacion <- tagList(
+  div(class = "ct-filtros",
+      filter_checkbox("f-pob-sexo", "Sexo", sd_pob, ~sexo, inline = TRUE),
+      filter_checkbox("f-pob-edad", "Grupo de edad", sd_pob, ~grupo_edad, inline = TRUE)),
+  bloque("Jóvenes de 15 a 29 años por distrito", g_pob,
+         dice = paste0("San Juan de Lurigancho concentra ", pct(sjl$p, 0), " de los jóvenes de los siete distritos y Ate ",
+                       pct(ate$p, 0), ". Un tercio tiene 15–19 años (", ev("E-002"), "). Filtra por sexo o edad para ver cada grupo."),
+         importante = paste0("Es una proyección administrativa para 2026: se usa su nivel, no su evolución (las series por edad cambian de método entre años). ",
+                             "Las encuestas del INEI estiman otros totales para Lima Este, por eso las cantidades del observatorio se dan como rangos."),
+         fuente = "Dato Joven (REUNIS/INEI), 2026.", ambito = "Distrito"))
+
+# ------------------------------------------------------------------ Estudio y trabajo (ENAHO, Lima Este)
+ORDEN_SIT <- c("Solo estudia", "Estudia y trabaja", "Solo trabaja", "No estudia ni trabaja")
+COL_SIT <- c("Solo estudia" = GRIS_CLARO, "Estudia y trabaja" = GRIS, "Solo trabaja" = TINTA_2, "No estudia ni trabaja" = ROJO)
+sit <- segmentos_enaho |>
+  filter(nivel_geografico == "lima_este",
+         indicador %in% c("solo_estudia", "estudia_y_trabaja", "solo_trabaja", "ni_estudia_ni_trabaja"),
+         (sexo == "total") | (grupo_edad == "15-29")) |>
+  mutate(situacion = recode(indicador, solo_estudia = "Solo estudia", estudia_y_trabaja = "Estudia y trabaja",
+                            solo_trabaja = "Solo trabaja", ni_estudia_ni_trabaja = "No estudia ni trabaja"),
+         grupo = case_when(sexo == "mujer" ~ "Mujeres 15–29", sexo == "hombre" ~ "Hombres 15–29",
+                           TRUE ~ paste0(str_replace(grupo_edad, "-", "–"), " años")),
+         grupo = factor(grupo, levels = rev(c("15–29 años", "Mujeres 15–29", "Hombres 15–29", "15–19 años", "20–24 años", "25–29 años"))),
+         situacion = factor(situacion, levels = ORDEN_SIT),
+         hov = paste0("<b>", grupo, " · ", situacion, "</b><br>", num(valor, 1), " %",
+                      ifelse(precision == "referencial", " (referencial)", ""), " · n = ", num(n_muestral))) |>
+  filter(!is.na(grupo))
+g_sit <- plot_ly(sit, y = ~grupo, x = ~valor, color = ~situacion, colors = COL_SIT, type = "bar", orientation = "h",
+                 text = ~ifelse(valor >= 6, paste0(num(valor, 0), " %"), ""), textposition = "inside",
+                 insidetextanchor = "middle", textfont = list(color = BLANCO, size = 11),
+                 hovertext = ~hov, hoverinfo = "text") |>
+  tema(alto = 330) |> layout(barmode = "stack", xaxis = list(title = "% del grupo", ticksuffix = " %", range = c(0, 100)),
+                             yaxis = list(title = ""))
+# Situaciones de quienes no estudian ni trabajan: NO son excluyentes (una persona dedicada al hogar puede haber
+# querido trabajar), así que no se apilan: cada una es un porcentaje del grupo.
+nn <- segmentos_enaho |> filter(nivel_geografico == "lima_este", grupo_edad == "15-29",
+                                indicador %in% c("nn_busca", "nn_quiere", "nn_hogar", "nn_estudiando")) |>
+  mutate(categoria = recode(indicador, nn_busca = "Busca trabajo", nn_quiere = "No buscó, pero quería trabajar",
+                            nn_hogar = "Se dedica a los quehaceres del hogar",
+                            nn_estudiando = "Declara estar estudiando (sin asistir a educación formal)"),
+         serie = recode(sexo, total = "Total", mujer = "Mujeres", hombre = "Hombres"))
+g_nn <- puntos_ic(nn, c("Total" = ROJO, "Mujeres" = ROJO, "Hombres" = ROJO), rango = c(0, 75),
+                  titulo_x = "% de quienes no estudian ni trabajan",
+                  simbolos = c("Total" = "square", "Mujeres" = "circle", "Hombres" = "diamond"))
+pestana_estudio <- tagList(
+  kpis(kpi(ev("E-049"), "no tiene trabajo y busca o quiere trabajar", ev_personas("E-049"), acento = TRUE),
+       kpi(ev("E-056"), "de los jóvenes ocupados tiene empleo informal (2022–2023)", ev_personas("E-057")),
+       kpi(ev("E-023"), "de los jóvenes de 15–24 no estudia y su nivel máximo es secundaria completa", ev_personas("E-023")),
+       kpi(ev("E-070"), "de las mujeres jóvenes no estudia ni trabaja y se dedica al hogar", ev_personas("E-070"))),
+  bloque("Situación de estudio y trabajo", g_sit,
+         dice = paste0(ev("E-043"), " de los jóvenes de Lima Este no estudia ni trabaja: ", ev("E-044"), " de las mujeres y ",
+                       ev("E-045"), " de los hombres. ", ev("E-040"), " estudia y trabaja a la vez."),
+         importante = "\"No estudia ni trabaja\" usa una definición del proyecto (los estudiantes de vacaciones cuentan como estudiantes): no es la cifra \"NINI\" de Dato Joven y no se compara con ella.",
+         fuente = "ENAHO 2022–2025, Módulos 03 y 05 (INEI), cálculo propio; 2022–2025 agrupados.", ambito = "Lima Este"),
+  bloque("Quienes no estudian ni trabajan: ¿en qué situación están?", g_nn,
+         dice = paste0(ev("E-052"), " busca trabajo. Entre las mujeres, la situación más frecuente es dedicarse al hogar (",
+                       ev("E-054"), "); entre ellas, ", ev("E-076"), " vive en un hogar con niños de 0 a 5 años."),
+         importante = "Las situaciones pueden superponerse (por eso no suman 100 %). Describen la semana de la encuesta; no dicen qué quieren hacer ni si buscarían estudiar o trabajar.",
+         fuente = "ENAHO 2022–2025 (INEI), cálculo propio.", ambito = "Lima Este"))
+
+# ------------------------------------------------------------------ Seguridad (ENAPRES, Lima Este)
+IND_SEG <- c(noche_inseguro = "Inseguro/a al caminar solo/a de noche por su barrio",
+             evito_alguna = "Evitó alguna actividad por temor",
+             evito_salir_noche = "Evitó salir de noche",
+             evito_llegar_tarde = "Evitó llegar muy tarde a casa")
+seg_tot <- seguridad |> filter(grupo_edad == "15-29", sexo == "total", str_detect(periodo, "-")) |>
+  mutate(categoria = IND_SEG[indicador], serie = AMBITO[nivel_geografico])
+g_seg <- puntos_ic(seg_tot, COLOR_AMBITO[c("Lima Este", "Lima Metropolitana")], orden = unname(IND_SEG), rango = c(0, 85))
+seg_sex <- seguridad |> filter(grupo_edad == "15-29", sexo != "total", nivel_geografico == "lima_este") |>
+  mutate(categoria = IND_SEG[indicador], serie = SEXO[sexo])
+g_seg_sex <- puntos_ic(seg_sex, c("Mujeres" = ROJO, "Hombres" = ROJO), orden = unname(IND_SEG), rango = c(0, 85),
+                       simbolos = c("Mujeres" = "circle", "Hombres" = "diamond"))
+g_seg <- puntos_ic(seg_tot, COLOR_AMBITO[c("Lima Este", "Lima Metropolitana")], orden = unname(IND_SEG), rango = c(0, 85),
+                   simbolos = c("Lima Este" = "square", "Lima Metropolitana" = "square"))
+pestana_seguridad <- tagList(
+  div(class = "lista",
+      bloque("Lima Este y Lima Metropolitana", g_seg,
+             dice = paste0(ev("E-100"), " de los jóvenes de Lima Este se siente inseguro caminando solo de noche por su barrio; ",
+                           ev("E-103"), " dejó o evitó salir de noche en el último año."),
+             importante = "\"Evitó\" se refiere a los últimos 12 meses, por temor a la delincuencia; los datos son de 2022–2024 porque en 2025 la pregunta cambió y no es comparable.",
+             fuente = "ENAPRES 2022–2025, capítulo de seguridad ciudadana (INEI), cálculo propio validado con Dato Joven.",
+             ambito = c("Lima Este", "Lima Metropolitana")),
+      bloque("Mujeres y hombres de Lima Este", g_seg_sex,
+             dice = paste0("La inseguridad nocturna llega a ", ev("E-101"), " de las mujeres jóvenes y ", ev("E-102"),
+                           " de los hombres; ", ev("E-104"), " de las mujeres evitó salir de noche."),
+             importante = "Es una condición que coincide con las franjas en que los jóvenes tienen tiempo libre (ver Intereses); no se midió que impida participar en actividades.",
+             fuente = "ENAPRES 2022–2025 (INEI), cálculo propio.", ambito = "Lima Este")),
+  div(class = "leyenda-precision", span(class = "lleno", "Estimación confiable"), span(class = "hueco", "Referencial (CV 15–25 %); en los textos, *"),
+      span("Línea: intervalo de confianza del 95 %"), span("■ total · ● mujeres · ◆ hombres")))
+
+# ------------------------------------------------------------------ Organización y participación (RENOJ, voluntariado)
+med_renoj <- median(renoj$organizaciones_por_10mil_jovenes[renoj$nivel_geografico == "distrito"], na.rm = TRUE)
+r_le <- renoj |> filter(lima_este) |> mutate(tasa = organizaciones_por_10mil_jovenes)
+g_renoj <- barras_h(r_le, tasa, distrito, color = TINTA_2, texto = num(r_le$tasa, 1), titulo_x = "organizaciones acreditadas por 10 000 jóvenes",
+                    hover = paste0(r_le$distrito, ": ", num(r_le$organizaciones_acumuladas), " organizaciones (", num(r_le$tasa, 1), " por 10 000)")) |>
+  layout(shapes = list(list(type = "line", x0 = med_renoj, x1 = med_renoj, y0 = -0.5, y1 = nrow(r_le) - 0.5,
+                            line = list(color = ROJO, dash = "dash", width = 2))),
+         annotations = list(list(x = med_renoj, y = nrow(r_le) - 0.5, text = paste0("mediana de Lima Metropolitana: ", num(med_renoj, 1)),
+                                 showarrow = FALSE, xanchor = "left", yanchor = "bottom", font = list(size = 11, color = ROJO))))
+med_vol <- median(voluntariado$inscritas_por_10mil_jovenes[voluntariado$nivel_geografico == "distrito"], na.rm = TRUE)
+v_le <- voluntariado |> filter(lima_este) |> mutate(tasa = inscritas_por_10mil_jovenes)
+g_vol <- barras_h(v_le, tasa, distrito, color = GRIS, texto = num(v_le$tasa, 0), titulo_x = "inscritos por 10 000 jóvenes",
+                  hover = paste0(v_le$distrito, ": ", num(v_le$personas_inscritas), " inscritos")) |>
+  layout(shapes = list(list(type = "line", x0 = med_vol, x1 = med_vol, y0 = -0.5, y1 = nrow(v_le) - 0.5,
+                            line = list(color = ROJO, dash = "dash", width = 2))))
+pestana_organizacion <- tagList(
+  div(class = "dos-col",
+      bloque("Organizaciones juveniles acreditadas (RENOJ)", g_renoj,
+             dice = paste0("Hay ", ev("E-221"), " organizaciones acreditadas en los siete distritos. Por temática principal: ",
+                           ev("E-224"), " de ciencia y tecnología, ", ev("E-229"), " de democracia y derechos humanos, ",
+                           ev("E-225"), " de cultura y arte y ", ev("E-219"), " de deporte."),
+             importante = "Solo cuenta las organizaciones que se acreditaron (2019–2026); no dice si siguen activas ni mide la organización juvenil real.",
+             fuente = "Dato Joven: RENOJ.", ambito = "Distrito"),
+      bloque("Inscritos en el Programa de Voluntariado Juvenil", g_vol,
+             dice = paste0(ev("E-226"), " personas de los siete distritos se inscribieron: ", ev("E-227"), " son mujeres y ",
+                           ev("E-228"), " solo estudia."),
+             importante = "Es autoselección: describe a quienes se inscribieron, no el interés de la juventud. La línea roja es la mediana de Lima Metropolitana.",
+             fuente = "Dato Joven: Programa de Voluntariado Juvenil (acumulado sin fecha).", ambito = "Distrito")),
+  p(class = "nota", paste0("En Lima Metropolitana, la participación de los jóvenes en asociaciones u organizaciones es ", ev("E-220"), " (2025).")))
+
+# ------------------------------------------------------------------ Registros administrativos
+reg_d <- function(r) registros |> filter(registro == r, lima_este)
+mat <- reg_d("maternidad_adolescente"); med_mat <- mat$mediana_lima_metropolitana[1]
+g_mat <- barras_h(mat, tasa, distrito, color = TINTA_2, texto = num(mat$tasa, 1), titulo_x = "nacimientos por 1 000 mujeres de 15–19 (promedio 2022–2025)",
+                  hover = paste0(mat$distrito, ": ", num(mat$promedio_anual, 0), " nacimientos al año")) |>
+  layout(shapes = list(list(type = "line", x0 = med_mat, x1 = med_mat, y0 = -0.5, y1 = nrow(mat) - 0.5,
+                            line = list(color = ROJO, dash = "dash", width = 2))))
+anual <- reg_anual |> filter(nivel_geografico == "lima_este_agregado", registro == "maternidad_adolescente", is.na(periodo_parcial))
+g_anual <- plot_ly(anual, x = ~anio, y = ~casos, type = "scatter", mode = "lines+markers",
+                   line = list(color = ROJO, width = 3), marker = list(color = ROJO, size = 8),
+                   hovertemplate = "%{x}: %{y:,.0f} nacimientos<extra></extra>") |>
+  tema(alto = 260, leyenda = FALSE) |> layout(xaxis = list(title = "", dtick = 1), yaxis = list(title = "nacimientos", rangemode = "tozero"))
+cem <- reg_d("violencia_atendida_cem"); med_cem <- cem$mediana_lima_metropolitana[1]
+g_cem <- barras_h(cem, tasa, distrito, color = TINTA_2, texto = num(cem$tasa, 0), titulo_x = "casos atendidos por 10 000 jóvenes (promedio 2022–2025)") |>
+  layout(shapes = list(list(type = "line", x0 = med_cem, x1 = med_cem, y0 = -0.5, y1 = nrow(cem) - 0.5,
+                            line = list(color = ROJO, dash = "dash", width = 2))))
+pestana_registros <- tagList(
+  div(class = "dos-col",
+      bloque("Nacimientos de madres de 15 a 19 años", g_mat,
+             dice = paste0("La tasa supera la mediana metropolitana (", ev("E-210"), ", línea roja) en El Agustino (", ev("E-209"),
+                           "), Santa Anita (", ev("E-213"), ") y Ate (", ev("E-214"), ")."),
+             importante = "Registra nacimientos, no embarazos. Es una necesidad concentrada en un grupo reducido de adolescentes.",
+             fuente = "Dato Joven: Certificado de Nacido Vivo (residencia de la madre).", ambito = "Distrito"),
+      bloque("Evolución en los siete distritos", g_anual,
+             dice = paste0("En 2025 se registraron ", ev("E-207"), " nacimientos, menos de la mitad que en 2019 (", ev("E-208"), ")."),
+             importante = "2026 no se muestra porque solo tiene datos de enero a junio.",
+             fuente = "Dato Joven: Certificado de Nacido Vivo.", ambito = "Registro publicado")),
+  bloque("Casos de violencia atendidos en los CEM", g_cem,
+         dice = paste0("En 2025 los CEM atendieron ", ev("E-203"), " casos de jóvenes con domicilio en Lima Este; ", ev("E-204"),
+                       " de las víctimas son mujeres, ", ev("E-205"), " tiene 15–19 años y ", ev("E-206"), " de los casos es de violencia sexual."),
+         importante = "Mide atenciones, no prevalencia: depende del acceso a los servicios y de la decisión de acudir. Las celdas con menos de 10 casos están ocultas.",
+         fuente = "Dato Joven: Centros Emergencia Mujer (domicilio de la víctima).", ambito = "Distrito"))
+
+# ------------------------------------------------------------------ Lima Metropolitana (contexto)
+lm <- tibble(ind = c("EPISODIO DEPRESIVO", "VIOLENCIA FAMILIAR (FÍSICA, PSICOLÓGICA Y/O SEXUAL) EN LOS ÚLTIMOS 12 MESES",
+                     "BEBIÓ EN LOS ÚLTIMOS 30 DÍAS", "ALGUNA VEZ EMBARAZADAS", "REDACTAR UN PROGRAMA INFORMÁTICO MEDIANTE EL USO DE LENGUAJE DE PROGRAMACIÓN ESPECIALIZADO",
+                     "PARTICIPACIÓN EN ASOCIACIÓN U ORGANIZACIÓN"),
+             e = c("E-200", "E-202", "E-212", "E-211", "E-230", "E-220"))
+tabla_lm <- tags$table(class = "tabla-simple",
+  tags$thead(tags$tr(tags$th("Indicador"), tags$th("Población"), tags$th("Año"), tags$th("Valor"))),
+  tags$tbody(lapply(lm$e, function(e) tags$tr(tags$td(EV[e, "indicador"]), tags$td(EV[e, "poblacion"]),
+                                             tags$td(EV[e, "periodo"]), tags$td(ev(e))))))
+pestana_lm <- tagList(
+  aviso(class = "claro", tags$b("Estos datos describen a los 43 distritos de Lima Metropolitana, no a Lima Este."),
+        "Se muestran como contexto porque no hay estimaciones de Lima Este para estos temas."),
+  bloque("Indicadores de Lima Metropolitana usados en el análisis", div(class = "desplazable", tabla_lm),
+         dice = paste0("El episodio depresivo afecta a ", ev("E-200"), " de las mujeres jóvenes y ", ev("E-201"), " de los hombres (2024)."),
+         importante = "No se trasladan a Lima Este ni a sus distritos. La serie de violencia de pareja varía mucho entre años.",
+         fuente = "Dato Joven (ENDES y ENAHO).", ambito = "Lima Metropolitana"))
+
+tagList(
+  encabezado("Contexto", "Quiénes son los jóvenes de Lima Este y en qué situación están. Cada gráfico indica si describe a Lima Este (siete distritos juntos), a cada distrito o a Lima Metropolitana.",
+             capa = "Capa 1 · Contexto y necesidades"),
+  subtabs("ctx", "Población" = pestana_poblacion, "Estudio y trabajo" = pestana_estudio, "Seguridad" = pestana_seguridad,
+          "Organización" = pestana_organizacion, "Registros" = pestana_registros, "Lima Metropolitana" = pestana_lm)
+)
+```
