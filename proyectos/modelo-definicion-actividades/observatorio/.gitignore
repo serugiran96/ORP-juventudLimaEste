@@ -1,0 +1,7 @@
+# El HTML renderizado incorpora datos de data/, que no se versionan.
+salida/
+*_files/
+.quarto/
+
+/.quarto/
+**/*.quarto_ipynb
