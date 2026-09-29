@@ -1,0 +1,106 @@
+<section class="capa" id="capa-cruce" data-capa="cruce" hidden>
+  <div class="hero">
+    <div class="hero-txt">
+      <p class="eyebrow"><i class="punto"></i>Integración de las tres capas</p>
+      <h1>Cruce de evidencia</h1>
+      <p class="bajada">Cómo se combinan el contexto, los intereses y la oferta para identificar qué tipo de actividades tienen más posibilidades de convocar a los jóvenes de Lima Este.</p>
+    </div>
+    <div class="hero-cifra" id="hero-cruce"></div>
+  </div>
+
+  <nav class="pestanas" aria-label="Temas del cruce">
+    <div class="pestanas-in" role="tablist">
+      <a href="#criterios" data-tab="criterios">El modelo</a>
+      <a href="#matriz" data-tab="matriz">La matriz</a>
+      <a href="#segmentos" data-tab="segmentos">Grupos de jóvenes</a>
+      <a href="#hallazgos" data-tab="hallazgos">Hallazgos</a>
+      <a href="#evidencias" data-tab="evidencias">Evidencias</a>
+    </div>
+  </nav>
+
+  <!-- ======================================================== EL MODELO -->
+  <section class="panel" id="criterios" data-panel hidden>
+    <header class="sec-cab">
+      <p class="eyebrow"><i class="punto"></i>Seis preguntas, ninguna decide sola</p>
+      <h2>¿Cómo decidimos qué actividades priorizar?</h2>
+    </header>
+    <div class="flujo-modelo" id="cr-flujo"></div>
+    <p class="lectura lectura-ancha">Una actividad convoca cuando responde a algo que los jóvenes necesitan, cuando ya hacen algo parecido, cuando actividades similares ya se llenaron, cuando no repite lo que ya existe y cuando hay quién ayude a convocar. Por eso <b>no basta con mirar dónde hay más oferta ni cuánta gente podría llegar</b>: el modelo cruza las seis preguntas y cada una aporta según su peso.</p>
+    <div class="criterios" id="cr-criterios"></div>
+    <div class="rejilla-2">
+      <article class="card">
+        <div class="card-cab"><h3>Condiciones para convocar</h3><span class="etiqueta">Valen para todas las actividades</span></div>
+        <div class="condiciones" id="cr-condiciones"></div>
+        <p class="nota"><i class="punto"></i><span>Las barreras no restan puntos: se convierten en requisitos de diseño (horario, seguridad, costo, información y cuidado).</span></p>
+      </article>
+      <article class="card">
+        <div class="card-cab"><h3>Lo que el modelo no hace</h3></div>
+        <ul class="lista-limites">
+          <li><b>No predice asistencia.</b> Ordena las alternativas según cuánto respaldo tienen en la evidencia disponible.</li>
+          <li><b>No confunde falta de datos con falta de interés.</b> Un 0 significa que no hay evidencia a favor, no que la actividad vaya a fracasar.</li>
+          <li><b>No reemplaza a los jóvenes.</b> Ninguna fuente preguntó si participarían: eso se validará en una fase posterior (consulta directa y pilotos).</li>
+          <li><b>No es fijo.</b> Los pesos son explícitos y se pueden cambiar en la página de Actividades; el resultado se revisa con cuatro combinaciones de pesos.</li>
+          <li><b>Informa aparte qué tan sólida es la evidencia</b> (qué parte es de Lima Este y precisa).</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- ======================================================== MATRIZ -->
+  <section class="panel" id="matriz" data-panel hidden>
+    <header class="sec-cab">
+      <p class="eyebrow"><i class="punto"></i>13 alternativas × 6 criterios</p>
+      <h2>Cada alternativa, criterio por criterio</h2>
+    </header>
+    <article class="card">
+      <div class="matriz-leyenda" id="cr-matriz-leyenda"></div>
+      <div class="desplazable" id="cr-matriz"></div>
+      <p class="lectura" id="cr-matriz-lectura"></p>
+      <div class="card-pie"><span class="fuente">Puntaje de 0 a 3 por criterio con las reglas del modelo; pasa el cursor sobre una celda para ver el dato. Haz clic en una fila para abrir su ficha.</span></div>
+    </article>
+  </section>
+
+  <!-- ======================================================== SEGMENTOS -->
+  <section class="panel" id="segmentos" data-panel hidden>
+    <header class="sec-cab">
+      <p class="eyebrow"><i class="punto"></i>Lima Este · encuestas del INEI</p>
+      <h2>¿Qué tan grandes son los grupos de jóvenes?</h2>
+    </header>
+    <article class="card">
+      <div class="grafico" id="g-cr-segmentos" style="height:760px"></div>
+      <p class="lectura" id="cr-seg-lectura"></p>
+      <div class="card-pie">
+        <span class="fuente">Rango de personas: porcentaje de la encuesta (IC 95 %) aplicado a la población 2026 de Dato Joven. Los grupos se superponen: no se pueden sumar.</span>
+        <button class="ver-datos" data-tabla="crSegmentos">Ver datos</button>
+      </div>
+      <div class="tabla" data-tabla-de="crSegmentos" hidden></div>
+    </article>
+  </section>
+
+  <!-- ======================================================== HALLAZGOS -->
+  <section class="panel" id="hallazgos" data-panel hidden>
+    <header class="sec-cab">
+      <p class="eyebrow"><i class="punto"></i>Dato observado → qué significa → qué no permite afirmar</p>
+      <h2>Lo que encontramos al cruzar las capas</h2>
+    </header>
+    <div class="filtros"><div class="filtro"><span>Tipo</span><div class="seg" data-ctrl="patTipo"></div></div></div>
+    <div class="patrones" id="cr-patrones"></div>
+    <article class="card">
+      <div class="card-cab"><h3>Todos los hallazgos por capa</h3><div class="seg" data-ctrl="halCapa"></div></div>
+      <div class="hallazgos-lista" id="cr-hallazgos"></div>
+    </article>
+  </section>
+
+  <!-- ======================================================== EVIDENCIAS -->
+  <section class="panel" id="evidencias" data-panel hidden>
+    <header class="sec-cab">
+      <p class="eyebrow"><i class="punto"></i>Registro de evidencias</p>
+      <h2>Cada cifra, con su fuente</h2>
+    </header>
+    <div class="filtros"><div class="filtro buscar"><span>Buscar</span><input type="search" id="ev-buscar" placeholder="Indicador, tema, fuente o ID (E-023)"></div><span class="etiqueta" id="ev-conteo"></span></div>
+    <article class="card">
+      <div class="desplazable" id="cr-evidencias"></div>
+      <button class="ver-mas" id="ev-mas" type="button">Ver más</button>
+    </article>
+  </section>
+</section>

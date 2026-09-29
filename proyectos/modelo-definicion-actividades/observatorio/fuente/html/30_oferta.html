@@ -1,0 +1,105 @@
+<section class="capa" id="capa-oferta" data-capa="oferta" hidden>
+  <div class="hero">
+    <div class="hero-txt">
+      <p class="eyebrow"><i class="punto"></i>Capa 3</p>
+      <h1>Oferta</h1>
+      <p class="bajada">Qué actividades para jóvenes se publicaron en los siete distritos entre 2024 y 2026, para quién son y cuánta participación informan quienes las organizan.</p>
+    </div>
+    <div class="hero-cifra" id="hero-oferta"></div>
+  </div>
+
+  <nav class="pestanas" aria-label="Temas de oferta">
+    <div class="pestanas-in" role="tablist">
+      <a href="#explorar" data-tab="explorar">Explorar</a>
+      <a href="#publico" data-tab="publico">¿Para quién?</a>
+      <a href="#convocatoria" data-tab="convocatoria">Convocatoria</a>
+      <a href="#visibilidad" data-tab="visibilidad">Visibilidad</a>
+    </div>
+  </nav>
+
+  <!-- ======================================================== EXPLORAR -->
+  <section class="panel" id="explorar" data-panel hidden>
+    <p class="aviso aviso-fuerte"><i class="punto"></i><span><b>Oferta registrada no es demanda demostrada.</b> Que exista una actividad no prueba que interese a los jóvenes, y que no aparezca no prueba que falte. El registro solo contiene lo que cada institución publicó en internet.</span></p>
+    <div class="filtros filtros-oferta" aria-label="Filtros del registro de oferta">
+      <div class="filtro"><span>Distrito</span><div class="seg" data-ctrl="ofDistrito"></div></div>
+      <div class="filtro"><span>Público</span><div class="seg" data-ctrl="ofPublico"></div></div>
+      <div class="filtro"><span>Costo</span><div class="seg" data-ctrl="ofCosto"></div></div>
+      <div class="filtro buscar"><span>Buscar</span><input type="search" id="of-buscar" placeholder="Nombre, organizador o tema"></div>
+    </div>
+    <div class="tiles" id="of-tiles"></div>
+    <div class="rejilla-2">
+      <article class="card">
+        <div class="card-cab"><h3>Temas</h3><span class="etiqueta" id="of-tema-activo">Haz clic en un tema para filtrar</span></div>
+        <div class="grafico" id="g-of-temas" style="height:470px"></div>
+        <div class="card-pie"><span class="fuente">Una actividad puede tener varios temas. La frecuencia refleja lo que se organiza y publica, no el interés de los jóvenes.</span></div>
+      </article>
+      <article class="card">
+        <div class="card-cab"><h3>Tipo de evidencia</h3></div>
+        <div class="grafico" id="g-of-evidencia" style="height:210px"></div>
+        <p class="lectura">Casi todo es oferta o participación declarada. <b>Demanda observada</b> significa más interesados que cupos, y vale solo para esa oferta concreta.</p>
+        <div class="card-cab"><h3>Organizadores</h3></div>
+        <div class="grafico" id="g-of-organizador" style="height:210px"></div>
+      </article>
+    </div>
+    <article class="card">
+      <div class="card-cab"><h3>Actividades</h3><span class="etiqueta" id="of-conteo"></span></div>
+      <div class="of-lista" id="of-lista"></div>
+      <button class="ver-mas" id="of-mas" type="button">Ver más actividades</button>
+    </article>
+  </section>
+
+  <!-- ======================================================== PARA QUIÉN -->
+  <section class="panel" id="publico" data-panel hidden>
+    <header class="sec-cab">
+      <p class="eyebrow"><i class="punto"></i>Registro de oferta 2024–2026</p>
+      <h2>¿Para quién es la oferta?</h2>
+    </header>
+    <div class="tiles" id="of-pub-tiles"></div>
+    <article class="card">
+      <div class="card-cab"><h3>Público de cada tema</h3></div>
+      <div class="grafico" id="g-of-publico" style="height:520px"></div>
+      <p class="lectura" id="of-pub-lectura"></p>
+      <div class="card-pie">
+        <span class="fuente">Público declarado en la nota. "Niños y adolescentes" = actividades hasta los 18 años (la mayoría no declara la edad exacta).</span>
+        <button class="ver-datos" data-tabla="ofPublico">Ver datos</button>
+      </div>
+      <div class="tabla" data-tabla-de="ofPublico" hidden></div>
+    </article>
+  </section>
+
+  <!-- ======================================================== CONVOCATORIA -->
+  <section class="panel" id="convocatoria" data-panel hidden>
+    <header class="sec-cab">
+      <p class="eyebrow"><i class="punto"></i>Cifras declaradas por quien organiza</p>
+      <h2>¿Cuánta gente convocaron?</h2>
+    </header>
+    <div class="tiles" id="of-conv-tiles"></div>
+    <h3 class="subtitulo">Las cuatro señales de demanda observada</h3>
+    <p class="nota"><i class="punto"></i><span>Más interesados que cupos en una oferta concreta. Cada señal vale solo para esa oferta: no indica interés general por un tema.</span></p>
+    <div class="tarjetas-demanda" id="of-demanda"></div>
+    <article class="card">
+      <div class="card-cab"><h3>Participación declarada</h3><span class="etiqueta">Las cifras no son comparables entre sí</span></div>
+      <div class="of-lista of-lista-compacta" id="of-participacion"></div>
+      <div class="card-pie"><span class="fuente">Cifras publicadas por la institución organizadora (asistentes, inscritos, beneficiarios…), casi nunca con cupos. No miden interés ni permiten comparar actividades.</span></div>
+    </article>
+  </section>
+
+  <!-- ======================================================== VISIBILIDAD -->
+  <section class="panel" id="visibilidad" data-panel hidden>
+    <header class="sec-cab">
+      <p class="eyebrow"><i class="punto"></i>gob.pe · 2024–2026</p>
+      <h2>¿Cuánto publica cada municipalidad?</h2>
+    </header>
+    <article class="card">
+      <div class="card-cab"><h3>Notas municipales con términos de juventud</h3></div>
+      <div class="grafico" id="g-of-visibilidad" style="height:340px"></div>
+      <p class="lectura" id="of-vis-lectura"></p>
+      <div class="card-pie">
+        <span class="fuente">Notas publicadas por las siete municipalidades en gob.pe que mencionan términos de juventud.</span>
+        <button class="ver-datos" data-tabla="ofVisibilidad">Ver datos</button>
+      </div>
+      <div class="tabla" data-tabla-de="ofVisibilidad" hidden></div>
+    </article>
+    <p class="nota"><i class="punto"></i><span>Por eso la oferta registrada no permite comparar distritos: un distrito con pocas actividades puede simplemente publicar poco.</span></p>
+  </section>
+</section>

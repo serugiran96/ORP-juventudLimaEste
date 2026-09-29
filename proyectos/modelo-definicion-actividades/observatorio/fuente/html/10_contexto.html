@@ -1,0 +1,256 @@
+<section class="capa" id="capa-contexto" data-capa="contexto" hidden>
+  <div class="hero">
+    <div class="hero-txt">
+      <p class="eyebrow"><i class="punto"></i>Capa 1</p>
+      <h1>Contexto</h1>
+      <p class="bajada">Quiénes son las y los jóvenes de 15 a 29 años de Ate, Chaclacayo, El Agustino, La Molina, Lurigancho-Chosica, San Juan de Lurigancho y Santa Anita, y en qué situación están.</p>
+    </div>
+    <div class="hero-cifra" id="hero-contexto"></div>
+  </div>
+
+  <nav class="pestanas" aria-label="Temas de contexto">
+    <div class="pestanas-in" role="tablist">
+      <a href="#poblacion" data-tab="poblacion">Población</a>
+      <a href="#estudio" data-tab="estudio">Estudio y trabajo</a>
+      <a href="#seguridad" data-tab="seguridad">Seguridad</a>
+      <a href="#organizaciones" data-tab="organizaciones">Organizaciones</a>
+      <a href="#natalidad" data-tab="natalidad">Natalidad</a>
+      <a href="#extra" data-tab="extra">Datos extra</a>
+    </div>
+  </nav>
+
+  <!-- ======================================================== POBLACIÓN -->
+  <section class="panel" id="poblacion" data-panel>
+    <header class="sec-cab">
+      <p class="eyebrow"><i class="punto"></i>Lima Este · proyección 2026</p>
+      <h2>¿Cuántos jóvenes hay y dónde viven?</h2>
+    </header>
+    <div class="tiles" id="pob-tiles"></div>
+
+    <div class="rejilla-2">
+      <article class="card">
+        <div class="card-cab">
+          <h3>Los siete distritos</h3>
+          <div class="seg" data-ctrl="pobMet"></div>
+        </div>
+        <div class="grafico" id="g-distritos" style="height:360px"></div>
+        <p class="lectura" id="pob-lectura"></p>
+        <div class="card-pie">
+          <span class="fuente">Dato Joven (Observatorio Nacional de Juventud): proyección de población 2026. Haz clic en un distrito para ver su detalle.</span>
+          <button class="ver-datos" data-tabla="distritos">Ver datos</button>
+        </div>
+        <div class="tabla" data-tabla-de="distritos" hidden></div>
+      </article>
+
+      <aside class="card ficha" id="ficha-distrito" aria-live="polite"></aside>
+    </div>
+
+    <p class="nota"><i class="punto"></i><span>Las encuestas del INEI estiman otros totales para Lima Este (<span id="pob-encuestas"></span>). Por eso, en las demás pestañas, las cantidades de personas se dan como rangos.</span></p>
+  </section>
+
+  <!-- ======================================================== ESTUDIO Y TRABAJO -->
+  <section class="panel" id="estudio" data-panel hidden>
+    <header class="sec-cab">
+      <p class="eyebrow"><i class="punto"></i>Lima Este · ENAHO 2022–2025</p>
+      <h2>¿Estudian? ¿Trabajan?</h2>
+    </header>
+
+    <div class="filtros" aria-label="Filtros de estudio y trabajo">
+      <div class="filtro"><span>Sexo</span><div class="seg" data-ctrl="sexo"></div></div>
+      <div class="filtro"><span>Edad</span><div class="seg" data-ctrl="edad"></div></div>
+    </div>
+
+    <div class="tiles" id="est-tiles"></div>
+
+    <article class="card">
+      <div class="card-cab"><h3>¿Estudian, trabajan o ninguna de las dos?</h3></div>
+      <div class="grafico" id="g-situacion" style="height:300px"></div>
+      <p class="lectura" id="est-sit-lectura"></p>
+      <div class="card-pie">
+        <span class="fuente">ENAHO 2022–2025 (INEI), cálculo propio. "Trabaja" incluye cualquier trabajo en la semana de la encuesta.</span>
+        <button class="ver-datos" data-tabla="situacion">Ver datos</button>
+      </div>
+      <div class="tabla" data-tabla-de="situacion" hidden></div>
+    </article>
+
+    <div class="rejilla-2">
+      <article class="card">
+        <div class="card-cab"><h3>¿Dónde estudian?</h3></div>
+        <div class="grafico" id="g-donde" style="height:320px"></div>
+        <p class="lectura" id="est-donde-lectura"></p>
+        <div class="card-pie">
+          <span class="fuente">Porcentaje de todos los jóvenes del grupo. ENAHO 2022–2025, Módulo 03.</span>
+          <button class="ver-datos" data-tabla="donde">Ver datos</button>
+        </div>
+        <div class="tabla" data-tabla-de="donde" hidden></div>
+      </article>
+
+      <article class="card">
+        <div class="card-cab"><h3>Los que no estudian ni trabajan, ¿qué hacen?</h3></div>
+        <div class="mini-cifra" id="est-nini-cifra"></div>
+        <div class="grafico" id="g-nini" style="height:230px"></div>
+        <p class="lectura" id="est-nini-lectura"></p>
+        <div class="card-pie">
+          <span class="fuente">Jóvenes de 15 a 29 años. Una persona puede estar en más de una situación. "No estudia ni trabaja" es una definición del proyecto, no la cifra "NINI" de Dato Joven.</span>
+          <button class="ver-datos" data-tabla="nini">Ver datos</button>
+        </div>
+        <div class="tabla" data-tabla-de="nini" hidden></div>
+      </article>
+    </div>
+
+    <article class="card">
+      <div class="card-cab"><h3>¿Hasta qué nivel llegaron?</h3></div>
+      <div class="grafico" id="g-nivel" style="height:300px"></div>
+      <p class="lectura" id="est-nivel-lectura"></p>
+      <div class="card-pie">
+        <span class="fuente">Nivel educativo más alto alcanzado, completo o no. ENAHO 2022–2025, Módulo 03.</span>
+        <button class="ver-datos" data-tabla="nivel">Ver datos</button>
+      </div>
+      <div class="tabla" data-tabla-de="nivel" hidden></div>
+    </article>
+
+    <h3 class="subtitulo">Trabajo</h3>
+    <div class="tiles" id="est-trabajo"></div>
+  </section>
+
+  <!-- ======================================================== SEGURIDAD -->
+  <section class="panel" id="seguridad" data-panel hidden>
+    <header class="sec-cab">
+      <p class="eyebrow"><i class="punto"></i>Lima Este · ENAPRES 2022–2025</p>
+      <h2>¿Se sienten seguros?</h2>
+    </header>
+    <div class="tiles" id="seg-tiles"></div>
+
+    <article class="card">
+      <div class="card-cab">
+        <h3>La inseguridad en su día a día</h3>
+        <div class="seg" data-ctrl="segVista"></div>
+      </div>
+      <div class="grafico" id="g-seguridad" style="height:340px"></div>
+      <p class="lectura" id="seg-lectura"></p>
+      <div class="card-pie">
+        <span class="fuente">ENAPRES (INEI), cálculo propio. Inseguridad de noche: 2022–2025; actividades evitadas: 2022–2024 (en 2025 cambió la pregunta).</span>
+        <button class="ver-datos" data-tabla="seguridad">Ver datos</button>
+      </div>
+      <div class="tabla" data-tabla-de="seguridad" hidden></div>
+    </article>
+
+    <article class="card">
+      <div class="card-cab">
+        <h3>Violencia atendida por los Centros Emergencia Mujer</h3>
+        <div class="seg" data-ctrl="cemVista"></div>
+      </div>
+      <div class="grafico" id="g-cem" style="height:320px"></div>
+      <p class="lectura" id="cem-lectura"></p>
+      <div class="card-pie">
+        <span class="fuente">Dato Joven: casos atendidos por los CEM (MIMP), víctimas de 15 a 29 años.</span>
+        <button class="ver-datos" data-tabla="cem">Ver datos</button>
+      </div>
+      <div class="tabla" data-tabla-de="cem" hidden></div>
+      <p class="aviso"><i class="punto"></i><span>Son casos atendidos, no cuánta violencia hay: dependen de que las víctimas lleguen al servicio.</span></p>
+    </article>
+  </section>
+
+  <!-- ======================================================== ORGANIZACIONES -->
+  <section class="panel" id="organizaciones" data-panel hidden>
+    <header class="sec-cab">
+      <p class="eyebrow"><i class="punto"></i>Tres fuentes, tres miradas</p>
+      <h2>¿Participan en organizaciones?</h2>
+    </header>
+
+    <article class="card">
+      <div class="card-cab"><h3>Jóvenes que pertenecen a alguna organización</h3><span class="etiqueta">Encuesta · ENAHO 2022–2025</span></div>
+      <div class="tiles tiles-dentro" id="org-enaho-tiles"></div>
+      <div class="rejilla-2 sin-margen">
+        <div>
+          <h4>¿En qué tipo de organización? <small>Lima Metropolitana, entre quienes participan</small></h4>
+          <div class="grafico" id="g-org-tipos" style="height:230px"></div>
+        </div>
+        <div>
+          <h4>¿Con qué papel? <small>Lima Metropolitana, entre quienes participan</small></h4>
+          <div class="grafico" id="g-org-papel" style="height:230px"></div>
+        </div>
+      </div>
+      <p class="aviso"><i class="punto"></i><span>La ENAHO pregunta al hogar por una lista fija de organizaciones (vecinales, deportivas, vaso de leche, comedores…). No incluye grupos religiosos, estudiantiles ni de voluntariado, así que la participación juvenil real es mayor. En Lima Este la muestra es pequeña: por eso el tipo y el papel se muestran para Lima Metropolitana.</span></p>
+      <div class="card-pie">
+        <span class="fuente">ENAHO 2022–2025, Módulos 02 y 84 (INEI), cálculo propio. Replica la cifra de Dato Joven para Lima Metropolitana.</span>
+        <button class="ver-datos" data-tabla="orgEnaho">Ver datos</button>
+      </div>
+      <div class="tabla" data-tabla-de="orgEnaho" hidden></div>
+    </article>
+
+    <article class="card">
+      <div class="card-cab">
+        <h3>Organizaciones juveniles acreditadas</h3>
+        <div class="seg" data-ctrl="renojVista"></div>
+      </div>
+      <div class="mini-cifra" id="org-renoj-cifra"></div>
+      <div class="grafico" id="g-renoj" style="height:320px"></div>
+      <p class="lectura" id="renoj-lectura"></p>
+      <div class="card-pie">
+        <span class="fuente">Registro Nacional de Organizaciones Juveniles (RENOJ, SENAJU), vía Dato Joven. Solo cuenta las organizaciones que pidieron su acreditación.</span>
+        <button class="ver-datos" data-tabla="renoj">Ver datos</button>
+      </div>
+      <div class="tabla" data-tabla-de="renoj" hidden></div>
+    </article>
+
+    <article class="card">
+      <div class="card-cab">
+        <h3>Jóvenes inscritos en el Programa de Voluntariado</h3>
+        <div class="seg" data-ctrl="volVista"></div>
+      </div>
+      <div class="tiles tiles-dentro" id="org-vol-tiles"></div>
+      <div class="grafico" id="g-voluntariado" style="height:300px"></div>
+      <p class="aviso"><i class="punto"></i><span>Es un registro de inscripción voluntaria: describe a quienes se inscribieron, no a toda la juventud de Lima Este.</span></p>
+      <div class="card-pie">
+        <span class="fuente">Programa de Voluntariado Juvenil (SENAJU), vía Dato Joven. Inscritos de los siete distritos.</span>
+        <button class="ver-datos" data-tabla="voluntariado">Ver datos</button>
+      </div>
+      <div class="tabla" data-tabla-de="voluntariado" hidden></div>
+    </article>
+  </section>
+
+  <!-- ======================================================== NATALIDAD -->
+  <section class="panel" id="natalidad" data-panel hidden>
+    <header class="sec-cab">
+      <p class="eyebrow"><i class="punto"></i>Lima Este · registro de nacimientos</p>
+      <h2>¿Cuántas adolescentes son madres?</h2>
+    </header>
+    <div class="tiles" id="nat-tiles"></div>
+    <div class="rejilla-2">
+      <article class="card">
+        <div class="card-cab"><h3>Nacimientos de madres de 15 a 19 años, por año</h3></div>
+        <div class="grafico" id="g-nat-serie" style="height:300px"></div>
+        <p class="lectura" id="nat-serie-lectura"></p>
+        <div class="card-pie">
+          <span class="fuente">Certificado de Nacido Vivo (Minsa), vía Dato Joven. Suma de los siete distritos.</span>
+          <button class="ver-datos" data-tabla="natSerie">Ver datos</button>
+        </div>
+        <div class="tabla" data-tabla-de="natSerie" hidden></div>
+      </article>
+      <article class="card">
+        <div class="card-cab"><h3>¿En qué distritos es más frecuente?</h3></div>
+        <div class="grafico" id="g-nat-distritos" style="height:300px"></div>
+        <p class="lectura" id="nat-dist-lectura"></p>
+        <div class="card-pie">
+          <span class="fuente">Nacimientos por cada 1 000 mujeres de 15 a 19 años: promedio anual 2022–2025 sobre la población 2026.</span>
+          <button class="ver-datos" data-tabla="natDist">Ver datos</button>
+        </div>
+        <div class="tabla" data-tabla-de="natDist" hidden></div>
+      </article>
+    </div>
+    <p class="nota"><i class="punto"></i><span>Es un registro de nacimientos, no una encuesta: cuenta bebés nacidos vivos de madres adolescentes, no embarazos.</span></p>
+  </section>
+
+  <!-- ======================================================== DATOS EXTRA -->
+  <section class="panel" id="extra" data-panel hidden>
+    <header class="sec-cab">
+      <p class="eyebrow"><i class="punto"></i>Lima Metropolitana · Dato Joven</p>
+      <h2>Datos extra</h2>
+    </header>
+    <p class="aviso aviso-fuerte"><i class="punto"></i><span>Estos datos son de <b>Lima Metropolitana</b> (43 distritos), no de Lima Este: las encuestas no permiten estimarlos para los siete distritos. Sirven como referencia.</span></p>
+    <div class="filtros"><div class="filtro"><span>Tema</span><div class="seg seg-envuelve" data-ctrl="extraDim"></div></div></div>
+    <div class="extra-grid" id="extra-grid"></div>
+  </section>
+
+</section>

@@ -1,0 +1,156 @@
+<section class="capa" id="capa-intereses" data-capa="intereses" hidden>
+  <div class="hero">
+    <div class="hero-txt">
+      <p class="eyebrow"><i class="punto"></i>Capa 2</p>
+      <h1>Intereses</h1>
+      <p class="bajada">Qué hacen los jóvenes, cuándo tienen tiempo y qué los frena. Son prácticas observadas: muestran por dónde empezar, pero no dicen qué actividades organizadas les interesarían.</p>
+    </div>
+    <div class="hero-cifra" id="hero-intereses"></div>
+  </div>
+
+  <nav class="pestanas" aria-label="Temas de intereses">
+    <div class="pestanas-in" role="tablist">
+      <a href="#tiempo" data-tab="tiempo">Su semana</a>
+      <a href="#horarios" data-tab="horarios">Horarios</a>
+      <a href="#cultura" data-tab="cultura">Cultura y ocio</a>
+      <a href="#digital" data-tab="digital">Vida digital</a>
+      <a href="#aspiraciones" data-tab="aspiraciones">Aspiraciones</a>
+    </div>
+  </nav>
+
+  <!-- ======================================================== SU SEMANA -->
+  <section class="panel" id="tiempo" data-panel hidden>
+    <header class="sec-cab">
+      <p class="eyebrow"><i class="punto"></i>Lima Este · ENUT 2024</p>
+      <h2>¿En qué usan su semana?</h2>
+    </header>
+    <div class="tiles" id="int-tiempo-tiles"></div>
+    <article class="card">
+      <div class="card-cab"><h3>¿Qué hicieron en la semana?</h3><span class="etiqueta">% que dedicó algo de tiempo a cada actividad</span></div>
+      <div class="grafico" id="g-int-actividades" style="height:470px"></div>
+      <p class="lectura" id="int-act-lectura"></p>
+      <div class="card-pie">
+        <span class="fuente">ENUT 2024 (INEI), diario de actividades, cálculo propio. Jóvenes de 15 a 29 años.</span>
+        <button class="ver-datos" data-tabla="intActividades">Ver datos</button>
+      </div>
+      <div class="tabla" data-tabla-de="intActividades" hidden></div>
+    </article>
+    <div class="rejilla-2">
+      <article class="card">
+        <div class="card-cab"><h3>Horas a la semana: trabajo, estudio y cuidado</h3></div>
+        <div class="grafico" id="g-int-horas" style="height:300px"></div>
+        <p class="lectura" id="int-horas-lectura"></p>
+        <div class="card-pie">
+          <span class="fuente">Promedio de horas semanales de todos los jóvenes (incluye a quienes no hacen la actividad). ENUT 2024. Por sexo solo hay datos de Lima Metropolitana.</span>
+          <button class="ver-datos" data-tabla="intHoras">Ver datos</button>
+        </div>
+        <div class="tabla" data-tabla-de="intHoras" hidden></div>
+      </article>
+      <article class="card">
+        <div class="card-cab"><h3>¿Están satisfechos con su tiempo libre?</h3></div>
+        <div class="grafico" id="g-int-satisfaccion" style="height:300px"></div>
+        <p class="lectura" id="int-sat-lectura"></p>
+        <div class="card-pie">
+          <span class="fuente">% muy o totalmente satisfecho. ENUT 2024.</span>
+          <button class="ver-datos" data-tabla="intSatisfaccion">Ver datos</button>
+        </div>
+        <div class="tabla" data-tabla-de="intSatisfaccion" hidden></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ======================================================== HORARIOS -->
+  <section class="panel" id="horarios" data-panel hidden>
+    <header class="sec-cab">
+      <p class="eyebrow"><i class="punto"></i>ENUT 2024</p>
+      <h2>¿Cuándo pueden participar?</h2>
+    </header>
+    <div class="filtros"><div class="filtro"><span>Quiénes</span><div class="seg" data-ctrl="horQuien"></div></div></div>
+    <article class="card">
+      <div class="card-cab"><h3>Jóvenes con al menos dos horas seguidas libres</h3><span class="etiqueta" id="hor-etiqueta"></span></div>
+      <div class="horario" id="int-horario"></div>
+      <p class="lectura" id="int-hor-lectura"></p>
+      <div class="card-pie">
+        <span class="fuente">ENUT 2024 (INEI): diario de un día de la semana, un sábado y un domingo, en franjas de 10 minutos. "Libre" = sin trabajo, estudio, tareas del hogar, cuidado ni traslados. La mañana de lunes a viernes no se midió.</span>
+        <button class="ver-datos" data-tabla="intHorario">Ver datos</button>
+      </div>
+      <div class="tabla" data-tabla-de="intHorario" hidden></div>
+    </article>
+    <p class="nota"><i class="punto"></i><span>Es la disponibilidad observada en un día registrado, no una preferencia. Las noches coinciden con la inseguridad: <b id="hor-inseguridad"></b> de los jóvenes de Lima Este se siente inseguro al caminar de noche por su barrio.</span></p>
+  </section>
+
+  <!-- ======================================================== CULTURA -->
+  <section class="panel" id="cultura" data-panel hidden>
+    <header class="sec-cab">
+      <p class="eyebrow"><i class="punto"></i>Lima Este · ENAPRES 2022–2025</p>
+      <h2>¿Qué hacen fuera de casa?</h2>
+    </header>
+    <div class="tiles" id="int-cultura-tiles"></div>
+    <article class="card">
+      <div class="card-cab">
+        <h3>Asistencia en el último año</h3>
+        <div class="seg" data-ctrl="culVista"></div>
+      </div>
+      <div class="grafico" id="g-int-cultura" style="height:430px"></div>
+      <p class="lectura" id="int-cul-lectura"></p>
+      <div class="card-pie">
+        <span class="fuente">ENAPRES 2022–2025, capítulo 800A (INEI), cálculo propio. Haz clic en una actividad para ver por qué no fueron y cómo entraron.</span>
+        <button class="ver-datos" data-tabla="intCultura">Ver datos</button>
+      </div>
+      <div class="tabla" data-tabla-de="intCultura" hidden></div>
+    </article>
+    <article class="card">
+      <div class="card-cab"><h3 id="cul-item-titulo">Por qué no fueron y cómo entraron</h3></div>
+      <div class="chips" id="cul-items"></div>
+      <div class="rejilla-2 sin-margen">
+        <div><h4>Motivo principal para no ir <small>entre quienes no fueron</small></h4><div class="grafico" id="g-int-motivos" style="height:230px"></div></div>
+        <div><h4>¿Cómo entraron? <small>entre quienes fueron</small></h4><div class="grafico" id="g-int-entrada" style="height:230px"></div></div>
+      </div>
+      <p class="lectura" id="int-mot-lectura"></p>
+      <div class="card-pie"><span class="fuente">ENAPRES 2022–2025, Lima Este, jóvenes de 15 a 29 años. "—" = muestra insuficiente.</span></div>
+    </article>
+  </section>
+
+  <!-- ======================================================== DIGITAL -->
+  <section class="panel" id="digital" data-panel hidden>
+    <header class="sec-cab">
+      <p class="eyebrow"><i class="punto"></i>Lima Este · ENAHO y ENAPRES 2022–2025</p>
+      <h2>¿Para qué usan internet?</h2>
+    </header>
+    <div class="tiles" id="int-digital-tiles"></div>
+    <div class="rejilla-2">
+      <article class="card">
+        <div class="card-cab"><h3>Usos de internet</h3><div class="seg" data-ctrl="digVista"></div></div>
+        <div class="grafico" id="g-int-propositos" style="height:400px"></div>
+        <p class="lectura" id="int-dig-lectura"></p>
+        <div class="card-pie">
+          <span class="fuente">% de quienes usaron internet el mes anterior. ENAHO 2022–2025, Módulo 03.</span>
+          <button class="ver-datos" data-tabla="intPropositos">Ver datos</button>
+        </div>
+        <div class="tabla" data-tabla-de="intPropositos" hidden></div>
+      </article>
+      <article class="card">
+        <div class="card-cab"><h3>Consumo cultural en formato digital e impreso</h3></div>
+        <div class="grafico" id="g-int-bienes" style="height:400px"></div>
+        <p class="lectura" id="int-bien-lectura"></p>
+        <div class="card-pie">
+          <span class="fuente">% que consumió cada producto en el año. ENAPRES 2022–2025.</span>
+          <button class="ver-datos" data-tabla="intBienes">Ver datos</button>
+        </div>
+        <div class="tabla" data-tabla-de="intBienes" hidden></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ======================================================== ASPIRACIONES -->
+  <section class="panel" id="aspiraciones" data-panel hidden>
+    <header class="sec-cab">
+      <p class="eyebrow"><i class="punto"></i>Perú urbano · Ipsos 2019–2022</p>
+      <h2>¿Qué dicen los estudios de opinión?</h2>
+    </header>
+    <p class="aviso aviso-fuerte"><i class="punto"></i><span>Estos datos son <b>exploratorios</b>: vienen de estudios de mercado de Ipsos sobre jóvenes del Perú urbano (2019–2022), no de Lima Este, y solo se conocen las cifras publicadas. Sirven como orientación, no como evidencia de Lima Este.</span></p>
+    <div class="filtros"><div class="filtro"><span>Estudio</span><div class="seg seg-envuelve" data-ctrl="ipsos"></div></div></div>
+    <p class="nota" id="ipsos-ficha"></p>
+    <div class="extra-grid" id="ipsos-temas"></div>
+  </section>
+</section>

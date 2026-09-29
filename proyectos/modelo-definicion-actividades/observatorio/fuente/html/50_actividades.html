@@ -1,0 +1,78 @@
+<section class="capa" id="capa-actividades" data-capa="actividades" hidden>
+  <div class="hero">
+    <div class="hero-txt">
+      <p class="eyebrow"><i class="punto"></i>Resultado del cruce</p>
+      <h1>Actividades</h1>
+      <p class="bajada">Qué tipo de actividades tienen más respaldo en la evidencia para convocar a los jóvenes de Lima Este, cómo convocarlas y qué falta validar con ellos.</p>
+    </div>
+    <div class="hero-cifra" id="hero-actividades"></div>
+  </div>
+
+  <nav class="pestanas" aria-label="Temas de actividades">
+    <div class="pestanas-in" role="tablist">
+      <a href="#resultado" data-tab="resultado">Resultado</a>
+      <a href="#fichas" data-tab="fichas">Fichas</a>
+      <a href="#transversal" data-tab="transversal">Protocolo y consulta</a>
+    </div>
+  </nav>
+
+  <!-- ======================================================== RESULTADO -->
+  <section class="panel" id="resultado" data-panel hidden>
+    <header class="sec-cab">
+      <p class="eyebrow"><i class="punto"></i>Modelo multicriterio · 13 alternativas</p>
+      <h2>¿Qué actividades tienen más potencial para convocar?</h2>
+    </header>
+    <p class="aviso"><i class="punto"></i><span>El puntaje mide cuánto respaldo tiene cada alternativa en la evidencia disponible (de 0 a 100), <b>no cuánta gente asistirá</b>. Ninguna fuente preguntó a los jóvenes si participarían: la participación concreta se validará con ellos en una fase posterior.</span></p>
+    <div class="filtros filtros-modelo">
+      <div class="filtro"><span>Pesos</span><div class="seg seg-envuelve" data-ctrl="escenario"></div></div>
+      <button class="ver-datos" id="pesos-toggle" type="button" aria-expanded="false">Ajustar pesos</button>
+    </div>
+    <div class="pesos" id="pesos" hidden></div>
+    <article class="card">
+      <div class="card-cab"><h3>Ranking de potencial de convocatoria</h3><span class="etiqueta" id="res-escenario"></span></div>
+      <div class="leyenda-crit" id="res-leyenda"></div>
+      <div class="ranking" id="ranking"></div>
+      <p class="lectura" id="res-lectura"></p>
+      <div class="card-pie">
+        <span class="fuente">Cada barra suma el aporte de los seis criterios (puntaje 0–3 × peso). El puesto entre corchetes es el rango en las cuatro combinaciones de pesos predefinidas: si es estrecho, el resultado no depende de los pesos.</span>
+        <button class="ver-datos" data-tabla="ranking">Ver datos</button>
+      </div>
+      <div class="tabla" data-tabla-de="ranking" hidden></div>
+    </article>
+    <article class="card">
+      <div class="card-cab"><h3>Potencial y solidez de la evidencia</h3></div>
+      <div class="cuadrante" id="act-cuadrante"></div>
+      <p class="lectura" id="res-cuadrante"></p>
+      <div class="card-pie"><span class="fuente">Solidez: parte de la evidencia citada por cada alternativa que es de Lima Este y tiene precisión suficiente (alta: 85 % o más). Haz clic en una alternativa para abrir su ficha.</span></div>
+    </article>
+  </section>
+
+  <!-- ======================================================== FICHAS -->
+  <section class="panel" id="fichas" data-panel hidden>
+    <header class="sec-cab">
+      <p class="eyebrow"><i class="punto"></i>Una ficha por alternativa</p>
+      <h2>Por qué, para quién, cómo convocar y qué validar</h2>
+    </header>
+    <div class="explorador">
+      <nav class="fichas-indice" id="fichas-indice" aria-label="Alternativas"></nav>
+      <article class="card ficha-d" id="ficha-detalle" aria-live="polite"></article>
+    </div>
+  </section>
+
+  <!-- ======================================================== TRANSVERSAL -->
+  <section class="panel" id="transversal" data-panel hidden>
+    <header class="sec-cab">
+      <p class="eyebrow"><i class="punto"></i>No se puntúan</p>
+      <h2>Protocolo transversal y población que requiere consulta</h2>
+    </header>
+    <div class="rejilla-2" id="transversales"></div>
+    <article class="card">
+      <div class="card-cab"><h3>Fase posterior: validar con los jóvenes</h3></div>
+      <ol class="pasos-validacion">
+        <li><b>Consulta directa a jóvenes de Lima Este.</b> Es la única forma de saber si participarían en cada actividad. Debe incluir a las mujeres dedicadas al hogar, en sus hogares o espacios comunitarios: qué actividades y formatos harían, horarios y distancia, cuidado infantil, costo, canales de información, intención de estudiar y seguridad para salir de noche.</li>
+        <li><b>Registros administrativos de convocatoria</b> de municipalidades, SENAJU e IPD (Ley 27806): inscritos, asistentes y cupos por edad y sexo, y listas de espera. Permitirían pasar de cifras declaradas a cifras verificadas y detectar baja convocatoria.</li>
+        <li><b>Pilotos pequeños con indicadores definidos antes.</b> Cada ficha indica qué medir. Los umbrales de éxito los define el equipo; no provienen de los datos.</li>
+      </ol>
+    </article>
+  </section>
+</section>
