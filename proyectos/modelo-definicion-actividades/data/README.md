@@ -228,3 +228,16 @@ Las tablas de resultados (`resultados/evidencias.csv`, `fichas_*.csv`, etc.) se 
 `fuentes/metodologia_integracion.md`. Las fichas citan actividades del registro de la Capa 3 por su `id`: si el
 registro se reconstruye, hay que revisar esas referencias (`fichas_convocatoria.csv` guarda también el nombre de
 cada actividad para poder comprobarlo).
+
+## `data/processed/` — estimaciones para el observatorio
+
+Las genera `scripts/web_contexto_enaho.py` (ENAHO 2022–2025, Lima Este y Lima Metropolitana, jóvenes de 15–29
+residentes habituales, por sexo y grupo de edad). Mismas columnas y umbrales de precisión que las de la integración.
+
+| Archivo | Contenido |
+|---|---|
+| `web_educacion_enaho.csv` | Módulo 03. `familia` = `asistencia`: estudia y nivel al que asiste (universidad, instituto, escolar, posgrado) como % de **todos** los jóvenes del grupo; `nivel_alcanzado`: nivel educativo más alto alcanzado (p301a), "Sin educación superior" (hasta secundaria completa) y "Superior completa". |
+| `web_participacion_enaho.csv` | Módulos 02 y 84 (capítulo 800). Pertenece a algún grupo, organización o asociación; tipo de organización (`tipo`: % de todos los jóvenes; `tipo_entre_participantes`: % de quienes participan) y papel que cumple (`papel`). Universo: jóvenes de hogares que respondieron el capítulo 800. |
+| `web_participacion_enaho_validacion.csv` | Réplica de "Participación en asociación u organización" de Dato Joven (Lima Metropolitana, por año). |
+
+Los microdatos del Módulo 84 se descargan en `data/raw/enaho/modulo84_{año}/`.
