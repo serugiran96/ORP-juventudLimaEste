@@ -420,3 +420,13 @@ automáticos están en `integracion_construir.validar()` y se guardan en `result
 11. **Precisión:** las cifras referenciales van marcadas; las no publicables no se muestran.
 12. **"Dónde pilotear" es un criterio operativo,** no una señal de demanda por distrito.
 
+
+---
+
+## 12. Modelo de priorización (29/09/2026)
+
+El equipo pidió pasar de la descripción sin ranking a un cruce que determine qué tipo de actividades tienen más
+posibilidades de convocar, sin basarse solo en la oferta ni solo en el tamaño del público. Las fichas y sus
+categorías no cambian: el modelo multicriterio las ordena con seis criterios de reglas fijas, pesos explícitos y
+una prueba de robustez con cuatro combinaciones de pesos. La solidez de la evidencia se informa aparte. El detalle
+está en `metodologia_modelo_actividades.md`.
