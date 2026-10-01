@@ -3,7 +3,7 @@
     <div class="hero-txt">
       <p class="eyebrow"><i class="punto"></i>Resultado del cruce</p>
       <h1>Actividades</h1>
-      <p class="bajada">Qué tipo de actividades tienen más respaldo en la evidencia para convocar a los jóvenes de Lima Este, cómo convocarlas y qué falta validar con ellos.</p>
+      <p class="bajada">A cuántos jóvenes de Lima Este podría convocar cada actividad y cada servicio, a quiénes, cuándo y dónde, y qué falta validar con ellos.</p>
     </div>
     <div class="hero-cifra" id="hero-actividades"></div>
   </div>
@@ -19,39 +19,48 @@
   <!-- ======================================================== RESULTADO -->
   <section class="panel" id="resultado" data-panel hidden>
     <header class="sec-cab">
-      <p class="eyebrow"><i class="punto"></i>Modelo multicriterio · 13 alternativas</p>
-      <h2>¿Qué actividades tienen más potencial para convocar?</h2>
+      <p class="eyebrow"><i class="punto"></i>Modelo de convocatoria por público</p>
+      <h2>¿Qué puede convocar a más jóvenes?</h2>
     </header>
-    <p class="aviso"><i class="punto"></i><span>El puntaje mide cuánto respaldo tiene cada alternativa en la evidencia disponible (de 0 a 100), <b>no cuánta gente asistirá</b>. Ninguna fuente preguntó a los jóvenes si participarían: la participación concreta se validará con ellos en una fase posterior.</span></p>
+    <p class="aviso"><i class="punto"></i><span>El número es cuántos jóvenes la hacen o la harían si es gratis, cercana y bien difundida, y además tienen tiempo libre ese día. <b>No es la asistencia esperada</b>: sirve para comparar. <a href="#criterios">Cómo se calcula</a>.</span></p>
     <div class="filtros filtros-modelo">
-      <div class="filtro"><span>Pesos</span><div class="seg seg-envuelve" data-ctrl="escenario"></div></div>
-      <button class="ver-datos" id="pesos-toggle" type="button" aria-expanded="false">Ajustar pesos</button>
+      <div class="filtro"><span>¿A quién?</span><div class="seg" data-ctrl="pSexo"></div></div>
+      <div class="filtro"><span>Edad</span><div class="seg" data-ctrl="pEdad"></div></div>
     </div>
-    <div class="pesos" id="pesos" hidden></div>
     <article class="card">
-      <div class="card-cab"><h3>Ranking de potencial de convocatoria</h3><span class="etiqueta" id="res-escenario"></span></div>
+      <div class="card-cab"><h3>Actividades</h3><span class="etiqueta" id="res-quien"></span></div>
       <div class="leyenda-crit" id="res-leyenda"></div>
-      <div class="ranking" id="ranking"></div>
+      <div class="ranking" id="rk-act"></div>
       <p class="lectura" id="res-lectura"></p>
       <div class="card-pie">
-        <span class="fuente">Cada barra suma el aporte de los seis criterios (puntaje 0–3 × peso). El puesto entre corchetes es el rango en las cuatro combinaciones de pesos predefinidas: si es estrecho, el resultado no depende de los pesos.</span>
-        <button class="ver-datos" data-tabla="ranking">Ver datos</button>
+        <span class="fuente">Abiertas a todos los jóvenes. Entre corchetes, los puestos posibles con el margen de error de las encuestas (solo para todos los jóvenes de 15 a 29).</span>
+        <button class="ver-datos" data-tabla="rkAct">Ver datos</button>
       </div>
-      <div class="tabla" data-tabla-de="ranking" hidden></div>
+      <div class="tabla" data-tabla-de="rkAct" hidden></div>
     </article>
     <article class="card">
-      <div class="card-cab"><h3>Potencial y solidez de la evidencia</h3></div>
-      <div class="cuadrante" id="act-cuadrante"></div>
-      <p class="lectura" id="res-cuadrante"></p>
-      <div class="card-pie"><span class="fuente">Solidez: parte de la evidencia citada por cada alternativa que es de Lima Este y tiene precisión suficiente (alta: 85 % o más). Haz clic en una alternativa para abrir su ficha.</span></div>
+      <div class="card-cab"><h3>Servicios</h3><span class="etiqueta">Para jóvenes con una necesidad específica</span></div>
+      <div class="leyenda-crit" id="serv-leyenda"></div>
+      <div class="ranking" id="rk-serv"></div>
+      <p class="lectura" id="serv-lectura"></p>
+      <div class="card-pie">
+        <span class="fuente">Se comparan solo entre sí. Cuentan quienes terminaron la secundaria y no estudian por dinero, quienes buscan o quieren trabajar y quienes trabajan por su cuenta.</span>
+        <button class="ver-datos" data-tabla="rkServ">Ver datos</button>
+      </div>
+      <div class="tabla" data-tabla-de="rkServ" hidden></div>
+    </article>
+    <article class="card">
+      <div class="card-cab"><h3>Sin datos para ordenar</h3></div>
+      <p class="lectura">Ninguna encuesta del INEI mide cuántos jóvenes de Lima Este hacen o harían estos tipos. No se comparan con los demás: se deciden con la consulta a jóvenes.</p>
+      <div class="chips-sd" id="sin-datos"></div>
     </article>
   </section>
 
   <!-- ======================================================== FICHAS -->
   <section class="panel" id="fichas" data-panel hidden>
     <header class="sec-cab">
-      <p class="eyebrow"><i class="punto"></i>Una ficha por alternativa</p>
-      <h2>Por qué, para quién, cómo convocar y qué validar</h2>
+      <p class="eyebrow"><i class="punto"></i>Una ficha por actividad o servicio</p>
+      <h2>Para quién, cuándo, dónde y qué validar</h2>
     </header>
     <div class="explorador">
       <nav class="fichas-indice" id="fichas-indice" aria-label="Alternativas"></nav>

@@ -16,7 +16,7 @@ function render(tab) {
 }
 function mostrar() {
   let h = decodeURIComponent((location.hash || "#poblacion").slice(1));
-  if (/^F-\d\d$/.test(h)) { S.ficha = h; h = "fichas"; }   // enlace directo a una ficha
+  if (/^[AF]-\d\d$/.test(h)) { S.ficha = h; h = "fichas"; }   // enlace directo a un tipo de actividad o a una ficha
   const tab = CAPA_DE[h] ? h : "poblacion";
   const capa = CAPA_DE[tab];
   const cambioCapa = capa !== S.capa, cambio = tab !== S.tab;

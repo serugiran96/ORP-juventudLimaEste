@@ -1,7 +1,7 @@
 """Construye el Observatorio de Juventudes de Lima Este: un único HTML autocontenido.
 
 Uso (desde la carpeta del proyecto):
-    python scripts/modelo_actividades.py      # (si cambian las fichas) modelo multicriterio -> resultados/modelo_*.csv
+    python scripts/modelo_actividades.py      # (si cambian los tipos o las fichas) modelo de convocatoria -> resultados/modelo_*.csv
     python observatorio/construir.py          # -> observatorio/salida/observatorio.html
 
 El script NO estima nada: lee los datasets finales de data/processed/, fuentes/ y resultados/, los ordena en un JSON

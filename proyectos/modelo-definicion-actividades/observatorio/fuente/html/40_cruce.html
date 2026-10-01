@@ -3,7 +3,7 @@
     <div class="hero-txt">
       <p class="eyebrow"><i class="punto"></i>Integración de las tres capas</p>
       <h1>Cruce de evidencia</h1>
-      <p class="bajada">Cómo se combinan el contexto, los intereses y la oferta para identificar qué tipo de actividades tienen más posibilidades de convocar a los jóvenes de Lima Este.</p>
+      <p class="bajada">Cómo se combinan el contexto, los intereses y la oferta para estimar a cuántos jóvenes de Lima Este podría convocar cada actividad y cada servicio, y a quiénes.</p>
     </div>
     <div class="hero-cifra" id="hero-cruce"></div>
   </div>
@@ -21,26 +21,64 @@
   <!-- ======================================================== EL MODELO -->
   <section class="panel" id="criterios" data-panel hidden>
     <header class="sec-cab">
-      <p class="eyebrow"><i class="punto"></i>Seis preguntas, ninguna decide sola</p>
-      <h2>¿Cómo decidimos qué actividades priorizar?</h2>
+      <p class="eyebrow"><i class="punto"></i>Tres preguntas medidas con datos</p>
+      <h2>¿Cómo calculamos a cuántos jóvenes podemos convocar?</h2>
     </header>
-    <div class="flujo-modelo" id="cr-flujo"></div>
-    <p class="lectura lectura-ancha">Una actividad convoca cuando responde a algo que los jóvenes necesitan, cuando ya hacen algo parecido, cuando actividades similares ya se llenaron, cuando no repite lo que ya existe y cuando hay quién ayude a convocar. Por eso <b>no basta con mirar dónde hay más oferta ni cuánta gente podría llegar</b>: el modelo cruza las seis preguntas y cada una aporta según su peso.</p>
-    <div class="criterios" id="cr-criterios"></div>
+    <p class="lectura lectura-ancha">Para cada actividad y cada público (mujeres y hombres de 15 a 19, 20 a 24 y 25 a 29 años) respondemos tres preguntas con encuestas del INEI y la población de Dato Joven, y multiplicamos las respuestas. El resultado es <b>cuántos jóvenes la hacen o la harían y tienen tiempo para ir</b>. No hay pesos que decidir: cada paso es un dato medido.</p>
+    <div class="embudo" id="cr-embudo"></div>
+
+    <article class="card">
+      <div class="card-cab"><h3>Un ejemplo, paso a paso</h3><span class="etiqueta">Elige una actividad y un público</span></div>
+      <div class="filtros-ej">
+        <label class="filtro"><span>Actividad</span><select id="ej-tipo" class="select"></select></label>
+        <div class="filtro"><span>Público</span><div class="seg seg-envuelve" data-ctrl="ejPub"></div></div>
+      </div>
+      <div class="ej-embudo" id="ej-embudo"></div>
+      <p class="lectura" id="ej-lectura"></p>
+    </article>
+
     <div class="rejilla-2">
       <article class="card">
-        <div class="card-cab"><h3>Condiciones para convocar</h3><span class="etiqueta">Valen para todas las actividades</span></div>
+        <div class="card-cab"><h3>Las reglas</h3></div>
+        <ul class="lista-limites">
+          <li><b>Solo cuentan las barreras que ustedes pueden quitar:</b> falta de dinero, de información o de oferta. Una actividad gratuita, cercana y bien difundida las quita. No cuentan la falta de interés ni la falta de tiempo, porque el tiempo se mide en el paso 3.</li>
+          <li><b>Si la encuesta pregunta por algo parecido, cuenta la mitad.</b> Ver danza no es lo mismo que practicarla en un taller, y el cine comercial no es un cineclub.</li>
+          <li><b>Lo que hicieron en la última semana no se reduce</b> (deporte y voluntariado): una semana es una ventana más corta que un año.</li>
+          <li><b>Si nadie preguntó por qué no la hacen, el número es un piso.</b> Pasa con deporte, patrimonio, videojuegos, voluntariado y emprendimiento: solo cuentan quienes ya la hacen.</li>
+          <li><b>Actividades y servicios se ordenan por separado.</b> Los servicios (preparación para la educación superior, empleo y emprendimiento) son para jóvenes con una necesidad específica; compararlos con un concierto, abierto a todos, no sería justo.</li>
+          <li><b>Lo que ninguna encuesta mide no se ordena</b> (tecnología, derechos laborales, bienestar): se decide con la consulta a jóvenes.</li>
+        </ul>
+      </article>
+      <article class="card">
+        <div class="card-cab"><h3>Lo que no cambia el número</h3><span class="etiqueta">y dónde lo verás</span></div>
+        <ul class="lista-limites">
+          <li><b>El registro de oferta.</b> La mayoría de las actividades que convocan jóvenes no está registrada: si no hay registro, no resta. Si algo parecido ya convocó en Lima Este, aparece como señal en la ficha.</li>
+          <li><b>La necesidad.</b> Se muestra en la ficha. En los servicios ya está dentro del número: cuentan quienes no estudian por dinero o quieren trabajar.</li>
+          <li><b>Los aliados.</b> La organización no los necesita para empezar.</li>
+          <li><b>La permanencia.</b> Que los jóvenes vuelvan se mide en el piloto: asistencia a 3 o más sesiones y permanencia a los 3 meses.</li>
+          <li><b>El interés declarado de Ipsos.</b> Es del Perú urbano, no de Lima Este: queda como contexto.</li>
+        </ul>
+      </article>
+    </div>
+
+    <article class="card">
+      <div class="card-cab"><h3>Los seis públicos</h3><span class="etiqueta">Lima Este</span></div>
+      <div class="desplazable"><div class="publicos" id="cr-publicos"></div></div>
+      <div class="card-pie"><span class="fuente">Dato Joven 2026 (población); ENUT 2024 (tiempo libre: dos horas seguidas, con el patrón por sexo y edad de Lima Metropolitana); ENAPRES 2022-2025 (evita salir de noche por inseguridad); ENAHO 2022-2025 (a qué se dedican).</span></div>
+    </article>
+
+    <div class="rejilla-2">
+      <article class="card">
+        <div class="card-cab"><h3>Condiciones para convocar</h3><span class="etiqueta">Valen para todas</span></div>
         <div class="condiciones" id="cr-condiciones"></div>
-        <p class="nota"><i class="punto"></i><span>Las barreras no restan puntos: se convierten en requisitos de diseño (horario, seguridad, costo, información y cuidado).</span></p>
       </article>
       <article class="card">
         <div class="card-cab"><h3>Lo que el modelo no hace</h3></div>
         <ul class="lista-limites">
-          <li><b>No predice asistencia.</b> Ordena las alternativas según cuánto respaldo tienen en la evidencia disponible.</li>
-          <li><b>No confunde falta de datos con falta de interés.</b> Un 0 significa que no hay evidencia a favor, no que la actividad vaya a fracasar.</li>
-          <li><b>No reemplaza a los jóvenes.</b> Ninguna fuente preguntó si participarían: eso se validará en una fase posterior (consulta directa y pilotos).</li>
-          <li><b>No es fijo.</b> Los pesos son explícitos y se pueden cambiar en la página de Actividades; el resultado se revisa con cuatro combinaciones de pesos.</li>
-          <li><b>Informa aparte qué tan sólida es la evidencia</b> (qué parte es de Lima Este y precisa).</li>
+          <li><b>No predice asistencia.</b> Dice cuántos jóvenes tienen interés y tiempo; cuántos llegan depende de la convocatoria y se mide en el piloto.</li>
+          <li><b>No reemplaza a los jóvenes.</b> Ninguna encuesta preguntó si participarían en la actividad propuesta: se validará con consulta directa.</li>
+          <li><b>No ve diferencias entre distritos.</b> Las encuestas solo alcanzan para Lima Este en conjunto; el reparto por distrito sigue la población.</li>
+          <li><b>Cruza sexo y edad de forma aproximada.</b> Supone que la diferencia entre mujeres y hombres es parecida en cada edad, porque la muestra no alcanza para cada grupo por separado.</li>
         </ul>
       </article>
     </div>
@@ -49,14 +87,19 @@
   <!-- ======================================================== MATRIZ -->
   <section class="panel" id="matriz" data-panel hidden>
     <header class="sec-cab">
-      <p class="eyebrow"><i class="punto"></i>13 alternativas × 6 criterios</p>
-      <h2>Cada alternativa, criterio por criterio</h2>
+      <p class="eyebrow"><i class="punto"></i>20 tipos × 6 públicos</p>
+      <h2>¿A quién convoca cada actividad?</h2>
     </header>
+    <div class="filtros"><div class="filtro"><span>Mostrar</span><div class="seg" data-ctrl="matVista"></div></div></div>
     <article class="card">
       <div class="matriz-leyenda" id="cr-matriz-leyenda"></div>
       <div class="desplazable" id="cr-matriz"></div>
       <p class="lectura" id="cr-matriz-lectura"></p>
-      <div class="card-pie"><span class="fuente">Puntaje de 0 a 3 por criterio con las reglas del modelo; pasa el cursor sobre una celda para ver el dato. Haz clic en una fila para abrir su ficha.</span></div>
+      <div class="card-pie">
+        <span class="fuente">Jóvenes convocables = población × % que la hace o la haría × % con tiempo libre en su mejor horario.</span>
+        <button class="ver-datos" data-tabla="crMatriz">Ver datos</button>
+      </div>
+      <div class="tabla" data-tabla-de="crMatriz" hidden></div>
     </article>
   </section>
 

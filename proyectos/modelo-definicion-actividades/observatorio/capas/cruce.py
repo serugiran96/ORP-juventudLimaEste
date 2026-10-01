@@ -1,13 +1,11 @@
-"""Cruce de evidencia y Actividades: modelo multicriterio, segmentos, patrones, evidencias y fichas.
+"""Cruce de evidencia y Actividades: modelo de convocatoria por público, segmentos, patrones, evidencias y fichas.
 
 El modelo se calcula en scripts/modelo_actividades.py (resultados/modelo_*.csv); aquí solo se ordena para la página.
 """
 
 import pandas as pd
 
-from .comun import PROC, RES, limpio, lista
-
-CRITERIOS = ["necesidad", "publico", "practica", "convocatoria", "espacio", "aliados"]
+from .comun import FUENTES, PROC, RES, limpio, lista
 
 
 def _num(v):
@@ -15,23 +13,38 @@ def _num(v):
 
 
 def _modelo():
-    crit = pd.read_csv(RES / "modelo_criterios.csv")
+    pasos = pd.read_csv(RES / "modelo_criterios.csv")
     m = pd.read_csv(RES / "modelo_actividades.csv")
-    escenarios = {"recomendado": "Recomendado", "igual": "Todos pesan igual", "necesidades": "Necesidades primero",
-                  "alcance": "Alcance primero"}
-    pesos = {e: {r.criterio: int(r[f"peso_{e}"]) for _, r in crit.iterrows()} for e in escenarios}
-    criterios = [{"id": r.criterio, "nombre": r.nombre, "pregunta": r.pregunta, "reglas": r.reglas, "fuente": r.fuente}
-                 for r in crit.itertuples()]
-    alternativas = []
+    p = pd.read_csv(RES / "modelo_publicos.csv")
+    perf = pd.read_csv(RES / "modelo_perfil_publicos.csv")
+    bloques = [c for c in perf.columns if c.startswith("bloque_")]
+    distritos = [c for c in perf.columns if c.startswith("distrito_")]
+    nombres_bloque = ["Lunes a viernes, 14:00-18:00", "Lunes a viernes, 18:00-22:00", "Sábado, 09:00-13:00", "Sábado, 14:00-18:00",
+                      "Sábado, 18:00-22:00", "Domingo, 09:00-13:00", "Domingo, 14:00-18:00"]
+    publicos = [{"k": f"{r.sexo}|{r.edad}", "sexo": r.sexo, "edad": r.edad, "pob": int(r.poblacion), "libre": r.tiempo_libre,
+                 "mejor": r.mejor_bloque, "bloques": [r[b] for b in bloques], "evita": r.evita_salir_noche,
+                 "inseguro": r.inseguro_noche,
+                 "sit": {k: _num(r[k]) for k in ["solo_estudia", "estudia_y_trabaja", "solo_trabaja", "ni_estudia_ni_trabaja", "hogar"]},
+                 "dist": {d.replace("distrito_", ""): r[d] for d in distritos}} for _, r in perf.iterrows()]
+    tipos = []
     for r in m.to_dict("records"):
-        alternativas.append({
-            "ficha": r["ficha"], "actividad": r["actividad"], "linea": r["linea"], "tipo": r["tipo_ficha"],
-            "puntajes": {c: int(r[f"{c}_puntaje"]) for c in CRITERIOS}, "datos": {c: r[f"{c}_dato"] for c in CRITERIOS},
-            "solidez": int(r["solidez_pct"]), "solidez_nivel": r["solidez_nivel"], "n_evidencias": int(r["n_evidencias"]),
-            "puestos": {e: int(r[f"puesto_{e}"]) for e in escenarios}, "puesto_min": int(r["puesto_min"]),
-            "puesto_max": int(r["puesto_max"]), "nivel_estable": bool(r["nivel_estable"])})
-    return {"criterios": criterios, "pesos": pesos, "escenarios": escenarios, "alternativas": alternativas,
-            "niveles": [[60, "Mayor potencial"], [45, "Potencial medio"], [0, "Menor respaldo hoy"]]}
+        x = p[p.id == r["id"]]
+        tipos.append({
+            "id": r["id"], "tipo": r["tipo"], "grupo": r["grupo"], "linea": r["linea"], "formato": r["formato_sostenido"],
+            "ficha": limpio(r["ficha"]), "medido": bool(r["medido"]), "relacion": r["relacion"], "factor": r["factor"],
+            "fren_medidos": bool(r["frenados_medidos"]),
+            "prac": {"v": _num(r["prac_valor"]), "p": limpio(r["prac_precision"]), "fuente": limpio(r["prac_fuente"])},
+            "fren": {"v": _num(r["fren_valor"]), "fuente": limpio(r["fren_fuente"]), "dinero": _num(r["fren_dinero"]),
+                     "info": _num(r["fren_informacion"]), "oferta": _num(r["fren_oferta"])},
+            "total": _num(r["convocables"]), "lo": _num(r["convocables_inf"]), "hi": _num(r["convocables_sup"]),
+            "pct": _num(r["pct_jovenes"]), "mujeres": _num(r["pct_mujeres"]), "principal": limpio(r["publico_principal"]),
+            "puesto": _num(r["puesto"]), "plo": _num(r["puesto_inf"]), "phi": _num(r["puesto_sup"]),
+            "conv": {"codigo": r["conv_codigo"], "detalle": limpio(r["conv_detalle"])}, "nec": r["necesidad"],
+            "ofertas": lista(r["oferta_ids"]),
+            # Por público: [% ya la hace, % frenados, convocables que ya la hacen, convocables frenados]
+            "seg": {f"{s.sexo}|{s.edad}": [_num(s.ya), _num(s.frenados), s.conv_ya, s.conv_frenados] for s in x.itertuples()}})
+    return {"pasos": [{k: limpio(v) for k, v in r.items()} for r in pasos.to_dict("records")], "bloques": nombres_bloque,
+            "publicos": publicos, "tipos": tipos}
 
 
 def _fichas():
