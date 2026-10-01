@@ -1,8 +1,8 @@
 # Observatorio de Juventudes de Lima Este
 
 Página web de la Organización Juvenil Rita Poma. Reúne en un solo archivo HTML las tres capas del proyecto
-(Contexto, Intereses y Oferta), el cruce de evidencia y el resultado: qué tipo de actividades tienen más respaldo
-para convocar a los jóvenes de Lima Este.
+(Contexto, Intereses y Oferta), el cruce de evidencia y el resultado: qué tipo de actividades tienen más
+participación e interés entre los jóvenes de Lima Este.
 
 Se genera con **Python** y se muestra con **HTML, CSS y JavaScript** (gráficos con ECharts). No necesita servidor:
 se abre con doble clic y funciona sin conexión.
@@ -18,7 +18,7 @@ se abre con doble clic y funciona sin conexión.
 # desde proyectos/modelo-definicion-actividades/
 python scripts/web_contexto_enaho.py descargar     # solo si faltan los microdatos del Módulo 84 de la ENAHO
 python scripts/web_contexto_enaho.py calcular      # educación por nivel y participación en organizaciones
-python scripts/modelo_actividades.py               # modelo multicriterio (si cambian las fichas)
+python scripts/modelo_actividades.py               # modelo de convocatoria (si cambian los tipos o las fichas)
 python observatorio/construir.py                   # -> observatorio/salida/observatorio.html
 ```
 
@@ -38,7 +38,7 @@ Cada sección tiene su dirección:
 | Intereses | Su semana · Horarios · Cultura y ocio · Vida digital · Aspiraciones (Ipsos, exploratorio) |
 | Oferta | Explorar · ¿Para quién? · Convocatoria · Visibilidad |
 | Cruce | El modelo · La matriz · Grupos de jóvenes · Hallazgos · Evidencias |
-| Actividades | Resultado (ranking con pesos ajustables) · Fichas · Protocolo y consulta |
+| Actividades | Resultado (actividades y servicios, por público) · Fichas · Protocolo y consulta |
 | Acerca | Advertencias, fuentes y cómo se construyó |
 
 ## Estructura
@@ -74,6 +74,7 @@ Salvo que se indique otra carpeta, los archivos están en `data/processed/`.
   - No publicable (CV mayor a 25 %): "—".
   - Las frases que comparan grupos solo afirman una diferencia si los intervalos de confianza no se superponen.
 - **Cantidades.** Son rangos: % (IC 95 %) × población 2026 de Dato Joven del mismo grupo.
-- **Modelo de actividades.** Ordena por respaldo en la evidencia; no predice asistencia. Criterios, reglas y pesos:
+- **Modelo de convocatoria.** Estima cuántos jóvenes tienen interés y tiempo para cada actividad o servicio, por
+  público. No predice asistencia ni permanencia, que se validan en pilotos. Pasos y reglas:
   `fuentes/metodologia_modelo_actividades.md`.
 - **Colores.** Validados por contraste y daltonismo. Todo gráfico tiene su tabla equivalente ("Ver datos").

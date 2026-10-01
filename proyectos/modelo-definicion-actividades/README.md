@@ -204,25 +204,27 @@ HTML, CSS y JavaScript, que muestra:
 
 - las tres capas (Contexto, Intereses y Oferta);
 - el cruce de evidencia;
-- el resultado: qué tipo de actividades tienen más respaldo para convocar a los jóvenes de Lima Este, según un
-  modelo multicriterio con pesos ajustables.
+- el resultado: a cuántos jóvenes de Lima Este podría convocar cada actividad y cada servicio, a quiénes, cuándo y
+  dónde, según un modelo de convocatoria por público.
 
 ```bash
 python scripts/web_contexto_enaho.py calcular   # educación por nivel y participación en organizaciones (ENAHO)
-python scripts/modelo_actividades.py            # modelo multicriterio -> resultados/modelo_*.csv
+python scripts/modelo_actividades.py            # modelo de convocatoria -> resultados/modelo_*.csv
 python observatorio/construir.py                # -> observatorio/salida/observatorio.html
 ```
 
-El modelo cruza seis criterios:
+El modelo estima, para 20 tipos de actividad o servicio y seis públicos (mujeres y hombres de 15-19, 20-24 y 25-29
+años):
 
-- necesidad;
-- público potencial;
-- práctica o interés;
-- convocatoria observada;
-- espacio en la oferta;
-- aliados para convocar.
+> jóvenes convocables = población × % que la hace o la haría × % con tiempo libre en su mejor horario
 
-Ninguno decide solo. Los criterios, las reglas y los pesos están en `fuentes/metodologia_modelo_actividades.md`.
+- **Población:** Dato Joven 2026.
+- **La hace o la haría:** ya la hacen, más los frenados por dinero, información o falta de oferta (ENAPRES, ENUT,
+  ENAHO).
+- **Tiempo libre:** ENUT, con descuento por inseguridad de noche (ENAPRES).
+
+Las actividades y los servicios se ordenan por separado. No predice asistencia ni permanencia, que se validan en
+pilotos. El detalle está en `fuentes/metodologia_modelo_actividades.md`.
 
 El HTML no se versiona porque incorpora datos agregados de `data/`. Es una versión local de revisión: todavía no se
 publica. Más detalles en `observatorio/README.md`.
