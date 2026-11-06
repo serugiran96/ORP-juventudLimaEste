@@ -1,0 +1,135 @@
+/* ==========================================================================
+   Marca · Organización Juvenil Rita Poma
+   Colores, tipografías y piezas comunes a todas las páginas del sitio.
+   Fuente: Manual de marca 2026 (paleta, tipografía y elementos gráficos).
+   ========================================================================== */
+
+/* Tipografías del manual, servidas desde el propio sitio (licencia SIL OFL 1.1) */
+@font-face {
+  font-family: "Anton";
+  src: url("../fuentes/anton-latin.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Archivo";
+  src: url("../fuentes/archivo-latin.woff2") format("woff2");
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Archivo";
+  src: url("../fuentes/archivo-italic-latin.woff2") format("woff2");
+  font-weight: 400 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  /* Paleta del manual */
+  --rojo: #B71C32;        /* Rojo carmesí: lucha, resistencia y transformación */
+  --azul: #557FE0;        /* Azul luminoso: educación, conocimiento, ideas */
+  --verde: #70C447;       /* Verde soleado: comunidad y organización colectiva */
+  --blanco: #FAFAF7;      /* Blanco cálido: fondo principal */
+  --gris: #EDEEEA;        /* Gris claro: fondos secundarios */
+  --carbon: #252525;      /* Negro carbón: texto y contraste */
+  --negro: #181818;       /* Negro profundo: fondos de impacto */
+
+  /* Derivados para pantalla (contraste AA sobre --blanco) */
+  --rojo-hondo: #93152A;  /* hover del rojo */
+  --tinta: var(--carbon);
+  --tinta-2: #4F4D49;
+  --tinta-3: #66645F;
+  --linea: #DCDDD8;
+  --superficie: #FFFFFF;
+
+  --titular: "Anton", "Impact", "Haettenschweiler", "Arial Narrow Bold", sans-serif;
+  --texto: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --radio: 18px;
+  --radio-chico: 12px;
+  --sombra: 0 1px 0 rgba(24, 24, 24, .04), 0 14px 34px -18px rgba(24, 24, 24, .28);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--texto);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--tinta);
+  background: var(--blanco);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img, svg { display: block; max-width: 100%; }
+h1, h2, h3, h4, p, ul, ol, figure, blockquote { margin: 0; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+
+:focus-visible { outline: 3px solid var(--azul); outline-offset: 3px; border-radius: 6px; }
+
+/* Enlace para saltar al contenido (teclado y lectores de pantalla) */
+.saltar {
+  position: absolute; left: 16px; top: -60px; z-index: 100;
+  padding: 10px 16px; border-radius: 999px;
+  background: var(--negro); color: var(--blanco); text-decoration: none; font-weight: 700;
+}
+.saltar:focus { top: 12px; }
+
+.solo-lectores {
+  position: absolute !important; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}
+
+/* Antetítulo: Archivo ExtraBold espaciado (manual, p. 14) */
+.antetitulo {
+  font-family: var(--texto);
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--rojo);
+}
+
+/* Botones */
+.boton {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 46px; padding: 12px 22px;
+  border: 2px solid transparent; border-radius: 999px;
+  font-family: var(--texto); font-weight: 800; font-size: 14px; letter-spacing: .06em; text-transform: uppercase;
+  text-decoration: none; cursor: pointer;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
+}
+.boton:hover { transform: translateY(-1px); }
+.boton svg { width: 18px; height: 18px; flex: none; }
+.boton--rojo { background: var(--rojo); color: var(--blanco); }
+.boton--rojo:hover { background: var(--rojo-hondo); }
+.boton--claro { background: var(--blanco); color: var(--negro); }
+.boton--claro:hover { background: var(--rojo); color: var(--blanco); }
+.boton--contorno { border-color: currentColor; background: transparent; }
+.boton--contorno:hover { background: var(--blanco); color: var(--negro); border-color: var(--blanco); }
+
+/* Línea de fuego: contorno de la llama, grande y recortado por los bordes (manual, p. 16).
+   Siempre en línea, nunca rellena; nunca tapa textos. */
+.linea-de-fuego {
+  position: absolute; pointer-events: none; z-index: 0;
+  fill: none; stroke: var(--rojo); stroke-linejoin: round;
+}
+.linea-de-fuego path { vector-effect: non-scaling-stroke; stroke-width: 5px; }
+
+/* Banda de libros: remate inferior (manual, p. 15) */
+.banda-de-libros {
+  height: 52px;
+  background-repeat: repeat-x;
+  background-position: left bottom;
+  background-size: auto 52px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

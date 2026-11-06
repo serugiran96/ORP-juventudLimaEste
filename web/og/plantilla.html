@@ -1,0 +1,46 @@
+<!doctype html>
+<!--
+  Plantilla de las imágenes para compartir (og:image), 1200 × 630 px.
+  No se publica. Cómo regenerarlas: ver web/README.md, sección "Imágenes para compartir".
+  ?pieza=portada   -> publico/recursos/og/portada.png
+  ?pieza=documento -> publico/recursos/og/documento.png
+-->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Imagen para compartir</title>
+<link rel="stylesheet" href="../publico/recursos/css/marca.css">
+<style>
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; background: var(--negro); color: var(--blanco); }
+  .pieza { position: relative; width: 1200px; height: 630px; overflow: hidden; }
+  .linea-de-fuego { top: -120px; right: -150px; width: 640px; height: auto; opacity: .55; }
+  .contenido { position: absolute; left: 80px; top: 70px; bottom: 110px; right: 80px; display: flex; align-items: center; gap: 64px; z-index: 1; }
+  .logo { width: 230px; flex: none; }
+  .contenido--solo-logo { justify-content: center; }
+  .contenido--solo-logo .logo { width: 250px; }
+  .titular { font-family: var(--titular); font-size: 96px; line-height: .98; }
+  .titular .rojo { color: var(--rojo); }
+  .titular--doc { font-size: 92px; max-width: 9.5ch; }
+  .antetitulo { color: var(--blanco); opacity: .85; font-size: 18px; margin-bottom: 18px; }
+  .banda-de-libros { position: absolute; left: 0; right: 0; bottom: 0; height: 64px; background-size: auto 64px; background-image: url("../publico/recursos/img/banda-de-libros_fondo-oscuro.svg"); }
+</style>
+</head>
+<body>
+<div class="pieza">
+  <svg class="linea-de-fuego" viewBox="64 34 272 266" aria-hidden="true"><path d="M200 296 C120 296,62 244,70 174 C76 128,104 104,108 70 C130 92,138 116,134 140 C152 112,168 84,166 40 C206 70,226 106,222 140 C236 122,246 100,244 76 C290 112,334 172,326 226 C318 270,268 296,200 296 Z"/></svg>
+  <div class="contenido">
+    <img class="logo" src="../publico/recursos/img/logo_negativo.svg" alt="">
+    <div id="texto"></div>
+  </div>
+  <div class="banda-de-libros"></div>
+</div>
+<script>
+  var pieza = new URLSearchParams(location.search).get("pieza") || "portada";
+  if (pieza === "documento") {
+    document.getElementById("texto").innerHTML = '<p class="titular titular--doc">Rita Poma y el Puno de su tiempo</p>';
+  } else {
+    document.querySelector(".contenido").classList.add("contenido--solo-logo");
+  }
+</script>
+</body>
+</html>
