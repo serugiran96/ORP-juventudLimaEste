@@ -2,10 +2,9 @@
    Documento en formato web: interacción.
    Todo es opcional: sin JavaScript la página se lee completa.
    1. Barra de progreso de lectura
-   2. Índice: marca el capítulo que se está leyendo y se abre como panel en móvil
-   3. Pestañas (demandas del Comité Tahuantinsuyo)
-   4. Barras de los gráficos: crecen al aparecer en pantalla
-   5. Bibliografía: cuenta de fuentes
+   2. Índice desplegable: marca el capítulo que se está leyendo
+   3. Barras del gráfico: crecen al aparecer en pantalla
+   4. Bibliografía: cuenta de fuentes
    ========================================================================== */
 (function () {
   "use strict";
@@ -74,6 +73,9 @@
 
   // El capítulo actual es el último cuyo inicio ya pasó bajo la barra superior.
   function capituloActual() {
+    // Al final de la página, el último capítulo es el actual aunque su inicio no llegue arriba.
+    var alFinal = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+    if (alFinal) return capitulos[capitulos.length - 1];
     var limite = window.innerHeight * 0.3;
     var actual = null;
     capitulos.forEach(function (c) {
@@ -101,59 +103,7 @@
     revisarCapitulo();
   }
 
-  /* 3. Pestañas ----------------------------------------------------------- */
-  Array.prototype.forEach.call(document.querySelectorAll("[data-pestanas]"), function (grupo, g) {
-    var paneles = Array.prototype.slice.call(grupo.querySelectorAll(".pestana"));
-    if (!paneles.length) return;
-    var lista = document.createElement("div");
-    lista.className = "pestanas__lista";
-    lista.setAttribute("role", "tablist");
-    lista.setAttribute("aria-label", "Demandas por tema");
-
-    var botones = paneles.map(function (panel, i) {
-      var tema = panel.querySelector(".pestana__tema");
-      var b = document.createElement("button");
-      b.type = "button";
-      b.className = "pestanas__boton";
-      b.id = "pestana-" + g + "-" + i;
-      b.textContent = tema ? tema.textContent : String(i + 1);
-      b.setAttribute("role", "tab");
-      b.setAttribute("aria-controls", "panel-" + g + "-" + i);
-      panel.id = "panel-" + g + "-" + i;
-      panel.setAttribute("role", "tabpanel");
-      panel.setAttribute("aria-labelledby", b.id);
-      panel.tabIndex = 0;
-      lista.appendChild(b);
-      return b;
-    });
-
-    function elegir(i, enfocar) {
-      botones.forEach(function (b, j) {
-        var activo = i === j;
-        b.setAttribute("aria-selected", activo ? "true" : "false");
-        b.tabIndex = activo ? 0 : -1;
-        paneles[j].hidden = !activo;
-      });
-      if (enfocar) botones[i].focus();
-    }
-    botones.forEach(function (b, i) {
-      b.addEventListener("click", function () { elegir(i, false); });
-      b.addEventListener("keydown", function (e) {
-        var n = botones.length, destino = null;
-        if (e.key === "ArrowRight") destino = (i + 1) % n;
-        else if (e.key === "ArrowLeft") destino = (i - 1 + n) % n;
-        else if (e.key === "Home") destino = 0;
-        else if (e.key === "End") destino = n - 1;
-        if (destino !== null) { e.preventDefault(); elegir(destino, true); }
-      });
-    });
-
-    grupo.insertBefore(lista, grupo.firstChild);
-    grupo.classList.add("activas");
-    elegir(0, false);
-  });
-
-  /* 4. Barras que crecen al aparecer ------------------------------------- */
+  /* 3. Barras que crecen al aparecer ------------------------------------- */
   var graficos = document.querySelectorAll(".grafico");
   if (movimientoReducido || !("IntersectionObserver" in window)) {
     Array.prototype.forEach.call(graficos, function (el) { el.classList.add("visible"); });
@@ -169,7 +119,7 @@
     Array.prototype.forEach.call(graficos, function (el) { observador.observe(el); });
   }
 
-  /* 5. Cuenta de fuentes en la bibliografía ------------------------------- */
+  /* 4. Cuenta de fuentes en la bibliografía ------------------------------- */
   Array.prototype.forEach.call(document.querySelectorAll("[data-cuenta]"), function (span) {
     var lista = span.closest("details").querySelector("ul");
     if (lista) span.textContent = "(" + lista.children.length + ")";

@@ -52,7 +52,9 @@ Todo sale del *Manual de marca 2026* y del *Kit de marca*:
   gris claro `#EDEEEA`, negro carbón `#252525` y negro profundo `#181818` (en `recursos/css/marca.css`).
 - **Tipografías:** Anton para titulares; Archivo para textos, subtítulos y antetítulos.
 - **Versión oscura** (portadas, impacto) en la portada; **versión clara** (documentos y web) en el informe.
-- **Línea de fuego** siempre en línea, nunca rellena, sin tapar textos; **banda de libros** como remate inferior.
+- **Línea de fuego** siempre en línea, nunca rellena; **banda de libros** como remate inferior; **libro sólido** como viñeta.
+- **Diseño editorial, no de plantilla:** separaciones con líneas finas (como el índice del manual) y tablas como las
+  del PDF. Sin tarjetas con bordes de colores, sin cajas de cifras y sin fechas en los rótulos.
 - Logos sin deformar, sin sombras y por encima del tamaño mínimo (isotipo ≥ 48 px, logo principal ≥ 120 px).
 
 ## Verlo en tu computadora
@@ -96,20 +98,18 @@ Usa `wrangler.jsonc`, que ya tiene el nombre del Worker (`web`), la carpeta (`./
 
 ## Agregar un botón a la portada
 
-En `publico/index.html`, dentro de `<ul class="enlaces">`, copia un `<li>` completo y cambia tres cosas:
+En `publico/index.html`, dentro de `<ul class="enlaces">`, copia un `<li>` completo y cambia el enlace y el título:
 
 ```html
 <li>
   <a class="enlace" href="DIRECCIÓN-DEL-ENLACE">
-    <span>
-      <span class="antetitulo">ANTETÍTULO CORTO</span>
-      <span class="enlace__titulo">Título del botón</span>
-    </span>
-    <span class="enlace__flecha" aria-hidden="true">…(igual que el existente)…</span>
+    <span class="enlace__titulo">Título del botón</span>
+    <svg …>…</svg>  <!-- la flecha: copiarla igual que en el botón existente -->
   </a>
 </li>
 ```
 
+- Los botones son cápsulas como los stickers del manual y toman los colores en orden: rojo, azul, blanco.
 - Si es una página nueva del sitio: crea una carpeta en `publico/` con su `index.html` y usa `href="nombre-carpeta/"`.
 - Si es un enlace externo (Instagram, WhatsApp, formulario): usa la dirección completa, por ejemplo
   `href="https://www.instagram.com/ritapoma.limaeste/"`.
@@ -119,6 +119,8 @@ En `publico/index.html`, dentro de `<ul class="enlaces">`, copia un `<li>` compl
 - **Texto de la web:** está en `publico/rita-poma-y-el-puno/index.html`, copiado tal cual del PDF. Cada capítulo es
   un `<section id="…">` y las citas van dentro de `<span class="ref">(Autor, año)</span>` (se ven en gris).
 - **PDF:** reemplaza `publico/descargas/rita-poma-y-el-puno-de-su-tiempo.pdf` manteniendo el mismo nombre.
+- **Contacto al final** («¿Tienes más información?»): correo `organizacionritapoma@gmail.com` e Instagram
+  `@ritapoma.limaeste`. Están en la sección `id="mas-informacion"` del mismo archivo.
 
 ## Imágenes para compartir
 

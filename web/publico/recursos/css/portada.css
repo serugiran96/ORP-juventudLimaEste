@@ -25,7 +25,7 @@
   opacity: .42;
 }
 @media (min-width: 900px) {
-  .portada .linea-de-fuego { top: -4vh; right: -36vw; width: 72vw; }
+  .portada .linea-de-fuego { top: -14vh; right: -8vw; width: 46vw; opacity: .5; }
 }
 
 .portada__contenido {
@@ -67,40 +67,25 @@
   gap: 14px;
 }
 
+/* Cada botón es una cápsula como los stickers del manual ("Pensar.", "Organizar.", "Transformar."):
+   rojo, azul y blanco, en ese orden. */
 .enlace {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  gap: 16px;
-  padding: 18px 18px 18px 22px;
-  border-radius: var(--radio);
-  background: var(--blanco);
-  color: var(--negro);
-  text-align: left;
-  text-decoration: none;
-  box-shadow: 0 18px 40px -24px rgba(0, 0, 0, .9);
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  min-height: 66px; padding: 14px 22px 14px 28px;
+  border-radius: 999px;
+  background: var(--rojo); color: var(--blanco);
+  text-align: left; text-decoration: none;
   transition: background-color .2s ease, color .2s ease, transform .2s ease;
 }
-.enlace:hover { background: var(--rojo); color: var(--blanco); transform: translateY(-2px); }
-.enlace:hover .antetitulo { color: var(--blanco); }
-.enlace:hover .enlace__flecha { background: var(--blanco); color: var(--rojo); }
-
-.enlace .antetitulo { display: block; font-size: 11px; letter-spacing: .12em; }
+.enlaces li:nth-child(3n+2) .enlace { background: var(--azul); }
+.enlaces li:nth-child(3n+3) .enlace { background: var(--blanco); color: var(--negro); }
+.enlace:hover, .enlaces li .enlace:hover { background: var(--blanco); color: var(--rojo); transform: translateY(-2px); }
 .enlace__titulo {
-  display: block;
-  margin-top: 4px;
-  font-family: var(--titular);
-  font-weight: 400;
-  font-size: 25px;
-  line-height: 1.1;
+  font-family: var(--titular); font-weight: 400;
+  font-size: 23px; line-height: 1.12;
+  text-wrap: balance;
 }
-.enlace__flecha {
-  display: grid; place-items: center;
-  width: 44px; height: 44px; border-radius: 50%;
-  background: var(--rojo); color: var(--blanco);
-  transition: background-color .2s ease, color .2s ease;
-}
-.enlace__flecha svg { width: 20px; height: 20px; }
+.enlace svg { width: 24px; height: 24px; flex: none; }
 
 .portada__pie {
   position: relative; z-index: 1;
