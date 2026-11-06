@@ -67,6 +67,9 @@ python3 -m http.server 8000 -d publico
 
 Luego entra a <http://localhost:8000> en el navegador. Para cerrarlo: `Ctrl + C`.
 
+También se puede abrir `publico/index.html` con doble clic y los botones funcionan, pero el navegador bloquea las
+tipografías de la marca en archivos locales (se ven otras letras). Para revisar el diseño, usa el comando de arriba.
+
 ## Publicar en Cloudflare
 
 Cada publicación **reemplaza todo** lo que había en el Worker `web` por lo que hay en `publico/`. Lo que no esté en
