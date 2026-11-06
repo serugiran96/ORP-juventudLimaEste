@@ -1,0 +1,5 @@
+# Redirecciones del sitio (Cloudflare las aplica antes de buscar archivos).
+# El observatorio es interno y ya no se publica aquí: los enlaces viejos llevan a la portada.
+# 302 = temporal, por si más adelante vuelve a publicarse con acceso restringido.
+/observatorio    /  302
+/observatorio/*  /  302
