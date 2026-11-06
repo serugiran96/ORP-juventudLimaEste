@@ -16,6 +16,8 @@
   .linea-de-fuego { top: -120px; right: -150px; width: 640px; height: auto; opacity: .55; }
   .contenido { position: absolute; left: 80px; top: 70px; bottom: 110px; right: 80px; display: flex; align-items: center; gap: 64px; z-index: 1; }
   .logo { width: 230px; flex: none; }
+  .contenido--solo-logo { justify-content: center; }
+  .contenido--solo-logo .logo { width: 250px; }
   .titular { font-family: var(--titular); font-size: 96px; line-height: .98; }
   .titular .rojo { color: var(--rojo); }
   .titular--doc { font-size: 92px; max-width: 9.5ch; }
@@ -34,9 +36,11 @@
 </div>
 <script>
   var pieza = new URLSearchParams(location.search).get("pieza") || "portada";
-  document.getElementById("texto").innerHTML = pieza === "documento"
-    ? '<p class="titular titular--doc">Rita Poma y el Puno de su tiempo</p>'
-    : '<p class="titular">Pensar.<br>Organizar.<br><span class="rojo">Transformar.</span></p>';
+  if (pieza === "documento") {
+    document.getElementById("texto").innerHTML = '<p class="titular titular--doc">Rita Poma y el Puno de su tiempo</p>';
+  } else {
+    document.querySelector(".contenido").classList.add("contenido--solo-logo");
+  }
 </script>
 </body>
 </html>

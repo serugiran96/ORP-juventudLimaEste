@@ -280,8 +280,6 @@ html { scroll-behavior: smooth; scroll-padding-top: calc(var(--alto-barra) + 20p
   display: flex; flex-direction: column; align-items: center; text-align: center; gap: 24px;
 }
 .pie__interior img { width: 120px; height: auto; }
-.pie__eslogan { font-family: var(--titular); font-size: 28px; line-height: 1.1; }
-.pie__eslogan span { color: var(--rojo); }
 .pie__acciones { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 300px; }
 @media (min-width: 640px) { .pie__acciones { flex-direction: row; justify-content: center; max-width: none; } }
 .pie .banda-de-libros { background-image: url("../img/banda-de-libros_fondo-oscuro.svg"); }
