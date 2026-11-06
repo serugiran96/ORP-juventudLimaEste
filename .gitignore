@@ -219,3 +219,7 @@ __marimo__/
 
 # macOS
 .DS_Store
+
+# Observatorio interno: se copia a la carpeta del sitio solo para publicarlo en Cloudflare.
+# Nunca se sube a GitHub (el repositorio es público). Ver web/README.md.
+web/publico/observatorio/

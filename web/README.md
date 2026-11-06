@@ -3,31 +3,32 @@
 Es la página que se ve en **https://web.organizacionritapoma.workers.dev/**. Está alojada en Cloudflare, en un
 Worker llamado `web`.
 
-Es un sitio **público**: todo lo que está en `publico/` lo puede ver cualquier persona. El observatorio de juventudes
-es **interno** y **no** está aquí (ver más abajo).
+Todo lo que está en `publico/` lo puede ver cualquier persona. El observatorio de juventudes es **interno**: se
+publica en `/observatorio/` sin enlaces desde la portada y **nunca se sube a GitHub** (ver más abajo).
 
 ## Qué tiene
 
 | Dirección | Página | Archivo |
 |---|---|---|
 | `/` | Portada con botones, tipo "linktree" | `publico/index.html` |
-| `/rita-poma-y-el-puno/` | Informe *Rita Poma y el Puno de su tiempo* en formato web | `publico/rita-poma-y-el-puno/index.html` |
+| `/archivo-rita-poma/` | Informe *Rita Poma y el Puno de su tiempo* en formato web | `publico/archivo-rita-poma/index.html` |
 | `/descargas/rita-poma-y-el-puno-de-su-tiempo.pdf` | El mismo informe en PDF | `publico/descargas/` |
-| `/observatorio/` | Ya no existe: lleva a la portada | `publico/_redirects` |
+| `/observatorio/` | Observatorio de Juventudes (interno, sin enlaces desde la portada) | `publico/observatorio/index.html`, copiado con `copiar_observatorio.sh`; no está en GitHub |
 | cualquier otra | Página "no existe" | `publico/404.html` |
 
 ## Estructura
 
 ```
 web/
-├── README.md            este archivo
-├── wrangler.jsonc       configuración del Worker "web" (para publicar desde la terminal)
+├── README.md               este archivo
+├── wrangler.jsonc          configuración del Worker "web" (para publicar desde la terminal)
+├── copiar_observatorio.sh  copia el observatorio interno a publico/observatorio/ antes de publicar
 ├── og/plantilla.html    plantilla de las imágenes para compartir (no se publica)
 └── publico/             TODO lo que se sube a Cloudflare
     ├── index.html                    portada
-    ├── rita-poma-y-el-puno/index.html  informe
+    ├── archivo-rita-poma/index.html  informe
+    ├── observatorio/index.html       observatorio interno (solo en tu computadora; .gitignore)
     ├── 404.html                      página de error
-    ├── _redirects                    redirecciones (Cloudflare las lee; no se ven como página)
     ├── .assetsignore                 archivos que no se suben (.DS_Store)
     ├── favicon.ico
     ├── descargas/                    PDF del informe
@@ -75,6 +76,14 @@ tipografías de la marca en archivos locales (se ven otras letras). Para revisar
 Cada publicación **reemplaza todo** lo que había en el Worker `web` por lo que hay en `publico/`. Lo que no esté en
 `publico/` deja de existir en internet.
 
+**Antes de publicar, copia el observatorio** (desde la carpeta `web/`), porque no viene de GitHub:
+
+```bash
+sh copiar_observatorio.sh
+```
+
+Si te olvidas, `/observatorio/` desaparece de la web.
+
 ### Opción A · Desde la terminal (recomendada)
 
 Necesita Node.js (ya está instalado). Desde la carpeta `web/`:
@@ -96,8 +105,8 @@ Usa `wrangler.jsonc`, que ya tiene el nombre del Worker (`web`), la carpeta (`./
 ### Después de publicar, revisar
 
 - La portada abre en <https://web.organizacionritapoma.workers.dev/>.
-- El botón lleva al informe y el PDF se descarga.
-- <https://web.organizacionritapoma.workers.dev/observatorio/> **ya no muestra el observatorio** (lleva a la portada).
+- El botón lleva al informe (<https://web.organizacionritapoma.workers.dev/archivo-rita-poma/>) y el PDF se descarga.
+- <https://web.organizacionritapoma.workers.dev/observatorio/> muestra el observatorio.
 
 ## Agregar un botón a la portada
 
@@ -119,7 +128,7 @@ En `publico/index.html`, dentro de `<ul class="enlaces">`, copia un `<li>` compl
 
 ## Actualizar el informe
 
-- **Texto de la web:** está en `publico/rita-poma-y-el-puno/index.html`, copiado tal cual del PDF. Cada capítulo es
+- **Texto de la web:** está en `publico/archivo-rita-poma/index.html`, copiado tal cual del PDF. Cada capítulo es
   un `<section id="…">` y las citas van dentro de `<span class="ref">(Autor, año)</span>` (se ven en gris).
 - **PDF:** reemplaza `publico/descargas/rita-poma-y-el-puno-de-su-tiempo.pdf` manteniendo el mismo nombre.
 - **Contacto al final** («¿Tienes más información?»): correo `organizacionritapoma@gmail.com` e Instagram
@@ -136,6 +145,13 @@ se usa otro dominio (por ejemplo `organizacionritapoma.com`), hay que cambiar es
 ## El observatorio (interno)
 
 El Observatorio de Juventudes de Lima Este está en `proyectos/modelo-definicion-actividades/observatorio/` y se
-genera solo en local (`salida/` no se versiona). **No se publica en este sitio.** Si se necesita compartirlo con el
-equipo, debe ir en un Worker aparte protegido con Cloudflare Access (acceso solo por correo autorizado), nunca en
-`publico/`.
+genera solo en local (`salida/` no se versiona, porque incluye datos).
+
+- Se publica en `/observatorio/`, **sin enlaces desde la portada** y con la etiqueta `noindex`, para que no aparezca en
+  buscadores.
+- **No tiene contraseña:** quien tenga el enlace puede verlo. Para restringirlo a correos autorizados, se puede
+  activar Cloudflare Access en el Worker.
+- `copiar_observatorio.sh` copia `salida/sitio/observatorio/index.html` a `publico/observatorio/`. Esa carpeta está en
+  `.gitignore`: **el observatorio nunca se sube a GitHub**, porque el repositorio es público.
+- Si algún día Cloudflare se conecta a GitHub para publicar solo, el observatorio no estaría ahí: habría que
+  publicarlo desde la computadora o por separado.
