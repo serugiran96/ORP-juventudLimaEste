@@ -36,9 +36,9 @@ web/
         ├── css/marca.css             colores, tipografías y botones del manual de marca
         ├── css/portada.css           diseño de la portada
         ├── css/documento.css         diseño del informe
-        ├── js/documento.js           interacción del informe (opcional: sin él se lee igual)
         ├── fuentes/                  Anton y Archivo (licencia SIL OFL 1.1, archivos OFL-*.txt)
         ├── img/                      logos y elementos gráficos del kit de marca
+        ├── img/informe/              retrato de Rita y fotos del informe (de los carruseles de la organización)
         ├── favicon/                  íconos del kit de marca
         └── og/                       imágenes que aparecen al compartir el enlace
 ```
@@ -54,8 +54,12 @@ Todo sale del *Manual de marca 2026* y del *Kit de marca*:
 - **Tipografías:** Anton para titulares; Archivo para textos, subtítulos y antetítulos.
 - **Versión oscura** (portadas, impacto) en la portada; **versión clara** (documentos y web) en el informe.
 - **Línea de fuego** siempre en línea, nunca rellena; **banda de libros** como remate inferior; **libro sólido** como viñeta.
-- **Diseño editorial, no de plantilla:** separaciones con líneas finas (como el índice del manual) y tablas como las
-  del PDF. Sin tarjetas con bordes de colores, sin cajas de cifras y sin fechas en los rótulos.
+- **Diseño editorial, no de plantilla:** separaciones con líneas finas (como el índice del manual). Sin tarjetas con
+  bordes de colores, sin cajas de cifras y sin fechas en los rótulos.
+- **El informe tiene un diseño propio, más artístico y menos "pop"**, tomado del carrusel rojo de la organización:
+  portada roja con el retrato de Rita en trama, fotos en rojo con marco fino, papel gris con grano, bloques rojos y
+  Anton grande. Ahí no se usan los botones de colores, la línea de fuego ni la banda de libros. El logo va a una tinta
+  negro con las líneas de separación en rojo (`img/logo-horizontal_una-tinta-negro_fondo-rojo.svg`).
 - Logos sin deformar, sin sombras y por encima del tamaño mínimo (isotipo ≥ 48 px, logo principal ≥ 120 px).
 
 ## Verlo en tu computadora
@@ -128,8 +132,15 @@ En `publico/index.html`, dentro de `<ul class="enlaces">`, copia un `<li>` compl
 
 ## Actualizar el informe
 
-- **Texto de la web:** está en `publico/archivo-rita-poma/index.html`, copiado tal cual del PDF. Cada capítulo es
-  un `<section id="…">` y las citas van dentro de `<span class="ref">(Autor, año)</span>` (se ven en gris).
+- **Texto de la web:** está en `publico/archivo-rita-poma/index.html`, copiado tal cual del PDF (versión de
+  noviembre de 2026, con 8 capítulos y 103 notas). Cada capítulo es un `<section id="…">`. Las llamadas a nota son
+  `<sup><a id="ref-N" href="#nota-N">N</a></sup>` y cada nota de la lista final vuelve al texto con su número.
+- **Citas destacadas:** los bloques rojos con una frase grande (Mariátegui en el capítulo 1 y Mariano Larico en el
+  4) repiten frases que ya están en el texto. Tienen `aria-hidden="true"` para que los lectores de pantalla no las lean
+  dos veces.
+- **Fotos:** salen de las láminas del carrusel «Conoce a Rita Poma». `retrato.jpg` va en la portada y una foto en
+  rojo abre los capítulos 1 (`feria`), 2 (`camino`), 4 (`campo`), 5 (`pampa`), 6 (`monumento`) y 7 (`calle`). Para
+  cambiar cuál va en cada capítulo, edita el `<figure class="foto-roja">` de ese capítulo.
 - **PDF:** reemplaza `publico/descargas/rita-poma-y-el-puno-de-su-tiempo.pdf` manteniendo el mismo nombre.
 - **Contacto al final** («¿Tienes más información?»): correo `organizacionritapoma@gmail.com` e Instagram
   `@ritapoma.limaeste`. Están en la sección `id="mas-informacion"` del mismo archivo.

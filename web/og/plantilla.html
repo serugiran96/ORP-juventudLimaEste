@@ -23,6 +23,17 @@
   .titular--doc { font-size: 92px; max-width: 9.5ch; }
   .antetitulo { color: var(--blanco); opacity: .85; font-size: 18px; margin-bottom: 18px; }
   .banda-de-libros { position: absolute; left: 0; right: 0; bottom: 0; height: 64px; background-size: auto 64px; background-image: url("../publico/recursos/img/banda-de-libros_fondo-oscuro.svg"); }
+
+  /* Informe: mismo diseño rojo que su portada (retrato de Rita en trama, Anton grande) */
+  .informe { display: none; position: relative; width: 1200px; height: 630px; overflow: hidden; background: var(--rojo); }
+  .informe::before { content: ""; position: absolute; inset: 0; opacity: .15; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E"); }
+  .informe__retrato { position: absolute; right: 72px; top: 56px; height: 574px; width: auto; object-fit: cover; object-position: left top; }
+  .informe__texto { position: absolute; left: 72px; top: 64px; z-index: 1; }
+  .informe__firma { font-family: var(--texto); font-weight: 700; font-size: 19px; letter-spacing: .2em; text-transform: uppercase; color: #F4F1EA; margin-bottom: 18px; }
+  .informe__titulo { font-family: var(--titular); font-size: 104px; line-height: .9; text-transform: uppercase; color: #F4F1EA; max-width: 690px; }
+  .informe__logo { position: absolute; left: 72px; bottom: 48px; width: 150px; z-index: 1; }
+  .solo-informe .pieza { display: none; }
+  .solo-informe .informe { display: block; }
 </style>
 </head>
 <body>
@@ -34,10 +45,17 @@
   </div>
   <div class="banda-de-libros"></div>
 </div>
+<div class="informe">
+  <img class="informe__retrato" src="../publico/recursos/img/informe/retrato.jpg" alt="">
+  <div class="informe__texto">
+    <p class="informe__titulo">Rita Poma y el Puno de su tiempo</p>
+  </div>
+  <img class="informe__logo" src="../publico/recursos/img/logo-horizontal_una-tinta-negro_fondo-rojo.svg" alt="">
+</div>
 <script>
   var pieza = new URLSearchParams(location.search).get("pieza") || "portada";
   if (pieza === "documento") {
-    document.getElementById("texto").innerHTML = '<p class="titular titular--doc">Rita Poma y el Puno de su tiempo</p>';
+    document.body.classList.add("solo-informe");
   } else {
     document.querySelector(".contenido").classList.add("contenido--solo-logo");
   }
