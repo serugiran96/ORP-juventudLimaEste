@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Rita Poma y el Puno de su tiempo · Organización Juvenil Rita Poma</title>
-<meta name="description" content="Rita Poma (1900–1924) fue una maestra aimara de Moho, Puno. Fundó una escuela rural que los hacendados destruyeron varias veces y fue dirigente de Huancho Lima, la ciudad que las comunidades aimaras de Huancané y Moho construyeron en 1923.">
+<meta name="description" content="Rita Poma (1900–1924) fue una maestra aymara de Moho, Puno. Fundó una escuela rural que los hacendados destruyeron varias veces y fue dirigente de Wancho Lima, la ciudad que las comunidades aymaras de Huancané y Moho construyeron en 1923.">
 <meta name="theme-color" content="#181818">
 
 <!-- Vista previa al compartir el enlace (WhatsApp, Instagram, Facebook) -->
@@ -12,7 +12,7 @@
 <meta property="og:locale" content="es_PE">
 <meta property="og:site_name" content="Organización Juvenil Rita Poma">
 <meta property="og:title" content="Rita Poma y el Puno de su tiempo">
-<meta property="og:description" content="Rita Poma (1900–1924) fue una maestra aimara de Moho, Puno. Fundó una escuela rural que los hacendados destruyeron varias veces y fue dirigente de Huancho Lima, la ciudad que las comunidades aimaras de Huancané y Moho construyeron en 1923.">
+<meta property="og:description" content="Rita Poma (1900–1924) fue una maestra aymara de Moho, Puno. Fundó una escuela rural que los hacendados destruyeron varias veces y fue dirigente de Wancho Lima, la ciudad que las comunidades aymaras de Huancané y Moho construyeron en 1923.">
 <meta property="og:image" content="https://web.organizacionritapoma.workers.dev/recursos/og/documento.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -27,33 +27,63 @@
 <link rel="preload" as="image" href="../recursos/img/informe/retrato.jpg">
 <link rel="stylesheet" href="../recursos/css/marca.css">
 <link rel="stylesheet" href="../recursos/css/documento.css">
+<script>document.documentElement.classList.add("js");</script>
+<script src="../recursos/js/documento.js" defer></script>
 </head>
 <body class="informe">
 <a class="saltar" href="#introduccion">Saltar al contenido</a>
 
-<!-- ============ PORTADA ============ -->
-<header class="apertura rojo">
-  <nav class="apertura__nav" aria-label="Sitio">
-    <a class="vinculo" href="../index.html"><span aria-hidden="true">←</span> Inicio</a>
-    <a class="vinculo" href="../descargas/rita-poma-y-el-puno-de-su-tiempo.pdf" download>Descargar PDF <span aria-hidden="true">↓</span></a>
+<!-- ============ BARRA SUPERIOR (fija) ============ -->
+<header class="barra">
+  <div class="barra__fila">
+    <a class="barra__inicio" href="../index.html" aria-label="Volver al inicio">
+      <img src="../recursos/img/isotipo_una-tinta-blanco_fondo-rojo.svg" width="49" height="48" alt="">
+      <span class="barra__volver">Inicio</span>
+    </a>
+    <p class="barra__titulo">Rita Poma y el Puno de su tiempo</p>
+    <button class="barra__indice" type="button" aria-expanded="false" aria-controls="menu">
+      <span class="barra__actual" data-actual>Índice</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <a class="barra__pdf vinculo" href="../descargas/rita-poma-y-el-puno-de-su-tiempo.pdf" download>PDF <span aria-hidden="true">↓</span></a>
+  </div>
+  <div class="barra__progreso" aria-hidden="true"><span data-progreso></span></div>
+  <nav id="menu" class="menu" aria-label="Índice del informe">
+    <ol>
+      <li><a href="#lana"><span class="menu__n">1</span><span>La lana y el despojo de las tierras comunales</span></a></li>
+      <li><a href="#trabajo-forzado"><span class="menu__n">2</span><span>Trabajo forzado y justicia negada</span></a></li>
+      <li><a href="#voto-y-escuela"><span class="menu__n">3</span><span>El voto y la escuela</span></a></li>
+      <li><a href="#escuela-y-tierra"><span class="menu__n">4</span><span>Escuela y tierra</span></a></li>
+      <li><a href="#organizaciones"><span class="menu__n">5</span><span>Organizaciones y rebeliones</span></a></li>
+      <li><a href="#wancho-lima"><span class="menu__n">6</span><span>Wancho Lima</span></a></li>
+      <li><a href="#rita-poma"><span class="menu__n">7</span><span>Rita Poma</span></a></li>
+      <li><a href="#fuentes-difieren"><span class="menu__n">8</span><span>Puntos en que las fuentes difieren</span></a></li>
+      <li><a href="#notas"><span class="menu__n"></span><span>Notas</span></a></li>
+      <li><a href="#bibliografia"><span class="menu__n"></span><span>Bibliografía</span></a></li>
+      <li><a href="#mas-informacion"><span class="menu__n"></span><span>¿Tienes más información?</span></a></li>
+    </ol>
   </nav>
+</header>
+
+<!-- ============ PORTADA ============ -->
+<section class="apertura rojo" aria-labelledby="titulo">
   <div class="apertura__cuerpo">
     <div class="apertura__texto">
-      <h1 class="apertura__titulo">Rita Poma y el Puno de su tiempo</h1>
+      <h1 id="titulo" class="apertura__titulo">Rita Poma y el Puno de su tiempo</h1>
     </div>
     <img class="apertura__retrato" src="../recursos/img/informe/retrato.jpg" width="555" height="1105"
          alt="Retrato de Rita Poma." decoding="async" fetchpriority="high">
     <img class="apertura__logo" src="../recursos/img/logo-horizontal_una-tinta-negro_fondo-rojo.svg" width="150" height="77"
          alt="Rita Poma, Organización Juvenil">
   </div>
-</header>
+</section>
 
 <main>
 
 <!-- ============ ENTRADA E ÍNDICE ============ -->
 <section id="introduccion" class="entrada" aria-label="Presentación">
   <div class="columna">
-    <p class="entradilla">Rita Poma (1900–1924) fue una maestra aimara de Moho, Puno. Fundó una escuela rural que los hacendados destruyeron varias veces y fue dirigente de Huancho Lima, la ciudad que las comunidades aimaras de Huancané y Moho construyeron en 1923. La asesinaron a los 24 años.</p>
+    <p class="entradilla">Rita Poma (1900–1924) fue una maestra aymara de Moho, Puno. Fundó una escuela rural que los hacendados destruyeron varias veces y fue dirigente de Wancho Lima, la ciudad que las comunidades aymaras de Huancané y Moho construyeron en 1923. La asesinaron a los 24 años.</p>
     <p>Vivió en un Puno donde las haciendas crecían sobre las tierras de las comunidades, donde la mayoría indígena no podía votar y donde los gamonales castigaban a quienes aprendían a leer. Las comunidades respondieron organizándose: enviaron mensajeros a Lima, fundaron escuelas propias, formaron comités y congresos, y se rebelaron.</p>
     <p>En las fuentes aparece como Rita Puma Justo y como Rita Poma. Aquí se usa Rita Poma, el nombre con que se la conoce en Puno y el de la organización.</p>
 
@@ -65,7 +95,7 @@
       <li><a href="#voto-y-escuela"><span class="indice__n">3</span><span class="indice__nombre">El voto y la escuela</span></a></li>
       <li><a href="#escuela-y-tierra"><span class="indice__n">4</span><span class="indice__nombre">Escuela y tierra</span></a></li>
       <li><a href="#organizaciones"><span class="indice__n">5</span><span class="indice__nombre">Organizaciones y rebeliones</span></a></li>
-      <li><a href="#huancho-lima"><span class="indice__n">6</span><span class="indice__nombre">Huancho Lima</span></a></li>
+      <li><a href="#wancho-lima"><span class="indice__n">6</span><span class="indice__nombre">Wancho Lima</span></a></li>
       <li><a href="#rita-poma"><span class="indice__n">7</span><span class="indice__nombre">Rita Poma</span></a></li>
       <li><a href="#fuentes-difieren"><span class="indice__n">8</span><span class="indice__nombre">Puntos en que las fuentes difieren</span></a></li>
       <li><a href="#notas"><span class="indice__n"></span><span class="indice__nombre">Notas</span></a></li>
@@ -87,6 +117,18 @@
   </figure>
   <div class="columna">
     <p>Entre 1876 y 1915 el número de haciendas en Puno se multiplicó por más de cuatro, de 705 a 3,219, y ese crecimiento se hizo sobre pastos y tierras de las comunidades indígenas<sup><a id="ref-1" href="#nota-1" role="doc-noteref" aria-label="Nota 1">1</a></sup>. El motor fue la lana. Desde la década de 1830 el altiplano quedó integrado al comercio internacional de lanas y al capital británico, y el Ferrocarril del Sur conectó Puno con Arequipa<sup><a id="ref-2" href="#nota-2" role="doc-noteref" aria-label="Nota 2">2</a></sup>. La lana de oveja y de alpaca salía por los puertos de Islay y Mollendo<sup><a id="ref-3" href="#nota-3" role="doc-noteref" aria-label="Nota 3">3</a></sup>. Entre 1895 y 1935 fue el principal rubro de exportación de la región, y en 1927 la lana que salía por Mollendo representaba «casi el noventa por ciento» de la que exportaba el Perú<sup><a id="ref-4" href="#nota-4" role="doc-noteref" aria-label="Nota 4">4</a></sup>.</p>
+
+  <figure class="cuadro grafico">
+    <figcaption class="cuadro__titulo">Haciendas en Puno</figcaption>
+    <table class="barras">
+      <thead><tr><th scope="col">Año</th><th scope="col">Número de haciendas</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">1876</th><td><span class="barra-dato" style="--valor:0.219"><span class="barra-dato__relleno"></span><span class="barra-dato__cifra">705</span></span></td></tr>
+        <tr><th scope="row">1915</th><td><span class="barra-dato" style="--valor:1.000"><span class="barra-dato__relleno"></span><span class="barra-dato__cifra">3,219</span></span></td></tr>
+      </tbody>
+    </table>
+    <p class="fuente">Fuente: Ruelas Vargas (2019), con datos de Quiroga (1915) y Gallegos (1924).</p>
+  </figure>
     <p>Según el historiador Nils Jacobsen, que estudió el altiplano entre 1780 y 1930, el comercio de la lana no acabó con el monopolio ni con el clientelaje heredados de la Colonia, y las comunidades mantuvieron su solidaridad comunal<sup><a id="ref-5" href="#nota-5" role="doc-noteref" aria-label="Nota 5">5</a></sup>.</p>
     <p>Con el alza de los precios de la lana, las haciendas se expandieron a costa de las tierras de comunidades y parcialidades<sup><a id="ref-6" href="#nota-6" role="doc-noteref" aria-label="Nota 6">6</a></sup>. Las ventas repetidas y las chacras de la Iglesia permitieron parte de ese crecimiento<sup><a id="ref-7" href="#nota-7" role="doc-noteref" aria-label="Nota 7">7</a></sup>. A los comuneros también se les hacía firmar documentos falsos en los que se hacía aparecer que habían recibido «sumas equitativas de dinero» por sus tierras<sup><a id="ref-8" href="#nota-8" role="doc-noteref" aria-label="Nota 8">8</a></sup>. Y los gamonales a menudo fabricaban «sublevaciones indígenas» para justificar la intervención de la fuerza pública; después se apropiaban de las tierras y el ganado de los muertos, de los presos y de quienes tuvieron que huir<sup><a id="ref-9" href="#nota-9" role="doc-noteref" aria-label="Nota 9">9</a></sup>.</p>
     <p>Se llama «gamonalismo» al poder local de los grandes propietarios. Según Bustamante Otero, articulaba a notables locales, autoridades y casas comerciales<sup><a id="ref-10" href="#nota-10" role="doc-noteref" aria-label="Nota 10">10</a></sup>; según Ruelas Vargas, los gamonales consolidaron su control político, económico y eclesiástico de la región<sup><a id="ref-11" href="#nota-11" role="doc-noteref" aria-label="Nota 11">11</a></sup>. José Carlos Mariátegui, que publicó sus <em>Siete ensayos</em> en 1928, cuatro años después del asesinato de Rita, ubicó la raíz de la cuestión indígena en el ensayo «El problema del indio»: «La cuestión indígena arranca de nuestra economía. Tiene sus raíces en el régimen de propiedad de la tierra». En el mismo ensayo, Mariátegui explicó por qué las leyes protectoras no funcionaban: «El gamonalismo invalida inevitablemente toda ley u ordenanza de protección indígena»<sup><a id="ref-12" href="#nota-12" role="doc-noteref" aria-label="Nota 12">12</a></sup>.</p>
@@ -115,7 +157,7 @@
     <p>Además de perder sus tierras, la población indígena estaba «obligada [...] a prestar servicios gratuitos a los gamonales, alcaldes, jueces, al Gobernador y al Cura»<sup><a id="ref-15" href="#nota-15" role="doc-noteref" aria-label="Nota 15">15</a></sup>. El pongaje la obligaba a hacer trabajo doméstico gratuito, durante varias semanas al año, en la casa del hacendado<sup><a id="ref-16" href="#nota-16" role="doc-noteref" aria-label="Nota 16">16</a></sup>. En Santa Rosa de Juli, las autoridades obligaban a los ayllus «a realizar trabajos gratuitos para construir edificios públicos y casas de los gamonales», y para cada misa los comuneros debían entregar al párroco «un carnero degollado, gallinas, conejos, papas, quinua y huevo»<sup><a id="ref-17" href="#nota-17" role="doc-noteref" aria-label="Nota 17">17</a></sup>. Cuando Teodomiro Gutiérrez Cuevas fue subprefecto de Chucuito, en 1903–1904, suprimió el reparto de lanas y los trabajos gratuitos, lo que «significó un golpe demoledor» al gamonalismo<sup><a id="ref-18" href="#nota-18" role="doc-noteref" aria-label="Nota 18">18</a></sup>.</p>
     <p>El gobierno de Leguía impuso una nueva carga. La Ley de Conscripción Vial (Ley 4113, 1920) obligaba a trabajar sin pago en la construcción de caminos, unas dos semanas al año, y recayó sobre todo en los comuneros indígenas. Según el historiador Mario Meza Bazán, gamonales y autoridades se apoderaron de la ley y la usaron contra las comunidades: el Estado les arrancaba trabajo gratuito mientras les negaba los derechos que reconocía a otros. Estuvo vigente hasta la caída de Leguía en 1930<sup><a id="ref-19" href="#nota-19" role="doc-noteref" aria-label="Nota 19">19</a></sup>. Su abolición fue una de las demandas de los congresos indígenas de 1922 y 1923<sup><a id="ref-20" href="#nota-20" role="doc-noteref" aria-label="Nota 20">20</a></sup>.</p>
     <p>Para reclamar, las comunidades enviaban «mensajeros» a Lima con memoriales para el presidente. Ya en la década de 1860, tras la rebelión de Huancané, llegaron a Lima emisarios puneños<sup><a id="ref-21" href="#nota-21" role="doc-noteref" aria-label="Nota 21">21</a></sup>. Muchos fueron reprimidos. En 1914, Juan Callo Apaza y Manuel Ayamamani fueron apresados al volver de Lima, y muchos delegados que regresaban de la capital terminaron presos o asesinados. Andrés Mayta, que se preparaba para viajar, fue apresado por el subprefecto y, según Ruelas Vargas, decapitado en la cárcel de Juli<sup><a id="ref-22" href="#nota-22" role="doc-noteref" aria-label="Nota 22">22</a></sup>. A veces se bloqueaba el camino de los emisarios para que no llegaran; en 1869 un oficial impidió entrar a Palacio a dos indígenas por llevar poncho<sup><a id="ref-23" href="#nota-23" role="doc-noteref" aria-label="Nota 23">23</a></sup>.</p>
-    <p>Entre 1902 y 1920 el gobierno central envió cinco comisiones a investigar la situación de Puno. Tres dejaron informes publicados: Maguiña (1902), Villena (1913) y Roca (1920). El informe que hizo Gutiérrez Cuevas en 1913 «desapareció». La comisión de 1920, enviada por Leguía, recogió más de siete mil reclamos indígenas<sup><a id="ref-24" href="#nota-24" role="doc-noteref" aria-label="Nota 24">24</a></sup>, y según Bustamante Otero fue uno de los detonantes de Huancho Lima. Según Tito Melgar, el informe de esa comisión llevaba adjuntos 7,142 memoriales y el original «habría desaparecido en algún archivo oficial»; el informe se publicó en 1935. El Ejecutivo envió sus propuestas de legislación al Parlamento, donde «se pierde el rastro» de ellas<sup><a id="ref-25" href="#nota-25" role="doc-noteref" aria-label="Nota 25">25</a></sup>.</p>
+    <p>Entre 1902 y 1920 el gobierno central envió cinco comisiones a investigar la situación de Puno. Tres dejaron informes publicados: Maguiña (1902), Villena (1913) y Roca (1920). El informe que hizo Gutiérrez Cuevas en 1913 «desapareció». La comisión de 1920, enviada por Leguía, recogió más de siete mil reclamos indígenas<sup><a id="ref-24" href="#nota-24" role="doc-noteref" aria-label="Nota 24">24</a></sup>, y según Bustamante Otero fue uno de los detonantes de Wancho Lima. Según Tito Melgar, el informe de esa comisión llevaba adjuntos 7,142 memoriales y el original «habría desaparecido en algún archivo oficial»; el informe se publicó en 1935. El Ejecutivo envió sus propuestas de legislación al Parlamento, donde «se pierde el rastro» de ellas<sup><a id="ref-25" href="#nota-25" role="doc-noteref" aria-label="Nota 25">25</a></sup>.</p>
   </div>
 </section>
 
@@ -125,9 +167,45 @@
   </div>
   <div class="columna">
     <p>El reglamento electoral de 1896 limitó la condición de elector y elegible a los varones mayores de 21 años que supieran leer y escribir. Según Peralta, con esa norma el Estado dejó sin voto a la mayoría indígena del país, que no sabía leer ni escribir, durante poco más de ochenta años, hasta la Constitución de 1979<sup><a id="ref-26" href="#nota-26" role="doc-noteref" aria-label="Nota 26">26</a></sup>. En 1899 la población electoral era de 108,597 personas, el 3.2 % de una población estimada en 3,383,000<sup><a id="ref-27" href="#nota-27" role="doc-noteref" aria-label="Nota 27">27</a></sup>. Las mujeres que sabían leer y escribir obtuvieron el voto en 1955, y las personas analfabetas en 1979. Como mujer, Rita no tenía derecho al voto.</p>
+
+  <figure class="cuadro">
+    <figcaption class="cuadro__titulo">Quién podía votar</figcaption>
+    <table class="tabla tabla--anios">
+      <thead><tr><th scope="col">Desde</th><th scope="col">Quiénes</th></tr></thead>
+      <tbody>
+        <tr><td class="tabla__primera">1896</td><td data-rotulo="Quiénes">Varones mayores de 21 años que sabían leer y escribir</td></tr>
+        <tr><td class="tabla__primera">1955</td><td data-rotulo="Quiénes">También las mujeres que sabían leer y escribir</td></tr>
+        <tr><td class="tabla__primera">1979</td><td data-rotulo="Quiénes">También las personas analfabetas</td></tr>
+      </tbody>
+    </table>
+  </figure>
+  <figure class="cuadro grafico grafico--ancho">
+    <figcaption class="cuadro__titulo">Población electoral en 1899</figcaption>
+    <table class="barras">
+      <thead><tr><th scope="col"></th><th scope="col">Personas</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Población estimada</th><td><span class="barra-dato" style="--valor:1.000"><span class="barra-dato__relleno"></span><span class="barra-dato__cifra">3,383,000</span></span></td></tr>
+        <tr><th scope="row">Podía votar</th><td><span class="barra-dato" style="--valor:0.032"><span class="barra-dato__relleno"></span><span class="barra-dato__cifra">108,597 · 3.2 %</span></span></td></tr>
+      </tbody>
+    </table>
+    <p class="fuente">Fuente: Exclusión electoral de analfabetos en Perú y Brasil (s. f.).</p>
+  </figure>
     <p>Entre 1876 y 1940 el Perú no hizo censos nacionales. El censo de 1940, el más cercano, registró que el 57.6 % de los peruanos mayores de 15 años no sabía leer ni escribir; entre las mujeres la cifra llegaba al 69.3 % y entre los hombres al 45 %<sup><a id="ref-28" href="#nota-28" role="doc-noteref" aria-label="Nota 28">28</a></sup>. En Puno, la mayoría de la población era indígena y no sabía leer ni escribir<sup><a id="ref-29" href="#nota-29" role="doc-noteref" aria-label="Nota 29">29</a></sup>.</p>
+
+  <figure class="cuadro grafico grafico--ancho">
+    <figcaption class="cuadro__titulo">No sabía leer ni escribir en 1940</figcaption>
+    <table class="barras">
+      <thead><tr><th scope="col">Mayores de 15 años</th><th scope="col">Porcentaje</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Mujeres</th><td><span class="barra-dato" style="--valor:0.693"><span class="barra-dato__relleno"></span><span class="barra-dato__cifra">69.3 %</span></span></td></tr>
+        <tr><th scope="row">Total</th><td><span class="barra-dato" style="--valor:0.576"><span class="barra-dato__relleno"></span><span class="barra-dato__cifra">57.6 %</span></span></td></tr>
+        <tr><th scope="row">Hombres</th><td><span class="barra-dato" style="--valor:0.450"><span class="barra-dato__relleno"></span><span class="barra-dato__cifra">45 %</span></span></td></tr>
+      </tbody>
+    </table>
+    <p class="fuente">Fuente: INEI, censo de 1940.</p>
+  </figure>
     <p>Según Ruelas Vargas, la ley de educación de 1905 (Ley 162) limitaba a los indígenas a dos años de escuela elemental, frente a cinco para los niños que la ley llamaba «blancos o criollos»<sup><a id="ref-30" href="#nota-30" role="doc-noteref" aria-label="Nota 30">30</a></sup>. Las comunidades aportaban terreno, local y mobiliario, pero «sus peticiones resultaron infructuosas por interposición de los gamonales»<sup><a id="ref-31" href="#nota-31" role="doc-noteref" aria-label="Nota 31">31</a></sup>.</p>
-    <p>Según González Watson, la Constitución de 1920 fue la primera que visibilizó a los pueblos indígenas en la legislación peruana. Su artículo 58 prometía proteger a los pueblos indígenas y dictar leyes especiales para ellos, y reconocía la existencia legal de las comunidades. El artículo 41 declaró que los bienes de las comunidades «son imprescriptibles y solo podrán transferirse mediante título público»<sup><a id="ref-32" href="#nota-32" role="doc-noteref" aria-label="Nota 32">32</a></sup>. En 1922 el gobierno creó un patronato para asuntos indígenas, presidido por un cura, que el Comité Tahuantinsuyo miró con desconfianza<sup><a id="ref-33" href="#nota-33" role="doc-noteref" aria-label="Nota 33">33</a></sup>. Tres años después de esa Constitución, el Ejército arrasó Huancho Lima.</p>
+    <p>Según González Watson, la Constitución de 1920 fue la primera que visibilizó a los pueblos indígenas en la legislación peruana. Su artículo 58 prometía proteger a los pueblos indígenas y dictar leyes especiales para ellos, y reconocía la existencia legal de las comunidades. El artículo 41 declaró que los bienes de las comunidades «son imprescriptibles y solo podrán transferirse mediante título público»<sup><a id="ref-32" href="#nota-32" role="doc-noteref" aria-label="Nota 32">32</a></sup>. En 1922 el gobierno creó un patronato para asuntos indígenas, presidido por un cura, que el Comité Tahuantinsuyo miró con desconfianza<sup><a id="ref-33" href="#nota-33" role="doc-noteref" aria-label="Nota 33">33</a></sup>. Tres años después de esa Constitución, el Ejército arrasó Wancho Lima.</p>
   </div>
 </section>
 
@@ -142,8 +220,23 @@
     </div>
   </figure>
   <div class="columna">
-    <p>Según Ruelas Vargas, el engaño en las ventas de tierras llevó a los comuneros a concluir que debían saber leer y escribir<sup><a id="ref-34" href="#nota-34" role="doc-noteref" aria-label="Nota 34">34</a></sup>. A los comuneros se les persuadía a vender sus tierras con documentos fraguados, en los que «se hacía aparecer que recibían sumas equitativas de dinero», y un habitante de Chucuito denunciaba que sufrían «compras engañosas solo por no saber leer y escribir»<sup><a id="ref-35" href="#nota-35" role="doc-noteref" aria-label="Nota 35">35</a></sup>. Según Rengifo, las comunidades buscaban leer, escribir y hacer cálculos para negociar directamente en el mercado, dirigirse por sí mismas a las autoridades del Estado y «proveerse de instrumentos para ejercer las libertades civiles»<sup><a id="ref-36" href="#nota-36" role="doc-noteref" aria-label="Nota 36">36</a></sup>. Según Mariano Larico, dirigente de Huancho Lima, en sus escuelas se enseñaba a «aprender castellano para defenderse», y Carlos Condorena dijo sobre los maestros adventistas: «nos enseñarán a leer y escribir, eso basta»<sup><a id="ref-37" href="#nota-37" role="doc-noteref" aria-label="Nota 37">37</a></sup>. Huancho Lima se propuso crear escuelas en Huancané y Moho para que los comuneros pudieran presentar sus reclamos por escrito<sup><a id="ref-38" href="#nota-38" role="doc-noteref" aria-label="Nota 38">38</a></sup>.</p>
+    <p>Según Ruelas Vargas, el engaño en las ventas de tierras llevó a los comuneros a concluir que debían saber leer y escribir<sup><a id="ref-34" href="#nota-34" role="doc-noteref" aria-label="Nota 34">34</a></sup>. A los comuneros se les persuadía a vender sus tierras con documentos fraguados, en los que «se hacía aparecer que recibían sumas equitativas de dinero», y un habitante de Chucuito denunciaba que sufrían «compras engañosas solo por no saber leer y escribir»<sup><a id="ref-35" href="#nota-35" role="doc-noteref" aria-label="Nota 35">35</a></sup>. Según Rengifo, las comunidades buscaban leer, escribir y hacer cálculos para negociar directamente en el mercado, dirigirse por sí mismas a las autoridades del Estado y «proveerse de instrumentos para ejercer las libertades civiles»<sup><a id="ref-36" href="#nota-36" role="doc-noteref" aria-label="Nota 36">36</a></sup>. Según Mariano Larico, dirigente de Wancho Lima, en sus escuelas se enseñaba a «aprender castellano para defenderse», y Carlos Condorena dijo sobre los maestros adventistas: «nos enseñarán a leer y escribir, eso basta»<sup><a id="ref-37" href="#nota-37" role="doc-noteref" aria-label="Nota 37">37</a></sup>. Wancho Lima se propuso crear escuelas en Huancané y Moho para que los comuneros pudieran presentar sus reclamos por escrito<sup><a id="ref-38" href="#nota-38" role="doc-noteref" aria-label="Nota 38">38</a></sup>.</p>
     <p>Los gamonales bloqueaban o destruían esas escuelas<sup><a id="ref-39" href="#nota-39" role="doc-noteref" aria-label="Nota 39">39</a></sup>. Según Vilca Apaza y otros, «pregonaban la frase "Indio leído, Indio perdido"»<sup><a id="ref-40" href="#nota-40" role="doc-noteref" aria-label="Nota 40">40</a></sup>. Si un maestro persistía en enseñar en una comunidad, intentaban disuadirlo y, si no lo lograban, «incendiaban y arrasaban la escuela»<sup><a id="ref-41" href="#nota-41" role="doc-noteref" aria-label="Nota 41">41</a></sup>. La primera escuela de Manuel Zúñiga Camacho, en Utawilaya, fue clausurada después de 1902 con la acusación de «incitar a la rebelión indígena»; en 1903 Camacho fue procesado tras un levantamiento en Pomata y pasó dos años preso, y en 1913 el obispo Valentín Ampuero organizó en Platería un ataque que destruyó las nuevas instalaciones de su escuela e hizo detenerlo<sup><a id="ref-42" href="#nota-42" role="doc-noteref" aria-label="Nota 42">42</a></sup>. En 1923, en Choquechambi (Azángaro), los comuneros que abrieron una escuela fueron «cruelmente azotados y encarcelados» y obligados a firmar que no volverían a educarse ni construir escuelas<sup><a id="ref-43" href="#nota-43" role="doc-noteref" aria-label="Nota 43">43</a></sup>. En 1924, según el obispo Cossío, los terratenientes incendiaron más de sesenta locales escolares en Huancané<sup><a id="ref-44" href="#nota-44" role="doc-noteref" aria-label="Nota 44">44</a></sup>.</p>
+
+  <figure class="cuadro">
+    <figcaption class="cuadro__titulo">Escuelas atacadas</figcaption>
+    <table class="tabla tabla--anios tabla--tres">
+      <thead><tr><th scope="col">Año</th><th scope="col">Lugar</th><th scope="col">Qué pasó</th></tr></thead>
+      <tbody>
+        <tr><td class="tabla__primera">Después de 1902</td><td data-rotulo="Lugar">Utawilaya</td><td data-rotulo="Qué pasó">La primera escuela de Manuel Zúñiga Camacho fue clausurada con la acusación de «incitar a la rebelión indígena».</td></tr>
+        <tr><td class="tabla__primera">1903</td><td data-rotulo="Lugar">Pomata</td><td data-rotulo="Qué pasó">Camacho fue procesado tras un levantamiento y pasó dos años preso.</td></tr>
+        <tr><td class="tabla__primera">1913</td><td data-rotulo="Lugar">Platería</td><td data-rotulo="Qué pasó">El obispo Valentín Ampuero organizó un ataque que destruyó las nuevas instalaciones de la escuela de Camacho e hizo detenerlo.</td></tr>
+        <tr><td class="tabla__primera">1923</td><td data-rotulo="Lugar">Choquechambi (Azángaro)</td><td data-rotulo="Qué pasó">Los comuneros que abrieron una escuela fueron «cruelmente azotados y encarcelados» y obligados a firmar que no volverían a educarse ni construir escuelas.</td></tr>
+        <tr><td class="tabla__primera">1924</td><td data-rotulo="Lugar">Huancané</td><td data-rotulo="Qué pasó">Según el obispo Cossío, los terratenientes incendiaron más de sesenta locales escolares.</td></tr>
+      </tbody>
+    </table>
+    <p class="fuente">Fuentes: Ruelas Vargas (2016, 2019); Arroyo (2005).</p>
+  </figure>
     <p>Camacho, maestro indígena nacido en 1871 en Cutimbo (Chucuito), había vuelto a Puno en 1898 tras estudiar en escuelas protestantes. Desde ese año enseñó a adultos de forma clandestina y en 1902 fundó la escuela de Utawilaya, en casa de su padrastro, donde se enseñaba lectura y escritura en castellano, estudio de la Biblia, atención a enfermos y orientación agrícola. Tras su cierre, la reabrió con apoyo de la Asociación Pro-Indígena y de la Misión Adventista<sup><a id="ref-45" href="#nota-45" role="doc-noteref" aria-label="Nota 45">45</a></sup>. Hacia 1916 la red de Platería-Utawilaya sumaba 19 escuelas y 2,200 alumnos, y llegó después a 3,619 alumnos y 73 maestros indígenas<sup><a id="ref-46" href="#nota-46" role="doc-noteref" aria-label="Nota 46">46</a></sup>. En la ciudad de Puno, José Antonio Encinas construyó un «laboratorio pedagógico» laico, orientado a valores ciudadanos, en una escuela que reconocía al niño indígena como sujeto de derechos; según Caldas Figuerola, se nutrió de la escuela adventista, el indigenismo temprano y la Escuela Nueva<sup><a id="ref-47" href="#nota-47" role="doc-noteref" aria-label="Nota 47">47</a></sup>.</p>
     <p>La educación indígena también fue motivo de debate. Dentro de la Asociación Pro-Indígena, Joaquín Capelo propuso en 1914 una «educación indígena» que enseñara a pensar, y Dora Mayer criticó en 1915 lo que llamó la «manía educacionista»<sup><a id="ref-48" href="#nota-48" role="doc-noteref" aria-label="Nota 48">48</a></sup>. En 1928, Mariátegui discutió la idea de que la cuestión indígena pudiera resolverse con la escuela, y escribió que «la más eficiente y grandiosa enseñanza normal no podría operar estos milagros» y que «la escuela y el maestro están irremisiblemente condenados a desnaturalizarse bajo la presión del ambiente feudal»<sup><a id="ref-49" href="#nota-49" role="doc-noteref" aria-label="Nota 49">49</a></sup>.</p>
   </div>
@@ -152,7 +245,7 @@
 <figure class="rojo cita-bloque" aria-hidden="true">
   <div class="cita">
     <blockquote><p><span class="cita__comilla">«</span>aprender castellano para defenderse<span class="cita__comilla">»</span></p></blockquote>
-    <figcaption>Mariano Larico, dirigente de Huancho Lima</figcaption>
+    <figcaption>Mariano Larico, dirigente de Wancho Lima</figcaption>
   </div>
 </figure>
 
@@ -168,19 +261,52 @@
   </figure>
   <div class="columna">
     <p>Las comunidades agotaron las vías legales y endurecieron su protesta<sup><a id="ref-50" href="#nota-50" role="doc-noteref" aria-label="Nota 50">50</a></sup>. En Puno hubo más de cuarenta rebeliones campesinas durante el siglo XX<sup><a id="ref-51" href="#nota-51" role="doc-noteref" aria-label="Nota 51">51</a></sup>, y entre 1909 y 1927 surgieron organizaciones que llevaron los reclamos indígenas a escala nacional<sup><a id="ref-52" href="#nota-52" role="doc-noteref" aria-label="Nota 52">52</a></sup>.</p>
-    <p>Medio siglo antes de Huancho Lima, entre 1866 y 1868, la rebelión de Juan Bustamante en Huancané terminó con centenares de muertos. Bustamante, conocido como «Mundo puricuy», fue decapitado<sup><a id="ref-53" href="#nota-53" role="doc-noteref" aria-label="Nota 53">53</a></sup>. Huancho Lima proyectó después una calle con su nombre<sup><a id="ref-54" href="#nota-54" role="doc-noteref" aria-label="Nota 54">54</a></sup>.</p>
-    <p>La Asociación Pro-Indígena (1909–1916) fue fundada en Lima por Pedro S. Zulen y Joaquín Capelo. Tuvo delegados en provincias, cuyas denuncias de abusos publicaba su boletín, <em>El Deber Pro-Indígena</em>, dirigido por Dora Mayer, que entre 1912 y 1917 publicó 51 números. Sus temas fueron la defensa de las tierras comunales («La cuestión tierras», 1913), la servidumbre, que Capelo describió como «la más cruel tiranía, de la más negra explotación», y la crítica al gamonalismo. Mayer dedicó artículos a «La situación en Puno» (1916) y a «La historia de las sublevaciones indígenas en Puno» (1917)<sup><a id="ref-55" href="#nota-55" role="doc-noteref" aria-label="Nota 55">55</a></sup>. La Asociación también apoyó la reapertura de la escuela de Utawilaya<sup><a id="ref-56" href="#nota-56" role="doc-noteref" aria-label="Nota 56">56</a></sup>. Entre 1915 y 1920, la prédica de Pedro Zulen impulsó también el movimiento descentralista federalista del sur.</p>
-    <p>Teodomiro Gutiérrez Cuevas era sargento mayor de caballería, había sido secretario del general Cáceres y subprefecto de Chucuito, donde abolió los trabajos gratuitos, y en 1913 integró una comisión de investigación en Puno. En diciembre de 1915, bajo el nombre de Rumi Maqui («mano de piedra»), encabezó junto a líderes como José María Turpo el levantamiento contra haciendas de Azángaro. Según documentos de los rebeldes, buscaba un Estado Federal del Tahuantinsuyo que uniera Apurímac, Cusco, Puno y Madre de Dios y acabara con el gamonalismo. Fue capturado en Arequipa en abril de 1916, juzgado y encarcelado; luego escapó y se perdió su rastro<sup><a id="ref-57" href="#nota-57" role="doc-noteref" aria-label="Nota 57">57</a></sup>. Hoy la Federación Agraria Departamental de Puno lleva su nombre<sup><a id="ref-58" href="#nota-58" role="doc-noteref" aria-label="Nota 58">58</a></sup>.</p>
-    <p>El Comité Central Pro-Derecho Indígena Tahuantinsuyo se fundó en Lima en 1919 y el gobierno lo reconoció el 21 de junio de 1920. Lo formaron dirigentes indígenas, antiguos delegados de la Pro-Indígena, migrantes provincianos y obreros anarcosindicalistas, y lo apoyaron Dora Mayer, Pedro Zulen, José Antonio Encinas e Hildebrando Castro Pozo. Entre sus dirigentes estuvieron Samuel Núñez Calderón, Hipólito Salazar, Juan Hipólito Pévez, Carlos Condorena y Ezequiel Urviola. El subcomité de Puno fue el más activo del país; lo integraban Julián Nina (Paratía), Jorge Ticona (Macusani), Francisco Flores (Acora), Ezequiel Urviola (Muñani), Carlos Condorena (Huancané) y Eduardo Quispe Quispe (Santiago de Pupuja)<sup><a id="ref-59" href="#nota-59" role="doc-noteref" aria-label="Nota 59">59</a></sup>.</p>
-    <p>El Comité organizó seis congresos indígenas entre 1921 y 1926; el primero y el cuarto se realizaron en Lima. Al primero, en agosto de 1921, llegaron más de 400 delegados de 13 departamentos. Exigieron «el respeto de su integridad territorial de todas las comunidades del país», la devolución de las tierras usurpadas por gamonales y la prohibición de vender tierras de comunidades y cofradías. Pidieron abolir la conscripción vial (congresos de 1922 y 1923), el pongaje y todo servicio gratuito, reglamentar y luego abolir el yanaconazgo, y un salario mínimo, y criticaron el enganche. En 1923 reclamaron un tribunal arbitral de revisión de títulos y un tribunal permanente de justicia indígena, la supresión de los tributos eclesiásticos y la reforma del artículo 53 de la Constitución. Denunciaron los abusos de autoridades y hacendados y reclamaron autoridades locales distintas. El Comité impulsó además escuelas en el interior del país, a menudo con maestros indígenas o adventistas<sup><a id="ref-60" href="#nota-60" role="doc-noteref" aria-label="Nota 60">60</a></sup>.</p>
+
+  <figure class="cuadro">
+    <figcaption class="cuadro__titulo">Organizaciones y rebeliones</figcaption>
+    <table class="tabla tabla--anios tabla--tres">
+      <thead><tr><th scope="col">Años</th><th scope="col">Qué</th><th scope="col">Quiénes</th></tr></thead>
+      <tbody>
+        <tr><td class="tabla__primera">1866–1868</td><td data-rotulo="Qué"><a href="#juan-bustamante">Rebelión de Juan Bustamante en Huancané</a></td><td data-rotulo="Quiénes">Juan Bustamante, «Mundo puricuy»</td></tr>
+        <tr><td class="tabla__primera">1909–1916</td><td data-rotulo="Qué"><a href="#pro-indigena">Asociación Pro-Indígena</a></td><td data-rotulo="Quiénes">Pedro S. Zulen, Joaquín Capelo, Dora Mayer</td></tr>
+        <tr><td class="tabla__primera">1915–1916</td><td data-rotulo="Qué"><a href="#rumi-maqui">Levantamiento de Rumi Maqui en Azángaro</a></td><td data-rotulo="Quiénes">Teodomiro Gutiérrez Cuevas, José María Turpo</td></tr>
+        <tr><td class="tabla__primera">1915–1920</td><td data-rotulo="Qué"><a href="#pro-indigena">Movimiento descentralista federalista del sur</a></td><td data-rotulo="Quiénes">Impulsado por la prédica de Pedro Zulen</td></tr>
+        <tr><td class="tabla__primera">1919–1927</td><td data-rotulo="Qué"><a href="#comite">Comité Central Pro-Derecho Indígena Tahuantinsuyo</a></td><td data-rotulo="Quiénes">Samuel Núñez Calderón, Hipólito Salazar, Juan Hipólito Pévez, Carlos Condorena, Ezequiel Urviola</td></tr>
+        <tr><td class="tabla__primera">1921–1926</td><td data-rotulo="Qué"><a href="#congresos">Seis congresos indígenas</a></td><td data-rotulo="Quiénes">Comité Tahuantinsuyo</td></tr>
+        <tr><td class="tabla__primera">1923</td><td data-rotulo="Qué"><a href="#wancho-lima">Wancho Lima</a></td><td data-rotulo="Quiénes">Carlos Condorena, Rita Poma y otros dirigentes</td></tr>
+      </tbody>
+    </table>
+    <p class="fuente">Fuentes: Bustamante Otero (2023); Jacobsen y Domínguez (2011); Lazarte Oyague (2022); Walker (s. f.); Arroyo (2005).</p>
+  </figure>
+    <p id="juan-bustamante">Medio siglo antes de Wancho Lima, entre 1866 y 1868, la rebelión de Juan Bustamante en Huancané terminó con centenares de muertos. Bustamante, conocido como «Mundo puricuy», fue decapitado<sup><a id="ref-53" href="#nota-53" role="doc-noteref" aria-label="Nota 53">53</a></sup>. Wancho Lima proyectó después una calle con su nombre<sup><a id="ref-54" href="#nota-54" role="doc-noteref" aria-label="Nota 54">54</a></sup>.</p>
+    <p id="pro-indigena">La Asociación Pro-Indígena (1909–1916) fue fundada en Lima por Pedro S. Zulen y Joaquín Capelo. Tuvo delegados en provincias, cuyas denuncias de abusos publicaba su boletín, <em>El Deber Pro-Indígena</em>, dirigido por Dora Mayer, que entre 1912 y 1917 publicó 51 números. Sus temas fueron la defensa de las tierras comunales («La cuestión tierras», 1913), la servidumbre, que Capelo describió como «la más cruel tiranía, de la más negra explotación», y la crítica al gamonalismo. Mayer dedicó artículos a «La situación en Puno» (1916) y a «La historia de las sublevaciones indígenas en Puno» (1917)<sup><a id="ref-55" href="#nota-55" role="doc-noteref" aria-label="Nota 55">55</a></sup>. La Asociación también apoyó la reapertura de la escuela de Utawilaya<sup><a id="ref-56" href="#nota-56" role="doc-noteref" aria-label="Nota 56">56</a></sup>. Entre 1915 y 1920, la prédica de Pedro Zulen impulsó también el movimiento descentralista federalista del sur.</p>
+    <p id="rumi-maqui">Teodomiro Gutiérrez Cuevas era sargento mayor de caballería, había sido secretario del general Cáceres y subprefecto de Chucuito, donde abolió los trabajos gratuitos, y en 1913 integró una comisión de investigación en Puno. En diciembre de 1915, bajo el nombre de Rumi Maqui («mano de piedra»), encabezó junto a líderes como José María Turpo el levantamiento contra haciendas de Azángaro. Según documentos de los rebeldes, buscaba un Estado Federal del Tahuantinsuyo que uniera Apurímac, Cusco, Puno y Madre de Dios y acabara con el gamonalismo. Fue capturado en Arequipa en abril de 1916, juzgado y encarcelado; luego escapó y se perdió su rastro<sup><a id="ref-57" href="#nota-57" role="doc-noteref" aria-label="Nota 57">57</a></sup>. Hoy la Federación Agraria Departamental de Puno lleva su nombre<sup><a id="ref-58" href="#nota-58" role="doc-noteref" aria-label="Nota 58">58</a></sup>.</p>
+    <p id="comite">El Comité Central Pro-Derecho Indígena Tahuantinsuyo se fundó en Lima en 1919 y el gobierno lo reconoció el 21 de junio de 1920. Lo formaron dirigentes indígenas, antiguos delegados de la Pro-Indígena, migrantes provincianos y obreros anarcosindicalistas, y lo apoyaron Dora Mayer, Pedro Zulen, José Antonio Encinas e Hildebrando Castro Pozo. Entre sus dirigentes estuvieron Samuel Núñez Calderón, Hipólito Salazar, Juan Hipólito Pévez, Carlos Condorena y Ezequiel Urviola. El subcomité de Puno fue el más activo del país; lo integraban Julián Nina (Paratía), Jorge Ticona (Macusani), Francisco Flores (Acora), Ezequiel Urviola (Muñani), Carlos Condorena (Huancané) y Eduardo Quispe Quispe (Santiago de Pupuja)<sup><a id="ref-59" href="#nota-59" role="doc-noteref" aria-label="Nota 59">59</a></sup>.</p>
+    <p id="congresos">El Comité organizó seis congresos indígenas entre 1921 y 1926; el primero y el cuarto se realizaron en Lima. Al primero, en agosto de 1921, llegaron más de 400 delegados de 13 departamentos. Exigieron «el respeto de su integridad territorial de todas las comunidades del país», la devolución de las tierras usurpadas por gamonales y la prohibición de vender tierras de comunidades y cofradías. Pidieron abolir la conscripción vial (congresos de 1922 y 1923), el pongaje y todo servicio gratuito, reglamentar y luego abolir el yanaconazgo, y un salario mínimo, y criticaron el enganche. En 1923 reclamaron un tribunal arbitral de revisión de títulos y un tribunal permanente de justicia indígena, la supresión de los tributos eclesiásticos y la reforma del artículo 53 de la Constitución. Denunciaron los abusos de autoridades y hacendados y reclamaron autoridades locales distintas. El Comité impulsó además escuelas en el interior del país, a menudo con maestros indígenas o adventistas<sup><a id="ref-60" href="#nota-60" role="doc-noteref" aria-label="Nota 60">60</a></sup>.</p>
+
+  <figure class="cuadro">
+    <figcaption class="cuadro__titulo">Qué pedían los congresos indígenas</figcaption>
+    <table class="tabla tabla--temas">
+      <thead><tr><th scope="col">Tema</th><th scope="col">Qué pedían</th></tr></thead>
+      <tbody>
+        <tr><td class="tabla__primera">Tierra</td><td data-rotulo="Qué pedían">«El respeto de su integridad territorial de todas las comunidades del país», la devolución de las tierras usurpadas por gamonales y la prohibición de vender tierras de comunidades y cofradías.</td></tr>
+        <tr><td class="tabla__primera">Trabajo</td><td data-rotulo="Qué pedían">Abolir la conscripción vial (congresos de 1922 y 1923), el pongaje y todo servicio gratuito; reglamentar y luego abolir el yanaconazgo; un salario mínimo. Criticaron el enganche.</td></tr>
+        <tr><td class="tabla__primera">Justicia</td><td data-rotulo="Qué pedían">Un tribunal arbitral de revisión de títulos y un tribunal permanente de justicia indígena (1923).</td></tr>
+        <tr><td class="tabla__primera">Iglesia</td><td data-rotulo="Qué pedían">La supresión de los tributos eclesiásticos y la reforma del artículo 53 de la Constitución (1923).</td></tr>
+        <tr><td class="tabla__primera">Autoridades</td><td data-rotulo="Qué pedían">Denunciaron los abusos de autoridades y hacendados y reclamaron autoridades locales distintas.</td></tr>
+        <tr><td class="tabla__primera">Escuelas</td><td data-rotulo="Qué pedían">El Comité impulsó escuelas en el interior del país, a menudo con maestros indígenas o adventistas.</td></tr>
+      </tbody>
+    </table>
+    <p class="fuente">Fuente: Arroyo (2005).</p>
+  </figure>
     <p>Al principio Leguía apoyó al Comité: pagó pasajes y almuerzos de los delegados del primer congreso. Desde 1923 el Comité se distanció; según Arroyo, Leguía se apoyó en la burguesía industrial y cedió ante los gamonales, y Urviola renunció a la Secretaría General en el tercer congreso. Según Arroyo, Leguía dijo a Condorena «yo apoyo al indio, quiero la revolución del indio», pero condenó como «actos de vandalismo» lo ocurrido en Huancané<sup><a id="ref-61" href="#nota-61" role="doc-noteref" aria-label="Nota 61">61</a></sup>.</p>
     <p>Desde 1921 los gamonales atacaron al Comité, acusando a sus miembros de «ramonales» por las colectas (la «rama») que hacían en las comunidades. En 1924 la policía hostigó el cuarto congreso y Salazar fue deportado. Urviola murió el 27 de enero de 1925 en el Hospital Dos de Mayo, tras ser perseguido. En agosto de 1927 una resolución suprema prohibió el Comité en todo el país<sup><a id="ref-62" href="#nota-62" role="doc-noteref" aria-label="Nota 62">62</a></sup>.</p>
   </div>
 </section>
 
-<section id="huancho-lima" class="capitulo" aria-labelledby="huancho-lima-titulo">
+<section id="wancho-lima" class="capitulo" aria-labelledby="wancho-lima-titulo">
   <div class="columna">
-    <h2 id="huancho-lima-titulo" class="capitulo__titulo"><span class="capitulo__n">6.</span> Huancho Lima</h2>
+    <h2 id="wancho-lima-titulo" class="capitulo__titulo"><span class="capitulo__n">6.</span> Wancho Lima</h2>
   </div>
   <figure class="foto-roja">
     <div class="foto-roja__marco">
@@ -189,10 +315,28 @@
     </div>
   </figure>
   <div class="columna">
-    <p>En 1923 las comunidades aimaras de Huancané y Moho fundaron su propia ciudad, Huancho Lima, como un centro político libre de la influencia de las autoridades y los «mistis» de Huancané<sup><a id="ref-63" href="#nota-63" role="doc-noteref" aria-label="Nota 63">63</a></sup>. Según Sejje Mamani, la ciudad se fundó el 1 de junio de 1923 y contó al inicio con la «anuencia fáctica» de Leguía<sup><a id="ref-64" href="#nota-64" role="doc-noteref" aria-label="Nota 64">64</a></sup>. Para Bustamante Otero, la detonaron cuatro hechos: la comisión de 1920 y sus más de siete mil reclamos, la organización del Comité Tahuantinsuyo, la ineficacia de la justicia y un supuesto acuerdo con Leguía para crear escuelas autónomas y una nueva capital provincial. No fue una insurrección contra el latifundio en general, sino contra el sistema de explotación de los «notables» y mistis del distrito<sup><a id="ref-65" href="#nota-65" role="doc-noteref" aria-label="Nota 65">65</a></sup>.</p>
-    <p>La ciudad se planeó con los planos urbanos de Lima, y se construyeron locales para ministerios, escuelas, mercados, calles y avenidas<sup><a id="ref-66" href="#nota-66" role="doc-noteref" aria-label="Nota 66">66</a></sup>. Sus objetivos eran crear escuelas clandestinas en las parcialidades de Huancané y Moho, para que los comuneros pudieran leer, escribir y presentar reclamos por escrito; organizar subcomités y ayllus en la provincia; tener ferias semanales propias y dejar de abastecer la feria de Huancané; y enviar comisionados a entrevistarse con el presidente Leguía<sup><a id="ref-67" href="#nota-67" role="doc-noteref" aria-label="Nota 67">67</a></sup>. Las calles iban a llevar los nombres de Túpac Amaru, Juan Bustamante y Rumi Maqui. Mariano Larico la describió como «una República dentro de la otra República»<sup><a id="ref-68" href="#nota-68" role="doc-noteref" aria-label="Nota 68">68</a></sup>. Las fuentes la llaman República Tahuantinsuyana<sup><a id="ref-69" href="#nota-69" role="doc-noteref" aria-label="Nota 69">69</a></sup> o República Aimara Tahuantinsuyana<sup><a id="ref-70" href="#nota-70" role="doc-noteref" aria-label="Nota 70">70</a></sup>.</p>
+    <p>En 1923 las comunidades aymaras de Huancané y Moho fundaron su propia ciudad, Wancho Lima, como un centro político libre de la influencia de las autoridades y los «mistis» de Huancané<sup><a id="ref-63" href="#nota-63" role="doc-noteref" aria-label="Nota 63">63</a></sup>. Según Sejje Mamani, la ciudad se fundó el 1 de junio de 1923 y contó al inicio con la «anuencia fáctica» de Leguía<sup><a id="ref-64" href="#nota-64" role="doc-noteref" aria-label="Nota 64">64</a></sup>. Para Bustamante Otero, la detonaron cuatro hechos: la comisión de 1920 y sus más de siete mil reclamos, la organización del Comité Tahuantinsuyo, la ineficacia de la justicia y un supuesto acuerdo con Leguía para crear escuelas autónomas y una nueva capital provincial. No fue una insurrección contra el latifundio en general, sino contra el sistema de explotación de los «notables» y mistis del distrito<sup><a id="ref-65" href="#nota-65" role="doc-noteref" aria-label="Nota 65">65</a></sup>.</p>
+    <p>La ciudad se planeó con los planos urbanos de Lima, y se construyeron locales para ministerios, escuelas, mercados, calles y avenidas<sup><a id="ref-66" href="#nota-66" role="doc-noteref" aria-label="Nota 66">66</a></sup>. Sus objetivos eran crear escuelas clandestinas en las parcialidades de Huancané y Moho, para que los comuneros pudieran leer, escribir y presentar reclamos por escrito; organizar subcomités y ayllus en la provincia; tener ferias semanales propias y dejar de abastecer la feria de Huancané; y enviar comisionados a entrevistarse con el presidente Leguía<sup><a id="ref-67" href="#nota-67" role="doc-noteref" aria-label="Nota 67">67</a></sup>. Las calles iban a llevar los nombres de Túpac Amaru, Juan Bustamante y Rumi Maqui. Mariano Larico la describió como «una República dentro de la otra República»<sup><a id="ref-68" href="#nota-68" role="doc-noteref" aria-label="Nota 68">68</a></sup>. Las fuentes la llaman República Tahuantinsuyana<sup><a id="ref-69" href="#nota-69" role="doc-noteref" aria-label="Nota 69">69</a></sup> o República Aymara Tahuantinsuyana<sup><a id="ref-70" href="#nota-70" role="doc-noteref" aria-label="Nota 70">70</a></sup>.</p>
     <p>Su líder principal fue Carlos Condorena Yujra, mensajero de las comunidades y miembro del subcomité puneño del Comité Tahuantinsuyo, elegido presidente provisional. Entre los dirigentes estuvieron también Rita Poma, Mariano Larico Yujra, cuyo testimonio recogió José Luis Ayala en <em>Yo fui canillita de José Carlos Mariátegui</em> (1990), y Antonio Francisco Luque Luque, presidente del Subcomité Distrital Pro-Derecho Indígena. Sejje Mamani señala como principal líder a Mariano Luque Corimayhua<sup><a id="ref-71" href="#nota-71" role="doc-noteref" aria-label="Nota 71">71</a></sup>.</p>
     <p>El 13 de diciembre de 1923 llegó a Vilquechico el mayor Luis Vinatea con 50 soldados del Batallón de Infantería N.º 15 de Puno y dos ametralladoras; se sumaron 25 hombres desde Azángaro y milicias de Huancané<sup><a id="ref-72" href="#nota-72" role="doc-noteref" aria-label="Nota 72">72</a></sup>. Ochoa habla de 400 soldados<sup><a id="ref-73" href="#nota-73" role="doc-noteref" aria-label="Nota 73">73</a></sup>. El 16 de diciembre las tropas tomaron la ciudad, fusilaron a hombres y mujeres e incendiaron las construcciones<sup><a id="ref-74" href="#nota-74" role="doc-noteref" aria-label="Nota 74">74</a></sup>. Evaristo Corimayhua Carcasi fue el primer fusilado, a la puerta de la capilla, tras enfrentar al jefe militar. Cecilia Luque fue fusilada el 16 de diciembre de 1923. Mariano Luque Corimayhua fue capturado, azotado y fusilado la noche de Navidad cerca del río Huancané, y su cuerpo nunca se recuperó. Mariano Mercedes Pacco Mamani sobrevivió a su fusilamiento, el 10 de enero de 1924, lanzándose al río<sup><a id="ref-75" href="#nota-75" role="doc-noteref" aria-label="Nota 75">75</a></sup>.</p>
+
+  <figure class="cuadro">
+    <figcaption class="cuadro__titulo">Dirigentes y víctimas de Wancho Lima</figcaption>
+    <table class="tabla tabla--temas">
+      <thead><tr><th scope="col">Nombre</th><th scope="col">Qué dicen las fuentes</th></tr></thead>
+      <tbody>
+        <tr><td class="tabla__primera">Carlos Condorena Yujra</td><td data-rotulo="Qué dicen las fuentes">Líder principal, mensajero de las comunidades y miembro del subcomité puneño del Comité Tahuantinsuyo. Fue elegido presidente provisional.</td></tr>
+        <tr><td class="tabla__primera"><a href="#rita-poma">Rita Poma</a></td><td data-rotulo="Qué dicen las fuentes">Dirigente y maestra de Moho (<a href="#rita-poma">capítulo 7</a>).</td></tr>
+        <tr><td class="tabla__primera">Mariano Larico Yujra</td><td data-rotulo="Qué dicen las fuentes">Dirigente. José Luis Ayala recogió su testimonio en <em>Yo fui canillita de José Carlos Mariátegui</em> (1990).</td></tr>
+        <tr><td class="tabla__primera">Antonio Francisco Luque Luque</td><td data-rotulo="Qué dicen las fuentes">Presidente del Subcomité Distrital Pro-Derecho Indígena.</td></tr>
+        <tr><td class="tabla__primera">Mariano Luque Corimayhua</td><td data-rotulo="Qué dicen las fuentes">Sejje Mamani lo señala como principal líder. Fue capturado, azotado y fusilado la noche de Navidad cerca del río Huancané; su cuerpo nunca se recuperó.</td></tr>
+        <tr><td class="tabla__primera">Evaristo Corimayhua Carcasi</td><td data-rotulo="Qué dicen las fuentes">El primer fusilado, a la puerta de la capilla, tras enfrentar al jefe militar.</td></tr>
+        <tr><td class="tabla__primera">Cecilia Luque</td><td data-rotulo="Qué dicen las fuentes">Fusilada el 16 de diciembre de 1923.</td></tr>
+        <tr><td class="tabla__primera">Mariano Mercedes Pacco Mamani</td><td data-rotulo="Qué dicen las fuentes">Sobrevivió a su fusilamiento, el 10 de enero de 1924, lanzándose al río.</td></tr>
+      </tbody>
+    </table>
+    <p class="fuente">Fuentes: Sejje Mamani (2023); Ochoa (2023); Chuquipiunta Machaca (2025b); Arroyo (2005); Bustamante Otero (2023).</p>
+  </figure>
     <p>No hay cifra oficial de muertos: unos estudiosos hablan de no más de 200 y otros de más de 2,000<sup><a id="ref-76" href="#nota-76" role="doc-noteref" aria-label="Nota 76">76</a></sup>. El sargento Tomás Valdivia Delgado dijo que «con los indios hicieron leña»<sup><a id="ref-77" href="#nota-77" role="doc-noteref" aria-label="Nota 77">77</a></sup>. Según Condorena, después los mistis arrearon a la plaza de Huancané más de 8,000 ovejas, 3,000 vacas y cientos de caballos de las comunidades<sup><a id="ref-78" href="#nota-78" role="doc-noteref" aria-label="Nota 78">78</a></sup>.</p>
   </div>
 </section>
@@ -211,9 +355,9 @@
     <p>Ninguno de los estudios académicos revisados trata a Rita Poma en detalle: lo que se sabe de su vida viene de historiadores y docentes de Moho, de la prensa y de la memoria de su pueblo.</p>
     <p>Nació el 2 de enero de 1900 en San Luis de Charajiri, parcialidad de Alto Huaraya (Korwari Apacheta), distrito de Moho. Fue hija de José María Puma y Rufina Justo, y la menor de cinco hermanos: Rufino, María, Andrea, Manuela y Rita<sup><a id="ref-79" href="#nota-79" role="doc-noteref" aria-label="Nota 79">79</a></sup>. Según El Objetivo, sus padres eran campesinos comerciantes<sup><a id="ref-80" href="#nota-80" role="doc-noteref" aria-label="Nota 80">80</a></sup>.</p>
     <p>Se movilizaba a caballo y participó en varias iniciativas a favor de la educación campesina. Apoyó la creación de las primeras escuelas del distrito de Moho<sup><a id="ref-81" href="#nota-81" role="doc-noteref" aria-label="Nota 81">81</a></sup> y fundó y dirigió la escuela rural de Chuño Huyo, la primera escuela rural de Moho<sup><a id="ref-82" href="#nota-82" role="doc-noteref" aria-label="Nota 82">82</a></sup>. Los hacendados destruyeron la escuela varias veces<sup><a id="ref-83" href="#nota-83" role="doc-noteref" aria-label="Nota 83">83</a></sup>; según Chuquipiunta Machaca<sup><a id="ref-84" href="#nota-84" role="doc-noteref" aria-label="Nota 84">84</a></sup> y Alvites<sup><a id="ref-85" href="#nota-85" role="doc-noteref" aria-label="Nota 85">85</a></sup>, ella la reconstruyó cada vez. También se la menciona como primera maestra de aula en el «Jardín del Altiplano»<sup><a id="ref-86" href="#nota-86" role="doc-noteref" aria-label="Nota 86">86</a></sup>. Se la considera la primera maestra campesina del siglo XX en Puno<sup><a id="ref-87" href="#nota-87" role="doc-noteref" aria-label="Nota 87">87</a></sup>.</p>
-    <p>En 1923, con 23 años, participó en Huancho Lima junto a Carlos Condorena, Mariano Pacco, Evaristo Corimayhua y Antonio Francisco Luque. Viajaba a caballo para organizar reuniones y capacitaciones<sup><a id="ref-88" href="#nota-88" role="doc-noteref" aria-label="Nota 88">88</a></sup>.</p>
-    <p>Después de la masacre, los mistis ordenaron su captura, incendiaron su casa, saquearon sus bienes y mataron a familiares suyos. Vivió perseguida entre Alto Huaraya, Jipata y Huancho Lima<sup><a id="ref-89" href="#nota-89" role="doc-noteref" aria-label="Nota 89">89</a></sup>. Fue capturada el 9 de enero de 1924. Las fuentes coinciden en que fue torturada y asesinada, pero no en cómo: unas dicen que fue envenenada en el puesto de la guardia urbana<sup><a id="ref-90" href="#nota-90" role="doc-noteref" aria-label="Nota 90">90</a></sup>; otras, que fue arrastrada por su caballo, azotada y ahorcada en un eucalipto del cementerio de Moho, donde su cuerpo quedó expuesto como advertencia<sup><a id="ref-91" href="#nota-91" role="doc-noteref" aria-label="Nota 91">91</a></sup>; Sejje Mamani<sup><a id="ref-92" href="#nota-92" role="doc-noteref" aria-label="Nota 92">92</a></sup> indica que fue ahorcada en la Plaza de Armas de Moho. Tampoco coinciden en quiénes la mataron: hacendados de Moho<sup><a id="ref-93" href="#nota-93" role="doc-noteref" aria-label="Nota 93">93</a></sup>, soldados<sup><a id="ref-94" href="#nota-94" role="doc-noteref" aria-label="Nota 94">94</a></sup> o el Estado mediante agentes civiles y armados<sup><a id="ref-95" href="#nota-95" role="doc-noteref" aria-label="Nota 95">95</a></sup>.</p>
-    <p>En 2022 el Gobierno Regional de Puno la declaró heroína mártir aimara y personaje ilustre de Moho<sup><a id="ref-96" href="#nota-96" role="doc-noteref" aria-label="Nota 96">96</a></sup>. Un colegio de Moho lleva su nombre. José Luis Ayala le dedicó el poemario <em>Celebración cósmica de Rita Puma</em> (2005), y Renata Flores la canción «Rita Puma Justo», del álbum <em>Isqun</em>, mitad en aimara y mitad en castellano. En la novela <em>Atusparia</em>, de Gabriela Wiener, un grupo feminista antirracista anticapitalista lleva su nombre, y Héctor Béjar narra su historia en <em>Historia del Perú para descontentos</em><sup><a id="ref-97" href="#nota-97" role="doc-noteref" aria-label="Nota 97">97</a></sup>.</p>
+    <p>En 1923, con 23 años, participó en Wancho Lima junto a Carlos Condorena, Mariano Pacco, Evaristo Corimayhua y Antonio Francisco Luque. Viajaba a caballo para organizar reuniones y capacitaciones<sup><a id="ref-88" href="#nota-88" role="doc-noteref" aria-label="Nota 88">88</a></sup>.</p>
+    <p>Después de la masacre, los mistis ordenaron su captura, incendiaron su casa, saquearon sus bienes y mataron a familiares suyos. Vivió perseguida entre Alto Huaraya, Jipata y Wancho Lima<sup><a id="ref-89" href="#nota-89" role="doc-noteref" aria-label="Nota 89">89</a></sup>. Fue capturada el 9 de enero de 1924. Las fuentes coinciden en que fue torturada y asesinada, pero no en cómo: unas dicen que fue envenenada en el puesto de la guardia urbana<sup><a id="ref-90" href="#nota-90" role="doc-noteref" aria-label="Nota 90">90</a></sup>; otras, que fue arrastrada por su caballo, azotada y ahorcada en un eucalipto del cementerio de Moho, donde su cuerpo quedó expuesto como advertencia<sup><a id="ref-91" href="#nota-91" role="doc-noteref" aria-label="Nota 91">91</a></sup>; Sejje Mamani<sup><a id="ref-92" href="#nota-92" role="doc-noteref" aria-label="Nota 92">92</a></sup> indica que fue ahorcada en la Plaza de Armas de Moho. Tampoco coinciden en quiénes la mataron: hacendados de Moho<sup><a id="ref-93" href="#nota-93" role="doc-noteref" aria-label="Nota 93">93</a></sup>, soldados<sup><a id="ref-94" href="#nota-94" role="doc-noteref" aria-label="Nota 94">94</a></sup> o el Estado mediante agentes civiles y armados<sup><a id="ref-95" href="#nota-95" role="doc-noteref" aria-label="Nota 95">95</a></sup>.</p>
+    <p>En 2022 el Gobierno Regional de Puno la declaró heroína mártir aymara y personaje ilustre de Moho<sup><a id="ref-96" href="#nota-96" role="doc-noteref" aria-label="Nota 96">96</a></sup>. Un colegio de Moho lleva su nombre. José Luis Ayala le dedicó el poemario <em>Celebración cósmica de Rita Puma</em> (2005), y Renata Flores la canción «Rita Puma Justo», del álbum <em>Isqun</em>, mitad en aymara y mitad en castellano. En la novela <em>Atusparia</em>, de Gabriela Wiener, un grupo feminista antirracista anticapitalista lleva su nombre, y Héctor Béjar narra su historia en <em>Historia del Perú para descontentos</em><sup><a id="ref-97" href="#nota-97" role="doc-noteref" aria-label="Nota 97">97</a></sup>.</p>
   </div>
 </section>
 
@@ -222,8 +366,24 @@
     <h2 id="fuentes-difieren-titulo" class="capitulo__titulo"><span class="capitulo__n">8.</span> Puntos en que las fuentes difieren</h2>
   </div>
   <div class="columna">
-    <p>Además de las versiones sobre su asesinato, las fuentes difieren en otros datos. Chuquipiunta Machaca<sup><a id="ref-98" href="#nota-98" role="doc-noteref" aria-label="Nota 98">98</a></sup> afirma que Rita ayudó a conducir la escuela de Aña Aña (1910–1921); otra versión, no verificada en este documento, la atribuye a Mariano Luque. Sejje Mamani<sup><a id="ref-99" href="#nota-99" role="doc-noteref" aria-label="Nota 99">99</a></sup> fecha la fundación de Huancho Lima el 1 de junio de 1923; otras fuentes dicen solo «1923». Sobre las tropas, Sejje Mamani<sup><a id="ref-100" href="#nota-100" role="doc-noteref" aria-label="Nota 100">100</a></sup> habla de 50 soldados, dos ametralladoras, 25 hombres más y milicias, y Ochoa<sup><a id="ref-101" href="#nota-101" role="doc-noteref" aria-label="Nota 101">101</a></sup> de 400 soldados. Sobre los muertos, las estimaciones van de «no más de 200» a «más de 2,000», sin cifra oficial<sup><a id="ref-102" href="#nota-102" role="doc-noteref" aria-label="Nota 102">102</a></sup>. Su nombre aparece como Rita Puma Justo en la mayoría de textos y como Rita Poma en el uso de Puno<sup><a id="ref-103" href="#nota-103" role="doc-noteref" aria-label="Nota 103">103</a></sup>.</p>
-    <p>Las fuentes coinciden en que nació en Moho en 1900, fue maestra, fundó la escuela de Chuño Huyo, que los hacendados destruyeron, fue dirigente de Huancho Lima y fue capturada y asesinada el 9 de enero de 1924.</p>
+    <p>Además de las versiones sobre su asesinato, las fuentes difieren en otros datos. Chuquipiunta Machaca<sup><a id="ref-98" href="#nota-98" role="doc-noteref" aria-label="Nota 98">98</a></sup> afirma que Rita ayudó a conducir la escuela de Aña Aña (1910–1921); otra versión, no verificada en este documento, la atribuye a Mariano Luque. Sejje Mamani<sup><a id="ref-99" href="#nota-99" role="doc-noteref" aria-label="Nota 99">99</a></sup> fecha la fundación de Wancho Lima el 1 de junio de 1923; otras fuentes dicen solo «1923». Sobre las tropas, Sejje Mamani<sup><a id="ref-100" href="#nota-100" role="doc-noteref" aria-label="Nota 100">100</a></sup> habla de 50 soldados, dos ametralladoras, 25 hombres más y milicias, y Ochoa<sup><a id="ref-101" href="#nota-101" role="doc-noteref" aria-label="Nota 101">101</a></sup> de 400 soldados. Sobre los muertos, las estimaciones van de «no más de 200» a «más de 2,000», sin cifra oficial<sup><a id="ref-102" href="#nota-102" role="doc-noteref" aria-label="Nota 102">102</a></sup>. Su nombre aparece como Rita Puma Justo en la mayoría de textos y como Rita Poma en el uso de Puno<sup><a id="ref-103" href="#nota-103" role="doc-noteref" aria-label="Nota 103">103</a></sup>.</p>
+
+  <figure class="cuadro">
+    <figcaption class="cuadro__titulo">Lo que dicen las fuentes</figcaption>
+    <table class="tabla tabla--temas">
+      <thead><tr><th scope="col">Tema</th><th scope="col">Versiones</th></tr></thead>
+      <tbody>
+        <tr><td class="tabla__primera">Cómo la mataron</td><td data-rotulo="Versiones"><ul class="versiones"><li><span class="versiones__segun">Chuquipiunta Machaca (2025a) y Alvites:</span> envenenada en el puesto de la guardia urbana</li><li><span class="versiones__segun">Chuquipiunta Machaca (s. f.), El Objetivo y Wikipedia:</span> arrastrada por su caballo, azotada y ahorcada en un eucalipto del cementerio de Moho</li><li><span class="versiones__segun">Sejje Mamani:</span> ahorcada en la Plaza de Armas de Moho</li></ul></td></tr>
+        <tr><td class="tabla__primera">Quién la mató</td><td data-rotulo="Versiones"><ul class="versiones"><li><span class="versiones__segun">Sejje Mamani:</span> hacendados de Moho</li><li><span class="versiones__segun">Alvites:</span> soldados</li><li><span class="versiones__segun">El Objetivo:</span> el Estado, mediante agentes civiles y armados</li></ul></td></tr>
+        <tr><td class="tabla__primera">Escuela de Aña Aña (1910–1921)</td><td data-rotulo="Versiones"><ul class="versiones"><li><span class="versiones__segun">Chuquipiunta Machaca (2025a):</span> Rita ayudó a conducirla</li><li><span class="versiones__segun">Otra versión, no verificada en este documento:</span> la atribuye a Mariano Luque</li></ul></td></tr>
+        <tr><td class="tabla__primera">Fundación de Wancho Lima</td><td data-rotulo="Versiones"><ul class="versiones"><li><span class="versiones__segun">Sejje Mamani:</span> 1 de junio de 1923</li><li><span class="versiones__segun">Otras fuentes:</span> solo «1923»</li></ul></td></tr>
+        <tr><td class="tabla__primera">Tropas</td><td data-rotulo="Versiones"><ul class="versiones"><li><span class="versiones__segun">Sejje Mamani:</span> 50 soldados, dos ametralladoras, 25 hombres más y milicias</li><li><span class="versiones__segun">Ochoa:</span> 400 soldados</li></ul></td></tr>
+        <tr><td class="tabla__primera">Muertos</td><td data-rotulo="Versiones"><ul class="versiones"><li><span class="versiones__segun">Sejje Mamani:</span> unos estudiosos hablan de no más de 200 y otros de más de 2,000; no hay cifra oficial</li></ul></td></tr>
+        <tr><td class="tabla__primera">Su nombre</td><td data-rotulo="Versiones"><ul class="versiones"><li><span class="versiones__segun">La mayoría de textos:</span> Rita Puma Justo</li><li><span class="versiones__segun">El uso de Puno:</span> Rita Poma</li></ul></td></tr>
+      </tbody>
+    </table>
+  </figure>
+    <p>Las fuentes coinciden en que nació en Moho en 1900, fue maestra, fundó la escuela de Chuño Huyo, que los hacendados destruyeron, fue dirigente de Wancho Lima y fue capturada y asesinada el 9 de enero de 1924.</p>
   </div>
 </section>
 

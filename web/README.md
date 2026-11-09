@@ -36,6 +36,7 @@ web/
         ├── css/marca.css             colores, tipografías y botones del manual de marca
         ├── css/portada.css           diseño de la portada
         ├── css/documento.css         diseño del informe
+        ├── js/documento.js           menú superior del informe y barras que crecen (opcional: sin él se lee igual)
         ├── fuentes/                  Anton y Archivo (licencia SIL OFL 1.1, archivos OFL-*.txt)
         ├── img/                      logos y elementos gráficos del kit de marca
         ├── img/informe/              retrato de Rita y fotos del informe (de los carruseles de la organización)
@@ -135,6 +136,13 @@ En `publico/index.html`, dentro de `<ul class="enlaces">`, copia un `<li>` compl
 - **Texto de la web:** está en `publico/archivo-rita-poma/index.html`, copiado tal cual del PDF (versión de
   noviembre de 2026, con 8 capítulos y 103 notas). Cada capítulo es un `<section id="…">`. Las llamadas a nota son
   `<sup><a id="ref-N" href="#nota-N">N</a></sup>` y cada nota de la lista final vuelve al texto con su número.
+- **Menú superior fijo:** inicio, índice desplegable que marca el capítulo que se está leyendo, PDF y barra de
+  progreso de lectura (`js/documento.js`).
+- **Cuadros y gráficos:** resumen visual de datos que ya están en el texto (haciendas, voto, población electoral,
+  analfabetismo de 1940, escuelas atacadas, organizaciones, demandas de los congresos, dirigentes y víctimas de Wancho
+  Lima, y versiones que difieren). Son `<figure class="cuadro">` y cada uno cita su fuente.
+- **Ortografía de la organización:** «aymara» y «Wancho Lima» en todo el texto de la web, aunque el PDF diga
+  «aimara» y «Huancho Lima». Los títulos de la bibliografía se dejan como los publicaron sus autores.
 - **Citas destacadas:** los bloques rojos con una frase grande (Mariátegui en el capítulo 1 y Mariano Larico en el
   4) repiten frases que ya están en el texto. Tienen `aria-hidden="true"` para que los lectores de pantalla no las lean
   dos veces.
